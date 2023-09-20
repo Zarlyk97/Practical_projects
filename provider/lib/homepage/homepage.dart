@@ -11,7 +11,7 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
   Duration duration = const Duration(seconds: 10);
-  // bool changeColor = true;
+
   bool light = true;
   bool obsecureText = true;
   @override
@@ -49,13 +49,14 @@ class _HomePageState extends State<HomePage> {
               },
             ),
             IconButton(
-                onPressed: () {
-                  obsecureText = !obsecureText;
-                  setState(() {});
-                },
-                icon: Icon(obsecureText
-                    ? Icons.visibility_outlined
-                    : Icons.visibility_off_outlined))
+              onPressed: () {
+                obsecureText = !obsecureText;
+                setState(() {});
+              },
+              icon: Icon(obsecureText
+                  ? Icons.visibility_outlined
+                  : Icons.visibility_off_outlined),
+            ),
           ],
         ),
       ),
