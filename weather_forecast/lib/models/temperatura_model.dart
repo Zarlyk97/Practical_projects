@@ -1,6 +1,6 @@
 String temperatura(int number) {
   return switch (number) {
-    (1) => '6 °F',
+    (1) => '7 °F',
     (2) => '9 °F',
     (3) => '22 °F',
     (4) => '16 °F',

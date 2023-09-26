@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 
@@ -21,6 +20,7 @@ class TextFormButton extends StatelessWidget {
     this.onFieldSubmitted,
     required this.obscureText,
     this.maxLength,
+    this.onSaved,
   }) : super(key: key);
   final String? text;
   final Icon? icon;
@@ -39,9 +39,11 @@ class TextFormButton extends StatelessWidget {
   final Function(String)? onFieldSubmitted;
   final bool obscureText;
   final int? maxLength;
+  final void Function(String?)? onSaved;
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      onSaved: onSaved,
       maxLength: maxLength,
       obscureText: obscureText,
       onFieldSubmitted: onFieldSubmitted,

@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
+import 'package:form_exemple/feature/domain/model/model.dart';
+import 'package:form_exemple/feature/presentation/home/second_page.dart';
 import 'package:form_exemple/feature/presentation/widgets/text_form_button.dart';
 import 'package:mask_text_input_formatter/mask_text_input_formatter.dart';
 
@@ -62,7 +64,15 @@ class _nameState extends State<RegisterFormPage> {
     super.dispose();
   }
 
-  bool changcolor = true;
+  final UserModel userModel = UserModel(
+    name: 'name',
+    story: 'story',
+    phone: 'phone',
+    email: 'email',
+    country: 'country',
+  );
+
+  bool hidepass = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -119,6 +129,9 @@ class _nameState extends State<RegisterFormPage> {
                       borderSide: const BorderSide(color: Colors.red),
                     ),
                     obscureText: false,
+                    onSaved: (value) {
+                      userModel.name = value!;
+                    },
                   ),
                   const SizedBox(
                     height: 10,
@@ -132,6 +145,7 @@ class _nameState extends State<RegisterFormPage> {
                         return null;
                       }
                     },
+                    maxLines: 1,
                     controller: phoneController,
                     icon: const Icon(Icons.call),
                     text: 'Phone Number',
@@ -154,6 +168,9 @@ class _nameState extends State<RegisterFormPage> {
                       borderSide: const BorderSide(color: Colors.red),
                     ),
                     obscureText: false,
+                    onSaved: (value) {
+                      userModel.phone = value!;
+                    },
                   ),
                   const SizedBox(
                     height: 10,
@@ -173,6 +190,9 @@ class _nameState extends State<RegisterFormPage> {
                     text: "Email address",
                     maxLines: 1,
                     obscureText: false,
+                    onSaved: (value) {
+                      userModel.email = value!;
+                    },
                   ),
                   const SizedBox(
                     height: 10,
@@ -195,6 +215,7 @@ class _nameState extends State<RegisterFormPage> {
                     onChanged: (value) {
                       setState(() {
                         _selectedValue = value!;
+                        userModel.country = value;
                       });
                     },
                   ),
@@ -212,6 +233,9 @@ class _nameState extends State<RegisterFormPage> {
                       borderRadius: BorderRadius.circular(5),
                     ),
                     obscureText: false,
+                    onSaved: (value) {
+                      userModel.story = value!;
+                    },
                   ),
                   const SizedBox(
                     height: 10,
@@ -227,10 +251,10 @@ class _nameState extends State<RegisterFormPage> {
                     suffixicon: IconButton(
                         onPressed: () {
                           setState(() {
-                            changcolor = !changcolor;
+                            hidepass = !hidepass;
                           });
                         },
-                        icon: Icon(changcolor
+                        icon: Icon(hidepass
                             ? Icons.visibility
                             : Icons.visibility_off)),
                     maxLines: 1,
@@ -243,7 +267,8 @@ class _nameState extends State<RegisterFormPage> {
                         return null;
                       }
                     },
-                    obscureText: true,
+                    obscureText: hidepass,
+                    onSaved: (value) {},
                   ),
                   const SizedBox(
                     height: 10,
@@ -263,6 +288,7 @@ class _nameState extends State<RegisterFormPage> {
                       }
                     },
                     obscureText: false,
+                    onSaved: (value) {},
                   ),
                   const SizedBox(
                     height: 30,
@@ -280,38 +306,43 @@ class _nameState extends State<RegisterFormPage> {
                                 MaterialStateProperty.all<Color>(Colors.green)),
                         onPressed: () {
                           if (_formkey.currentState!.validate()) {
-                            ScaffoldMessenger.of(context).showSnackBar(
-                              const SnackBar(
-                                backgroundColor: Colors.red,
-                                content: Text('A SnackBar has been shown.'),
+                            _formkey.currentState!.save();
+
+                            {
+                              ScaffoldMessenger.of(context).showSnackBar(
+                                const SnackBar(
+                                  backgroundColor: Colors.black,
+                                  content: Text('A SnackBar has been shown.'),
+                                ),
+                              );
+                            }
+                            showDialog<String>(
+                              context: context,
+                              builder: (BuildContext context) => AlertDialog(
+                                title: const Text(
+                                    'Сиздин катталуңуз илгиликтүү өттү'),
+                                content: const Text('AlertDialog description'),
+                                actions: <Widget>[
+                                  TextButton(
+                                    onPressed: () =>
+                                        Navigator.pop(context, 'Cancel'),
+                                    child: const Text('Артка кайтуу'),
+                                  ),
+                                  TextButton(
+                                    onPressed: () => Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) => SecondPage(
+                                          userinfo: userModel,
+                                        ),
+                                      ),
+                                    ),
+                                    child: const Text('OK'),
+                                  ),
+                                ],
                               ),
                             );
-                            showDialog<String>(
-                                context: context,
-                                builder: (BuildContext context) => AlertDialog(
-                                      title: const Text('AlertDialog Title'),
-                                      content:
-                                          const Text('AlertDialog description'),
-                                      actions: <Widget>[
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(context, 'Cancel'),
-                                          child: const Text('Cancel'),
-                                        ),
-                                        TextButton(
-                                          onPressed: () =>
-                                              Navigator.pop(context, 'OK'),
-                                          child: const Text('OK'),
-                                        ),
-                                      ],
-                                    ));
                           }
-                          // Navigator.push(
-                          //   context,
-                          //   MaterialPageRoute(
-                          //     builder: (context) => const SecondPage(),
-                          //   ),
-                          // );
                         },
                         child: const Text(
                           'Submit Form',
@@ -319,7 +350,7 @@ class _nameState extends State<RegisterFormPage> {
                         )),
                   ),
                   const SizedBox(
-                    height: 10,
+                    height: 20,
                   ),
                 ],
               ),
@@ -328,12 +359,5 @@ class _nameState extends State<RegisterFormPage> {
         ),
       ),
     );
-  }
-
-  void sobmitform() {
-    print("name: ${nameController.text}");
-    print("phone: ${phoneController.text}");
-    print("email: ${emailController.text}");
-    print("password: ${passwordController.text}");
   }
 }
