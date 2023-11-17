@@ -24,10 +24,10 @@ class PersonRemoteDataSourseImple implements PersonRemoteDataSourse {
   Future<List<PersonModel>> searchPerson(String query) => getPersonFromUrl(
       'https://rickandmortyapi.com/api/character/?name=$query');
 
-  Future<List<PersonModel>> getPersonFromUrl(String query) async {
-    final response = await client.get(
-        Uri.parse("https://rickandmortyapi.com/api/character/?name=$query"),
-        headers: {'Content-Type ': 'aplication/json'});
+  Future<List<PersonModel>> getPersonFromUrl(String url) async {
+    print(url);
+    final response = await client
+        .get(Uri.parse(url), headers: {'Content-Type ': 'aplication/json'});
 
     if (response.statusCode == 200) {
       final persons = json.decode(response.body);
