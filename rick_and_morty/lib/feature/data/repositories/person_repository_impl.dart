@@ -17,7 +17,7 @@ class PersonRepositoryimpl implements PersonRepository {
     required this.localDataSource,
     required this.networkInfo,
   });
-
+/////////////////////////////////////////
   @override
   Future<Either<Failure, List<PersonEntity>>> getAllPersons(int page) async {
     if (await networkInfo.isConnected) {
