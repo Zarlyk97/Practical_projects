@@ -9,7 +9,7 @@ import 'package:shared_preferences/shared_preferences.dart';
 abstract class PersonLocalDataSource {
   Future<List<PersonModel>> getLastPersonFromCache();
 
-  /// throws  [CasheException] if no cashed data is present
+  /// throws  [CashException] if no cashed data is present
   Future<void> personsToCache(List<PersonModel> persons);
 }
 
