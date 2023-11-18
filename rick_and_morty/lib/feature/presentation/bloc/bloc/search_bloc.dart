@@ -27,7 +27,7 @@ class PersonSearchBloc extends Bloc<PersonSearchEvent, PersonSearchState> {
 
     yield failureOrPerson.fold(
         (failure) => PersonSearchError(message: _mapFailureToMessage(failure)),
-        (person) => PersonSearchLoaded(person));
+        (person) => PersonSearchLoaded(persons: person));
   }
 
   String _mapFailureToMessage(Failure failure) {
