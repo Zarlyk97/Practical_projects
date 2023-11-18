@@ -8,7 +8,7 @@ abstract class PersonSearchState extends Equatable {
   List<Object?> get props => [];
 }
 
-class PersonEmpty extends PersonSearchState {}
+class PersonSearchEmpty extends PersonSearchState {}
 
 class PersonSearchLoading extends PersonSearchState {}
 
