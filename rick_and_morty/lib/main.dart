@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:rick_and_morty/common/app_colors.dart';
 import 'package:rick_and_morty/feature/presentation/bloc/bloc/search_bloc.dart';
 import 'package:rick_and_morty/feature/presentation/bloc/cubit/search_cubit.dart';
 import 'package:rick_and_morty/feature/presentation/pages/home_page.dart';
@@ -20,13 +21,14 @@ class MyApp extends StatelessWidget {
     return MultiBlocProvider(
         providers: [
           BlocProvider<PersonsListcubit>(
-              create: (context) => sl<PersonsListcubit>()),
+              create: (context) => sl<PersonsListcubit>()..loadPerson()),
           BlocProvider<PersonSearchBloc>(
               create: (context) => sl<PersonSearchBloc>()),
         ],
         child: MaterialApp(
-          darkTheme:
-              ThemeData.dark().copyWith(scaffoldBackgroundColor: Colors.grey),
+          debugShowCheckedModeBanner: false,
+          darkTheme: ThemeData.dark()
+              .copyWith(scaffoldBackgroundColor: AppColors.mainBackgraund),
           home: const HomePage(),
         ));
   }
