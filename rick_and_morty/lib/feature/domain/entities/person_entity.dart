@@ -27,7 +27,7 @@ class PersonEntity extends Equatable {
       required this.created});
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         name,
         status,
         species,
@@ -45,5 +45,8 @@ class LocationEntity {
   String name;
   String url;
 
-  LocationEntity({required this.name, required this.url, required id});
+  LocationEntity(
+    this.name,
+    this.url,
+  );
 }
