@@ -1,5 +1,3 @@
-// ignore_for_file: must_be_immutable
-
 import 'dart:async';
 
 import 'package:flutter/material.dart';
@@ -12,13 +10,13 @@ import 'package:rick_and_morty/feature/presentation/widgets/person_card_widget.d
 class PersonsList extends StatelessWidget {
   PersonsList({super.key});
   final scrollController = ScrollController();
-  int page = -1;
+  final int page = -1;
   void setupScrollController(BuildContext context) {
     scrollController.addListener(() {
       if (scrollController.position.atEdge) {
         if (scrollController.position.pixels != 0) {
           //BlocProvider.of<PersonListCubit>(context).loadPerson();
-          context.read<PersonsListcubit>().loadPerson();
+          context.read<PersonListcubit>().loadPerson();
         }
       }
     });
@@ -27,13 +25,15 @@ class PersonsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     setupScrollController(context);
-    return BlocBuilder<PersonsListcubit, PersonState>(
+    return BlocBuilder<PersonListcubit, PersonState>(
       builder: (context, state) {
         List<PersonEntity> persons = [];
         bool isloading = false;
+
         if (state is PersonLoading && state.isFirstFech) {
           return _loadingIndicator();
         } else if (state is PersonLoading) {
+          print('zarlyk');
           persons = state.oldPersonsList;
           isloading = true;
         } else if (state is PersonLoaded) {

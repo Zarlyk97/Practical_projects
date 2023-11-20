@@ -7,9 +7,9 @@ import 'package:rick_and_morty/feature/presentation/bloc/cubit/search_state.dart
 const SERVER_FAILURE_MESSAGE = 'Server Failure';
 const CACHED_FAILURE_MESSAGE = 'Cache Failure';
 
-class PersonsListcubit extends Cubit<PersonState> {
+class PersonListcubit extends Cubit<PersonState> {
   final GetAllPersons getAllPersons;
-  PersonsListcubit({required this.getAllPersons}) : super(Personempty());
+  PersonListcubit({required this.getAllPersons}) : super(Personempty());
   int page = 1;
   void loadPerson() async {
     if (state is PersonLoading) return;

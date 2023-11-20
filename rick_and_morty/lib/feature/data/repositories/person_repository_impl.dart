@@ -8,7 +8,7 @@ import 'package:rick_and_morty/feature/domain/entities/person_entity.dart';
 import 'package:rick_and_morty/feature/domain/repositories/person_repository.dart';
 
 class PersonRepositoryimpl implements PersonRepository {
-  final PersonRemoteDataSourse remoteDataSourse;
+  final PersonRemoteDataSource remoteDataSourse;
   final PersonLocalDataSource localDataSource;
   final NetworkInfo networkInfo;
 

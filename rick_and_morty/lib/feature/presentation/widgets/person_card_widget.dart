@@ -73,7 +73,7 @@ class PersonCard extends StatelessWidget {
                   height: 4,
                 ),
                 Text(
-                  person.location.name,
+                  person.location.name!,
                   style: const TextStyle(color: Colors.white),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
@@ -91,7 +91,7 @@ class PersonCard extends StatelessWidget {
                   height: 4,
                 ),
                 Text(
-                  person.origin.name,
+                  person.origin.name!,
                   style: const TextStyle(color: Colors.white),
                   maxLines: 1,
                   overflow: TextOverflow.ellipsis,
