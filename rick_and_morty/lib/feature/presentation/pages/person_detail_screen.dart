@@ -64,6 +64,7 @@ class PersonDetailPage extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
+            if (person.type.isNotEmpty) ...biuldText('Type:', person.type),
             ...biuldText('Gender:', person.gender),
             ...biuldText(
                 'Number of opisodes:', person.episode.length.toString()),
