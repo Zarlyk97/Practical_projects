@@ -40,6 +40,9 @@ class CustomSearchDelegate extends SearchDelegate {
 
   @override
   Widget buildSuggestions(BuildContext context) {
+    if (query.isNotEmpty) {
+      return Container();
+    }
     return ListView.separated(
       itemBuilder: (context, index) {
         return Text(
