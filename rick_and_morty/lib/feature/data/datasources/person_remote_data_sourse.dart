@@ -39,6 +39,7 @@ class PersonRemoteDataSourceImpl implements PersonRemoteDataSource {
           .map((person) => PersonModel.fromJson(person))
           .toList();
     } else {
+      print(response.body);
       throw ServerException();
     }
   }
