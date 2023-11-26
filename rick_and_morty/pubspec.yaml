@@ -44,6 +44,7 @@ dependencies:
   dartz: ^0.10.1
   get_it: ^7.6.4
   cached_network_image: ^3.3.0
+  dio: ^5.3.4
 
 
 

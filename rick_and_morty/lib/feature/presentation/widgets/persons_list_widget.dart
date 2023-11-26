@@ -3,8 +3,8 @@ import 'dart:async';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/feature/domain/entities/person_entity.dart';
-import 'package:rick_and_morty/feature/presentation/bloc/cubit/search_cubit.dart';
-import 'package:rick_and_morty/feature/presentation/bloc/cubit/search_state.dart';
+import 'package:rick_and_morty/feature/presentation/bloc/cubit/person_cubit.dart';
+import 'package:rick_and_morty/feature/presentation/bloc/cubit/person_state.dart';
 import 'package:rick_and_morty/feature/presentation/widgets/person_card_widget.dart';
 
 class PersonsList extends StatelessWidget {

@@ -2,7 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/common/app_colors.dart';
 import 'package:rick_and_morty/feature/presentation/bloc/bloc/search_bloc.dart';
-import 'package:rick_and_morty/feature/presentation/bloc/cubit/search_cubit.dart';
+import 'package:rick_and_morty/feature/presentation/bloc/cubit/person_cubit.dart';
 
 import 'package:rick_and_morty/feature/presentation/pages/home_page.dart';
 import 'package:rick_and_morty/locator_service.dart';
