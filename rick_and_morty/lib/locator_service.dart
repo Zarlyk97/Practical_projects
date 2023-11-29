@@ -18,7 +18,7 @@ final sl = GetIt.instance;
 Future<void> initlocator() async {
   // BLoC / Cubit
   sl.registerFactory(
-    () => PersonListcubit(getAllPersons: sl()),
+    () => PersonListCubit(getAllPersons: sl()),
   );
   sl.registerFactory(
     () => PersonSearchBloc(searchPerson: sl()),

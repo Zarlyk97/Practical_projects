@@ -16,7 +16,7 @@ class PersonsList extends StatelessWidget {
       if (scrollController.position.atEdge) {
         if (scrollController.position.pixels != 0) {
           //BlocProvider.of<PersonListCubit>(context).loadPerson();
-          context.read<PersonListcubit>().loadPerson();
+          context.read<PersonListCubit>().loadPerson();
         }
       }
     });
@@ -25,12 +25,12 @@ class PersonsList extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     setupScrollController(context);
-    return BlocBuilder<PersonListcubit, PersonState>(
+    return BlocBuilder<PersonListCubit, PersonState>(
       builder: (context, state) {
         List<PersonEntity> persons = [];
         bool isloading = false;
 
-        if (state is PersonLoading && state.isFirstFech) {
+        if (state is PersonLoading && state.isFirstFetch) {
           return _loadingIndicator();
         } else if (state is PersonLoading) {
           print('zarlyk');

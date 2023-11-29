@@ -7,11 +7,12 @@ class PersonEntity extends Equatable {
   final String species;
   final String type;
   final String gender;
-  final LocationEntity origin;
-  final LocationEntity location;
+  final LocationEntity? origin;
+  final LocationEntity? location;
   final String image;
   final List<String> episode;
-  final DateTime created;
+  final String url;
+  final String created;
 
   const PersonEntity({
     required this.id,
@@ -24,11 +25,12 @@ class PersonEntity extends Equatable {
     required this.location,
     required this.image,
     required this.episode,
+    required this.url,
     required this.created,
   });
 
   @override
-  List<Object> get props => [
+  List<Object?> get props => [
         id,
         name,
         status,
@@ -39,13 +41,17 @@ class PersonEntity extends Equatable {
         location,
         image,
         episode,
+        url,
         created,
       ];
 }
 
-class LocationEntity {
-  final String? name;
-  final String? url;
+class LocationEntity extends Equatable {
+  final String name;
+  final String url;
 
-  const LocationEntity({this.name, this.url});
+  const LocationEntity({required this.name, required this.url});
+
+  @override
+  List<Object?> get props => [name, url];
 }

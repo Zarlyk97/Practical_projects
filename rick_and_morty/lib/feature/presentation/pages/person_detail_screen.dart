@@ -69,10 +69,10 @@ class PersonDetailPage extends StatelessWidget {
             ...biuldText(
                 'Number of opisodes:', person.episode.length.toString()),
             ...biuldText('Species:', person.species),
-            ...biuldText('Last know location:', person.location.name!),
+            ...biuldText('Last know location:', person.location!.name),
             ...biuldText(
               'Origin:',
-              person.origin.name!,
+              person.origin!.name,
             ),
             ...biuldText(
               'Was created:',
