@@ -1,5 +1,10 @@
 import 'dart:io';
 
+void main() {
+  Screen calculatorScreen = Screen();
+  calculatorScreen.queryNumbersAndOperation();
+}
+
 class Math {
   double add(double a, double b) => a + b;
   double subtract(double a, double b) => a - b;
@@ -46,9 +51,4 @@ class Screen {
 
     print("Result: $result");
   }
-}
-
-void main() {
-  Screen calculatorScreen = Screen();
-  calculatorScreen.queryNumbersAndOperation();
 }
