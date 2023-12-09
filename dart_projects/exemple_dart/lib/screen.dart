@@ -1,16 +1,6 @@
 import 'dart:io';
 
-void main() {
-  Screen calculatorScreen = Screen();
-  calculatorScreen.queryNumbersAndOperation();
-}
-
-class Math {
-  double add(double a, double b) => a + b;
-  double subtract(double a, double b) => a - b;
-  double multiply(double a, double b) => a * b;
-  double divide(double a, double b) => a / b;
-}
+import 'package:exemple_dart/math.dart';
 
 class Screen {
   Math math = Math();
@@ -18,12 +8,11 @@ class Screen {
   void queryNumbersAndOperation() {
     print("Enter the first number:");
     double num1 = double.parse(stdin.readLineSync()!);
+    print("Choose operation (+, -, *, /):");
+    String operation = stdin.readLineSync()!;
 
     print("Enter the second number:");
     double num2 = double.parse(stdin.readLineSync()!);
-
-    print("Choose operation (+, -, *, /):");
-    String operation = stdin.readLineSync()!;
 
     performOperation(num1, num2, operation);
   }
