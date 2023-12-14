@@ -40,9 +40,9 @@ class HistoryScreen extends Screen {
     operations.add(OperationDetail(details));
   }
 
-  // void removeOperation(int index) {
-  //   operations.removeAt(index);
-  // }
+  void removeOperation(int index) {
+    operations.removeAt(index);
+  }
 }
 
 class OperationDetail {
