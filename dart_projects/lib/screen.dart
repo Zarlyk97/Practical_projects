@@ -41,27 +41,3 @@ class Screen {
     print("Result: $result");
   }
 }
-
-class CalculateScreen extends Screen {}
-
-// class HistoryScreen extends Screen {
-
-//   List<OperationDetail> operations = [];
-  
-//   void addOperation(OperationDetail detail) {
-//     // Операциянын таржымалын кошуу
-//   }
-  
-//   void removeOperation(int index) {
-//     // Индекстеги операцияны алып салуу
-//   }
-
-// }
-
-// class OperationDetail {
-//   String expression;
-
-//   String toString() {
-//     // операциянын string түрүндө кайтарымы
-//   }
-// }
