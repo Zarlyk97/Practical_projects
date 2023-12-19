@@ -3,7 +3,7 @@ import 'package:exemple_dart/calculator.dart';
 void main() {
   CalculateScreen calculator = CalculateScreen();
 
-  calculator.setNum1(35);
+  calculator.setNum1(56);
   calculator.setNum2(4);
   calculator.add();
 //////////////////
