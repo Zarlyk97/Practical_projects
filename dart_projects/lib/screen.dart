@@ -1,43 +1,19 @@
 import 'dart:io';
 
-import 'package:exemple_dart/math.dart';
-
 class Screen {
-  Math math = Math();
-
-  void queryNumbersAndOperation() {
-    print("Enter the first number:");
-    double num1 = double.parse(stdin.readLineSync()!);
-    print("Choose operation (+, -, *, /):");
-    String operation = stdin.readLineSync()!;
-
-    print("Enter the second number:");
-    double num2 = double.parse(stdin.readLineSync()!);
-
-    performOperation(num1, num2, operation);
+  double getNumberInput(String prompt) {
+    stdout.write(prompt);
+    String userInput = stdin.readLineSync()!;
+    return double.parse(userInput);
   }
 
-  void performOperation(double num1, double num2, String operation) {
-    double result;
+  String getOperationInput() {
+    stdout.write("Operation (+, -, *, /): ");
+    String operation = stdin.readLineSync()!.trim();
+    return operation;
+  }
 
-    switch (operation) {
-      case '+':
-        result = math.add(num1, num2);
-        break;
-      case '-':
-        result = math.subtract(num1, num2);
-        break;
-      case '*':
-        result = math.multiply(num1, num2);
-        break;
-      case '/':
-        result = math.divide(num1, num2);
-        break;
-      default:
-        print("Invalid operation");
-        return;
-    }
-
+  void displayResult(double result) {
     print("Result: $result");
   }
 }

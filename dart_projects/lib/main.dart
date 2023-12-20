@@ -1,25 +1,24 @@
-import 'package:exemple_dart/calculator.dart';
+import 'dart:io';
+
+import 'package:exemple_dart/calculate_screen.dart';
 
 void main() {
-  CalculateScreen calculator = CalculateScreen();
+  CalculateScreen calculateScreen = CalculateScreen();
 
-  calculator.setNum1(56);
-  calculator.setNum2(4);
-  calculator.add();
-//////////////////
-  calculator.setNum1(256);
-  calculator.setNum2(26);
-  calculator.subtract();
-  ////////////////////
-  calculator.setNum1(4100);
-  calculator.setNum2(456);
-  calculator.multiply();
-  ////////////////////
-  calculator.setNum1(5446);
-  calculator.setNum2(55);
-  calculator.divide();
+  while (true) {
+    double num1 = calculateScreen.getNumberInput("Enter the first number: ");
+    String operation = calculateScreen.getOperationInput();
+    double num2 = calculateScreen.getNumberInput("Enter the second number: ");
 
-  for (OperationDetail op in HistoryScreen.operations) {
-    print(op);
+    double result = calculateScreen.performOperation(num1, num2, operation);
+
+    calculateScreen.displayResult(result);
+
+    stdout.write("Do you want to continue? (yes/no): ");
+    String continueInput = stdin.readLineSync()!.trim().toLowerCase();
+    if (continueInput != 'yes') {
+      print("Досвидос");
+      break;
+    }
   }
 }
