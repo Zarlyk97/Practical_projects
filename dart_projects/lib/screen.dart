@@ -7,6 +7,7 @@ class Screen {
     return double.parse(userInput);
   }
 
+///////////////////////////////////////////////
   String getOperationInput() {
     stdout.write("Operation (+, -, *, /): ");
     String operation = stdin.readLineSync()!.trim();
