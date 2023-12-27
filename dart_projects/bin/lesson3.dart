@@ -6,7 +6,7 @@ void main() {
       MySon(name: 'Amir', age: 8, profession: 'Muftiy', character: ' best');
   print(amir);
   var myWife = MyWife(
-      name: 'Jumagul', age: 22, profession: 'teacher', national: 'kyrgyz');
+      name: 'Jumagul', age: 22, profession: 'teacher', national: ' kyrgyz');
   print(myWife);
 }
 
@@ -38,7 +38,7 @@ class MySon extends MyFamily {
 
   @override
   String toString() {
-    return 'Адамдын аты: $name, жашы: $age, кесиби: $profession, мүнөзү:$character';
+    return super.toString() + '' + 'мой сын,  мүнөзү:$character';
   }
 }
 
@@ -52,6 +52,6 @@ class MyWife extends MyFamily {
   final String national;
   @override
   String toString() {
-    return 'Адамдын аты: $name жашы: $age кесиби: $profession улуту:$national ';
+    return super.toString() + '' + 'менин келинчегим  улуту:$national ';
   }
 }
