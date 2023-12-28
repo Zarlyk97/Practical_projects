@@ -6,13 +6,15 @@ void main() {
       MySon(name: 'Amir', age: 8, profession: 'Muftiy', character: ' best');
   print(amir);
 
-  var myWife = MyWife(
+  var jumagul = MyWife(
       name: 'Jumagul', age: 22, profession: 'teacher', national: ' kyrgyz');
-  print(myWife);
+  print(jumagul);
 
   zarlyk.flutterDeveloper();
   amir.crying();
-  myWife.toCook();
+  jumagul.toCook();
+  amir.grewUp(3);
+  print(amir.age);
 }
 
 class MyFamily {
@@ -23,7 +25,7 @@ class MyFamily {
   });
 
   final String name;
-  final int age;
+  int age;
   final String profession;
 
   void flutterDeveloper() {
@@ -46,6 +48,10 @@ class MySon extends MyFamily {
   final String character;
   void crying() {
     print('Ыйлаганды билет');
+  }
+
+  void grewUp(int year) {
+    age += year;
   }
 
   @override

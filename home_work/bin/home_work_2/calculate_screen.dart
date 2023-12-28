@@ -1,7 +1,7 @@
-import 'package:exemple_dart/history_screen.dart';
-import 'package:exemple_dart/math.dart';
-import 'package:exemple_dart/operation_detail.dart';
-import 'package:exemple_dart/screen.dart';
+import 'history_screen.dart';
+import 'math.dart';
+import 'operation_detail.dart';
+import 'screen.dart';
 
 class CalculateScreen extends Screen {
   HistoryScreen historyScreen = HistoryScreen();

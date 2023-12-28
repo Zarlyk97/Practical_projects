@@ -1,4 +1,4 @@
-import 'package:exemple_dart/operation_detail.dart';
+import 'package:exemple_dart/home_work_2/operation_detail.dart';
 
 class HistoryScreen {
   List<OperationDetail> history = [];
