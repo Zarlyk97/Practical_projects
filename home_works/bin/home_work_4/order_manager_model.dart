@@ -1,20 +1,21 @@
 import 'product_model.dart';
 
 class OrderManager {
-  List<Product> _orders = [];
-  List<Product> get orders => _orders;
+  final List<ProductModel> _orders = [];
+  List<ProductModel> get orders => _orders;
+  set order(int value) => order = value;
 
-  void addOrder(Product order) {
+  void addOrder(ProductModel order) {
     _orders.add(order);
   }
 
-  void removeOrder(Product order) {
+  void removeOrder(ProductModel order) {
     if (_orders.contains(order)) {
       _orders.remove(order);
     }
   }
 
-  List<Product> getAllOrders() {
+  List<ProductModel> getAllOrders() {
     return _orders;
   }
 

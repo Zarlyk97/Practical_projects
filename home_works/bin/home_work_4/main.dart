@@ -4,41 +4,39 @@ import 'product_screen_model.dart';
 
 void main() {
 // продуктулардын тизмеси
-  var product1 = Product(name: 'Нан', price: 33);
+  var product1 = ProductModel(name: 'Нан', price: 35);
 
-  var product2 = Product(name: 'Сүт', price: 33);
+  var product2 = ProductModel(name: 'Сүт', price: 50);
 
-  var product3 = Product(name: 'Сыр', price: 828);
+  var product3 = ProductModel(name: 'Сыр', price: 270);
+
+  var product4 = ProductModel(name: 'Картошка', price: 20);
 
   // Заказ түзүп, ага продукция кошуу
   var order = OrderManager();
   order.addOrder(product1);
   order.addOrder(product2);
   order.addOrder(product3);
+  order.addOrder(product4);
+
+  // Товарды алып салуу же өчүрүү
+
+  order.removeOrder(product3);
 
   //  Заказ тууралуу маалыматты көрсөтүү
-  // print('Заказ:');
-  // print(order.orders);
-  // print('Жыйынтык: ${order.()}');
-
-  // Заказ менеджерин түзүп, буйрутманы кошуу
-
-  // Алуу жана баардык заказдарды чыгаруу
-  print('');
+  print('Заказ:');
+  print(order.orders);
   print('Result: ${order.getTotalPrice()}');
-  // for (var o in order.orders) {
-  //   // print(o.);
-  //   print('Жыйынтык: ${)}');
-  // }
 
   // Корзинага товар кошуу
-  var screen = ProductsScreen();
+  var screen = ProductsScreenModel();
   screen.addToCart(product1);
+  screen.addToCart(product2);
   screen.addToCart(product3);
 
   // Корзинаны чыгаруу
-  // print('');
-  // print('Корзина:');
-  // print(screen.cart);
-  // print('Жыйынтык: ${screen.getTotal()}');
+  print('');
+  print('Корзина:');
+  print(screen.cart);
+  print('Result: ${screen.getTotal()}');
 }
