@@ -1,8 +1,8 @@
 import 'dart:io';
 
 class Screen {
-  double getNumberInput(String prompt) {
-    stdout.write(prompt);
+  double getNumberInput(String eraly) {
+    stdout.write(eraly);
     String userInput = stdin.readLineSync()!;
     return double.parse(userInput);
   }

@@ -25,7 +25,7 @@ void main() {
 
   //  Заказ тууралуу маалыматты көрсөтүү
   print('Заказ:');
-  print(order.orders);
+  print(order.getAllOrders());
   print('Result: ${order.getTotalPrice()}');
 
   // Корзинага товар кошуу

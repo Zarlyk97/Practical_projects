@@ -9,6 +9,6 @@ class ProductModel {
 
   @override
   String toString() {
-    return name;
+    return "Name: $name, price: $price";
   }
 }
