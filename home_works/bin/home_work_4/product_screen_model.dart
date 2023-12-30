@@ -1,4 +1,4 @@
-import 'product.dart';
+import 'product_model.dart';
 
 class ProductsScreen {
   List<Product> cart = [];
