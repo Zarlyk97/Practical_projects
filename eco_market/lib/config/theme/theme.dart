@@ -6,7 +6,7 @@ ThemeData theme = ThemeData(
   primaryColor: AppColors.primary,
   primarySwatch: AppColors.primary,
   appBarTheme: const AppBarTheme(
-    backgroundColor: AppColors.primary,
+    backgroundColor: AppColors.white,
     centerTitle: true,
     elevation: .2,
     iconTheme: IconThemeData(
