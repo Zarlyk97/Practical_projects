@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/config.dart';
+import 'package:eco_market/config/router/router.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -20,7 +21,7 @@ class _HomePageState extends State<HomePage> {
       GridMenuItem(
           title: 'Фрукты',
           image: 'assets/images/home/fruits.png',
-          onTap: () {}),
+          onTap: () => context.pushRoute(const SeachRoute())),
       GridMenuItem(
           title: 'Сухофрукты',
           image: 'assets/images/home/dried_fruits.png',
@@ -75,23 +76,27 @@ class _HomePageState extends State<HomePage> {
           itemCount: gridMenuItem.length,
           itemBuilder: (context, index) {
             String svgPath = gridMenuItem[index].image;
-            return SizedBox(
-              child: DecoratedBox(
-                decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(16),
-                    image: DecorationImage(
-                        image: AssetImage(svgPath),
-                        fit: BoxFit.cover,
-                        colorFilter: ColorFilter.mode(
-                            Colors.black.withOpacity(0.4), BlendMode.darken))),
-                child: Padding(
-                  padding: const EdgeInsets.only(top: 143, left: 10),
-                  child: Text(
-                    gridMenuItem[index].title,
-                    style: const TextStyle(
-                        color: AppColors.white,
-                        fontSize: 23,
-                        fontWeight: FontWeight.w700),
+            return GestureDetector(
+              onTap: gridMenuItem[index].onTap,
+              child: SizedBox(
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(16),
+                      image: DecorationImage(
+                          image: AssetImage(svgPath),
+                          fit: BoxFit.cover,
+                          colorFilter: ColorFilter.mode(
+                              Colors.black.withOpacity(0.4),
+                              BlendMode.darken))),
+                  child: Padding(
+                    padding: const EdgeInsets.only(top: 143, left: 10),
+                    child: Text(
+                      gridMenuItem[index].title,
+                      style: const TextStyle(
+                          color: AppColors.white,
+                          fontSize: 23,
+                          fontWeight: FontWeight.w700),
+                    ),
                   ),
                 ),
               ),

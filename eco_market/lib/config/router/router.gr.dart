@@ -27,6 +27,12 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const MainPage(),
       );
     },
+    SeachRoute.name: (routeData) {
+      return AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: const SeachScreen(),
+      );
+    },
   };
 }
 
@@ -54,6 +60,20 @@ class MainRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'MainRoute';
+
+  static const PageInfo<void> page = PageInfo<void>(name);
+}
+
+/// generated route for
+/// [SeachScreen]
+class SeachRoute extends PageRouteInfo<void> {
+  const SeachRoute({List<PageRouteInfo>? children})
+      : super(
+          SeachRoute.name,
+          initialChildren: children,
+        );
+
+  static const String name = 'SeachRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }
