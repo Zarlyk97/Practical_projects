@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/config.dart';
 import 'package:eco_market/config/router/router.dart';
+import 'package:eco_market/features/maine_screen/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -106,16 +107,4 @@ class _HomePageState extends State<HomePage> {
       ),
     );
   }
-}
-
-class GridMenuItem {
-  GridMenuItem({
-    required this.title,
-    required this.image,
-    required this.onTap,
-  });
-
-  final String title;
-  final String image;
-  final VoidCallback onTap;
 }

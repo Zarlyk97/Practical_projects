@@ -5,9 +5,9 @@ class AppColors {
   static const line = Color.fromARGB(208, 164, 209, 215);
   static const gold = Color.fromRGBO(240, 205, 3, 0.741);
   static const black = Color.fromRGBO(0, 0, 0, 1);
-  static const grey = Color(0xff8E8E93);
+  static const grey = Color(0xffD2D1D5);
   static const blue = Color(0xff007AFF);
-  static const green = Color(0xff34C659);
+  static const green = Color(0xff75DB1B);
   static const white = Colors.white;
   static const lightgrey = Color(0xffE9E9EA);
   static const darkgrey = Color(0xff9BB6C7);

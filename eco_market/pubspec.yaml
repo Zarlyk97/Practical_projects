@@ -41,6 +41,7 @@ flutter:
 
   assets:
     - assets/images/home/.
+    - assets/images/search/.
     - assets/svg/main/.
     - assets/svg/home/.
 
