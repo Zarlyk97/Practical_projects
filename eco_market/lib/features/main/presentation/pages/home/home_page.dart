@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/config.dart';
 import 'package:eco_market/config/router/router.dart';
-import 'package:eco_market/features/maine_screen/presentation/widgets/widgets.dart';
+import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -79,26 +79,46 @@ class _HomePageState extends State<HomePage> {
             String svgPath = gridMenuItem[index].image;
             return GestureDetector(
               onTap: gridMenuItem[index].onTap,
-              child: SizedBox(
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(16),
-                      image: DecorationImage(
-                          image: AssetImage(svgPath),
-                          fit: BoxFit.cover,
-                          colorFilter: ColorFilter.mode(
-                              Colors.black.withOpacity(0.4),
-                              BlendMode.darken))),
-                  child: Padding(
-                    padding: const EdgeInsets.only(top: 143, left: 10),
-                    child: Text(
-                      gridMenuItem[index].title,
-                      style: const TextStyle(
-                          color: AppColors.white,
-                          fontSize: 23,
-                          fontWeight: FontWeight.w700),
-                    ),
+              child: DecoratedBox(
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(16),
+                  image: DecorationImage(
+                    image: AssetImage(svgPath),
+                    fit: BoxFit.cover,
                   ),
+                ),
+                child: Stack(
+                  children: [
+                    SizedBox(
+                      width: double.infinity,
+                      height: double.infinity,
+                      child: DecoratedBox(
+                          decoration: BoxDecoration(
+                        gradient: LinearGradient(
+                          begin: Alignment(0.00, -1.00),
+                          end: Alignment(0, 1),
+                          colors: [Colors.black.withOpacity(0), Colors.black],
+                        ),
+                      )),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.all(8.0),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          Text(
+                            gridMenuItem[index].title,
+                            style: const TextStyle(
+                                color: AppColors.white,
+                                fontSize: 23,
+                                fontWeight: FontWeight.w700),
+                          ),
+                          const SizedBox(height: 2),
+                        ],
+                      ),
+                    ),
+                  ],
                 ),
               ),
             );

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/config.dart';
-import 'package:eco_market/features/maine_screen/presentation/widgets/widgets.dart';
+import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -14,6 +14,7 @@ class SeachScreen extends StatefulWidget {
 class _SeachScreenState extends State<SeachScreen> {
   List<Item> items = List.generate(8, (index) => Item());
   List<FruitsName> fruits = List.generate(7, (index) => FruitsName());
+  bool isAdded = false;
 
   int _currentIndex = 0;
 
@@ -185,7 +186,7 @@ class _SeachScreenState extends State<SeachScreen> {
                                   : CustomButtomWidget(
                                       height: 32,
                                       text: 'Добавить',
-                                      onPressed: () => showRule(context),
+                                      onPressed: () => showRule(context, item),
                                     ),
                             ],
                           ),
@@ -208,73 +209,103 @@ class _SeachScreenState extends State<SeachScreen> {
     });
   }
 
-  showRule(BuildContext context) => showModalBottomSheet<void>(
-        isScrollControlled: true,
-        context: context,
-        // showDragHandle: true,
-        backgroundColor: Colors.white,
-        shape: const RoundedRectangleBorder(
-          borderRadius: BorderRadius.only(
-            topLeft: Radius.circular(20),
-            topRight: Radius.circular(20),
-          ),
+  showRule(BuildContext context, Item item) => showModalBottomSheet<void>(
+      isScrollControlled: true,
+      context: context,
+      // showDragHandle: true,
+      backgroundColor: Colors.white,
+      shape: const RoundedRectangleBorder(
+        borderRadius: BorderRadius.only(
+          topLeft: Radius.circular(20),
+          topRight: Radius.circular(20),
         ),
-        builder: (BuildContext context) => Padding(
-          padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
-          child: Wrap(
-            children: [
-              Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Image.asset(
-                    'assets/images/search/orange2.png',
-                    fit: BoxFit.cover,
-                  ),
-                  const SizedBox(
-                    height: 12,
-                  ),
-                  const Text(
-                    'Апельсины сладкий пакистанский',
-                    style: TextStyle(
-                      color: AppColors.black,
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
+      ),
+      builder: (BuildContext context) => StatefulBuilder(
+          builder: (context, StateSetter setState) => Padding(
+                padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
+                child: Wrap(
+                  children: [
+                    Column(
+                      crossAxisAlignment: CrossAxisAlignment.start,
+                      children: [
+                        Image.asset(
+                          'assets/images/search/orange2.png',
+                          fit: BoxFit.cover,
+                        ),
+                        const SizedBox(
+                          height: 12,
+                        ),
+                        const Text(
+                          'Апельсины сладкий пакистанский',
+                          style: TextStyle(
+                            color: AppColors.black,
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        const Text(
+                          '56 c шт',
+                          style: TextStyle(
+                            color: Color(0xFF75DB1B),
+                            fontSize: 24,
+                            fontWeight: FontWeight.w700,
+                          ),
+                        ),
+                        const SizedBox(
+                          height: 8,
+                        ),
+                        text(
+                          'Cочный плод яблони, который употребляется в пищу в свежем и запеченном виде, служит сырьём в кулинарии и для приготовления напитков.',
+                        ),
+                        const SizedBox(height: 24),
+                        isAdded
+                            ? Row(
+                                mainAxisAlignment:
+                                    MainAxisAlignment.spaceBetween,
+                                children: [
+                                  IconButtonWidget(
+                                      icon: Icons.remove,
+                                      onTap: () {
+                                        setState(() {
+                                          item.decrementCounter();
+                                        });
+                                      }),
+                                  Text(
+                                    item.getCounter().toString(),
+                                    style: const TextStyle(
+                                      fontSize: 18,
+                                      fontWeight: FontWeight.w500,
+                                    ),
+                                  ),
+                                  IconButtonWidget(
+                                      icon: Icons.add,
+                                      onTap: () {
+                                        setState(() {
+                                          item.incrementCounter();
+                                        });
+                                      })
+                                ],
+                              )
+                            : CustomButtomWidget(
+                                text: 'Добавить',
+                                onPressed: () {
+                                  setState(() {
+                                    isAdded = true;
+                                  });
+                                },
+                                height: 54,
+                              ),
+                        const SizedBox(
+                          height: 24,
+                        ),
+                      ],
                     ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  const Text(
-                    '56 c шт',
-                    style: TextStyle(
-                      color: Color(0xFF75DB1B),
-                      fontSize: 24,
-                      fontWeight: FontWeight.w700,
-                    ),
-                  ),
-                  const SizedBox(
-                    height: 8,
-                  ),
-                  text(
-                    'Cочный плод яблони, который употребляется в пищу в свежем и запеченном виде, служит сырьём в кулинарии и для приготовления напитков.',
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                  CustomButtomWidget(
-                    text: 'Добавить',
-                    onPressed: () {},
-                    height: 54,
-                  ),
-                  const SizedBox(
-                    height: 24,
-                  ),
-                ],
-              ),
-            ],
-          ),
-        ),
-      );
+                  ],
+                ),
+              )));
 
   Widget text(
     String text,

@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
-import 'package:eco_market/features/maine_screen/presentation/pages/home/home.dart';
+import 'package:eco_market/features/main/presentation/pages/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg_flutter.dart';
 
