@@ -94,15 +94,16 @@ class _HomePageState extends State<HomePage> {
                       height: double.infinity,
                       child: DecoratedBox(
                           decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(16),
                         gradient: LinearGradient(
-                          begin: Alignment(0.00, -1.00),
-                          end: Alignment(0, 1),
+                          begin: const Alignment(0.00, -1.00),
+                          end: const Alignment(0, 1.8),
                           colors: [Colors.black.withOpacity(0), Colors.black],
                         ),
                       )),
                     ),
                     Padding(
-                      padding: const EdgeInsets.all(8.0),
+                      padding: const EdgeInsets.all(12.0),
                       child: Column(
                         crossAxisAlignment: CrossAxisAlignment.start,
                         mainAxisAlignment: MainAxisAlignment.end,
@@ -114,7 +115,6 @@ class _HomePageState extends State<HomePage> {
                                 fontSize: 23,
                                 fontWeight: FontWeight.w700),
                           ),
-                          const SizedBox(height: 2),
                         ],
                       ),
                     ),
