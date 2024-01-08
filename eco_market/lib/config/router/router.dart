@@ -1,5 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/features/main/presentation/pages/pages.dart';
+import 'package:eco_market/features/search/presentation/pages/pages.dart';
 part 'router.gr.dart';
 
 @AutoRouterConfig()

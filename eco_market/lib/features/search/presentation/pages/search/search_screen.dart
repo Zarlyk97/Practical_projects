@@ -13,7 +13,7 @@ class SeachScreen extends StatefulWidget {
 }
 
 class _SeachScreenState extends State<SeachScreen> {
-  List<Item> items = List.generate(8, (index) => Item());
+  List<Item> items = List.generate(10, (index) => Item());
   List<FruitsName> fruits = List.generate(7, (index) => FruitsName());
   bool isAdded = false;
 
@@ -383,7 +383,11 @@ class _SeachScreenState extends State<SeachScreen> {
       );
 
   ///////////Bottom Sheet Карзина
-  showRules(BuildContext context, Item item) => showModalBottomSheet<void>(
+  showRules(
+    BuildContext context,
+    Item item,
+  ) =>
+      showModalBottomSheet<void>(
         isScrollControlled: true,
         context: context,
         showDragHandle: true,
@@ -394,7 +398,10 @@ class _SeachScreenState extends State<SeachScreen> {
             topRight: Radius.circular(20),
           ),
         ),
-        builder: (BuildContext context) => Padding(
+        builder: (
+          BuildContext context,
+        ) =>
+            Padding(
           padding: const EdgeInsets.only(top: 16, left: 16, right: 16),
           child: Column(
             children: [
@@ -414,7 +421,9 @@ class _SeachScreenState extends State<SeachScreen> {
                             Positioned(
                               top: 25,
                               child: GestureDetector(
-                                onTap: () {},
+                                onTap: () {
+                                  setState(() {});
+                                },
                                 child: SizedBox(
                                   height: 32,
                                   width: 32,
@@ -535,23 +544,26 @@ class _SeachScreenState extends State<SeachScreen> {
       );
 
   Widget texts(String text, String price) {
-    return Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-      Text(
-        text,
-        style: const TextStyle(
-          color: Color(0xFFABABAD),
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+      children: [
+        Text(
+          text,
+          style: const TextStyle(
+            color: Color(0xFFABABAD),
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
         ),
-      ),
-      Text(
-        price,
-        style: const TextStyle(
-          color: Color(0xFF1E1E1E),
-          fontSize: 16,
-          fontWeight: FontWeight.w500,
-        ),
-      )
-    ]);
+        Text(
+          price,
+          style: const TextStyle(
+            color: Color(0xFF1E1E1E),
+            fontSize: 16,
+            fontWeight: FontWeight.w500,
+          ),
+        )
+      ],
+    );
   }
 }
