@@ -1,0 +1,28 @@
+<svg width="174" height="216" viewBox="0 0 174 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="bag">
+<g id="Group 7">
+<g id="Rectangle 19 Copy 2" filter="url(#filter0_f_1_2443)">
+<rect x="25" y="179" width="124" height="12" fill="#1B3554"/>
+</g>
+<rect id="Rectangle 19 Copy" x="26" y="15" width="124" height="79" fill="#E0E5EC"/>
+<path id="Rectangle 3" fill-rule="evenodd" clip-rule="evenodd" d="M26 15V135H6V62.4366L16.0016 47.0864L26 15Z" fill="#CFD4DC"/>
+<path id="Rectangle 3 Copy 3" fill-rule="evenodd" clip-rule="evenodd" d="M149 15V135H169V62.4366L158.998 47.0864L149 15Z" fill="#CFD4DC"/>
+<path id="Rectangle 19" d="M6 62H169V198C169 200.761 166.761 203 164 203H11C8.23858 203 6 200.761 6 198V62Z" fill="white"/>
+</g>
+<g id="Group 2">
+<path id="Rectangle 3 Copy" opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M55 117.548C55 116.848 55.3594 116.197 55.9811 115.876C57.3648 115.161 60.0086 114 62.5778 114C65.146 114 67.7143 115.161 69.0525 115.875C69.6555 116.197 70 116.835 70 117.519C70 119.129 68.1457 120.185 66.6307 119.639C65.4137 119.201 63.9827 118.846 62.54 118.846C61.0687 118.846 59.5975 119.215 58.3503 119.665C56.8381 120.211 55 119.155 55 117.548Z" fill="#75DB1B"/>
+<path id="Rectangle 3 Copy 2" opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M106 117.548C106 116.848 106.359 116.197 106.981 115.876C108.365 115.161 111.009 114 113.578 114C116.146 114 118.714 115.161 120.053 115.875C120.656 116.197 121 116.835 121 117.519C121 119.129 119.146 120.185 117.631 119.639C116.414 119.201 114.983 118.846 113.54 118.846C112.069 118.846 110.597 119.215 109.35 119.665C107.838 120.211 106 119.155 106 117.548Z" fill="#75DB1B"/>
+<ellipse id="Oval 10" opacity="0.5" cx="88" cy="138.003" rx="16" ry="7.00303" fill="#75DB1B"/>
+</g>
+<circle id="Oval" opacity="0.149343" cx="51" cy="77" r="6" fill="#1B3554"/>
+<circle id="Oval Copy" opacity="0.149343" cx="124" cy="77" r="6" fill="#1B3554"/>
+<path id="Oval 15" d="M51 76.6926V39.5C51 19.3416 67.3416 3 87.5 3C107.658 3 124 19.3416 124 39.5V76.6926" stroke="#5E7085" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<filter id="filter0_f_1_2443" x="0.813055" y="154.813" width="172.374" height="60.3739" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="12.0935" result="effect1_foregroundBlur_1_2443"/>
+</filter>
+</defs>
+</svg>

@@ -15,7 +15,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  List<Item> items = List.generate(2, (index) => Item());
+  List<Item> items = List.generate(20, (index) => Item());
 
   @override
   Widget build(BuildContext context) {
@@ -177,7 +177,7 @@ class _CartPageState extends State<CartPage> {
               height: 50,
             ),
             CustomButtomWidget(
-              onPressed: () => _dialogBuilder(context),
+              onPressed: () => dialogBuilder(context),
               text: 'Оформить заказ',
               height: 54,
             ),
@@ -189,48 +189,47 @@ class _CartPageState extends State<CartPage> {
       ),
     );
   }
+}
 
-  Future<void> _dialogBuilder(BuildContext context) {
-    return showDialog<void>(
-      context: context,
-      builder: (BuildContext context) {
-        return AlertDialog(
-          contentPadding: const EdgeInsets.all(16),
-          backgroundColor: AppColors.white,
-          content: SizedBox(
-            height: 400,
-            child: Column(
-              children: [
-                SvgPicture.asset(
-                  'assets/svg/cart/bag.svg',
-                  fit: BoxFit.cover,
+Future<void> dialogBuilder(BuildContext context) {
+  return showDialog<void>(
+    context: context,
+    builder: (BuildContext context) {
+      return AlertDialog(
+        contentPadding: const EdgeInsets.all(16),
+        backgroundColor: AppColors.white,
+        content: SizedBox(
+          height: 400,
+          child: Column(
+            children: [
+              SvgPicture.asset(
+                'assets/svg/cart/bag.svg',
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(
+                height: 28,
+              ),
+              const Text(
+                'Заказ может быть при покупке свыше 300 с',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: AppColors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
                 ),
-                const SizedBox(
-                  height: 28,
-                ),
-                const Text(
-                  'Заказ может быть при покупке свыше 300 с',
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                    color: AppColors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-                CustomButtomWidget(
-                  onPressed: () =>
-                      context.pushRoute(const PlacingAnOrderRoute()),
-                  text: 'Закрыть',
-                  height: 54,
-                )
-              ],
-            ),
+              ),
+              const SizedBox(
+                height: 24,
+              ),
+              CustomButtomWidget(
+                onPressed: () => context.pushRoute(const PlacingAnOrderRoute()),
+                text: 'Закрыть',
+                height: 54,
+              )
+            ],
           ),
-        );
-      },
-    );
-  }
+        ),
+      );
+    },
+  );
 }

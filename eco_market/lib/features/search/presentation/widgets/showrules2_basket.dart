@@ -1,4 +1,5 @@
 import 'package:eco_market/config/theme/app_colors.dart';
+import 'package:eco_market/features/cart/presentation/pages/pages.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/search/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -144,7 +145,7 @@ showRule2(BuildContext context, Item added) => showModalBottomSheet<void>(
                 height: 50,
               ),
               CustomButtomWidget(
-                onPressed: () {},
+                onPressed: () => dialogBuilder(context),
                 text: 'Оформить заказ',
                 height: 54,
               ),

@@ -1,4 +1,5 @@
-import 'package:auto_route/annotations.dart';
+import 'package:auto_route/auto_route.dart';
+import 'package:eco_market/config/router/router.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
 import 'package:eco_market/features/main/presentation/widgets/custom_button_widget.dart';
 import 'package:flutter/material.dart';
@@ -21,22 +22,27 @@ class EmptyCartPage extends StatelessWidget {
         padding: const EdgeInsets.all(16),
         child: Column(
           mainAxisAlignment: MainAxisAlignment.center,
+          crossAxisAlignment: CrossAxisAlignment.center,
           children: [
-            Center(
-              child: SvgPicture.asset('assets/svg/cart/emptyBag.svg'),
+            Center(child: SvgPicture.asset('assets/svg/cart/emptyBag.svg')),
+            const Text(
+              'У вас нет заказа',
+              style: TextStyle(
+                color: Color(0xFFABABAD),
+                fontSize: 17.60,
+                fontWeight: FontWeight.w600,
+              ),
             ),
-            const Text('У вас нет заказа'),
-            Column(
-              crossAxisAlignment: CrossAxisAlignment.center,
-              mainAxisAlignment: MainAxisAlignment.end,
-              children: [
-                CustomButtomWidget(
-                  onPressed: () {},
-                  text: 'Перейти в магазин',
-                  height: 54,
-                ),
-              ],
-            )
+            SizedBox(
+              height: MediaQuery.of(context).size.height / 2.7,
+            ),
+            CustomButtomWidget(
+              onPressed: () => context.pushRoute(
+                const SeachRoute(),
+              ),
+              text: 'Перейти в магазин',
+              height: 54,
+            ),
           ],
         ),
       ),
