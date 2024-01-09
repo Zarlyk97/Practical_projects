@@ -4,6 +4,7 @@ import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/search/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
+////////////////
 ///////////Bottom Sheet Карзина
 showRule2(BuildContext context, Item added) => showModalBottomSheet<void>(
       isScrollControlled: true,
