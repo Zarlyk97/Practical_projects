@@ -1,5 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
+import 'package:eco_market/features/about/presentation/pages/about/about.dart';
+import 'package:eco_market/features/cart/presentation/pages/pages.dart';
 import 'package:eco_market/features/main/presentation/pages/home/home.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg_flutter.dart';
@@ -38,9 +40,9 @@ class _MainPageState extends State<MainPage> {
           },
           children: const [
             HomePage(),
+            CartPage(),
             Scaffold(),
-            Scaffold(),
-            Scaffold(),
+            AboutPage(),
           ],
         ),
       ),

@@ -1,0 +1,30 @@
+<svg width="200" height="225" viewBox="0 0 200 225" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="Frame 851212056">
+<g id="bag">
+<g id="Group 7">
+<g id="Rectangle 19 Copy 2" filter="url(#filter0_f_1_2470)">
+<rect x="38" y="188" width="124" height="12" fill="#1B3554"/>
+</g>
+<rect id="Rectangle 19 Copy" x="39" y="24" width="124" height="79" fill="#E0E5EC"/>
+<path id="Rectangle 3" fill-rule="evenodd" clip-rule="evenodd" d="M39 24V144H19V71.4366L29.0016 56.0864L39 24Z" fill="#CFD4DC"/>
+<path id="Rectangle 3 Copy 3" fill-rule="evenodd" clip-rule="evenodd" d="M162 24V144H182V71.4366L171.998 56.0864L162 24Z" fill="#CFD4DC"/>
+<path id="Rectangle 19" d="M19 71H182V207C182 209.761 179.761 212 177 212H24C21.2386 212 19 209.761 19 207V71Z" fill="white"/>
+</g>
+<g id="Group 2">
+<path id="Rectangle 3 Copy" opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M68 126.548C68 125.848 68.3594 125.197 68.9811 124.876C70.3648 124.161 73.0086 123 75.5778 123C78.146 123 80.7143 124.161 82.0525 124.875C82.6555 125.197 83 125.835 83 126.519C83 128.129 81.1457 129.185 79.6307 128.639C78.4137 128.201 76.9827 127.846 75.54 127.846C74.0687 127.846 72.5975 128.215 71.3503 128.665C69.8381 129.211 68 128.155 68 126.548Z" fill="#ED2929"/>
+<path id="Rectangle 3 Copy 2" opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M119 126.548C119 125.848 119.359 125.197 119.981 124.876C121.365 124.162 124.009 123 126.578 123C129.146 123 131.714 124.161 133.053 124.875C133.656 125.198 134 125.835 134 126.519C134 128.129 132.146 129.185 130.631 128.639C129.414 128.201 127.983 127.846 126.54 127.846C125.069 127.846 123.597 128.215 122.35 128.666C120.838 129.211 119 128.156 119 126.548Z" fill="#ED2929"/>
+<path id="Rectangle 3 Copy 3_2" opacity="0.5" fill-rule="evenodd" clip-rule="evenodd" d="M68.7604 156.438C68.9088 155.547 69.51 154.807 70.3636 154.513C74.5219 153.085 87.5685 149 100.837 149C113.734 149 126.632 152.859 131.233 154.387C132.305 154.743 133 155.749 133 156.878C133 158.826 130.996 160.177 129.162 159.523C123.449 157.489 112.147 154.071 100.673 154.071C89.4681 154.071 78.263 157.331 72.3293 159.378C70.4349 160.032 68.4309 158.414 68.7604 156.438Z" fill="#ED2929"/>
+</g>
+<circle id="Oval" opacity="0.149343" cx="64" cy="86" r="6" fill="#1B3554"/>
+<circle id="Oval Copy" opacity="0.149343" cx="137" cy="86" r="6" fill="#1B3554"/>
+<path id="Oval 15" d="M64 85.6926V48.5C64 28.3416 80.3416 12 100.5 12C120.658 12 137 28.3416 137 48.5V85.6926" stroke="#5E7085" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+</g>
+<defs>
+<filter id="filter0_f_1_2470" x="13.8131" y="163.813" width="172.374" height="60.3739" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="12.0935" result="effect1_foregroundBlur_1_2470"/>
+</filter>
+</defs>
+</svg>

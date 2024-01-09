@@ -77,10 +77,7 @@ class _CustomInputWidgetState extends State<CustomInputWidget> {
           decoration: InputDecoration(
             enabled: true,
             prefixIcon: widget.leading,
-            enabledBorder: OutlineInputBorder(
-              borderSide: BorderSide(color: Colors.grey.withOpacity(.3)),
-              borderRadius: BorderRadius.circular(10),
-            ),
+            enabledBorder: const UnderlineInputBorder(),
             focusedBorder: OutlineInputBorder(
               borderSide: BorderSide(color: Colors.grey.withOpacity(.3)),
               borderRadius: BorderRadius.circular(10),

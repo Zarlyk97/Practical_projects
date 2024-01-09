@@ -1,0 +1,28 @@
+<svg width="174" height="216" viewBox="0 0 174 216" fill="none" xmlns="http://www.w3.org/2000/svg">
+<g id="bag">
+<g id="Group 7">
+<g id="Rectangle 19 Copy 2" filter="url(#filter0_f_1_2378)">
+<rect x="25" y="179" width="124" height="12" fill="#1B3554"/>
+</g>
+<rect id="Rectangle 19 Copy" x="26" y="15" width="124" height="79" fill="#E0E5EC"/>
+<path id="Rectangle 3" fill-rule="evenodd" clip-rule="evenodd" d="M26 15V135H6V62.4366L16.0016 47.0864L26 15Z" fill="#CFD4DC"/>
+<path id="Rectangle 3 Copy 3" fill-rule="evenodd" clip-rule="evenodd" d="M149 15V135H169V62.4366L158.998 47.0864L149 15Z" fill="#CFD4DC"/>
+<path id="Rectangle 19" d="M6 62H169V198C169 200.761 166.761 203 164 203H11C8.23858 203 6 200.761 6 198V62Z" fill="white"/>
+</g>
+<g id="Group 2">
+<ellipse id="Ellipse 2" cx="62.5" cy="117" rx="6" ry="9" fill="#BAED8D"/>
+<ellipse id="Ellipse 1" cx="113.5" cy="117" rx="6" ry="9" fill="#BAED8D"/>
+<ellipse id="Oval 10" opacity="0.5" cx="87.5" cy="148.5" rx="16" ry="17.5" fill="#75DB1B"/>
+</g>
+<circle id="Oval" opacity="0.149343" cx="51" cy="77" r="6" fill="#1B3554"/>
+<circle id="Oval Copy" opacity="0.149343" cx="124" cy="77" r="6" fill="#1B3554"/>
+<path id="Oval 15" d="M51 76.6926V39.5C51 19.3416 67.3416 3 87.5 3C107.658 3 124 19.3416 124 39.5V76.6926" stroke="#5E7085" stroke-width="5" stroke-linecap="round" stroke-linejoin="round"/>
+</g>
+<defs>
+<filter id="filter0_f_1_2378" x="0.813055" y="154.813" width="172.374" height="60.3739" filterUnits="userSpaceOnUse" color-interpolation-filters="sRGB">
+<feFlood flood-opacity="0" result="BackgroundImageFix"/>
+<feBlend mode="normal" in="SourceGraphic" in2="BackgroundImageFix" result="shape"/>
+<feGaussianBlur stdDeviation="12.0935" result="effect1_foregroundBlur_1_2378"/>
+</filter>
+</defs>
+</svg>

@@ -46,6 +46,9 @@ flutter:
     - assets/images/network/.
     - assets/svg/main/.
     - assets/svg/home/.
+    - assets/svg/icons/.
+    - assets/svg/cart/.
+    
 
 
  
