@@ -8,3 +8,13 @@ abstract class MainScreenState extends Equatable {
 }
 
 class MaineScreenInitial extends MainScreenState {}
+
+class MaineScreenLoading extends MainScreenState {}
+
+class MaineScreenLoaded extends MainScreenState {
+  final List<CotegoryEntity> products;
+
+  const MaineScreenLoaded({required this.products});
+}
+
+class MaineScreenFailure extends MainScreenState {}
