@@ -7,14 +7,14 @@ abstract class MainScreenState extends Equatable {
   List<Object> get props => [];
 }
 
-class MaineScreenInitial extends MainScreenState {}
+class MainScreenInitial extends MainScreenState {}
 
-class MaineScreenLoading extends MainScreenState {}
+class MainScreenLoading extends MainScreenState {}
 
-class MaineScreenLoaded extends MainScreenState {
-  final List<CotegoryEntity> products;
+class MainScreenLoaded extends MainScreenState {
+  final List<CategoryEntity> category;
 
-  const MaineScreenLoaded({required this.products});
+  const MainScreenLoaded({required this.category});
 }
 
-class MaineScreenFailure extends MainScreenState {}
+class MainScreenFailure extends MainScreenState {}

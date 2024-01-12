@@ -7,4 +7,14 @@ abstract class SearchScreenState extends Equatable {
   List<Object> get props => [];
 }
 
-class EcoMarketInitial extends SearchScreenState {}
+class SearchScreenInitial extends SearchScreenState {}
+
+class SearchScreenLoading extends SearchScreenState {}
+
+class SearchScreenLoaded extends SearchScreenState {
+  final List<ProductEntity> products;
+
+  const SearchScreenLoaded({required this.products});
+}
+
+class SearchScreenFailure extends SearchScreenState {}

@@ -1,9 +1,9 @@
 import 'package:dio/dio.dart';
 import 'package:eco_market/core/error/error.dart';
-import 'package:eco_market/features/main/data/models/product_model.dart';
+import 'package:eco_market/features/main/data/models/category_model.dart';
 
 abstract class MainRemoteDataSource {
-  Future<List<CotegoryModel>> getProducts();
+  Future<List<CategoryModel>> getCategory();
 }
 
 class MainRemoteDataSourceImpl implements MainRemoteDataSource {
@@ -12,7 +12,7 @@ class MainRemoteDataSourceImpl implements MainRemoteDataSource {
   MainRemoteDataSourceImpl(this._dio);
 
   @override
-  Future<List<CotegoryModel>> getProducts() async {
+  Future<List<CategoryModel>> getCategory() async {
     try {
       var response = await _dio
           .get('https://neobook.online/ecobak/product-category-list/');
@@ -20,7 +20,7 @@ class MainRemoteDataSourceImpl implements MainRemoteDataSource {
       if (response.statusCode == 200 || response.statusCode == 201) {
         List<dynamic> data = response.data;
 
-        return data.map((e) => CotegoryModel.fromJson(e)).toList();
+        return data.map((e) => CategoryModel.fromJson(e)).toList();
       } else {
         throw ServerException();
       }

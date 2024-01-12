@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/config.dart';
-import 'package:eco_market/features/main/domain/entities/product_entity.dart';
+import 'package:eco_market/features/main/domain/entities/category_entity.dart';
 import 'package:eco_market/features/main/presentation/cubit/main_screen_cubit.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/search/presentation/pages/search/search.dart';
@@ -21,7 +21,7 @@ class _HomePageState extends State<HomePage> {
   @override
   void initState() {
     super.initState();
-    context.read<MainScreenCubit>().getProducts();
+    context.read<MainScreenCubit>().getCategory();
   }
 
   @override
@@ -40,13 +40,13 @@ class _HomePageState extends State<HomePage> {
       ),
       body: BlocBuilder<MainScreenCubit, MainScreenState>(
         builder: (context, state) {
-          List<CotegoryEntity> data = [];
-          if (state is MaineScreenLoading) {
+          List<CategoryEntity> data = [];
+          if (state is MainScreenLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is MaineScreenLoaded) {
-            data = state.products;
+          } else if (state is MainScreenLoaded) {
+            data = state.category;
           }
           return Padding(
             padding: const EdgeInsets.only(
