@@ -16,8 +16,6 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  List<GridMenuItem> data = [];
-
   @override
   void initState() {
     super.initState();

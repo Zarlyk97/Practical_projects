@@ -6,7 +6,7 @@ import 'package:equatable/equatable.dart';
 part 'search_screen_state.dart';
 
 class SearchScreenCubit extends Cubit<SearchScreenState> {
-  final Searchrepository _searchrepository;
+  final SearchRepository _searchrepository;
   SearchScreenCubit(this._searchrepository) : super(SearchScreenInitial());
   getProducts() async {
     emit(SearchScreenLoading());

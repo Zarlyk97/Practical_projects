@@ -5,7 +5,11 @@ import 'package:eco_market/features/main/presentation/widgets/item_class.dart';
 import 'package:flutter/material.dart';
 //////////////////  Добавить товар
 
-showRule(BuildContext context, Item item, bool isAdded) =>
+showRule(
+  BuildContext context,
+  Item item,
+  bool isAdded,
+) =>
     showModalBottomSheet<void>(
       isScrollControlled: true,
       context: context,
