@@ -1,10 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/config.dart';
+import 'package:eco_market/features/cart/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/search/domain/entities/products_entity.dart';
 import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
-import 'package:eco_market/features/search/presentation/widgets/showrule_bottomsheet.dart';
-import 'package:eco_market/features/search/presentation/widgets/showrules2_basket.dart';
+import 'package:eco_market/features/search/presentation/widgets/showrule_add_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:svg_flutter/svg_flutter.dart';
@@ -129,12 +129,12 @@ class _SeachScreenState extends State<SeachScreen> {
                       child: GridView.builder(
                         gridDelegate:
                             const SliverGridDelegateWithFixedCrossAxisCount(
-                          mainAxisExtent: 248,
+                          mainAxisExtent: 230,
                           crossAxisCount: 2,
                           mainAxisSpacing: 11.0,
                           crossAxisSpacing: 11.0,
                         ),
-                        itemCount: data.length,
+                        itemCount: 10,
                         itemBuilder: (context, index) {
                           Item item = items[index];
                           String image = data[index].image.toString();
@@ -151,19 +151,20 @@ class _SeachScreenState extends State<SeachScreen> {
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
                                   children: [
-                                    Center(
-                                      child: Image.asset(
-                                        index % 2 == 0 ? image : image,
+                                    ClipRRect(
+                                      borderRadius: BorderRadius.circular(12),
+                                      child: Image.network(
+                                        image,
                                         fit: BoxFit.cover,
+                                        height: 96,
+                                        width: 158,
                                       ),
                                     ),
                                     const SizedBox(
                                       height: 4,
                                     ),
                                     Text(
-                                      index % 2 == 0
-                                          ? data[index].title.toString()
-                                          : data[index].title.toString(),
+                                      data[index].title.toString(),
                                       style: const TextStyle(
                                         color: AppColors.black,
                                         fontSize: 14,
@@ -174,9 +175,7 @@ class _SeachScreenState extends State<SeachScreen> {
                                       height: 20,
                                     ),
                                     Text(
-                                      index % 2 == 0
-                                          ? '${data[index].price} с'
-                                          : '${data[index].price} с',
+                                      '${data[index].price} с',
                                       style: const TextStyle(
                                         color: AppColors.green,
                                         fontSize: 20,
@@ -186,40 +185,46 @@ class _SeachScreenState extends State<SeachScreen> {
                                     const SizedBox(
                                       height: 14,
                                     ),
-                                    index % 2 == 0
-                                        ? Row(
-                                            mainAxisAlignment:
-                                                MainAxisAlignment.spaceBetween,
-                                            children: [
-                                              IconButtonWidget(
-                                                  icon: Icons.remove,
-                                                  onTap: () {
-                                                    setState(() {
-                                                      item.decrementCounter();
-                                                    });
-                                                  }),
-                                              Text(
-                                                item.getCounter().toString(),
-                                                style: const TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                              IconButtonWidget(
-                                                  icon: Icons.add,
-                                                  onTap: () {
-                                                    setState(() {
-                                                      item.incrementCounter();
-                                                    });
-                                                  })
-                                            ],
-                                          )
-                                        : CustomButtomWidget(
-                                            height: 32,
-                                            text: 'Добавить',
-                                            onPressed: () => showRule(
-                                                context, item, isAdded),
-                                          ),
+                                    // index % 2 == 0
+                                    //     ? Row(
+                                    //         mainAxisAlignment:
+                                    //             MainAxisAlignment.spaceBetween,
+                                    //         children: [
+                                    //           IconButtonWidget(
+                                    //               icon: Icons.remove,
+                                    //               onTap: () {
+                                    //                 setState(() {
+                                    //                   item.decrementCounter();
+                                    //                 });
+                                    //               }),
+                                    //           Text(
+                                    //             item.getCounter().toString(),
+                                    //             style: const TextStyle(
+                                    //               fontSize: 18,
+                                    //               fontWeight: FontWeight.w500,
+                                    //             ),
+                                    //           ),
+                                    //           IconButtonWidget(
+                                    //               icon: Icons.add,
+                                    //               onTap: () {
+                                    //                 setState(() {
+                                    //                   item.incrementCounter();
+                                    //                 });
+                                    //               })
+                                    //         ],
+                                    //       )
+                                    CustomButtomWidget(
+                                      height: 32,
+                                      text: 'Добавить',
+                                      onPressed: () => ShowRuleAddProduct(
+                                        image: Image.network(
+                                            data[index].image.toString()),
+                                        name: data[index].title.toString(),
+                                        price: data[index].price.toString(),
+                                        desciption:
+                                            data[index].description.toString(),
+                                      ),
+                                    ),
                                   ],
                                 ),
                               ),
@@ -237,7 +242,7 @@ class _SeachScreenState extends State<SeachScreen> {
 ///////////////////////    Карзина
 
         floatingActionButton: GestureDetector(
-          onTap: () => showRule2(
+          onTap: () => showRuleCart(
             context,
             Item(),
           ),

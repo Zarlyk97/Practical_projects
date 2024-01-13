@@ -89,6 +89,7 @@ class _MainPageState extends State<MainPage> {
                 "assets/svg/main/bag.svg",
                 width: 28,
                 height: 28,
+                // ignore: deprecated_member_use
                 color: _currentIndex == 1 ? AppColors.green : Colors.grey,
               ),
               label: "Корзина",
@@ -98,6 +99,8 @@ class _MainPageState extends State<MainPage> {
                 "assets/svg/main/clock.svg",
                 width: 28,
                 height: 28,
+
+                // ignore: deprecated_member_use
                 color: _currentIndex == 2 ? AppColors.green : Colors.grey,
               ),
               label: "История",
@@ -107,6 +110,7 @@ class _MainPageState extends State<MainPage> {
                 "assets/svg/main/info.svg",
                 width: 28,
                 height: 28,
+                // ignore: deprecated_member_use
                 color: _currentIndex == 3 ? AppColors.green : Colors.grey,
               ),
               label: "Инфо",

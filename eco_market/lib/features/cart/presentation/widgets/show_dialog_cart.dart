@@ -48,9 +48,7 @@ Future<void> dialogBuilderplacingAnOrder(BuildContext context) {
                 height: 24,
               ),
               CustomButtomWidget(
-                onPressed: () => context.pushRoute(
-                  const SeachRoute(),
-                ),
+                onPressed: () => context.navigateTo(const SeachRoute()),
                 text: 'Перейти в магазин',
                 height: 54,
               )
