@@ -21,6 +21,7 @@ class _SeachScreenState extends State<SeachScreen> {
   List<Item> items = List.generate(10, (index) => Item());
   List<FruitsName> fruits = List.generate(7, (index) => FruitsName());
   bool isAdded = false;
+
   @override
   void initState() {
     super.initState();
@@ -134,9 +135,8 @@ class _SeachScreenState extends State<SeachScreen> {
                           mainAxisSpacing: 11.0,
                           crossAxisSpacing: 11.0,
                         ),
-                        itemCount: 10,
+                        itemCount: data.length,
                         itemBuilder: (context, index) {
-                          Item item = items[index];
                           String image = data[index].image.toString();
 
                           return GestureDetector(
