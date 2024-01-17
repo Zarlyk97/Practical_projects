@@ -5,6 +5,7 @@ import 'package:eco_market/features/history/presentation/pages/history/history.d
 import 'package:eco_market/features/main/presentation/pages/pages.dart';
 import 'package:eco_market/features/search/presentation/pages/pages.dart';
 import 'package:eco_market/features/search/presentation/pages/search/search_page_example.dart';
+import 'package:flutter/material.dart';
 part 'router.gr.dart';
 
 @AutoRouterConfig()

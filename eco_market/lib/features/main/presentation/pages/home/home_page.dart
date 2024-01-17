@@ -16,6 +16,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  List<CategoryEntity> data = [];
+  List<String> fruits = [];
   @override
   void initState() {
     super.initState();
@@ -38,13 +40,15 @@ class _HomePageState extends State<HomePage> {
       ),
       body: BlocBuilder<MainScreenCubit, MainScreenState>(
         builder: (context, state) {
-          List<CategoryEntity> data = [];
           if (state is MainScreenLoading) {
             return const Center(
               child: CircularProgressIndicator(),
             );
           } else if (state is MainScreenLoaded) {
             data = state.category;
+            for (var item in data) {
+              fruits.add(item.name!);
+            }
           }
           return Padding(
             padding: const EdgeInsets.only(
@@ -64,12 +68,15 @@ class _HomePageState extends State<HomePage> {
                 String svgPath = data[index].image.toString();
                 return GestureDetector(
                   onTap: () {
-                    index == 0
-                        ? Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const SeachScreen()))
-                        : null;
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => SeachScreen(
+                          id: index + 1,
+                          fruits: fruits,
+                        ),
+                      ),
+                    );
                   },
                   child: DecoratedBox(
                     decoration: BoxDecoration(

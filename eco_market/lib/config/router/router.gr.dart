@@ -70,9 +70,14 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     SeachRoute.name: (routeData) {
+      final args = routeData.argsAs<SeachRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const SeachScreen(),
+        child: SeachScreen(
+          key: args.key,
+          id: args.id,
+          fruits: args.fruits,
+        ),
       );
     },
   };
@@ -206,14 +211,42 @@ class PlacingAnOrderRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [SeachScreen]
-class SeachRoute extends PageRouteInfo<void> {
-  const SeachRoute({List<PageRouteInfo>? children})
-      : super(
+class SeachRoute extends PageRouteInfo<SeachRouteArgs> {
+  SeachRoute({
+    Key? key,
+    required int id,
+    required List<String> fruits,
+    List<PageRouteInfo>? children,
+  }) : super(
           SeachRoute.name,
+          args: SeachRouteArgs(
+            key: key,
+            id: id,
+            fruits: fruits,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'SeachRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<SeachRouteArgs> page = PageInfo<SeachRouteArgs>(name);
+}
+
+class SeachRouteArgs {
+  const SeachRouteArgs({
+    this.key,
+    required this.id,
+    required this.fruits,
+  });
+
+  final Key? key;
+
+  final int id;
+
+  final List<String> fruits;
+
+  @override
+  String toString() {
+    return 'SeachRouteArgs{key: $key, id: $id, fruits: $fruits}';
+  }
 }

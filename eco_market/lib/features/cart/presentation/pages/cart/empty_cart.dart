@@ -37,9 +37,7 @@ class EmptyCartPage extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 2.7,
             ),
             CustomButtomWidget(
-              onPressed: () => context.pushRoute(
-                const SeachRoute(),
-              ),
+              onPressed: () => context.pushRoute(const MainRoute()),
               text: 'Перейти в магазин',
               height: 54,
             ),

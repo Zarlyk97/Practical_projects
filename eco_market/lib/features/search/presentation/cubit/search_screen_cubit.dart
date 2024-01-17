@@ -8,10 +8,11 @@ part 'search_screen_state.dart';
 class SearchScreenCubit extends Cubit<SearchScreenState> {
   final SearchRepository _searchrepository;
   SearchScreenCubit(this._searchrepository) : super(SearchScreenInitial());
-  getProducts() async {
+  getProducts({String? productType, String? search}) async {
     emit(SearchScreenLoading());
     try {
-      var list = await _searchrepository.getProducts();
+      var list = await _searchrepository.getProducts(
+          productType: productType, search: search);
       emit(SearchScreenLoaded(products: list));
     } catch (e) {
       emit(SearchScreenFailure());

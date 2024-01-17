@@ -7,6 +7,8 @@ class SearchRepoImple implements SearchRepository {
   final SearchRemoteDataSourse _remoteDataSourse;
   SearchRepoImple(this._remoteDataSourse);
   @override
-  Future<List<ProductEntity>> getProducts() async =>
-      await _remoteDataSourse.getProducts();
+  Future<List<ProductEntity>> getProducts(
+          {String? productType, String? search}) async =>
+      await _remoteDataSourse.getProducts(
+          productType: productType, search: search);
 }
