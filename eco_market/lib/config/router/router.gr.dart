@@ -57,12 +57,6 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const OrderPage(),
       );
     },
-    PinnedSearchBarAppRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const PinnedSearchBarAppPage(),
-      );
-    },
     PlacingAnOrderRoute.name: (routeData) {
       return AutoRoutePage<dynamic>(
         routeData: routeData,
@@ -177,20 +171,6 @@ class OrderRoute extends PageRouteInfo<void> {
         );
 
   static const String name = 'OrderRoute';
-
-  static const PageInfo<void> page = PageInfo<void>(name);
-}
-
-/// generated route for
-/// [PinnedSearchBarAppPage]
-class PinnedSearchBarAppRoute extends PageRouteInfo<void> {
-  const PinnedSearchBarAppRoute({List<PageRouteInfo>? children})
-      : super(
-          PinnedSearchBarAppRoute.name,
-          initialChildren: children,
-        );
-
-  static const String name = 'PinnedSearchBarAppRoute';
 
   static const PageInfo<void> page = PageInfo<void>(name);
 }

@@ -1,14 +1,11 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/features/search/presentation/widgets/show_bottom_add_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:svg_flutter/svg_flutter.dart';
-
 import 'package:eco_market/config/config.dart';
 import 'package:eco_market/features/cart/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
-import 'package:eco_market/features/search/data/models/product_model.dart';
 import 'package:eco_market/features/search/domain/entities/products_entity.dart';
 import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
 
@@ -158,7 +155,15 @@ class _SeachScreenState extends State<SeachScreen> {
                       }
 
                       return data.isEmpty
-                          ? const Text("Products not found")
+                          ? SingleChildScrollView(
+                              child: Column(
+                                children: [
+                                  SvgPicture.asset(
+                                      'assets/svg/cart/emptyBag.svg'),
+                                  const Text("Ничего не нашли"),
+                                ],
+                              ),
+                            )
                           : Expanded(
                               child: GridView.builder(
                                 gridDelegate:
@@ -220,34 +225,6 @@ class _SeachScreenState extends State<SeachScreen> {
                                             const SizedBox(
                                               height: 14,
                                             ),
-                                            // index % 2 == 0
-                                            //     ? Row(
-                                            //         mainAxisAlignment:
-                                            //             MainAxisAlignment.spaceBetween,
-                                            //         children: [
-                                            //           IconButtonWidget(
-                                            //               icon: Icons.remove,
-                                            //               onTap: () {
-                                            //                 setState(() {
-                                            //                   item.decrementCounter();
-                                            //                 });
-                                            //               }),
-                                            //           Text(
-                                            //             item.getCounter().toString(),
-                                            //             style: const TextStyle(
-                                            //               fontSize: 18,
-                                            //               fontWeight: FontWeight.w500,
-                                            //             ),
-                                            //           ),
-                                            //           IconButtonWidget(
-                                            //               icon: Icons.add,
-                                            //               onTap: () {
-                                            //                 setState(() {
-                                            //                   item.incrementCounter();
-                                            //                 });
-                                            //               })
-                                            //         ],
-                                            //       )
                                             CustomButtomWidget(
                                               height: 32,
                                               text: 'Добавить',
@@ -258,8 +235,6 @@ class _SeachScreenState extends State<SeachScreen> {
                                                     Item(),
                                                     data[index]);
                                               },
-                                              // onPressed: () => context.pushRoute(
-                                              //     const PinnedSearchBarAppRoute())
                                             ),
                                           ],
                                         ),
@@ -322,10 +297,4 @@ class _SeachScreenState extends State<SeachScreen> {
       _currentIndex = index;
     });
   }
-}
-
-class Assortiment {
-  String name;
-  Assortiment({required this.name, required this.products});
-  List<ProductModel> products;
 }
