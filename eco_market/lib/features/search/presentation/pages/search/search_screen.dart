@@ -155,14 +155,12 @@ class _SeachScreenState extends State<SeachScreen> {
                       }
 
                       return data.isEmpty
-                          ? SingleChildScrollView(
-                              child: Column(
-                                children: [
-                                  SvgPicture.asset(
-                                      'assets/svg/cart/emptyBag.svg'),
-                                  const Text("Ничего не нашли"),
-                                ],
-                              ),
+                          ? Column(
+                              children: [
+                                SvgPicture.asset(
+                                    'assets/svg/cart/emptyBag.svg'),
+                                const Text("Ничего не нашли"),
+                              ],
                             )
                           : Expanded(
                               child: GridView.builder(

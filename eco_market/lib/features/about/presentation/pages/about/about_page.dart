@@ -2,6 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/features/about/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg_flutter.dart';
+import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
 class AboutPage extends StatelessWidget {
@@ -79,5 +80,27 @@ class AboutPage extends StatelessWidget {
         ),
       ),
     );
+  }
+
+  _launchWhatsaPP() async {
+    const url = 'https://wa.me/+79963809658';
+    // ignore: deprecated_member_use
+    if (await canLaunch(url)) {
+      // ignore: deprecated_member_use
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
+  }
+
+  _launchInstagram() async {
+    const url = 'https://instagram.com/zarlyk_zhanybekov';
+    // ignore: deprecated_member_use
+    if (await canLaunch(url)) {
+      // ignore: deprecated_member_use
+      await launch(url);
+    } else {
+      throw 'Could not launch $url';
+    }
   }
 }

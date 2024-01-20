@@ -1,12 +1,12 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/router/router.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
+import 'package:eco_market/features/cart/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
 import 'package:eco_market/features/search/presentation/widgets/text_price_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:svg_flutter/svg_flutter.dart';
 
 @RoutePage()
 class CartPage extends StatefulWidget {
@@ -21,8 +21,6 @@ class _CartPageState extends State<CartPage> {
 
   @override
   Widget build(BuildContext context) {
-    Item item = items[6];
-
     return Scaffold(
       appBar: AppBar(
         title: Row(
@@ -54,12 +52,14 @@ class _CartPageState extends State<CartPage> {
       ),
       body: BlocBuilder<SearchScreenCubit, SearchScreenState>(
         builder: (context, state) {
+          Item item = items[4];
+
           return SingleChildScrollView(
             child: Padding(
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
               child: Column(
                 children: [
-                  for (int i = 1; i < 4; i++)
+                  for (int i = 1; i < 5; i++)
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 5),
                       height: 94,
@@ -216,47 +216,4 @@ class _CartPageState extends State<CartPage> {
       ),
     );
   }
-}
-
-Future<void> dialogBuilder(BuildContext context) {
-  return showDialog<void>(
-    context: context,
-    builder: (BuildContext context) {
-      return AlertDialog(
-        contentPadding: const EdgeInsets.all(16),
-        backgroundColor: AppColors.white,
-        content: SizedBox(
-          height: 400,
-          child: Column(
-            children: [
-              SvgPicture.asset(
-                'assets/svg/cart/bag.svg',
-                fit: BoxFit.cover,
-              ),
-              const SizedBox(
-                height: 28,
-              ),
-              const Text(
-                'Заказ может быть при покупке свыше 300 с',
-                textAlign: TextAlign.center,
-                style: TextStyle(
-                  color: AppColors.black,
-                  fontSize: 24,
-                  fontWeight: FontWeight.w700,
-                ),
-              ),
-              const SizedBox(
-                height: 24,
-              ),
-              CustomButtomWidget(
-                onPressed: () => context.pushRoute(const PlacingAnOrderRoute()),
-                text: 'Закрыть',
-                height: 54,
-              )
-            ],
-          ),
-        ),
-      );
-    },
-  );
 }
