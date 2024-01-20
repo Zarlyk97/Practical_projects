@@ -63,85 +63,83 @@ showRuleCart(BuildContext context, Item item) => showModalBottomSheet<void>(
                               )
                             ],
                           ),
-                          Column(
-                            crossAxisAlignment: CrossAxisAlignment.start,
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              const Row(
-                                children: [
-                                  Text(
-                                    'Драконий фрукт',
-                                    style: TextStyle(
-                                        fontSize: 14,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                              ),
-                              const Row(
-                                children: [
-                                  Text(
-                                    'цена 340 с за шт',
-                                    style: TextStyle(
-                                        color: AppColors.grey,
-                                        fontSize: 12,
-                                        fontWeight: FontWeight.w500),
-                                  ),
-                                ],
-                              ),
-                              Row(
-                                children: [
-                                  const Text(
-                                    '56 с',
-                                    style: TextStyle(
-                                      color: AppColors.green,
-                                      fontSize: 20,
-                                      fontWeight: FontWeight.w700,
+                          Padding(
+                            padding: const EdgeInsets.only(left: 8),
+                            child: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                const Text(
+                                  'Драконий фрукт',
+                                  style: TextStyle(
+                                      fontSize: 14,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                const Text(
+                                  'цена 340 с за шт',
+                                  style: TextStyle(
+                                      color: AppColors.grey,
+                                      fontSize: 12,
+                                      fontWeight: FontWeight.w500),
+                                ),
+                                const SizedBox(
+                                  height: 15,
+                                ),
+                                Row(
+                                  children: [
+                                    const Text(
+                                      '56 с',
+                                      style: TextStyle(
+                                        color: AppColors.green,
+                                        fontSize: 20,
+                                        fontWeight: FontWeight.w700,
+                                      ),
                                     ),
-                                  ),
-                                  SizedBox(
-                                    width: MediaQuery.of(context).size.width *
-                                        0.23,
-                                  ),
-                                  Row(
-                                    children: [
-                                      IconButtonWidget(
-                                        icon: Icons.remove,
-                                        onTap: () {
-                                          setState(
-                                            () {
-                                              item.decrementCounter();
-                                            },
-                                          );
-                                        },
-                                      ),
-                                      const SizedBox(
-                                        width: 24,
-                                      ),
-                                      Text(
-                                        item.getCounter().toString(),
-                                        style: const TextStyle(
-                                          fontSize: 18,
-                                          fontWeight: FontWeight.w500,
+                                    SizedBox(
+                                      width: MediaQuery.of(context).size.width *
+                                          0.21,
+                                    ),
+                                    Row(
+                                      children: [
+                                        IconButtonWidget(
+                                          icon: Icons.remove,
+                                          onTap: () {
+                                            setState(
+                                              () {
+                                                item.decrementCounter();
+                                              },
+                                            );
+                                          },
                                         ),
-                                      ),
-                                      const SizedBox(
-                                        width: 24,
-                                      ),
-                                      IconButtonWidget(
-                                        icon: Icons.add,
-                                        onTap: () {
-                                          setState(
-                                            () {
-                                              item.incrementCounter();
-                                            },
-                                          );
-                                        },
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                            ],
+                                        const SizedBox(
+                                          width: 24,
+                                        ),
+                                        Text(
+                                          item.getCounter().toString(),
+                                          style: const TextStyle(
+                                            fontSize: 18,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          width: 24,
+                                        ),
+                                        IconButtonWidget(
+                                          icon: Icons.add,
+                                          onTap: () {
+                                            setState(
+                                              () {
+                                                item.incrementCounter();
+                                              },
+                                            );
+                                          },
+                                        )
+                                      ],
+                                    ),
+                                  ],
+                                ),
+                              ],
+                            ),
                           )
                         ],
                       ),

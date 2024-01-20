@@ -5,9 +5,14 @@ import 'package:svg_flutter/svg_flutter.dart';
 import 'package:url_launcher/url_launcher.dart';
 
 @RoutePage()
-class AboutPage extends StatelessWidget {
+class AboutPage extends StatefulWidget {
   const AboutPage({super.key});
 
+  @override
+  State<AboutPage> createState() => _AboutPageState();
+}
+
+class _AboutPageState extends State<AboutPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -49,7 +54,11 @@ class AboutPage extends StatelessWidget {
                       width: double.infinity,
                     ),
                     SocialButtonWidget(
-                      onPressed: () {},
+                      onPressed: () {
+                        setState(() {
+                          _makePhoneCall();
+                        });
+                      },
                       text: 'Позвонить',
                       child: SvgPicture.asset('assets/svg/icons/phone.svg'),
                     ),
@@ -57,7 +66,9 @@ class AboutPage extends StatelessWidget {
                       height: 12,
                     ),
                     SocialButtonWidget(
-                      onPressed: () {},
+                      onPressed: () {
+                        _launchWhatsaPP();
+                      },
                       text: 'WhatsApp',
                       child: SvgPicture.asset('assets/svg/icons/whatsapp.svg'),
                     ),
@@ -65,7 +76,9 @@ class AboutPage extends StatelessWidget {
                       height: 12,
                     ),
                     SocialButtonWidget(
-                      onPressed: () {},
+                      onPressed: () {
+                        _launchInstagram();
+                      },
                       text: 'Instagram',
                       child: SvgPicture.asset('assets/svg/icons/instagram.svg'),
                     ),
@@ -102,5 +115,12 @@ class AboutPage extends StatelessWidget {
     } else {
       throw 'Could not launch $url';
     }
+  }
+
+  _makePhoneCall() async {
+    final Uri launchUri = Uri(
+      scheme: '+79963809658',
+    );
+    await launchUrl(launchUri);
   }
 }
