@@ -46,22 +46,20 @@ flutter:
   uses-material-design: true
 
   assets:
-    - assets/images/home/.
-    - assets/images/search/.
+    - assets/images/cart/.
     - assets/images/network/.
     - assets/images/history/.
     - assets/svg/main/.
-    - assets/svg/home/.
     - assets/svg/icons/.
     - assets/svg/cart/.
     
 
 
  
-  fonts:
-    - family: Anton-Regular
-      fonts:
-        - asset: assets/fonts/Anton-Regular.ttf
+  # fonts:
+  #   - family: Anton-Regular
+  #     fonts:
+  #       - asset: assets/fonts/Anton-Regular.ttf
   #       - asset: fonts/Schyler-Italic.ttf
   #         style: italic
   #   - family: Trajan Pro

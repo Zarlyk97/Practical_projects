@@ -36,7 +36,7 @@ showRuleCart(BuildContext context, Item item) => showModalBottomSheet<void>(
                           Stack(
                             children: [
                               Image.asset(
-                                'assets/images/search/apples_small.png',
+                                'assets/images/cart/apple_small.png',
                                 height: 86,
                                 width: 86,
                                 fit: BoxFit.cover,

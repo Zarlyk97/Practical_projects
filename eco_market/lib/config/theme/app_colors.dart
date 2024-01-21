@@ -3,21 +3,10 @@ import 'package:flutter/material.dart';
 class AppColors {
   static const red = Color(0xFFD70015);
   static const line = Color.fromARGB(208, 164, 209, 215);
-  static const gold = Color.fromRGBO(240, 205, 3, 0.741);
   static const black = Color.fromRGBO(0, 0, 0, 1);
   static const grey = Color(0xffD2D1D5);
-  static const blue = Color(0xff007AFF);
   static const green = Color(0xff75DB1B);
   static const white = Colors.white;
-  static const lightgrey = Color(0xffE9E9EA);
-  static const darkgrey = Color(0xff9BB6C7);
-  static const circle = Color(0xff47515c);
-  static const circle1 = Color.fromARGB(255, 42, 60, 67);
-  static const circle2 = Color.fromARGB(255, 35, 51, 59);
-  static const brown = Color.fromARGB(96, 158, 68, 68);
-  static const yellow = Color(0xffFFD233);
-
-  // Primary color
   static const MaterialColor primary =
       MaterialColor(_primaryPrimaryValue, <int, Color>{
     50: Color(0xFFE5EDF0),

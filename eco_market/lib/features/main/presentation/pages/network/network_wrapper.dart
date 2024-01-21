@@ -1,6 +1,6 @@
 import 'dart:async';
 import 'package:connectivity_plus/connectivity_plus.dart';
-import 'package:eco_market/core/resources/resources.dart';
+import 'package:eco_market/features/main/presentation/pages/pages.dart';
 import 'package:flutter/material.dart';
 
 class NetworkWrapper extends StatefulWidget {
@@ -51,6 +51,6 @@ class _NetworkWrapperState extends State<NetworkWrapper> {
 
   @override
   Widget build(BuildContext context) {
-    return hasInternetConnection ? widget.child : const NoConnecctionPage();
+    return hasInternetConnection ? widget.child : const NoConnectionPage();
   }
 }

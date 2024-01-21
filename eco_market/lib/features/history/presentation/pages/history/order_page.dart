@@ -77,48 +77,53 @@ class OrderPage extends StatelessWidget {
                             children: [
                               const CircleAvatar(
                                 backgroundImage: AssetImage(
-                                    'assets/images/search/apples_small.png'),
+                                    'assets/images/cart/apple_small.png'),
                               ),
-                              Column(
-                                crossAxisAlignment: CrossAxisAlignment.start,
-                                children: [
-                                  Row(
-                                    mainAxisAlignment:
-                                        MainAxisAlignment.spaceBetween,
-                                    children: [
-                                      const Text(
-                                        'Яблоко золотая радуга',
-                                        style: TextStyle(
-                                          color: Color(0xFF1E1E1E),
-                                          fontSize: 16,
-                                          fontWeight: FontWeight.w500,
-                                        ),
-                                      ),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.19,
-                                      ),
-                                      const Text('56 с',
+                              Padding(
+                                padding: const EdgeInsets.only(left: 8),
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment:
+                                          MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        const Text(
+                                          'Яблоко золотая радуга',
                                           style: TextStyle(
-                                            color: Color(0xFF75DB1B),
-                                            fontSize: 20,
-                                            fontWeight: FontWeight.w700,
-                                          )),
-                                    ],
-                                  ),
-                                  Row(
-                                    children: [
-                                      _priceText('Цена 56 с за штук'),
-                                      SizedBox(
-                                        width:
-                                            MediaQuery.of(context).size.width *
-                                                0.41,
-                                      ),
-                                      _priceText('1 шт')
-                                    ],
-                                  )
-                                ],
+                                            color: Color(0xFF1E1E1E),
+                                            fontSize: 16,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.17,
+                                        ),
+                                        const Text('56 с',
+                                            style: TextStyle(
+                                              color: Color(0xFF75DB1B),
+                                              fontSize: 20,
+                                              fontWeight: FontWeight.w700,
+                                            )),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        _priceText('Цена 56 с за штук'),
+                                        SizedBox(
+                                          width: MediaQuery.of(context)
+                                                  .size
+                                                  .width *
+                                              0.39,
+                                        ),
+                                        _priceText('1 шт')
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
                             ],
                           ),
