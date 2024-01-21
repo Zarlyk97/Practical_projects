@@ -1,5 +1,6 @@
 import 'package:eco_market/config/config.dart';
 import 'package:eco_market/config/router/router.dart';
+import 'package:eco_market/features/cart/presentation/cubit/cart_screen_cubit.dart';
 import 'package:eco_market/features/main/presentation/cubit/main_screen_cubit.dart';
 import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
 import 'package:flutter/material.dart';
@@ -31,6 +32,8 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<SearchScreenCubit>(
             create: (context) => di.sl<SearchScreenCubit>()..getProducts()),
+        BlocProvider<CartScreenCubit>(
+            create: (context) => di.sl<CartScreenCubit>()..getOrders()),
       ],
       child: MaterialApp.router(
         theme: theme,

@@ -1,12 +1,14 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/router/router.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
+import 'package:eco_market/features/cart/domain/entities/order_entity.dart';
 import 'package:eco_market/features/history/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 ///////////Bottom Sheet история
-bottomSheetHistory(BuildContext context) => showModalBottomSheet<void>(
+bottomSheetHistory(BuildContext context, OrderEntity orderEntity) =>
+    showModalBottomSheet<void>(
       isScrollControlled: true,
       context: context,
       showDragHandle: true,
@@ -25,7 +27,7 @@ bottomSheetHistory(BuildContext context) => showModalBottomSheet<void>(
               height: 220,
               child: Column(
                 children: [
-                  text('Заказ №34354545'),
+                  text('Заказ №${orderEntity.orderNumber}'),
                   const SizedBox(
                     height: 4,
                   ),
@@ -33,13 +35,13 @@ bottomSheetHistory(BuildContext context) => showModalBottomSheet<void>(
                   const SizedBox(
                     height: 12,
                   ),
-                  text('Оформлен 07.07.2023 12:46'),
+                  text('Оформлен ${orderEntity.createdAt}'),
                   const SizedBox(
                     height: 4,
                   ),
-                  const Text(
-                    '396 c',
-                    style: TextStyle(
+                  Text(
+                    '${orderEntity.totalAmount}c',
+                    style: const TextStyle(
                       color: Colors.white,
                       fontSize: 32,
                       fontWeight: FontWeight.w700,
@@ -48,7 +50,7 @@ bottomSheetHistory(BuildContext context) => showModalBottomSheet<void>(
                   const SizedBox(
                     height: 4,
                   ),
-                  text('Доставка 150 с'),
+                  text('Доставка ${orderEntity.deliveryCost}с'),
                 ],
               ),
             ),

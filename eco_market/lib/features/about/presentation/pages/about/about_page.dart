@@ -1,5 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:eco_market/config/theme/app_colors.dart';
 import 'package:eco_market/features/about/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg_flutter.dart';
@@ -56,22 +55,7 @@ class _AboutPageState extends State<AboutPage> {
                     ),
                     SocialButtonWidget(
                       onPressed: () {
-                        showModalBottomSheet<void>(
-                          context: context,
-                          builder: (BuildContext context) {
-                            return const SizedBox(
-                                height: 100,
-                                child: DecoratedBox(
-                                  decoration: BoxDecoration(
-                                      color: AppColors.red,
-                                      borderRadius: BorderRadius.only(
-                                          topLeft: Radius.circular(10),
-                                          topRight: Radius.circular(10))),
-                                  child: Text(
-                                      'Извините на данный момент контакт не работает пишите на Ватсап'),
-                                ));
-                          },
-                        );
+                        aboutBottomSheet(context);
                       },
                       text: 'Позвонить',
                       child: SvgPicture.asset('assets/svg/icons/phone.svg'),
@@ -129,12 +113,5 @@ class _AboutPageState extends State<AboutPage> {
     } else {
       throw 'Could not launch $url';
     }
-  }
-
-  _makePhoneCall() async {
-    final Uri launchUri = Uri(
-      scheme: '+79963809658',
-    );
-    await launchUrl(launchUri);
   }
 }

@@ -1,3 +1,5 @@
+import 'package:eco_market/features/cart/data/models/models.dart';
+
 class OrderEntity {
   int? orderNumber;
   String? phoneNumber;
@@ -7,7 +9,7 @@ class OrderEntity {
   String? totalAmount;
   String? createdAt;
   int? deliveryCost;
-  List<OrderedProduct>? orderedProducts;
+  List<OrderedProductModel>? orderedProducts;
 
   OrderEntity({
     this.orderNumber,
@@ -19,15 +21,5 @@ class OrderEntity {
     this.createdAt,
     this.deliveryCost,
     this.orderedProducts,
-  });
-}
-
-class OrderedProduct {
-  int? product;
-  int? quantity;
-
-  OrderedProduct({
-    this.product,
-    this.quantity,
   });
 }

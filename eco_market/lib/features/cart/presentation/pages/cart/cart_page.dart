@@ -1,9 +1,10 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/router/router.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
+import 'package:eco_market/features/cart/domain/entities/order_entity.dart';
+import 'package:eco_market/features/cart/presentation/cubit/cart_screen_cubit.dart';
 import 'package:eco_market/features/cart/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
-import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
 import 'package:eco_market/features/search/presentation/widgets/text_price_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -17,7 +18,13 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
+  List<OrderEntity> data = [];
   List<Item> items = List.generate(20, (index) => Item());
+  @override
+  void initState() {
+    super.initState();
+    context.read<CartScreenCubit>().getOrders();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -50,8 +57,14 @@ class _CartPageState extends State<CartPage> {
         ),
         centerTitle: true,
       ),
-      body: BlocBuilder<SearchScreenCubit, SearchScreenState>(
+      body: BlocBuilder<CartScreenCubit, CartScreenState>(
         builder: (context, state) {
+          if (state is CartScreenLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is CartScreenLoaded) {
+            data = state.orders;
+          }
+
           Item item = items[4];
 
           return SingleChildScrollView(
@@ -59,7 +72,7 @@ class _CartPageState extends State<CartPage> {
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
               child: Column(
                 children: [
-                  for (int i = 1; i < 5; i++)
+                  for (int i = 1; i < 4; i++)
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 5),
                       height: 94,
@@ -187,15 +200,15 @@ class _CartPageState extends State<CartPage> {
                   const SizedBox(
                     height: 20,
                   ),
-                  texts('Сумму', '396 c'),
+                  texts('Сумму', '${data[7].totalAmount}c'),
                   const SizedBox(
                     height: 8,
                   ),
-                  texts('Доставка', '150 c'),
+                  texts('Доставка', '${data[6].deliveryCost}c'),
                   const SizedBox(
                     height: 8,
                   ),
-                  texts('Итого', '546 c'),
+                  texts('Итого', '17350.00c'),
                   const SizedBox(
                     height: 50,
                   ),
