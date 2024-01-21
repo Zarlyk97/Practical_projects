@@ -1,6 +1,7 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/router/router.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
+import 'package:eco_market/features/history/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
@@ -24,7 +25,7 @@ bottomSheetHistory(BuildContext context) => showModalBottomSheet<void>(
               height: 220,
               child: Column(
                 children: [
-                  _text('Заказ №34354545'),
+                  text('Заказ №34354545'),
                   const SizedBox(
                     height: 4,
                   ),
@@ -32,7 +33,7 @@ bottomSheetHistory(BuildContext context) => showModalBottomSheet<void>(
                   const SizedBox(
                     height: 12,
                   ),
-                  _text('Оформлен 07.07.2023 12:46'),
+                  text('Оформлен 07.07.2023 12:46'),
                   const SizedBox(
                     height: 4,
                   ),
@@ -47,7 +48,7 @@ bottomSheetHistory(BuildContext context) => showModalBottomSheet<void>(
                   const SizedBox(
                     height: 4,
                   ),
-                  _text('Доставка 150 с'),
+                  text('Доставка 150 с'),
                 ],
               ),
             ),
@@ -109,14 +110,14 @@ bottomSheetHistory(BuildContext context) => showModalBottomSheet<void>(
                                         ),
                                         Row(
                                           children: [
-                                            _priceText('Цена 56 с за штук'),
+                                            priceText('Цена 56 с за штук'),
                                             SizedBox(
                                               width: MediaQuery.of(context)
                                                       .size
                                                       .width *
                                                   0.39,
                                             ),
-                                            _priceText('1 шт')
+                                            priceText('1 шт')
                                           ],
                                         )
                                       ],
@@ -149,24 +150,3 @@ bottomSheetHistory(BuildContext context) => showModalBottomSheet<void>(
         ),
       ),
     );
-Widget _text(String text) {
-  return Text(
-    text,
-    style: const TextStyle(
-      color: Colors.white,
-      fontSize: 16,
-      fontWeight: FontWeight.w600,
-    ),
-  );
-}
-
-Widget _priceText(String text) {
-  return Text(
-    text,
-    style: const TextStyle(
-      color: Color(0xFFD2D1D5),
-      fontSize: 12,
-      fontWeight: FontWeight.w500,
-    ),
-  );
-}
