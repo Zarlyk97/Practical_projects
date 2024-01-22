@@ -59,7 +59,7 @@ class _HistoryPageState extends State<HistoryPage> {
                     title: 'Заказа №${data[2].orderNumber}',
                     subtitle: '${data[3].createdAt}',
                     trailing: '${data[5].totalAmount} с',
-                    itemCount: 10,
+                    itemCount: data.length,
                   ),
                 ),
               ],
