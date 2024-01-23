@@ -10,6 +10,7 @@ class ConnectionCubit extends Cubit<ConnectionStatus> {
     _checkConnectionStatus();
     _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
       _checkConnectionStatus();
+      ///////////////////////////////////////////
     });
   }
 
