@@ -1,8 +1,8 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:eco_market/config/router/router.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
 import 'package:eco_market/features/cart/domain/entities/order_entity.dart';
 import 'package:eco_market/features/cart/presentation/cubit/cart_screen_cubit.dart';
+import 'package:eco_market/features/cart/presentation/pages/cart/cart.dart';
 import 'package:eco_market/features/cart/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/search/presentation/widgets/text_price_widget.dart';
@@ -33,7 +33,8 @@ class _CartPageState extends State<CartPage> {
         title: Row(
           children: [
             TextButton(
-              onPressed: () => context.pushRoute(const EmptyCartRoute()),
+              onPressed: () => Navigator.push(context,
+                  MaterialPageRoute(builder: (_) => const EmptyCartPage())),
               child: const Text(
                 'Очистить',
                 style: TextStyle(
@@ -72,7 +73,7 @@ class _CartPageState extends State<CartPage> {
               padding: const EdgeInsets.fromLTRB(16, 24, 16, 16),
               child: Column(
                 children: [
-                  for (int i = 1; i < 4; i++)
+                  for (int i = 1; i < 5; i++)
                     Container(
                       margin: const EdgeInsets.symmetric(vertical: 5),
                       height: 94,

@@ -67,7 +67,7 @@ abstract class _$AppRouter extends RootStackRouter {
       final args = routeData.argsAs<SeachRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: SeachScreen(
+        child: SearchScreen(
           key: args.key,
           id: args.id,
           fruits: args.fruits,
@@ -190,7 +190,7 @@ class PlacingAnOrderRoute extends PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [SeachScreen]
+/// [SearchScreen]
 class SeachRoute extends PageRouteInfo<SeachRouteArgs> {
   SeachRoute({
     Key? key,

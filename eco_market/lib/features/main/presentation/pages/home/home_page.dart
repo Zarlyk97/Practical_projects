@@ -70,7 +70,7 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => SeachScreen(
+                        builder: (context) => SearchScreen(
                           id: index + 1,
                           fruits: fruits,
                         ),

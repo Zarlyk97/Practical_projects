@@ -35,21 +35,19 @@ class MyApp extends StatelessWidget {
         BlocProvider<CartScreenCubit>(
             create: (context) => di.sl<CartScreenCubit>()..getOrders()),
         BlocProvider<ConnectionCubit>(
-            create: (context) => di.sl<ConnectionCubit>())
+            create: (context) => di.sl<ConnectionCubit>()),
       ],
       child: MaterialApp(
         theme: theme,
         debugShowCheckedModeBanner: false,
-        // routerDelegate: appRouter
         home: BlocBuilder<ConnectionCubit, ConnectionStatus>(
-          builder: (context, state) {
-            if (state == ConnectionStatus.connected) {
-              return const MainPage();
-            } else {
-              return const NoConnectionPage();
-            }
-          },
-        ),
+            builder: (context, state) {
+          if (state == ConnectionStatus.connected) {
+            return const MainPage();
+          } else {
+            return const NoConnectionPage();
+          }
+        }),
       ),
     );
   }

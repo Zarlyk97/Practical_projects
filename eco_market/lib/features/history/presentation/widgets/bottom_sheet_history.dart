@@ -1,7 +1,6 @@
-import 'package:auto_route/auto_route.dart';
-import 'package:eco_market/config/router/router.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
 import 'package:eco_market/features/cart/domain/entities/order_entity.dart';
+import 'package:eco_market/features/history/presentation/pages/history/history.dart';
 import 'package:eco_market/features/history/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
@@ -62,7 +61,10 @@ bottomSheetHistory(BuildContext context, OrderEntity orderEntity) =>
                   children: [
                     for (int i = 1; i < 4; i++)
                       GestureDetector(
-                        onTap: () => context.pushRoute(const OrderRoute()),
+                        onTap: () => Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const OrderPage())),
                         child: Container(
                           margin: const EdgeInsets.symmetric(vertical: 5),
                           height: 70,
@@ -136,7 +138,7 @@ bottomSheetHistory(BuildContext context, OrderEntity orderEntity) =>
                     ),
                     CustomButtomWidget(
                       onPressed: () {
-                        context.popRoute();
+                        Navigator.pop(context);
                       },
                       text: 'Закрыть',
                       height: 54,

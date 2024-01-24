@@ -1,6 +1,6 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:eco_market/config/router/router.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
+import 'package:eco_market/features/main/presentation/pages/main/main_page.dart';
 import 'package:eco_market/features/main/presentation/widgets/custom_button_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg_flutter.dart';
@@ -37,10 +37,8 @@ class EmptyCartPage extends StatelessWidget {
               height: MediaQuery.of(context).size.height / 2.7,
             ),
             CustomButtomWidget(
-              onPressed: () => context.router.pushAndPopUntil(
-                const MainRoute(),
-                predicate: (fu) => false,
-              ),
+              onPressed: () => Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const MainPage())),
               text: 'Перейти в магазин',
               height: 54,
             ),

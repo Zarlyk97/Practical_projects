@@ -10,16 +10,16 @@ import 'package:eco_market/features/search/domain/entities/products_entity.dart'
 import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
 
 @RoutePage()
-class SeachScreen extends StatefulWidget {
+class SearchScreen extends StatefulWidget {
   final int id;
   final List<String> fruits;
-  const SeachScreen({super.key, required this.id, required this.fruits});
+  const SearchScreen({super.key, required this.id, required this.fruits});
 
   @override
-  State<SeachScreen> createState() => _SeachScreenState();
+  State<SearchScreen> createState() => _SearchScreenState();
 }
 
-class _SeachScreenState extends State<SeachScreen> {
+class _SearchScreenState extends State<SearchScreen> {
   List<Item> items = List.generate(10, (index) => Item());
   List<String> fruits = [];
   bool isAdded = false;

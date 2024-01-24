@@ -1,6 +1,5 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/config.dart';
-import 'package:eco_market/config/router/router.dart';
+import 'package:eco_market/features/cart/presentation/pages/cart/placing_an_order_page.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
@@ -36,7 +35,10 @@ Future<void> dialogBuilder(BuildContext context) {
                 height: 24,
               ),
               CustomButtomWidget(
-                onPressed: () => context.pushRoute(const PlacingAnOrderRoute()),
+                onPressed: () => Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (_) => const PlacingAnOrderPage())),
                 text: 'Закрыть',
                 height: 54,
               )
