@@ -13,6 +13,8 @@ import 'package:eco_market/features/search/domain/repositories/search_repository
 import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
 import 'package:get_it/get_it.dart';
 
+import 'features/main/presentation/cubit/connection/connection_cubit.dart';
+
 final sl = GetIt.instance;
 
 Future<void> init() async {
@@ -32,6 +34,7 @@ Future<void> init() async {
   sl.registerLazySingleton<CartRepository>(() => CartRepoImple(sl()));
   sl.registerLazySingleton<CartRemoteDataSourse>(
       () => CartRemoteDataSourseImple(sl()));
+  sl.registerFactory(() => ConnectionCubit());
 
   sl.registerLazySingleton(() => Dio());
 }

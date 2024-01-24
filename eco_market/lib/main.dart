@@ -1,7 +1,12 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/config.dart';
 import 'package:eco_market/config/router/router.dart';
 import 'package:eco_market/features/cart/presentation/cubit/cart_screen_cubit.dart';
+import 'package:eco_market/features/main/presentation/cubit/connection/connection_cubit.dart';
 import 'package:eco_market/features/main/presentation/cubit/main_screen_cubit.dart';
+import 'package:eco_market/features/main/presentation/pages/main/main.dart';
+import 'package:eco_market/features/main/presentation/pages/network/no_connection_page.dart';
+import 'package:eco_market/features/main/presentation/widgets/show_no_connection.dart';
 import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
@@ -34,11 +39,24 @@ class MyApp extends StatelessWidget {
             create: (context) => di.sl<SearchScreenCubit>()..getProducts()),
         BlocProvider<CartScreenCubit>(
             create: (context) => di.sl<CartScreenCubit>()..getOrders()),
+        BlocProvider<ConnectionCubit>(
+            create: (context) => di.sl<ConnectionCubit>())
       ],
       child: MaterialApp.router(
         theme: theme,
         debugShowCheckedModeBanner: false,
+        // routerDelegate: appRouter.delegate(),
         routerConfig: appRouter.config(),
+        builder: (context, child) {
+          return BlocBuilder<ConnectionCubit, ConnectionStatus>(
+            builder: (context, state) {
+              if (state == ConnectionStatus.connected) {
+                return const NoConnectionPage();
+              }
+              return const MainPage();
+            },
+          );
+        },
       ),
     );
   }

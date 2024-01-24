@@ -1,3 +1,6 @@
+import 'package:auto_route/auto_route.dart';
+import 'package:eco_market/config/config.dart';
+import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class NoConnectionPage extends StatelessWidget {
@@ -6,49 +9,48 @@ class NoConnectionPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      backgroundColor: const Color(0xffA2CDF5),
+      backgroundColor: AppColors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.symmetric(horizontal: 30.0),
-          child: Stack(
+          padding: const EdgeInsets.all(16),
+          child: Column(
             children: [
-              Padding(
-                padding: const EdgeInsets.fromLTRB(0, 25, 0, 25),
-                child: Image.asset(
-                  "assets/images/home/dairy.png",
+              const Image(
+                image: AssetImage('assets/images/network/no_connection.png'),
+                fit: BoxFit.cover,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              const Text(
+                'Отсутствует интернет  соединение',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: AppColors.black,
+                  fontSize: 24,
+                  fontWeight: FontWeight.w700,
                 ),
               ),
-              Center(
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
-                  mainAxisAlignment: MainAxisAlignment.center,
-                  children: [
-                    Padding(
-                      padding: const EdgeInsets.symmetric(horizontal: 50.0),
-                      child: Image.asset(
-                        "assets/images/home/dairy.png",
-                      ),
-                    ),
-                    const SizedBox(height: 30),
-                    const Text(
-                      'Интернет жок',
-                      style: TextStyle(
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                    const Text(
-                      'Интернет жок',
-                      style: TextStyle(
-                        fontSize: 14,
-                        fontWeight: FontWeight.normal,
-                      ),
-                      textAlign: TextAlign.center,
-                    ),
-                  ],
+              const SizedBox(
+                height: 8,
+              ),
+              const Text(
+                'Попробуйте подключить мобильный интернет',
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                  color: Color(0xFFABABAD),
+                  fontSize: 18,
+                  fontWeight: FontWeight.w400,
                 ),
               ),
+              const SizedBox(
+                height: 24,
+              ),
+              CustomButtomWidget(
+                onPressed: () => context.popRoute(),
+                text: 'Ok',
+                height: 54,
+              )
             ],
           ),
         ),
