@@ -1,6 +1,4 @@
-import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/config.dart';
-import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 class NoConnectionPage extends StatelessWidget {
@@ -8,21 +6,22 @@ class NoConnectionPage extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
+    return const Scaffold(
       backgroundColor: AppColors.white,
       body: SafeArea(
         child: Padding(
-          padding: const EdgeInsets.all(16),
+          padding: EdgeInsets.all(16),
           child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-              const Image(
+              Image(
                 image: AssetImage('assets/images/network/no_connection.png'),
                 fit: BoxFit.cover,
               ),
-              const SizedBox(
+              SizedBox(
                 height: 16,
               ),
-              const Text(
+              Text(
                 'Отсутствует интернет  соединение',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -31,10 +30,10 @@ class NoConnectionPage extends StatelessWidget {
                   fontWeight: FontWeight.w700,
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 8,
               ),
-              const Text(
+              Text(
                 'Попробуйте подключить мобильный интернет',
                 textAlign: TextAlign.center,
                 style: TextStyle(
@@ -43,14 +42,9 @@ class NoConnectionPage extends StatelessWidget {
                   fontWeight: FontWeight.w400,
                 ),
               ),
-              const SizedBox(
+              SizedBox(
                 height: 24,
               ),
-              CustomButtomWidget(
-                onPressed: () => context.popRoute(),
-                text: 'Ok',
-                height: 54,
-              )
             ],
           ),
         ),
