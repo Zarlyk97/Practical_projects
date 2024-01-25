@@ -1,5 +1,4 @@
 import 'package:eco_market/config/theme/app_colors.dart';
-import 'package:eco_market/features/main/presentation/pages/main/main_page.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:svg_flutter/svg.dart';
@@ -47,8 +46,8 @@ Future<void> dialogBuilderplacingAnOrder(BuildContext context) {
                 height: 24,
               ),
               CustomButtomWidget(
-                onPressed: () => Navigator.pushReplacement(context,
-                    MaterialPageRoute(builder: (context) => const MainPage())),
+                onPressed: () => Navigator.pushNamedAndRemoveUntil(
+                    context, '/', (routePage) => false),
                 text: 'Перейти в магазин',
                 height: 54,
               )

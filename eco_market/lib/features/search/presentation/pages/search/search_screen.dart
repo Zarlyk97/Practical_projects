@@ -244,10 +244,7 @@ class _SearchScreenState extends State<SearchScreen> {
 ///////////////////////    Карзина
 
         floatingActionButton: GestureDetector(
-          onTap: () => showRuleCart(
-            context,
-            Item(),
-          ),
+          onTap: () => showRuleCart(context, Item()),
           child: SizedBox(
             width: 168,
             height: 48,
