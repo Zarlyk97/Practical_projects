@@ -111,12 +111,15 @@ showBottomAddProduct(
                                 width: 44,
                               ),
                               IconButtonWidget(
-                                  icon: Icons.add,
-                                  onTap: () {
-                                    setState(() {
+                                icon: Icons.add,
+                                onTap: () {
+                                  setState(
+                                    () {
                                       item.incrementCounter();
-                                    });
-                                  })
+                                    },
+                                  );
+                                },
+                              ),
                             ],
                           ),
                         ],

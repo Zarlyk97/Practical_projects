@@ -241,7 +241,7 @@ class _SearchScreenState extends State<SearchScreen> {
             ),
           ),
         ),
-///////////////////////    Карзина
+/////////////////////////////////////    Карзина
 
         floatingActionButton: GestureDetector(
           onTap: () => showRuleCart(context, Item()),
