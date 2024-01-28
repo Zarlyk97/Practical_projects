@@ -134,6 +134,9 @@ class _CartPageState extends State<CartPage> {
                                           fontSize: 14,
                                           fontWeight: FontWeight.w500),
                                     ),
+                                    const SizedBox(
+                                      height: 2,
+                                    ),
                                     const Text(
                                       'цена 340 с за шт',
                                       style: TextStyle(
@@ -142,7 +145,7 @@ class _CartPageState extends State<CartPage> {
                                           fontWeight: FontWeight.w500),
                                     ),
                                     const SizedBox(
-                                      height: 14,
+                                      height: 12,
                                     ),
                                     Row(
                                       children: [
@@ -222,7 +225,7 @@ class _CartPageState extends State<CartPage> {
               SliverPadding(
                 padding: const EdgeInsets.symmetric(horizontal: 16),
                 sliver: SliverList.list(children: [
-                  texts('Сумму', '23355 c'),
+                  texts('Сумму', '2336 c'),
                   const SizedBox(
                     height: 8,
                   ),
@@ -230,7 +233,7 @@ class _CartPageState extends State<CartPage> {
                   const SizedBox(
                     height: 8,
                   ),
-                  texts('Итого', '173228 c'),
+                  texts('Итого', '1732 c'),
                   const SizedBox(
                     height: 40,
                   ),
