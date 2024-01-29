@@ -13,13 +13,16 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 @RoutePage()
 class CartPage extends StatefulWidget {
   const CartPage({super.key});
-
   @override
   State<CartPage> createState() => _CartPageState();
 }
 
 class _CartPageState extends State<CartPage> {
-  List<ProductEntity> data = [];
+  List<ProductEntity> data1 = [];
+  clearCart() {
+    data1.clear();
+  }
+
   List<Item> items = List.generate(20, (index) => Item());
   @override
   void initState() {
@@ -27,25 +30,17 @@ class _CartPageState extends State<CartPage> {
     context.read<SearchScreenCubit>().getProducts();
   }
 
-  String totalAmount = '';
-  void calculateTotalAmount(List<ProductEntity> list) {
-    String res = '';
-
-    for (var element in list) {
-      res = res + element.price! * element.quantity!;
-    }
-    totalAmount = res;
-  }
-
   @override
   Widget build(BuildContext context) {
     return Scaffold(
       body: BlocBuilder<SearchScreenCubit, SearchScreenState>(
         builder: (context, state) {
+          List<ProductEntity> data1 = [];
+
           if (state is SearchScreenLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is SearchScreenLoaded) {
-            data = state.products;
+            data1 = state.products;
           }
           return CustomScrollView(
             slivers: [
@@ -105,16 +100,21 @@ class _CartPageState extends State<CartPage> {
                             children: [
                               Stack(
                                 children: [
-                                  Image.asset(
-                                    'assets/images/cart/apple_small.png',
-                                    height: 86,
-                                    width: 86,
-                                    fit: BoxFit.cover,
+                                  ClipRRect(
+                                    borderRadius: BorderRadius.circular(10),
+                                    child: Image.network(
+                                      data1[index].image.toString(),
+                                      height: 86,
+                                      width: 86,
+                                      fit: BoxFit.cover,
+                                    ),
                                   ),
                                   Positioned(
                                     top: 50,
                                     child: GestureDetector(
-                                      onTap: () {},
+                                      onTap: () {
+                                        setState(() {});
+                                      },
                                       child: SizedBox(
                                         height: 32,
                                         width: 32,
@@ -137,20 +137,19 @@ class _CartPageState extends State<CartPage> {
                                 padding: const EdgeInsets.only(left: 8),
                                 child: Column(
                                   crossAxisAlignment: CrossAxisAlignment.start,
-                                  mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    const Text(
-                                      'Драконий фрукт',
-                                      style: TextStyle(
+                                    Text(
+                                      data1[index].title.toString(),
+                                      style: const TextStyle(
                                           fontSize: 14,
                                           fontWeight: FontWeight.w500),
                                     ),
                                     const SizedBox(
                                       height: 2,
                                     ),
-                                    const Text(
-                                      'цена 340 с за шт',
-                                      style: TextStyle(
+                                    Text(
+                                      'цена ${data1[index].price} с за шт',
+                                      style: const TextStyle(
                                           color: AppColors.grey,
                                           fontSize: 12,
                                           fontWeight: FontWeight.w500),
@@ -160,19 +159,16 @@ class _CartPageState extends State<CartPage> {
                                     ),
                                     Row(
                                       children: [
-                                        const Text(
-                                          '56 с',
-                                          style: TextStyle(
+                                        Text(
+                                          '${data1[index].price} с',
+                                          style: const TextStyle(
                                             color: AppColors.green,
                                             fontSize: 20,
                                             fontWeight: FontWeight.w700,
                                           ),
                                         ),
-                                        SizedBox(
-                                          width: MediaQuery.of(context)
-                                                  .size
-                                                  .width *
-                                              0.21,
+                                        const SizedBox(
+                                          width: 50,
                                         ),
                                         Row(
                                           children: [
@@ -222,7 +218,7 @@ class _CartPageState extends State<CartPage> {
                       ),
                     );
                   },
-                  itemCount: 4,
+                  itemCount: 20,
                   separatorBuilder: (context, index) => const SizedBox(
                     height: 10,
                   ),

@@ -243,40 +243,55 @@ class _SearchScreenState extends State<SearchScreen> {
         ),
 /////////////////////////////////////    Карзина
 
-        floatingActionButton: GestureDetector(
-          onTap: () => showRuleCart(context, Item()),
-          child: SizedBox(
-            width: 168,
-            height: 48,
-            child: DecoratedBox(
-              decoration: BoxDecoration(
-                color: AppColors.green,
-                borderRadius: BorderRadius.circular(30),
-              ),
-              child: Padding(
-                padding: const EdgeInsets.all(12.0),
-                child: Row(
-                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                  children: [
-                    SvgPicture.asset(
-                      'assets/svg/main/bag.svg',
-                      // ignore: deprecated_member_use
-                      color: AppColors.white,
+        floatingActionButton: BlocBuilder<SearchScreenCubit, SearchScreenState>(
+            builder: (context, state) =>
+                BlocBuilder<SearchScreenCubit, SearchScreenState>(
+                    builder: (context, state) {
+                  List<ProductEntity> data = [];
+                  if (state is SearchScreenLoading) {
+                  } else if (state is SearchScreenLoaded) {
+                    data = state.products;
+                  }
+
+                  return GestureDetector(
+                    onTap: () => showRuleCart(
+                      context,
+                      Item(),
+                      data[0],
                     ),
-                    const Text(
-                      'Корзина 396 с',
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                        fontWeight: FontWeight.w500,
+                    child: SizedBox(
+                      width: 168,
+                      height: 48,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: AppColors.green,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/svg/main/bag.svg',
+                                // ignore: deprecated_member_use
+                                color: AppColors.white,
+                              ),
+                              const Text(
+                                'Корзина 396 с',
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                  fontWeight: FontWeight.w500,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
                       ),
-                    )
-                  ],
-                ),
-              ),
-            ),
-          ),
-        ));
+                    ),
+                  );
+                })));
   }
 
   void _onTabTapped(int index) {

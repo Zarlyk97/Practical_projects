@@ -1,13 +1,12 @@
 import 'package:eco_market/config/theme/app_colors.dart';
 import 'package:eco_market/features/cart/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
+import 'package:eco_market/features/search/domain/entities/products_entity.dart';
 import 'package:eco_market/features/search/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
 showRuleCart(
-  BuildContext context,
-  Item addAndRemove,
-) =>
+        BuildContext context, Item addAndRemove, ProductEntity productEntity) =>
     showModalBottomSheet<void>(
       // isScrollControlled: true,
       context: context,
@@ -40,11 +39,14 @@ showRuleCart(
                           children: [
                             Stack(
                               children: [
-                                Image.asset(
-                                  'assets/images/cart/apple_small.png',
-                                  height: 86,
-                                  width: 86,
-                                  fit: BoxFit.cover,
+                                ClipRRect(
+                                  borderRadius: BorderRadius.circular(10),
+                                  child: Image.network(
+                                    productEntity.image.toString(),
+                                    height: 86,
+                                    width: 86,
+                                    fit: BoxFit.cover,
+                                  ),
                                 ),
                                 Positioned(
                                   top: 50,
@@ -74,15 +76,15 @@ showRuleCart(
                                 crossAxisAlignment: CrossAxisAlignment.start,
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
-                                  const Text(
-                                    'Драконий фрукт',
-                                    style: TextStyle(
+                                  Text(
+                                    productEntity.title.toString(),
+                                    style: const TextStyle(
                                         fontSize: 14,
                                         fontWeight: FontWeight.w500),
                                   ),
-                                  const Text(
-                                    'цена 340 с за шт',
-                                    style: TextStyle(
+                                  Text(
+                                    " Цена ${productEntity.price} с за штуку",
+                                    style: const TextStyle(
                                         color: AppColors.grey,
                                         fontSize: 12,
                                         fontWeight: FontWeight.w500),
@@ -92,9 +94,9 @@ showRuleCart(
                                   ),
                                   Row(
                                     children: [
-                                      const Text(
-                                        '56 с',
-                                        style: TextStyle(
+                                      Text(
+                                        '${productEntity.price} с',
+                                        style: const TextStyle(
                                           color: AppColors.green,
                                           fontSize: 20,
                                           fontWeight: FontWeight.w700,
@@ -103,7 +105,7 @@ showRuleCart(
                                       SizedBox(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.21,
+                                                0.12,
                                       ),
                                       Row(
                                         children: [
@@ -157,7 +159,7 @@ showRuleCart(
                     ),
                   );
                 },
-                itemCount: 3,
+                itemCount: 1,
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 10,
                 ),

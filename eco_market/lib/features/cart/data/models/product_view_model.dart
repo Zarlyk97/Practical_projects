@@ -21,17 +21,16 @@ class ProductViewModel extends ChangeNotifier {
     setLoading(false);
   }
 
-
- void addProduct(ProductModel p) {
+  void addProduct(ProductModel p) {
     productLists.add(p);
   }
 
   void removeProduct(ProductModel p) {
-    productLists.add(p);
+    productLists.remove(p);
   }
 
   addCart(ProductModel item) {
-    cartLists.add(item);
+    cartLists.remove(item);
     notifyListeners();
   }
 
