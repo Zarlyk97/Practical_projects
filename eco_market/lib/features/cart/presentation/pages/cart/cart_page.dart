@@ -31,8 +31,6 @@ class _CartPageState extends State<CartPage> {
     return Scaffold(
       body: BlocBuilder<SearchScreenCubit, SearchScreenState>(
         builder: (context, state) {
-          List<ProductEntity> data1 = [];
-
           if (state is SearchScreenLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is SearchScreenLoaded) {

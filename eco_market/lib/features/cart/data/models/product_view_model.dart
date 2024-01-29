@@ -1,4 +1,3 @@
-import 'package:eco_market/features/search/data/models/product_model.dart';
 import 'package:eco_market/features/search/domain/entities/products_entity.dart';
 import 'package:flutter/cupertino.dart';
 
