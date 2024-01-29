@@ -1,9 +1,10 @@
 import 'package:eco_market/features/search/data/models/product_model.dart';
+import 'package:eco_market/features/search/domain/entities/products_entity.dart';
 import 'package:flutter/cupertino.dart';
 
 class ProductViewModel extends ChangeNotifier {
-  var productLists = <ProductModel>[];
-  var cartLists = <ProductModel>[];
+  var productLists = <ProductEntity>[];
+  var cartLists = <ProductEntity>[];
   var isLoading = true;
 
   int get countCart => cartLists.length;
@@ -21,20 +22,12 @@ class ProductViewModel extends ChangeNotifier {
     setLoading(false);
   }
 
-  void addProduct(ProductModel p) {
-    productLists.add(p);
-  }
-
-  void removeProduct(ProductModel p) {
-    productLists.remove(p);
-  }
-
-  addCart(ProductModel item) {
-    cartLists.remove(item);
+  addCart(ProductEntity item) {
+    cartLists.add(item);
     notifyListeners();
   }
 
-  removeCart(ProductModel item) {
+  removeCart(ProductEntity item) {
     cartLists.remove(item);
     notifyListeners();
   }

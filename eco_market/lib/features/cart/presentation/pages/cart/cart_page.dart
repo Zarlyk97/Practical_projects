@@ -1,7 +1,6 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
 
-import 'package:eco_market/features/cart/presentation/pages/cart/cart.dart';
 import 'package:eco_market/features/cart/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/search/domain/entities/products_entity.dart';
@@ -19,9 +18,6 @@ class CartPage extends StatefulWidget {
 
 class _CartPageState extends State<CartPage> {
   List<ProductEntity> data1 = [];
-  clearCart() {
-    data1.clear();
-  }
 
   List<Item> items = List.generate(20, (index) => Item());
   @override
@@ -48,10 +44,15 @@ class _CartPageState extends State<CartPage> {
                 title: Row(
                   children: [
                     TextButton(
-                      onPressed: () => Navigator.push(
-                          context,
-                          MaterialPageRoute(
-                              builder: (_) => const EmptyCartPage())),
+                      onPressed: () {
+                        setState(() {
+                          clearCart(ProductEntity());
+                        });
+                      },
+                      // => Navigator.push(
+                      //     context,
+                      //     MaterialPageRoute(
+                      //         builder: (_) => const EmptyCartPage())),
                       child: const Text(
                         'Очистить',
                         style: TextStyle(
@@ -113,7 +114,9 @@ class _CartPageState extends State<CartPage> {
                                     top: 50,
                                     child: GestureDetector(
                                       onTap: () {
-                                        setState(() {});
+                                        setState(() {
+                                          removeCart(data1.removeAt(index));
+                                        });
                                       },
                                       child: SizedBox(
                                         height: 32,
@@ -218,7 +221,7 @@ class _CartPageState extends State<CartPage> {
                       ),
                     );
                   },
-                  itemCount: 20,
+                  itemCount: data1.length,
                   separatorBuilder: (context, index) => const SizedBox(
                     height: 10,
                   ),
@@ -261,5 +264,13 @@ class _CartPageState extends State<CartPage> {
         },
       ),
     );
+  }
+
+  void removeCart(ProductEntity productEntity) {
+    data1.remove(productEntity);
+  }
+
+  void clearCart(ProductEntity entity) {
+    data1.clear();
   }
 }
