@@ -9,6 +9,6 @@ class Item {
   }
 
   int getCounter() {
-    return _counter;
+    return _counter + 1;
   }
 }

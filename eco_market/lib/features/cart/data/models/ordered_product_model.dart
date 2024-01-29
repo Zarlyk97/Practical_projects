@@ -1,6 +1,6 @@
 class OrderedProductModel {
-  int product;
-  int quantity;
+  int? product;
+  int? quantity;
 
   OrderedProductModel({
     required this.product,

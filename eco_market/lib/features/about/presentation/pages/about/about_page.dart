@@ -65,7 +65,7 @@ class _AboutPageState extends State<AboutPage> {
                     ),
                     SocialButtonWidget(
                       onPressed: () {
-                        _launchWhatsaPP();
+                        _launchLink('https://wa.me/+79963809658');
                       },
                       text: 'WhatsApp',
                       child: SvgPicture.asset('assets/svg/icons/whatsapp.svg'),
@@ -75,7 +75,7 @@ class _AboutPageState extends State<AboutPage> {
                     ),
                     SocialButtonWidget(
                       onPressed: () {
-                        _launchInstagram();
+                        _launchLink('https://instagram.com/zarlyk_zhanybekov');
                       },
                       text: 'Instagram',
                       child: SvgPicture.asset('assets/svg/icons/instagram.svg'),
@@ -93,25 +93,13 @@ class _AboutPageState extends State<AboutPage> {
     );
   }
 
-  _launchWhatsaPP() async {
-    const url = 'https://wa.me/+79963809658';
+  _launchLink(String link) async {
     // ignore: deprecated_member_use
-    if (await canLaunch(url)) {
+    if (await canLaunch(link)) {
       // ignore: deprecated_member_use
-      await launch(url);
+      await launch(link);
     } else {
-      throw 'Could not launch $url';
-    }
-  }
-
-  _launchInstagram() async {
-    const url = 'https://instagram.com/zarlyk_zhanybekov';
-    // ignore: deprecated_member_use
-    if (await canLaunch(url)) {
-      // ignore: deprecated_member_use
-      await launch(url);
-    } else {
-      throw 'Could not launch $url';
+      throw 'Could not launch $link';
     }
   }
 }

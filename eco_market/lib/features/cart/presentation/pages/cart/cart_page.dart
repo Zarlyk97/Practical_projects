@@ -1,10 +1,11 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/theme/app_colors.dart';
-import 'package:eco_market/features/cart/domain/entities/order_entity.dart';
-import 'package:eco_market/features/cart/presentation/cubit/cart_screen_cubit.dart';
+
 import 'package:eco_market/features/cart/presentation/pages/cart/cart.dart';
 import 'package:eco_market/features/cart/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
+import 'package:eco_market/features/search/domain/entities/products_entity.dart';
+import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
 import 'package:eco_market/features/search/presentation/widgets/text_price_widget.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,23 +19,33 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  List<OrderEntity> data = [];
+  List<ProductEntity> data = [];
   List<Item> items = List.generate(20, (index) => Item());
   @override
   void initState() {
     super.initState();
-    context.read<CartScreenCubit>().getOrders();
+    context.read<SearchScreenCubit>().getProducts();
+  }
+
+  String totalAmount = '';
+  void calculateTotalAmount(List<ProductEntity> list) {
+    String res = '';
+
+    for (var element in list) {
+      res = res + element.price! * element.quantity!;
+    }
+    totalAmount = res;
   }
 
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocBuilder<CartScreenCubit, CartScreenState>(
+      body: BlocBuilder<SearchScreenCubit, SearchScreenState>(
         builder: (context, state) {
-          if (state is CartScreenLoading) {
+          if (state is SearchScreenLoading) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state is CartScreenLoaded) {
-            data = state.orders;
+          } else if (state is SearchScreenLoaded) {
+            data = state.products;
           }
           return CustomScrollView(
             slivers: [
