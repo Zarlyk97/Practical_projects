@@ -22,6 +22,10 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   List<Item> items = List.generate(10, (index) => Item());
   List<String> fruits = [];
+  void addProductToCart(ProductEntity productEntity) {
+    Navigator.pushNamed(context, '/cart');
+  }
+
   bool isAdded = false;
 
   int _currentIndex = 0;
