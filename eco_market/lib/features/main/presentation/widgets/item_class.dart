@@ -1,4 +1,4 @@
-class Item {
+class Items {
   int _counter = 0;
   void incrementCounter() {
     _counter++;

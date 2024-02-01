@@ -21,7 +21,7 @@ class CartPage extends StatefulWidget {
 }
 
 class _CartPageState extends State<CartPage> {
-  List<Item> items = List.generate(20, (index) => Item());
+  List<Items> items = List.generate(20, (index) => Items());
   List<CartItem> data = [];
   @override
   void initState() {
@@ -39,7 +39,7 @@ class _CartPageState extends State<CartPage> {
               TextButton(
                 onPressed: () {
                   setState(() {
-                    clearCart(data.last);
+                    clearCart(data[0]);
                   });
                 },
                 // => Navigator.push(
@@ -78,7 +78,7 @@ class _CartPageState extends State<CartPage> {
           padding: const EdgeInsets.symmetric(horizontal: 16),
           sliver: SliverList.separated(
             itemBuilder: (context, index) {
-              Item item = items[index];
+              Items item = items[index];
               CartItem cartItem = data[index];
 
               return SizedBox(
@@ -109,8 +109,7 @@ class _CartPageState extends State<CartPage> {
                               child: GestureDetector(
                                 onTap: () {
                                   setState(() {
-                                    removeCart(cartItem.items.removeAt(index)
-                                        as CartItem);
+                                    removeCart(cartItem);
                                   });
                                 },
                                 child: SizedBox(
@@ -257,7 +256,7 @@ class _CartPageState extends State<CartPage> {
   }
 
   void removeCart(CartItem cartItem) {
-    items.remove(data);
+    items.remove(cartItem);
   }
 
   void clearCart(CartItem entity) {

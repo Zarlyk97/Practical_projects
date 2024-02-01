@@ -5,8 +5,8 @@ import 'package:eco_market/features/search/domain/entities/products_entity.dart'
 import 'package:eco_market/features/search/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 
-showRuleCart(
-        BuildContext context, Item addAndRemove, ProductEntity productEntity) =>
+showRuleCart(BuildContext context, Items addAndRemove,
+        ProductEntity productEntity) =>
     showModalBottomSheet<void>(
       // isScrollControlled: true,
       context: context,

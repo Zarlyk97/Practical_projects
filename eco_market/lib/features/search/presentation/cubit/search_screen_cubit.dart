@@ -1,4 +1,5 @@
 import 'package:bloc/bloc.dart';
+import 'package:eco_market/features/cart/data/models/cart_model.dart';
 import 'package:eco_market/features/search/domain/entities/products_entity.dart';
 import 'package:eco_market/features/search/domain/repositories/search_repository.dart';
 import 'package:equatable/equatable.dart';
@@ -6,6 +7,7 @@ import 'package:equatable/equatable.dart';
 part 'search_screen_state.dart';
 
 class SearchScreenCubit extends Cubit<SearchScreenState> {
+  final cartModel = CartModel();
   final SearchRepository _searchrepository;
   SearchScreenCubit(this._searchrepository) : super(SearchScreenInitial());
   getProducts({String? productType, String? search}) async {

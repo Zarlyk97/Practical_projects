@@ -7,7 +7,7 @@ import 'package:eco_market/features/search/domain/entities/products_entity.dart'
 import 'package:flutter/material.dart';
 
 showBottomAddProduct(
-    BuildContext context, bool isAdded, Item item, ProductEntity product) {
+    BuildContext context, bool isAdded, Items item, ProductEntity product) {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
