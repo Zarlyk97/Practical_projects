@@ -1,7 +1,7 @@
 class Items {
   int _counter = 0;
   void incrementCounter() {
-    _counter++;
+    if (_counter < 50) _counter++;
   }
 
   void decrementCounter() {
@@ -9,6 +9,6 @@ class Items {
   }
 
   int getCounter() {
-    return _counter + 1;
+    return _counter + 0;
   }
 }

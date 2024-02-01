@@ -41,13 +41,14 @@ class MyApp extends StatelessWidget {
         theme: theme,
         debugShowCheckedModeBanner: false,
         home: BlocBuilder<ConnectionCubit, ConnectionStatus>(
-            builder: (context, state) {
-          if (state == ConnectionStatus.connected) {
-            return const MainPage();
-          } else {
-            return const NoConnectionPage();
-          }
-        }),
+          builder: (context, state) {
+            if (state == ConnectionStatus.connected) {
+              return const MainPage();
+            } else {
+              return const NoConnectionPage();
+            }
+          },
+        ),
       ),
     );
   }

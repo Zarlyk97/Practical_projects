@@ -83,7 +83,7 @@ showRuleCart(BuildContext context, Items addAndRemove,
                                         fontWeight: FontWeight.w500),
                                   ),
                                   Text(
-                                    " Цена ${productEntity.price} с за штуку",
+                                    "Цена ${productEntity.price} с за штуку",
                                     style: const TextStyle(
                                         color: AppColors.grey,
                                         fontSize: 12,
@@ -93,6 +93,8 @@ showRuleCart(BuildContext context, Items addAndRemove,
                                     height: 14,
                                   ),
                                   Row(
+                                    mainAxisAlignment:
+                                        MainAxisAlignment.spaceBetween,
                                     children: [
                                       Text(
                                         '${productEntity.price} с',
@@ -105,7 +107,7 @@ showRuleCart(BuildContext context, Items addAndRemove,
                                       SizedBox(
                                         width:
                                             MediaQuery.of(context).size.width *
-                                                0.12,
+                                                0.11,
                                       ),
                                       Row(
                                         children: [
@@ -159,7 +161,7 @@ showRuleCart(BuildContext context, Items addAndRemove,
                     ),
                   );
                 },
-                itemCount: 1,
+                itemCount: 2,
                 separatorBuilder: (context, index) => const SizedBox(
                   height: 10,
                 ),

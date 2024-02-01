@@ -26,7 +26,7 @@ class _SearchScreenState extends State<SearchScreen> {
   List<String> fruits = [];
   List<ProductEntity> product = [];
 
-  bool isAdded = false;
+  List<bool> isAdded = List.generate(100, (index) => false);
 
   int _currentIndex = 0;
 
@@ -43,263 +43,305 @@ class _SearchScreenState extends State<SearchScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          iconTheme: const IconThemeData(color: AppColors.black),
-          title: const Text(
-            'Продукты',
-            style: TextStyle(
-                fontWeight: FontWeight.w500,
-                fontSize: 18,
-                color: AppColors.black),
-          ),
+      appBar: AppBar(
+        iconTheme: const IconThemeData(color: AppColors.black),
+        title: const Text(
+          'Продукты',
+          style: TextStyle(
+              fontWeight: FontWeight.w500,
+              fontSize: 18,
+              color: AppColors.black),
         ),
-        body: Padding(
-          padding:
-              const EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 16),
-          child: SafeArea(
-            child: Column(
-              children: [
-                ///////// Поиск товаров
-                TextFormField(
-                  onChanged: (value) {
-                    if (_currentIndex != 0) {
-                      context.read<SearchScreenCubit>().getProducts(
-                          search: value, productType: fruits[_currentIndex]);
-                    } else {
-                      context
-                          .read<SearchScreenCubit>()
-                          .getProducts(search: value);
-                    }
-                  },
-                  decoration: InputDecoration(
-                    contentPadding: const EdgeInsets.all(10),
-                    constraints: const BoxConstraints(
-                      maxHeight: 46,
-                    ),
-                    filled: true,
-                    fillColor: const Color(0xffF8F8F8),
-                    hintText: 'Быстрый поиск',
-                    hintStyle: const TextStyle(color: AppColors.grey),
-                    prefixIcon: const Icon(Icons.search, color: AppColors.grey),
-                    border: OutlineInputBorder(
-                        borderSide: BorderSide.none,
-                        borderRadius: BorderRadius.circular(16)),
+      ),
+      body: Padding(
+        padding:
+            const EdgeInsets.only(top: 12, left: 16, right: 16, bottom: 16),
+        child: SafeArea(
+          child: Column(
+            children: [
+              ///////// Поиск товаров
+              TextFormField(
+                onChanged: (value) {
+                  if (_currentIndex != 0) {
+                    context.read<SearchScreenCubit>().getProducts(
+                        search: value, productType: fruits[_currentIndex]);
+                  } else {
+                    context
+                        .read<SearchScreenCubit>()
+                        .getProducts(search: value);
+                  }
+                },
+                decoration: InputDecoration(
+                  contentPadding: const EdgeInsets.all(10),
+                  constraints: const BoxConstraints(
+                    maxHeight: 46,
                   ),
+                  filled: true,
+                  fillColor: const Color(0xffF8F8F8),
+                  hintText: 'Быстрый поиск',
+                  hintStyle: const TextStyle(color: AppColors.grey),
+                  prefixIcon: const Icon(Icons.search, color: AppColors.grey),
+                  border: OutlineInputBorder(
+                      borderSide: BorderSide.none,
+                      borderRadius: BorderRadius.circular(16)),
                 ),
-                const SizedBox(
-                  height: 16,
-                ),
-                SizedBox(
-                  height: 38,
+              ),
+              const SizedBox(
+                height: 16,
+              ),
+              SizedBox(
+                height: 38,
 
-                  ////////  Выбрать ассортимент
-                  child: ListView.separated(
-                      scrollDirection: Axis.horizontal,
-                      itemBuilder: (context, index) {
-                        return GestureDetector(
-                          onTap: () {
-                            _onTabTapped(index);
-                            if (index == 0) {
-                              context.read<SearchScreenCubit>().getProducts();
-                            } else {
-                              context
-                                  .read<SearchScreenCubit>()
-                                  .getProducts(productType: fruits[index]);
-                            }
-                          },
-                          child: DecoratedBox(
-                            decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-                                color: _currentIndex == index
-                                    ? AppColors.green
-                                    : AppColors.white,
-                                border: Border.all(
-                                    color: _currentIndex == index
-                                        ? AppColors.white
-                                        : AppColors.grey)),
-                            child: Padding(
-                              padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
-                              child: Text(
-                                fruits[index],
-                                style: TextStyle(
+                ////////  Выбрать ассортимент
+                child: ListView.separated(
+                    scrollDirection: Axis.horizontal,
+                    itemBuilder: (context, index) {
+                      return GestureDetector(
+                        onTap: () {
+                          _onTabTapped(index);
+                          if (index == 0) {
+                            context.read<SearchScreenCubit>().getProducts();
+                          } else {
+                            context
+                                .read<SearchScreenCubit>()
+                                .getProducts(productType: fruits[index]);
+                          }
+                        },
+                        child: DecoratedBox(
+                          decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: _currentIndex == index
+                                  ? AppColors.green
+                                  : AppColors.white,
+                              border: Border.all(
                                   color: _currentIndex == index
                                       ? AppColors.white
-                                      : AppColors.grey,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
-                                ),
+                                      : AppColors.grey)),
+                          child: Padding(
+                            padding: const EdgeInsets.fromLTRB(12, 8, 12, 8),
+                            child: Text(
+                              fruits[index],
+                              style: TextStyle(
+                                color: _currentIndex == index
+                                    ? AppColors.white
+                                    : AppColors.grey,
+                                fontSize: 16,
+                                fontWeight: FontWeight.w500,
                               ),
                             ),
                           ),
-                        );
-                      },
-                      separatorBuilder: (context, index) =>
-                          const SizedBox(width: 8),
-                      itemCount: fruits.length),
-                ),
-                const SizedBox(
-                  height: 20,
-                ),
-
-                ///////////  Выбрать товар
-                BlocBuilder<SearchScreenCubit, SearchScreenState>(
-                  builder: (context, state) {
-                    List<ProductEntity> data = [];
-                    if (state is SearchScreenLoading) {
-                      return const Expanded(
-                        child: Center(
-                          child: CircularProgressIndicator(),
                         ),
                       );
-                    } else if (state is SearchScreenLoaded) {
-                      data = state.products;
-                    }
+                    },
+                    separatorBuilder: (context, index) =>
+                        const SizedBox(width: 8),
+                    itemCount: fruits.length),
+              ),
+              const SizedBox(
+                height: 20,
+              ),
 
-                    return data.isEmpty
-                        ? Column(
-                            children: [
-                              SvgPicture.asset('assets/svg/cart/emptyBag.svg'),
-                              const Text("Ничего не нашли"),
-                            ],
-                          )
-                        : Expanded(
-                            child: GridView.builder(
-                              gridDelegate:
-                                  const SliverGridDelegateWithFixedCrossAxisCount(
-                                mainAxisExtent: 230,
-                                crossAxisCount: 2,
-                                mainAxisSpacing: 11.0,
-                                crossAxisSpacing: 11.0,
-                              ),
-                              itemCount: data.length,
-                              itemBuilder: (context, index) {
-                                String image = data[index].image.toString();
-
-                                return GestureDetector(
-                                  onTap: () {},
-                                  child: DecoratedBox(
-                                    decoration: BoxDecoration(
-                                      color: const Color(0xffF8F8F8),
-                                      borderRadius: BorderRadius.circular(16),
-                                    ),
-                                    child: Padding(
-                                      padding: const EdgeInsets.all(6.0),
-                                      child: Column(
-                                        crossAxisAlignment:
-                                            CrossAxisAlignment.start,
-                                        children: [
-                                          ClipRRect(
-                                            borderRadius:
-                                                BorderRadius.circular(12),
-                                            child: Image.network(
-                                              image,
-                                              fit: BoxFit.cover,
-                                              height: 96,
-                                              width: 158,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 4,
-                                          ),
-                                          Text(
-                                            data[index].title.toString(),
-                                            style: const TextStyle(
-                                              color: AppColors.black,
-                                              fontSize: 14,
-                                              fontWeight: FontWeight.w500,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 20,
-                                          ),
-                                          Text(
-                                            '${data[index].price} с',
-                                            style: const TextStyle(
-                                              color: AppColors.green,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            height: 14,
-                                          ),
-                                          CustomButtomWidget(
-                                            height: 32,
-                                            text: 'Добавить',
-                                            onPressed: () {
-                                              addToCart(data[index]);
-                                              // showBottomAddProduct(
-                                              //     context,
-                                              //     isAdded,
-                                              //     Items(),
-                                              //     data[index]);
-                                            },
-                                          ),
-                                        ],
-                                      ),
-                                    ),
-                                  ),
-                                );
-                              },
-                            ),
-                          );
-                  },
-                ),
-              ],
-            ),
-          ),
-        ),
-/////////////////////////////////////    Карзина
-
-        floatingActionButton: BlocBuilder<SearchScreenCubit, SearchScreenState>(
-            builder: (context, state) =>
-                BlocBuilder<SearchScreenCubit, SearchScreenState>(
-                    builder: (context, state) {
+              ///////////  Выбрать товар
+              BlocBuilder<SearchScreenCubit, SearchScreenState>(
+                builder: (context, state) {
                   List<ProductEntity> data = [];
                   if (state is SearchScreenLoading) {
+                    return const Expanded(
+                      child: Center(
+                        child: CircularProgressIndicator(),
+                      ),
+                    );
                   } else if (state is SearchScreenLoaded) {
                     data = state.products;
                   }
 
-                  return GestureDetector(
-                    onTap: () => showRuleCart(
-                      context,
-                      Items(),
-                      data[0],
-                    ),
-                    child: SizedBox(
-                      width: 168,
-                      height: 48,
-                      child: DecoratedBox(
-                        decoration: BoxDecoration(
-                          color: AppColors.green,
-                          borderRadius: BorderRadius.circular(30),
-                        ),
-                        child: Padding(
-                          padding: const EdgeInsets.all(12.0),
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              SvgPicture.asset(
-                                'assets/svg/main/bag.svg',
-                                // ignore: deprecated_member_use
-                                color: AppColors.white,
-                              ),
-                              const Text(
-                                'Корзина 396 с',
-                                style: TextStyle(
-                                  color: Colors.white,
-                                  fontSize: 16,
-                                  fontWeight: FontWeight.w500,
+                  return data.isEmpty
+                      ? Column(
+                          children: [
+                            SvgPicture.asset('assets/svg/cart/emptyBag.svg'),
+                            const Text("Ничего не нашли"),
+                          ],
+                        )
+                      : Expanded(
+                          child: GridView.builder(
+                            gridDelegate:
+                                const SliverGridDelegateWithFixedCrossAxisCount(
+                              mainAxisExtent: 230,
+                              crossAxisCount: 2,
+                              mainAxisSpacing: 11.0,
+                              crossAxisSpacing: 11.0,
+                            ),
+                            itemCount: data.length,
+                            itemBuilder: (context, index) {
+                              String image = data[index].image.toString();
+                              Items item = items[index];
+
+                              return GestureDetector(
+                                onTap: () {
+                                  showBottomAddProduct(context, isAdded[index],
+                                      Items(), data[index]);
+                                },
+                                child: DecoratedBox(
+                                  decoration: BoxDecoration(
+                                    color: const Color(0xffF8F8F8),
+                                    borderRadius: BorderRadius.circular(16),
+                                  ),
+                                  child: Padding(
+                                    padding: const EdgeInsets.all(6.0),
+                                    child: Column(
+                                      crossAxisAlignment:
+                                          CrossAxisAlignment.start,
+                                      children: [
+                                        ClipRRect(
+                                          borderRadius:
+                                              BorderRadius.circular(12),
+                                          child: Image.network(
+                                            image,
+                                            fit: BoxFit.cover,
+                                            height: 96,
+                                            width: 158,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 4,
+                                        ),
+                                        Text(
+                                          data[index].title.toString(),
+                                          style: const TextStyle(
+                                            color: AppColors.black,
+                                            fontSize: 14,
+                                            fontWeight: FontWeight.w500,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 20,
+                                        ),
+                                        Text(
+                                          '${data[index].price} с',
+                                          style: const TextStyle(
+                                            color: AppColors.green,
+                                            fontSize: 20,
+                                            fontWeight: FontWeight.w700,
+                                          ),
+                                        ),
+                                        const SizedBox(
+                                          height: 14,
+                                        ),
+                                        isAdded[index]
+                                            ? Row(
+                                                mainAxisAlignment:
+                                                    MainAxisAlignment
+                                                        .spaceBetween,
+                                                children: [
+                                                  IconButtonWidget(
+                                                    icon: Icons.remove,
+                                                    onTap: () {
+                                                      setState(
+                                                        () {
+                                                          item.decrementCounter();
+                                                        },
+                                                      );
+                                                    },
+                                                  ),
+                                                  Text(
+                                                    item
+                                                        .getCounter()
+                                                        .toString(),
+                                                    style: const TextStyle(
+                                                      fontSize: 18,
+                                                      fontWeight:
+                                                          FontWeight.w500,
+                                                    ),
+                                                  ),
+                                                  IconButtonWidget(
+                                                    icon: Icons.add,
+                                                    onTap: () {
+                                                      setState(
+                                                        () {
+                                                          item.incrementCounter();
+                                                        },
+                                                      );
+                                                    },
+                                                  ),
+                                                ],
+                                              )
+                                            : CustomButtomWidget(
+                                                height: 32,
+                                                text: 'Добавить',
+                                                onPressed: () {
+                                                  setState(() {
+                                                    isAdded[index] = true;
+                                                  });
+                                                },
+                                              ),
+                                      ],
+                                    ),
+                                  ),
                                 ),
-                              )
-                            ],
+                              );
+                            },
                           ),
+                        );
+                },
+              ),
+            ],
+          ),
+        ),
+      ),
+/////////////////////////////////////    Карзина
+
+      floatingActionButton: BlocBuilder<SearchScreenCubit, SearchScreenState>(
+        builder: (context, state) =>
+            BlocBuilder<SearchScreenCubit, SearchScreenState>(
+          builder: (context, state) {
+            List<ProductEntity> data = [];
+            if (state is SearchScreenLoading) {
+            } else if (state is SearchScreenLoaded) {
+              data = state.products;
+            }
+
+            return GestureDetector(
+              onTap: () => showRuleCart(
+                context,
+                Items(),
+                data[0],
+              ),
+              child: SizedBox(
+                width: 168,
+                height: 48,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    color: AppColors.green,
+                    borderRadius: BorderRadius.circular(30),
+                  ),
+                  child: Padding(
+                    padding: const EdgeInsets.all(12.0),
+                    child: Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        SvgPicture.asset(
+                          'assets/svg/main/bag.svg',
+                          // ignore: deprecated_member_use
+                          color: AppColors.white,
                         ),
-                      ),
+                        const Text(
+                          'Корзина 396 с',
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 16,
+                            fontWeight: FontWeight.w500,
+                          ),
+                        )
+                      ],
                     ),
-                  );
-                })));
+                  ),
+                ),
+              ),
+            );
+          },
+        ),
+      ),
+    );
   }
 
   void _onTabTapped(int index) {
@@ -311,10 +353,10 @@ class _SearchScreenState extends State<SearchScreen> {
   void addToCart(ProductEntity product) {
     CartItem cart = CartItem();
     (CartModel(
-      id: product.id,
-      title: product.title,
-      price: product.price,
-    ));
+        id: product.id,
+        title: product.title,
+        price: product.price,
+        image: product.image));
 
     Navigator.push(
       context,
