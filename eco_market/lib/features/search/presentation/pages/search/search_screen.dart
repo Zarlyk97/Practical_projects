@@ -22,11 +22,11 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  List<Items> items = List.generate(10, (index) => Items());
+  List<Items> items = List.generate(50, (index) => Items());
   List<String> fruits = [];
   List<ProductEntity> product = [];
 
-  List<bool> isAdded = List.generate(100, (index) => false);
+  List<bool> isAdded = List.generate(50, (index) => false);
 
   int _currentIndex = 0;
 

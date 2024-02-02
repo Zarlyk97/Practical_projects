@@ -1,5 +1,5 @@
 import 'package:eco_market/config/config.dart';
-import 'package:eco_market/features/cart/presentation/cubit/cart_screen_cubit.dart';
+import 'package:eco_market/features/cart/presentation/bloc/cart_screen_bloc.dart';
 import 'package:eco_market/features/main/presentation/cubit/connection/connection_cubit.dart';
 import 'package:eco_market/features/main/presentation/cubit/main_screen_cubit.dart';
 import 'package:eco_market/features/main/presentation/pages/main/main.dart';
@@ -32,8 +32,8 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<SearchScreenCubit>(
             create: (context) => di.sl<SearchScreenCubit>()..getProducts()),
-        BlocProvider<CartScreenCubit>(
-            create: (context) => di.sl<CartScreenCubit>()..getOrders()),
+        BlocProvider<CartScreenBloc>(
+            create: (context) => di.sl<CartScreenBloc>()),
         BlocProvider<ConnectionCubit>(
             create: (context) => di.sl<ConnectionCubit>()),
       ],

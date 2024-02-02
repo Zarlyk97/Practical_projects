@@ -2,7 +2,7 @@ import 'package:dio/dio.dart';
 import 'package:eco_market/features/cart/data/datasources/cart_remote_data_source.dart';
 import 'package:eco_market/features/cart/data/repositories/cart_repo_impl.dart';
 import 'package:eco_market/features/cart/domain/repositories/repositories.dart';
-import 'package:eco_market/features/cart/presentation/cubit/cart_screen_cubit.dart';
+import 'package:eco_market/features/cart/presentation/bloc/cart_screen_bloc.dart';
 import 'package:eco_market/features/main/data/datasources/main_remote_data_source.dart';
 import 'package:eco_market/features/main/data/repositories/main_repo_impl.dart';
 import 'package:eco_market/features/main/domain/repositories/main_repository.dart';
@@ -30,7 +30,7 @@ Future<void> init() async {
   sl.registerLazySingleton<SearchRemoteDataSourse>(
       () => SearchRemoteDataSourseImple(sl()));
 
-  sl.registerFactory(() => CartScreenCubit(sl()));
+  sl.registerFactory(() => CartScreenBloc());
   sl.registerLazySingleton<CartRepository>(() => CartRepoImple(sl()));
   sl.registerLazySingleton<CartRemoteDataSourse>(
       () => CartRemoteDataSourseImple(sl()));

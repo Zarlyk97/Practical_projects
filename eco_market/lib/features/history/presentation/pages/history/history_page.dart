@@ -1,7 +1,8 @@
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/config/config.dart';
 import 'package:eco_market/features/cart/domain/entities/entity.dart';
-import 'package:eco_market/features/cart/presentation/cubit/cart_screen_cubit.dart';
+import 'package:eco_market/features/cart/presentation/bloc/cart_screen_bloc.dart';
+import 'package:eco_market/features/cart/presentation/bloc/cart_screen_state.dart';
 import 'package:eco_market/features/history/presentation/widgets/widgets.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -19,7 +20,7 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   void initState() {
     super.initState();
-    context.read<CartScreenCubit>().getOrders();
+    context.read<CartScreenBloc>();
   }
 
   @override
@@ -31,19 +32,16 @@ class _HistoryPageState extends State<HistoryPage> {
           style: TextStyle(color: AppColors.black),
         ),
       ),
-      body: BlocBuilder<CartScreenCubit, CartScreenState>(
+      body: BlocBuilder<CartScreenBloc, CartScreenState>(
         builder: (context, state) {
-          if (state is CartScreenLoading) {
+          if (state is CartLoadInProgress) {
             return const Center(child: CircularProgressIndicator());
-          } else if (state is CartScreenLoaded) {
-            data = state.orders;
-          }
+          } else if (state is ProductAdded) {}
           return Padding(
             padding: const EdgeInsets.all(16),
             child: Column(
               crossAxisAlignment: CrossAxisAlignment.start,
               children: [
-                const Text('Сегодня'),
                 Expanded(
                   child: ListView.separated(
                     itemCount: data.length,
