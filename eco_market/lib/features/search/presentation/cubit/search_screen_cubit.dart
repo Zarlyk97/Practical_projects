@@ -1,8 +1,8 @@
-import 'package:bloc/bloc.dart';
 import 'package:eco_market/features/cart/data/models/cart_model.dart';
 import 'package:eco_market/features/search/domain/entities/products_entity.dart';
 import 'package:eco_market/features/search/domain/repositories/search_repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'search_screen_state.dart';
 

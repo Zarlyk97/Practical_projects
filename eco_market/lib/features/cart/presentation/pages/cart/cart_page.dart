@@ -1,5 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/features/search/domain/entities/products_entity.dart';
 import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
@@ -67,10 +65,6 @@ class _CartPageState extends State<CartPage> {
                             clearCart(data[0]);
                           });
                         },
-                        // => Navigator.push(
-                        //     context,
-                        //     MaterialPageRoute(
-                        //         builder: (_) => const EmptyCartPage())),
                         child: const Text(
                           'Очистить',
                           style: TextStyle(
@@ -116,6 +110,8 @@ class _CartPageState extends State<CartPage> {
                           child: Padding(
                             padding: const EdgeInsets.all(5.0),
                             child: Row(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              crossAxisAlignment: CrossAxisAlignment.end,
                               children: [
                                 Stack(
                                   children: [
@@ -155,7 +151,7 @@ class _CartPageState extends State<CartPage> {
                                   ],
                                 ),
                                 Padding(
-                                  padding: const EdgeInsets.only(left: 8),
+                                  padding: const EdgeInsets.only(left: 5),
                                   child: Column(
                                     crossAxisAlignment:
                                         CrossAxisAlignment.start,
@@ -167,7 +163,7 @@ class _CartPageState extends State<CartPage> {
                                             fontWeight: FontWeight.w500),
                                       ),
                                       const SizedBox(
-                                        height: 2,
+                                        height: 4,
                                       ),
                                       Text(
                                         'цена ${product.price} с за шт',
@@ -177,63 +173,56 @@ class _CartPageState extends State<CartPage> {
                                             fontWeight: FontWeight.w500),
                                       ),
                                       const SizedBox(
-                                        height: 12,
+                                        height: 13,
                                       ),
-                                      Row(
-                                        children: [
-                                          Text(
-                                            '${product.price} с',
-                                            style: const TextStyle(
-                                              color: AppColors.green,
-                                              fontSize: 20,
-                                              fontWeight: FontWeight.w700,
-                                            ),
-                                          ),
-                                          const SizedBox(
-                                            width: 50,
-                                          ),
-                                          Row(
-                                            children: [
-                                              IconButtonWidget(
-                                                icon: Icons.remove,
-                                                onTap: () {
-                                                  setState(
-                                                    () {
-                                                      item.decrementCounter();
-                                                    },
-                                                  );
-                                                },
-                                              ),
-                                              const SizedBox(
-                                                width: 24,
-                                              ),
-                                              Text(
-                                                item.getCounter().toString(),
-                                                style: const TextStyle(
-                                                  fontSize: 18,
-                                                  fontWeight: FontWeight.w500,
-                                                ),
-                                              ),
-                                              const SizedBox(
-                                                width: 24,
-                                              ),
-                                              IconButtonWidget(
-                                                icon: Icons.add,
-                                                onTap: () {
-                                                  setState(
-                                                    () {
-                                                      item.incrementCounter();
-                                                    },
-                                                  );
-                                                },
-                                              ),
-                                            ],
-                                          ),
-                                        ],
+                                      Text(
+                                        '${product.price} с',
+                                        style: const TextStyle(
+                                          color: AppColors.green,
+                                          fontSize: 20,
+                                          fontWeight: FontWeight.w700,
+                                        ),
                                       ),
                                     ],
                                   ),
-                                )
+                                ),
+                                Row(
+                                  children: [
+                                    IconButtonWidget(
+                                      icon: Icons.remove,
+                                      onTap: () {
+                                        setState(
+                                          () {
+                                            item.decrementCounter();
+                                          },
+                                        );
+                                      },
+                                    ),
+                                    const SizedBox(
+                                      width: 24,
+                                    ),
+                                    Text(
+                                      item.getCounter().toString(),
+                                      style: const TextStyle(
+                                        fontSize: 18,
+                                        fontWeight: FontWeight.w500,
+                                      ),
+                                    ),
+                                    const SizedBox(
+                                      width: 24,
+                                    ),
+                                    IconButtonWidget(
+                                      icon: Icons.add,
+                                      onTap: () {
+                                        setState(
+                                          () {
+                                            item.incrementCounter();
+                                          },
+                                        );
+                                      },
+                                    ),
+                                  ],
+                                ),
                               ],
                             ),
                           ),

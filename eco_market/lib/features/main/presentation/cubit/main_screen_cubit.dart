@@ -1,7 +1,7 @@
-import 'package:bloc/bloc.dart';
 import 'package:eco_market/features/main/domain/entities/category_entity.dart';
 import 'package:eco_market/features/main/domain/repositories/main_repository.dart';
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'main_screen_state.dart';
 
