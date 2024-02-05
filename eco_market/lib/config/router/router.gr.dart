@@ -22,17 +22,13 @@ abstract class _$AppRouter extends RootStackRouter {
       );
     },
     CartRoute.name: (routeData) {
+      final args = routeData.argsAs<CartRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: CartPage(
-          cart: CartItem(),
+          key: args.key,
+          cart: args.cart,
         ),
-      );
-    },
-    EmptyCartRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const EmptyCartPage(),
       );
     },
     HistoryRoute.name: (routeData) {
@@ -65,8 +61,8 @@ abstract class _$AppRouter extends RootStackRouter {
         child: const PlacingAnOrderPage(),
       );
     },
-    SeachRoute.name: (routeData) {
-      final args = routeData.argsAs<SeachRouteArgs>();
+    SearchRoute.name: (routeData) {
+      final args = routeData.argsAs<SearchRouteArgs>();
       return AutoRoutePage<dynamic>(
         routeData: routeData,
         child: SearchScreen(
@@ -95,30 +91,39 @@ class AboutRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [CartPage]
-class CartRoute extends PageRouteInfo<void> {
-  const CartRoute({List<PageRouteInfo>? children})
-      : super(
+class CartRoute extends PageRouteInfo<CartRouteArgs> {
+  CartRoute({
+    Key? key,
+    required CartItem cart,
+    List<PageRouteInfo>? children,
+  }) : super(
           CartRoute.name,
+          args: CartRouteArgs(
+            key: key,
+            cart: cart,
+          ),
           initialChildren: children,
         );
 
   static const String name = 'CartRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static const PageInfo<CartRouteArgs> page = PageInfo<CartRouteArgs>(name);
 }
 
-/// generated route for
-/// [EmptyCartPage]
-class EmptyCartRoute extends PageRouteInfo<void> {
-  const EmptyCartRoute({List<PageRouteInfo>? children})
-      : super(
-          EmptyCartRoute.name,
-          initialChildren: children,
-        );
+class CartRouteArgs {
+  const CartRouteArgs({
+    this.key,
+    required this.cart,
+  });
 
-  static const String name = 'EmptyCartRoute';
+  final Key? key;
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  final CartItem cart;
+
+  @override
+  String toString() {
+    return 'CartRouteArgs{key: $key, cart: $cart}';
+  }
 }
 
 /// generated route for
@@ -193,15 +198,15 @@ class PlacingAnOrderRoute extends PageRouteInfo<void> {
 
 /// generated route for
 /// [SearchScreen]
-class SeachRoute extends PageRouteInfo<SeachRouteArgs> {
-  SeachRoute({
+class SearchRoute extends PageRouteInfo<SearchRouteArgs> {
+  SearchRoute({
     Key? key,
     required int id,
     required List<String> fruits,
     List<PageRouteInfo>? children,
   }) : super(
-          SeachRoute.name,
-          args: SeachRouteArgs(
+          SearchRoute.name,
+          args: SearchRouteArgs(
             key: key,
             id: id,
             fruits: fruits,
@@ -209,13 +214,13 @@ class SeachRoute extends PageRouteInfo<SeachRouteArgs> {
           initialChildren: children,
         );
 
-  static const String name = 'SeachRoute';
+  static const String name = 'SearchRoute';
 
-  static const PageInfo<SeachRouteArgs> page = PageInfo<SeachRouteArgs>(name);
+  static const PageInfo<SearchRouteArgs> page = PageInfo<SearchRouteArgs>(name);
 }
 
-class SeachRouteArgs {
-  const SeachRouteArgs({
+class SearchRouteArgs {
+  const SearchRouteArgs({
     this.key,
     required this.id,
     required this.fruits,
@@ -229,6 +234,6 @@ class SeachRouteArgs {
 
   @override
   String toString() {
-    return 'SeachRouteArgs{key: $key, id: $id, fruits: $fruits}';
+    return 'SearchRouteArgs{key: $key, id: $id, fruits: $fruits}';
   }
 }
