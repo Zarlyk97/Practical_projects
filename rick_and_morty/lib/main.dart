@@ -5,7 +5,8 @@ import 'package:rick_and_morty/feature/presentation/bloc/bloc/search_bloc.dart';
 import 'package:rick_and_morty/feature/presentation/bloc/cubit/person_cubit.dart';
 
 import 'package:rick_and_morty/feature/presentation/pages/home_page.dart';
-import 'package:rick_and_morty/locator_service.dart';
+
+import 'locator_service.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();

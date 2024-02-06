@@ -1,16 +1,28 @@
-import 'package:rick_and_morty/feature/domain/entities/person_entity.dart';
+class Location {
+  String? name;
+  String? url;
 
-class LocationModel extends LocationEntity {
-  const LocationModel({required super.name, required super.url});
+  Location({
+    this.name,
+    this.url,
+  });
 
-  factory LocationModel.fromJson(Map<String, dynamic> json) {
-    return LocationModel(name: json["name"], url: json["url"]);
-  }
+  Location copyWith({
+    String? name,
+    String? url,
+  }) =>
+      Location(
+        name: name ?? this.name,
+        url: url ?? this.url,
+      );
 
-  Map<String, dynamic> toJson() {
-    return {
-      "name": name,
-      "url": url,
-    };
-  }
+  factory Location.fromJson(Map<String, dynamic> json) => Location(
+        name: json["name"],
+        url: json["url"],
+      );
+
+  Map<String, dynamic> toJson() => {
+        "name": name,
+        "url": url,
+      };
 }

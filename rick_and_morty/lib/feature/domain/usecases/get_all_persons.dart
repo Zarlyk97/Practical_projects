@@ -1,4 +1,4 @@
-// import 'package:dartz/dartz.dart' as dartz;
+// ignore: implementation_imports
 import 'package:either_dart/src/either.dart';
 import 'package:equatable/equatable.dart';
 import 'package:rick_and_morty/core/error/failure.dart';

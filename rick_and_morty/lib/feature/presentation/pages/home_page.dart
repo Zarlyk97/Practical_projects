@@ -25,7 +25,7 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: PersonsList(),
+      body: const PersonsList(),
     );
   }
 }

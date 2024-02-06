@@ -7,33 +7,30 @@ import 'package:rick_and_morty/feature/presentation/bloc/cubit/person_cubit.dart
 import 'package:rick_and_morty/feature/presentation/bloc/cubit/person_state.dart';
 import 'package:rick_and_morty/feature/presentation/widgets/person_card_widget.dart';
 
-class PersonsList extends StatelessWidget {
-  PersonsList({super.key});
+class PersonsList extends StatefulWidget {
+  const PersonsList({super.key});
+
+  @override
+  State<PersonsList> createState() => _PersonsListState();
+}
+
+class _PersonsListState extends State<PersonsList> {
   final scrollController = ScrollController();
+  List<PersonEntity> persons = [];
+  bool isloading = false;
+
   final int page = -1;
-  void setupScrollController(BuildContext context) {
-    scrollController.addListener(() {
-      if (scrollController.position.atEdge) {
-        if (scrollController.position.pixels != 0) {
-          //BlocProvider.of<PersonListCubit>(context).loadPerson();
-          context.read<PersonListCubit>().loadPerson();
-        }
-      }
-    });
-  }
 
   @override
   Widget build(BuildContext context) {
     setupScrollController(context);
     return BlocBuilder<PersonListCubit, PersonState>(
       builder: (context, state) {
-        List<PersonEntity> persons = [];
-        bool isloading = false;
-
         if (state is PersonLoading && state.isFirstFetch) {
+          print('error');
+
           return _loadingIndicator();
         } else if (state is PersonLoading) {
-          print('zarlyk');
           persons = state.oldPersonsList;
           isloading = true;
         } else if (state is PersonLoaded) {
@@ -76,5 +73,16 @@ class PersonsList extends StatelessWidget {
         child: CircularProgressIndicator(),
       ),
     );
+  }
+
+  void setupScrollController(BuildContext context) {
+    scrollController.addListener(() {
+      if (scrollController.position.atEdge) {
+        if (scrollController.position.pixels != 0) {
+          //BlocProvider.of<PersonListCubit>(context).loadPerson();
+          context.read<PersonListCubit>().loadPerson();
+        }
+      }
+    });
   }
 }

@@ -17,9 +17,7 @@ final sl = GetIt.instance;
 
 Future<void> initlocator() async {
   // BLoC / Cubit
-  sl.registerFactory(
-    () => PersonListCubit(getAllPersons: sl()),
-  );
+
   sl.registerFactory(
     () => PersonSearchBloc(searchPerson: sl()),
   );
@@ -41,7 +39,7 @@ Future<void> initlocator() async {
       client: sl(),
     ),
   );
-
+  sl.registerFactory(() => PersonListCubit(getAllPersons: sl()));
   sl.registerLazySingleton<PersonLocalDataSource>(
     () => PersonLocalDataSourceImpl(sharedPreferences: sl()),
   );

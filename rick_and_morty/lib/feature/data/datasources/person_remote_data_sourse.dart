@@ -30,7 +30,6 @@ class PersonRemoteDataSourceImpl implements PersonRemoteDataSource {
       'https://rickandmortyapi.com/api/character/?name=$query');
 
   Future<List<PersonModel>> _getPersonFromUrl(String url) async {
-    print(url);
     final response = await client.get(url);
     if (response.statusCode == 200) {
       final persons = json.decode(response.data);
@@ -38,7 +37,6 @@ class PersonRemoteDataSourceImpl implements PersonRemoteDataSource {
           .map((person) => PersonModel.fromJson(person))
           .toList();
     } else {
-      print(response.data);
       throw ServerException();
     }
   }
