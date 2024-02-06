@@ -2,9 +2,7 @@ import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/features/search/domain/entities/products_entity.dart';
 import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
 import 'package:flutter/material.dart';
-
 import 'package:eco_market/config/theme/app_colors.dart';
-import 'package:eco_market/features/cart/data/models/cart_model.dart';
 import 'package:eco_market/features/cart/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/main/presentation/widgets/widgets.dart';
 import 'package:eco_market/features/search/presentation/widgets/text_price_widget.dart';
@@ -13,11 +11,8 @@ import 'package:svg_flutter/svg.dart';
 
 @RoutePage()
 class CartPage extends StatefulWidget {
-  final CartItem cart;
-
   const CartPage({
     Key? key,
-    required this.cart,
   }) : super(key: key);
   @override
   State<CartPage> createState() => _CartPageState();
@@ -279,10 +274,4 @@ class _CartPageState extends State<CartPage> {
   void clearCart(ProductEntity product) {
     data.clear();
   }
-}
-
-class CartItem {
-  List<CartModel> items = [];
-  String get totalPrice =>
-      items.fold('0', (total, item) => total + item.price!);
 }

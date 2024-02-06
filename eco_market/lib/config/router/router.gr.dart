@@ -27,7 +27,6 @@ abstract class _$AppRouter extends RootStackRouter {
         routeData: routeData,
         child: CartPage(
           key: args.key,
-          cart: args.cart,
         ),
       );
     },
@@ -94,14 +93,9 @@ class AboutRoute extends PageRouteInfo<void> {
 class CartRoute extends PageRouteInfo<CartRouteArgs> {
   CartRoute({
     Key? key,
-    required CartItem cart,
     List<PageRouteInfo>? children,
   }) : super(
           CartRoute.name,
-          args: CartRouteArgs(
-            key: key,
-            cart: cart,
-          ),
           initialChildren: children,
         );
 
@@ -113,17 +107,9 @@ class CartRoute extends PageRouteInfo<CartRouteArgs> {
 class CartRouteArgs {
   const CartRouteArgs({
     this.key,
-    required this.cart,
   });
 
   final Key? key;
-
-  final CartItem cart;
-
-  @override
-  String toString() {
-    return 'CartRouteArgs{key: $key, cart: $cart}';
-  }
 }
 
 /// generated route for

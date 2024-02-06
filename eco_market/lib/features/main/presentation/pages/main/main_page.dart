@@ -39,13 +39,13 @@ class _MainPageState extends State<MainPage> {
             _currentIndex = value;
             setState(() {});
           },
-          children: [
-            const HomePage(),
+          children: const [
+              HomePage(),
             CartPage(
-              cart: CartItem(),
+             
             ),
-            const HistoryPage(),
-            const AboutPage(),
+            HistoryPage(),
+            AboutPage(),
           ],
         ),
       ),

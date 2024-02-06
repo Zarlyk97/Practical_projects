@@ -1,6 +1,4 @@
 import 'package:auto_route/auto_route.dart';
-import 'package:eco_market/features/cart/data/models/cart_model.dart';
-import 'package:eco_market/features/cart/presentation/pages/pages.dart';
 import 'package:eco_market/features/search/presentation/widgets/show_bottom_add_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -348,21 +346,5 @@ class _SearchScreenState extends State<SearchScreen> {
     setState(() {
       _currentIndex = index;
     });
-  }
-
-  void addToCart(ProductEntity product) {
-    CartItem cart = CartItem();
-    (CartModel(
-        id: product.id,
-        title: product.title,
-        price: product.price,
-        image: product.image));
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-        builder: (context) => CartPage(cart: cart),
-      ),
-    );
   }
 }
