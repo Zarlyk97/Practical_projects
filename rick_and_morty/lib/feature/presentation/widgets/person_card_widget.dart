@@ -35,7 +35,7 @@ class PersonCard extends StatelessWidget {
               child: Column(
                 children: [
                   Text(
-                    person.name,
+                    person.name.toString(),
                     style: const TextStyle(
                       fontSize: 20,
                       fontWeight: FontWeight.w700,
