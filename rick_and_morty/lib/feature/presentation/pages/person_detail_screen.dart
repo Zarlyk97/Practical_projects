@@ -22,7 +22,7 @@ class PersonDetailPage extends StatelessWidget {
               height: 24,
             ),
             Text(
-              person.name,
+              person.name.toString(),
               style: const TextStyle(
                   fontSize: 28,
                   fontWeight: FontWeight.w700,
@@ -54,7 +54,7 @@ class PersonDetailPage extends StatelessWidget {
                 ),
                 Expanded(
                   child: Text(
-                    person.status,
+                    person.status.toString(),
                     style: const TextStyle(fontSize: 16, color: Colors.white),
                     maxLines: 1,
                   ),
@@ -64,11 +64,11 @@ class PersonDetailPage extends StatelessWidget {
             const SizedBox(
               height: 16,
             ),
-            if (person.type.isNotEmpty) ...biuldText('Type:', person.type),
-            ...biuldText('Gender:', person.gender),
+            if (person.type!.isNotEmpty) ...biuldText('Type:', person.type!),
+            ...biuldText('Gender:', person.gender!),
             ...biuldText(
-                'Number of opisodes:', person.episode.length.toString()),
-            ...biuldText('Species:', person.species),
+                'Number of opisodes:', person.episode!.length.toString()),
+            ...biuldText('Species:', person.species!),
             ...biuldText('Last know location:', person.location!.name),
             ...biuldText(
               'Origin:',
