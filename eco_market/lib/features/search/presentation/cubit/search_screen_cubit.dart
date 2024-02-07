@@ -17,7 +17,7 @@ class SearchScreenCubit extends Cubit<SearchScreenState> {
           productType: productType, search: search);
       emit(SearchScreenLoaded(products: list));
     } catch (e) {
-      emit(SearchScreenFailure());
+      emit(SearchScreenFailure(error: e));
     }
   }
 }

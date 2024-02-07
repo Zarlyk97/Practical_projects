@@ -20,4 +20,8 @@ class CartScreenLoaded extends CartScreenState {
   });
 }
 
-class CartScreenFailure extends CartScreenState {}
+class CartScreenFailure extends CartScreenState {
+  final Object? exception;
+
+  const CartScreenFailure(this.exception);
+}

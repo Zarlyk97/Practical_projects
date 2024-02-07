@@ -151,6 +151,8 @@ class _SearchScreenState extends State<SearchScreen> {
                     );
                   } else if (state is SearchScreenLoaded) {
                     data = state.products;
+                  } else if (state is SearchScreenFailure) {
+                    return const Center(child: Text('Нет интернета'));
                   }
 
                   return data.isEmpty

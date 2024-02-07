@@ -12,7 +12,7 @@ class CartScreenCubit extends Cubit<CartScreenState> {
       var list = await _cartRepository.getOrders();
       emit(CartScreenLoaded(orders: list));
     } catch (e) {
-      emit(CartScreenFailure());
+      emit(CartScreenFailure(e));
     }
   }
 }

@@ -4,6 +4,6 @@ abstract class CartRepository {
   Future<List<OrderEntity>> getOrders();
 }
 
-abstract class SendAnOrderRepository {
-  Future<List<SendOrderEntity>> sendAnOrder();
-}
+// abstract class SendAnOrderRepository {
+//   Future<List<SendOrderEntity>> sendAnOrder();
+// }

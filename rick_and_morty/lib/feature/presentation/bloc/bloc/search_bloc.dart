@@ -1,3 +1,4 @@
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:rick_and_morty/core/error/failure.dart';
 
@@ -14,6 +15,7 @@ class PersonSearchBloc extends Bloc<PersonSearchEvent, PersonSearchState> {
   PersonSearchBloc({required this.searchPerson}) : super(PersonSearchEmpty());
 
   Stream<PersonSearchState> mapEventToState(PersonSearchEvent event) async* {
+    debugPrint('zero vdvdv');
     if (event is SearchPersons) {
       yield* _mapFetchPersonsToState(event.personQuery);
     }
