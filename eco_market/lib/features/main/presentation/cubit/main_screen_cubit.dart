@@ -10,8 +10,11 @@ class MainScreenCubit extends Cubit<MainScreenState> {
   MainScreenCubit(this._mainRepoistory) : super(MainScreenInitial());
 
   getCategory() async {
-    emit(MainScreenLoading());
     try {
+      if (state is! MainScreenLoaded) {
+        emit(MainScreenLoading());
+      }
+
       var list = await _mainRepoistory.getCategory();
 
       emit(MainScreenLoaded(category: list));

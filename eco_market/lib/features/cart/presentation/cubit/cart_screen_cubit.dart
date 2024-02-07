@@ -7,8 +7,9 @@ class CartScreenCubit extends Cubit<CartScreenState> {
   CartScreenCubit(this._cartRepository) : super(CartScreenInitial());
 
   getOrders() async {
-    emit(CartScreenLoading());
     try {
+      emit(CartScreenLoading());
+
       var list = await _cartRepository.getOrders();
       emit(CartScreenLoaded(orders: list));
     } catch (e) {
