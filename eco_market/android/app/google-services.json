@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "973416647349",
+    "project_id": "eco-market-e3397",
+    "storage_bucket": "eco-market-e3397.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:973416647349:android:e4187f4748ba1ce2904cfc",
+        "android_client_info": {
+          "package_name": "com.example.eco_market"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyDMo3yDILa2DjpKsDPXv7ppdktokpuMaZ0"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

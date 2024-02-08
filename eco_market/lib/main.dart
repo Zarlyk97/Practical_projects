@@ -5,6 +5,8 @@ import 'package:eco_market/features/main/presentation/cubit/main_screen_cubit.da
 import 'package:eco_market/features/main/presentation/pages/main/main.dart';
 import 'package:eco_market/features/main/presentation/pages/network/no_connection_page.dart';
 import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
+import 'package:eco_market/firebase_options.dart';
+import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -15,6 +17,10 @@ void main() async {
   SystemChrome.setSystemUIOverlayStyle(
     const SystemUiOverlayStyle(statusBarColor: AppColors.primary),
   );
+  await Firebase.initializeApp(
+    options: DefaultFirebaseOptions.currentPlatform,
+  );
+
   await di.init();
 
   runApp(const MyApp());
