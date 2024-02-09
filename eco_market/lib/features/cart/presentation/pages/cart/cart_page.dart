@@ -12,8 +12,8 @@ import 'package:svg_flutter/svg.dart';
 @RoutePage()
 class CartPage extends StatefulWidget {
   const CartPage({
-    Key? key,
-  }) : super(key: key);
+    super.key,
+  });
   @override
   State<CartPage> createState() => _CartPageState();
 }
@@ -163,6 +163,7 @@ class _CartPageState extends State<CartPage> {
                                           style: const TextStyle(
                                               fontSize: 14,
                                               fontWeight: FontWeight.w500),
+                                          overflow: TextOverflow.clip,
                                         ),
                                         const SizedBox(
                                           height: 4,
@@ -204,7 +205,7 @@ class _CartPageState extends State<CartPage> {
                                         width: 24,
                                       ),
                                       Text(
-                                        item.getCounter().toString(),
+                                        item.counter.toString(),
                                         style: const TextStyle(
                                           fontSize: 18,
                                           fontWeight: FontWeight.w500,

@@ -100,7 +100,7 @@ showBottomAddProduct(
                               width: 44,
                             ),
                             Text(
-                              item.getCounter().toString(),
+                              item.counter.toString(),
                               style: const TextStyle(
                                 fontSize: 18,
                                 fontWeight: FontWeight.w500,

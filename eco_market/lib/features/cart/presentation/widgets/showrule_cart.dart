@@ -126,9 +126,7 @@ showRuleCart(BuildContext context, Items addAndRemove,
                                             width: 24,
                                           ),
                                           Text(
-                                            addAndRemove
-                                                .getCounter()
-                                                .toString(),
+                                            addAndRemove.counter.toString(),
                                             style: const TextStyle(
                                               fontSize: 18,
                                               fontWeight: FontWeight.w500,

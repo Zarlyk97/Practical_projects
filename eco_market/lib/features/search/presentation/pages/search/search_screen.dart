@@ -36,6 +36,7 @@ class _SearchScreenState extends State<SearchScreen> {
         .read<SearchScreenCubit>()
         .getProducts(productType: fruits[_currentIndex]);
     super.initState();
+    Items().getCounter();
   }
 
   @override
@@ -244,9 +245,7 @@ class _SearchScreenState extends State<SearchScreen> {
                                                     },
                                                   ),
                                                   Text(
-                                                    item
-                                                        .getCounter()
-                                                        .toString(),
+                                                    item.counter.toString(),
                                                     style: const TextStyle(
                                                       fontSize: 18,
                                                       fontWeight:

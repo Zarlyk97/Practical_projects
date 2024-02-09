@@ -12,6 +12,7 @@ import 'package:eco_market/features/search/data/repositories/search_repo_imple.d
 import 'package:eco_market/features/search/domain/repositories/search_repository.dart';
 import 'package:eco_market/features/search/presentation/cubit/search_screen_cubit.dart';
 import 'package:get_it/get_it.dart';
+import 'package:shared_preferences/shared_preferences.dart';
 
 import 'features/main/presentation/cubit/connection/connection_cubit.dart';
 
@@ -35,6 +36,9 @@ Future<void> init() async {
   sl.registerLazySingleton<CartRemoteDataSourse>(
       () => CartRemoteDataSourseImple(sl()));
   sl.registerFactory(() => ConnectionCubit());
+  final sharedPreferences = await SharedPreferences.getInstance();
+
+  sl.registerLazySingleton(() => sharedPreferences);
 
   sl.registerLazySingleton(() => Dio());
 }
