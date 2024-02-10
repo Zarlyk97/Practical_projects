@@ -1,4 +1,8 @@
+import 'dart:developer';
+
 import 'package:auto_route/auto_route.dart';
+import 'package:eco_market/features/cart/presentation/cubit/cart_screen_cubit.dart';
+import 'package:eco_market/features/search/data/models/product_model.dart';
 import 'package:eco_market/features/search/presentation/widgets/show_bottom_add_product.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -255,11 +259,15 @@ class _SearchScreenState extends State<SearchScreen> {
                                                   IconButtonWidget(
                                                     icon: Icons.add,
                                                     onTap: () {
-                                                      setState(
-                                                        () {
-                                                          item.incrementCounter();
-                                                        },
-                                                      );
+                                                      context
+                                                          .read<
+                                                              CartScreenCubit>()
+                                                          .addToCart(
+                                                            ProductModel
+                                                                .fromEntity(
+                                                              data[index],
+                                                            ),
+                                                          );
                                                     },
                                                   ),
                                                 ],
@@ -268,9 +276,13 @@ class _SearchScreenState extends State<SearchScreen> {
                                                 height: 32,
                                                 text: 'Добавить',
                                                 onPressed: () {
-                                                  setState(() {
-                                                    isAdded[index] = true;
-                                                  });
+                                                  context
+                                                      .read<CartScreenCubit>()
+                                                      .addToCart(
+                                                        ProductModel.fromEntity(
+                                                          data[index],
+                                                        ),
+                                                      );
                                                 },
                                               ),
                                       ],
@@ -299,44 +311,64 @@ class _SearchScreenState extends State<SearchScreen> {
               data = state.products;
             }
 
-            return GestureDetector(
-              onTap: () => showRuleCart(
-                context,
-                Items(),
-                data[0],
-              ),
-              child: SizedBox(
-                width: 168,
-                height: 48,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    color: AppColors.green,
-                    borderRadius: BorderRadius.circular(30),
-                  ),
-                  child: Padding(
-                    padding: const EdgeInsets.all(12.0),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        SvgPicture.asset(
-                          'assets/svg/main/bag.svg',
-                          // ignore: deprecated_member_use
-                          color: AppColors.white,
-                        ),
-                        const Text(
-                          'Корзина 396 с',
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 16,
-                            fontWeight: FontWeight.w500,
-                          ),
-                        )
-                      ],
+            return StreamBuilder<List<ProductEntity>>(
+                stream: context.read<CartScreenCubit>().cart,
+                builder: (context, snapshot) {
+                  double total = 0;
+                  if (snapshot.connectionState == ConnectionState.waiting) {
+                    return const Center(child: CircularProgressIndicator());
+                  } else if (snapshot.hasData) {
+                    data = snapshot.data!;
+                    total = data.fold(
+                      total,
+                      (total, element) =>
+                          total +
+                          ((element.quantity ?? 1) *
+                              (double.parse(element.price ?? '1'))),
+                    );
+                  }
+                  return GestureDetector(
+                    onTap: () => showRuleCart(
+                      context,
+                      Items(),
+                      data[0],
                     ),
-                  ),
-                ),
-              ),
-            );
+                    child: SizedBox(
+                      width: 180,
+                      height: 48,
+                      child: DecoratedBox(
+                        decoration: BoxDecoration(
+                          color: AppColors.green,
+                          borderRadius: BorderRadius.circular(30),
+                        ),
+                        child: Padding(
+                          padding: const EdgeInsets.all(12.0),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              SvgPicture.asset(
+                                'assets/svg/main/bag.svg',
+                                color: AppColors.white,
+                              ),
+                              Expanded(
+                                child: Text(
+                                  'Корзина $total с',
+                                  style: const TextStyle(
+                                    color: Colors.white,
+                                    fontSize: 16,
+                                    fontWeight: FontWeight.w500,
+                                  ),
+                                  maxLines: 2,
+                                  overflow: TextOverflow.ellipsis,
+                                ),
+                              )
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                  );
+                });
           },
         ),
       ),

@@ -9,6 +9,7 @@ class ProductModel extends ProductEntity {
     super.price,
     super.quantity,
     super.title,
+    super.count,
   });
 
   factory ProductModel.fromJson(Map<String, dynamic> json) => ProductModel(
@@ -19,6 +20,18 @@ class ProductModel extends ProductEntity {
         image: json["image"],
         quantity: json["quantity"],
         price: json["price"],
+        count: json["count"] == null ? null : json['count'],
+      );
+
+  factory ProductModel.fromEntity(ProductEntity product) => ProductModel(
+        category: product.category,
+        description: product.description,
+        id: product.id,
+        image: product.image,
+        price: product.price,
+        quantity: product.quantity,
+        title: product.title,
+        count: product.count,
       );
 
   Map<String, dynamic> toJson() => {
@@ -29,5 +42,6 @@ class ProductModel extends ProductEntity {
         "image": image,
         "quantity": quantity,
         "price": price,
+        if (count != null) "count": count,
       };
 }

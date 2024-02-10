@@ -32,9 +32,9 @@ Future<void> init() async {
       () => SearchRemoteDataSourseImple(sl()));
 
   sl.registerFactory(() => CartScreenCubit(sl()));
-  sl.registerLazySingleton<CartRepository>(() => CartRepoImple(sl()));
+  sl.registerLazySingleton<CartRepository>(() => CartRepoImpl(sl()));
   sl.registerLazySingleton<CartRemoteDataSourse>(
-      () => CartRemoteDataSourseImple(sl()));
+      () => CartRemoteDataSourseImple());
   sl.registerFactory(() => ConnectionCubit());
   final sharedPreferences = await SharedPreferences.getInstance();
 

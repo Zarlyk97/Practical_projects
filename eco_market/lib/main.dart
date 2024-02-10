@@ -39,7 +39,7 @@ class MyApp extends StatelessWidget {
         BlocProvider<SearchScreenCubit>(
             create: (context) => di.sl<SearchScreenCubit>()..getProducts()),
         BlocProvider<CartScreenCubit>(
-            create: (context) => di.sl<CartScreenCubit>()..getOrders()),
+            create: (context) => di.sl<CartScreenCubit>()),
         BlocProvider<ConnectionCubit>(
             create: (context) => di.sl<ConnectionCubit>()),
       ],

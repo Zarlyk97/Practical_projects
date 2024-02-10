@@ -20,7 +20,6 @@ class _HistoryPageState extends State<HistoryPage> {
   @override
   void initState() {
     super.initState();
-    context.read<CartScreenCubit>().getOrders();
   }
 
   @override
@@ -34,14 +33,14 @@ class _HistoryPageState extends State<HistoryPage> {
       ),
       body: RefreshIndicator(
         onRefresh: () async {
-          context.read<CartScreenCubit>().getOrders();
+          // context.read<CartScreenCubit>().getOrders();
         },
         child: BlocBuilder<CartScreenCubit, CartScreenState>(
           builder: (context, state) {
             if (state is CartScreenLoading) {
               return const Center(child: CircularProgressIndicator());
             } else if (state is CartScreenLoaded) {
-              data = state.orders;
+              // data = state.cart;
             }
             return Padding(
               padding: const EdgeInsets.all(16),

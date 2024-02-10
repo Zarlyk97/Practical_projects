@@ -6,6 +6,7 @@ class ProductEntity {
   String? image;
   int? quantity;
   String? price;
+  String? count;
 
   ProductEntity({
     this.id,
@@ -15,5 +16,6 @@ class ProductEntity {
     this.image,
     this.quantity,
     this.price,
+    this.count,
   });
 }
