@@ -208,7 +208,12 @@ class _CartPageState extends State<CartPage> {
                                           children: [
                                             IconButtonWidget(
                                               icon: Icons.remove,
-                                              onTap: () {},
+                                              onTap: () {
+                                                context
+                                                    .read<CartScreenCubit>()
+                                                    .decrementCart(
+                                                        data[index].id!);
+                                              },
                                             ),
                                             const SizedBox(
                                               width: 24,

@@ -37,6 +37,14 @@ class CartScreenCubit extends Cubit<CartScreenState> {
     }
   }
 
+  decrementCart(int productId) async {
+    try {
+      await _cartRepository.decrementCart(productId);
+    } catch (e) {
+      log("$e");
+    }
+  }
+
   removeFromCart(int productId) async {
     try {
       await _cartRepository.removeFromCart(productId);
