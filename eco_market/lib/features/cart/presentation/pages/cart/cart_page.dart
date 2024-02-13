@@ -294,12 +294,4 @@ class _CartPageState extends State<CartPage> {
       ),
     );
   }
-
-  void removeCart(ProductEntity productEntity) {
-    data.remove(productEntity);
-  }
-
-  void clearCart(ProductEntity product) {
-    data.clear();
-  }
 }

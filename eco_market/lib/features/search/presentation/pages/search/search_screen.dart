@@ -1,5 +1,3 @@
-import 'dart:developer';
-
 import 'package:auto_route/auto_route.dart';
 import 'package:eco_market/features/cart/presentation/cubit/cart_screen_cubit.dart';
 import 'package:eco_market/features/search/data/models/product_model.dart';
@@ -26,10 +24,9 @@ class SearchScreen extends StatefulWidget {
 class _SearchScreenState extends State<SearchScreen> {
   List<Items> items = List.generate(50, (index) => Items());
   List<String> fruits = [];
-  List<ProductEntity> product = [];
 
   List<bool> isAdded = List.generate(50, (index) => false);
-
+  List<ProductEntity> data = [];
   int _currentIndex = 0;
 
   @override
@@ -39,8 +36,9 @@ class _SearchScreenState extends State<SearchScreen> {
     context
         .read<SearchScreenCubit>()
         .getProducts(productType: fruits[_currentIndex]);
+    context.read<CartScreenCubit>().getCartItems();
+
     super.initState();
-    Items().getCounter();
   }
 
   @override
@@ -330,7 +328,6 @@ class _SearchScreenState extends State<SearchScreen> {
                   return GestureDetector(
                     onTap: () => showRuleCart(
                       context,
-                      Items(),
                       data[0],
                     ),
                     child: SizedBox(

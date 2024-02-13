@@ -7,6 +7,7 @@ abstract class CartRemoteDataSourse {
   Future<void> addToCart(ProductModel product);
   Future<void> removeFromCart(int productId);
   Future<void> incrementCart(int productId);
+  Future<void> decrementCart(int productId);
 }
 
 class CartRemoteDataSourseImple implements CartRemoteDataSourse {
@@ -40,6 +41,20 @@ class CartRemoteDataSourseImple implements CartRemoteDataSourse {
 
       if (docSnapshot.exists) {
         int newCount = docSnapshot.get('quantity') + 1;
+        transaction.update(doc, {'quantity': newCount});
+      }
+    });
+  }
+
+  @override
+  Future<void> decrementCart(int productId) async {
+    var doc = _fireStore.collection('cart').doc("$productId");
+
+    await _fireStore.runTransaction((transaction) async {
+      final docSnapshot = await transaction.get(doc);
+
+      if (docSnapshot.exists) {
+        int newCount = docSnapshot.get('quantity') - 1;
         transaction.update(doc, {'quantity': newCount});
       }
     });

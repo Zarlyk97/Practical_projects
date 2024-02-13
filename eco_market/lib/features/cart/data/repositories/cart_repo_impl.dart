@@ -22,4 +22,8 @@ class CartRepoImpl implements CartRepository {
   @override
   Future<void> incrementCart(int productId) async =>
       await _cartRemoteDataSourse.incrementCart(productId);
+
+  @override
+  Future<void> decrementCart(int productId) async =>
+      await _cartRemoteDataSourse.decrementCart(productId);
 }
