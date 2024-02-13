@@ -37,7 +37,6 @@ class _SearchScreenState extends State<SearchScreen> {
         .read<SearchScreenCubit>()
         .getProducts(productType: fruits[_currentIndex]);
     context.read<CartScreenCubit>().getCartItems();
-
     super.initState();
   }
 
@@ -326,10 +325,7 @@ class _SearchScreenState extends State<SearchScreen> {
                     );
                   }
                   return GestureDetector(
-                    onTap: () => showRuleCart(
-                      context,
-                      data[0],
-                    ),
+                    onTap: () => showRuleCart(context, data),
                     child: SizedBox(
                       width: 180,
                       height: 48,
@@ -345,6 +341,7 @@ class _SearchScreenState extends State<SearchScreen> {
                             children: [
                               SvgPicture.asset(
                                 'assets/svg/main/bag.svg',
+                                // ignore: deprecated_member_use
                                 color: AppColors.white,
                               ),
                               Expanded(

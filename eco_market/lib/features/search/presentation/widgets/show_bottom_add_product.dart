@@ -14,8 +14,8 @@ showBottomAddProduct(
     showDragHandle: true,
     backgroundColor: Colors.white,
     constraints: BoxConstraints(
-      maxHeight: MediaQuery.of(context).size.height - 150,
-      minHeight: MediaQuery.of(context).size.height - 200,
+      maxHeight: MediaQuery.of(context).size.height - 100,
+      minHeight: MediaQuery.of(context).size.height - 300,
     ),
     shape: const RoundedRectangleBorder(
       borderRadius: BorderRadius.only(
