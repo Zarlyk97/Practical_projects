@@ -1,13 +1,13 @@
 import 'package:eco_market/config/theme/app_colors.dart';
+import 'package:eco_market/features/cart/presentation/cubit/cart_screen_cubit.dart';
 import 'package:eco_market/features/main/presentation/widgets/custom_button_widget.dart';
-import 'package:eco_market/features/main/presentation/widgets/icon_button_widget.dart';
-import 'package:eco_market/features/main/presentation/widgets/item_class.dart';
+import 'package:eco_market/features/search/data/models/product_model.dart';
 import 'package:eco_market/features/search/domain/entities/products_entity.dart';
 
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
-showBottomAddProduct(
-    BuildContext context, bool isAdded, Items item, ProductEntity product) {
+showBottomAddProduct(BuildContext context, ProductEntity product) {
   showModalBottomSheet(
     isScrollControlled: true,
     context: context,
@@ -72,68 +72,21 @@ showBottomAddProduct(
                 ),
               ),
               const SizedBox(height: 24),
-              isAdded
-                  ? Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Text(
-                          '${product.price}',
-                          style: const TextStyle(
-                            color: Color(0xFF1E1E1E),
-                            fontSize: 24,
-                            fontWeight: FontWeight.w700,
-                          ),
-                        ),
-                        Row(
-                          children: [
-                            IconButtonWidget(
-                              icon: Icons.remove,
-                              onTap: () {
-                                setState(
-                                  () {
-                                    item.decrementCounter();
-                                  },
-                                );
-                              },
+              CustomButtomWidget(
+                text: 'Добавить',
+                onPressed: () {
+                  setState(
+                    () {
+                      context.read<CartScreenCubit>().addToCart(
+                            ProductModel.fromEntity(
+                              product,
                             ),
-                            const SizedBox(
-                              width: 44,
-                            ),
-                            Text(
-                              item.counter.toString(),
-                              style: const TextStyle(
-                                fontSize: 18,
-                                fontWeight: FontWeight.w500,
-                              ),
-                            ),
-                            const SizedBox(
-                              width: 44,
-                            ),
-                            IconButtonWidget(
-                              icon: Icons.add,
-                              onTap: () {
-                                setState(
-                                  () {
-                                    item.incrementCounter();
-                                  },
-                                );
-                              },
-                            ),
-                          ],
-                        ),
-                      ],
-                    )
-                  : CustomButtomWidget(
-                      text: 'Добавить',
-                      onPressed: () {
-                        setState(
-                          () {
-                            isAdded = true;
-                          },
-                        );
-                      },
-                      height: 54,
-                    ),
+                          );
+                    },
+                  );
+                },
+                height: 54,
+              ),
               const SizedBox(
                 height: 24,
               ),

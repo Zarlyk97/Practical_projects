@@ -67,40 +67,36 @@ class _CartPageState extends State<CartPage> {
           return CustomScrollView(
             slivers: [
               SliverAppBar(
-                title: Row(
-                  children: [
-                    TextButton(
-                      onPressed: () async {
-                        await FirebaseFirestore.instance
-                            .collection('cart')
-                            .get()
-                            .then((value) {
-                          for (var element in value.docs) {
-                            element.reference.delete();
-                          }
-                        });
-                      },
-                      child: const Text(
-                        'Очистить',
-                        style: TextStyle(
-                          color: AppColors.red,
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                        ),
+                iconTheme: const IconThemeData(color: AppColors.black),
+                title: const Text(
+                  'Корзина',
+                  style: TextStyle(
+                      fontSize: 18,
+                      fontWeight: FontWeight.w500,
+                      color: AppColors.black),
+                ),
+                actions: [
+                  TextButton(
+                    onPressed: () async {
+                      await FirebaseFirestore.instance
+                          .collection('cart')
+                          .get()
+                          .then((value) {
+                        for (var element in value.docs) {
+                          element.reference.delete();
+                        }
+                      });
+                    },
+                    child: const Text(
+                      'Очистить',
+                      style: TextStyle(
+                        color: AppColors.red,
+                        fontSize: 18,
+                        fontWeight: FontWeight.w500,
                       ),
                     ),
-                    const SizedBox(
-                      width: 50,
-                    ),
-                    const Text(
-                      'Корзина',
-                      style: TextStyle(
-                          fontSize: 18,
-                          fontWeight: FontWeight.w500,
-                          color: AppColors.black),
-                    ),
-                  ],
-                ),
+                  ),
+                ],
                 centerTitle: true,
               ),
               const SliverToBoxAdapter(

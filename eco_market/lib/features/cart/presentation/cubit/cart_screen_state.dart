@@ -17,6 +17,8 @@ class CartScreenLoaded extends CartScreenState {
   const CartScreenLoaded({
     required this.cart,
   });
+  @override
+  List<Object?> get props => [cart];
 }
 
 class CartScreenFailure extends CartScreenState {

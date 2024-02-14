@@ -38,6 +38,7 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
       body: RefreshIndicator(
+        color: Colors.green,
         onRefresh: () async {
           context.read<MainScreenCubit>().getCategory();
         },

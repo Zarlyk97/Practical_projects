@@ -7,7 +7,10 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartScreenCubit extends Cubit<CartScreenState> {
   final CartRepository _cartRepository;
-  CartScreenCubit(this._cartRepository) : super(CartScreenInitial());
+  CartScreenCubit(this._cartRepository)
+      : super(
+          CartScreenInitial(),
+        );
 
   Stream<List<ProductEntity>> cart = const Stream.empty();
 
@@ -16,6 +19,7 @@ class CartScreenCubit extends Cubit<CartScreenState> {
       emit(CartScreenLoading());
       cart = _cartRepository.getAllCartItems();
       emit(CartScreenLoaded(cart: cart));
+      await getCartItems();
     } catch (e) {
       emit(CartScreenFailure(e));
     }
@@ -24,6 +28,7 @@ class CartScreenCubit extends Cubit<CartScreenState> {
   addToCart(ProductModel product) async {
     try {
       await _cartRepository.addToCart(product);
+      await getCartItems();
     } catch (e) {
       log("$e");
     }
@@ -32,6 +37,7 @@ class CartScreenCubit extends Cubit<CartScreenState> {
   incrementCart(int productId) async {
     try {
       await _cartRepository.incrementCart(productId);
+      await getCartItems();
     } catch (e) {
       log("$e");
     }
@@ -40,6 +46,7 @@ class CartScreenCubit extends Cubit<CartScreenState> {
   decrementCart(int productId) async {
     try {
       await _cartRepository.decrementCart(productId);
+      await getCartItems();
     } catch (e) {
       log("$e");
     }
@@ -48,6 +55,7 @@ class CartScreenCubit extends Cubit<CartScreenState> {
   removeFromCart(int productId) async {
     try {
       await _cartRepository.removeFromCart(productId);
+      await getCartItems();
     } catch (e) {
       log("$e");
     }
