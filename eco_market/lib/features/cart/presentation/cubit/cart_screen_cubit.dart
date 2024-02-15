@@ -19,7 +19,6 @@ class CartScreenCubit extends Cubit<CartScreenState> {
       emit(CartScreenLoading());
       cart = _cartRepository.getAllCartItems();
       emit(CartScreenLoaded(cart: cart));
-      await getCartItems();
     } catch (e) {
       emit(CartScreenFailure(e));
     }
@@ -28,7 +27,13 @@ class CartScreenCubit extends Cubit<CartScreenState> {
   addToCart(ProductModel product) async {
     try {
       await _cartRepository.addToCart(product);
-      await getCartItems();
+
+      if (state is CartScreenWithProductInCart) {
+        final productInCart = Map<int, bool>.from(
+            (state as CartScreenWithProductInCart).productInCart);
+        productInCart[product.id!] = true;
+        emit(CartScreenWithProductInCart(productInCart: productInCart));
+      }
     } catch (e) {
       log("$e");
     }
@@ -37,7 +42,6 @@ class CartScreenCubit extends Cubit<CartScreenState> {
   incrementCart(int productId) async {
     try {
       await _cartRepository.incrementCart(productId);
-      await getCartItems();
     } catch (e) {
       log("$e");
     }
@@ -46,7 +50,6 @@ class CartScreenCubit extends Cubit<CartScreenState> {
   decrementCart(int productId) async {
     try {
       await _cartRepository.decrementCart(productId);
-      await getCartItems();
     } catch (e) {
       log("$e");
     }
@@ -55,7 +58,6 @@ class CartScreenCubit extends Cubit<CartScreenState> {
   removeFromCart(int productId) async {
     try {
       await _cartRepository.removeFromCart(productId);
-      await getCartItems();
     } catch (e) {
       log("$e");
     }

@@ -81,21 +81,23 @@ class _SearchScreenState extends State<SearchScreen> {
                         color: AppColors.white,
                       ),
                       const SizedBox(
-                        width: 10,
+                        width: 5,
                       ),
-                      StreamBuilder(
-                          stream: context.read<CartScreenCubit>().cart,
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.waiting) {
-                              return const Center(
-                                  child: CircularProgressIndicator());
-                            } else if (!snapshot.hasData ||
-                                snapshot.data!.isEmpty) {
-                              return text('0');
-                            }
-                            return text(data.length.toString());
-                          }),
+                      StreamBuilder<List<ProductEntity>>(
+                        stream: context.read<CartScreenCubit>().cart,
+                        builder: (context, snapshot) {
+                          if (snapshot.hasError) {
+                            return Text('Error: ${snapshot.error}');
+                          }
+
+                          if (!snapshot.hasData) {
+                            return const CircularProgressIndicator();
+                          }
+
+                          final cartItems = snapshot.data!;
+                          return text(cartItems.length.toString());
+                        },
+                      )
                     ],
                   ),
                 ),
@@ -104,7 +106,7 @@ class _SearchScreenState extends State<SearchScreen> {
           ),
           const SizedBox(
             width: 10,
-          )
+          ),
         ],
       ),
       body: Padding(
@@ -215,6 +217,9 @@ class _SearchScreenState extends State<SearchScreen> {
                       ? Column(
                           children: [
                             SvgPicture.asset('assets/svg/cart/emptyBag.svg'),
+                            const SizedBox(
+                              height: 20,
+                            ),
                             const Text("Ничего не нашли"),
                           ],
                         )
@@ -282,15 +287,13 @@ class _SearchScreenState extends State<SearchScreen> {
                                           height: 14,
                                         ),
                                         CustomButtomWidget(
-                                            height: 32,
-                                            text: isAdded[index]
-                                                ? 'в корзине'
-                                                : 'Добавить',
-                                            onPressed: () => context
-                                                .read<CartScreenCubit>()
-                                                .addToCart(
-                                                    ProductModel.fromEntity(
-                                                        data[index]))),
+                                          onPressed: () => context
+                                              .read<CartScreenCubit>()
+                                              .addToCart(
+                                                  ProductModel.fromEntity(
+                                                      data[index])),
+                                          text: 'Добавить',
+                                        ),
                                       ],
                                     ),
                                   ),
