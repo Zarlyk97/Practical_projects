@@ -272,7 +272,7 @@ class _CartPageState extends State<CartPage> {
                   const SizedBox(
                     height: 40,
                   ),
-                  CustomButtomWidget(
+                  CustomButtonWidget(
                     onPressed: () => dialogBuilder(context),
                     text: 'Оформить заказ',
                     height: 54,

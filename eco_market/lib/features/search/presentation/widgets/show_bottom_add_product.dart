@@ -72,7 +72,7 @@ showBottomAddProduct(BuildContext context, ProductEntity product) {
                 ),
               ),
               const SizedBox(height: 24),
-              CustomButtomWidget(
+              CustomButtonWidget(
                 text: 'Добавить',
                 onPressed: () {
                   setState(

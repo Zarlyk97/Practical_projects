@@ -136,7 +136,7 @@ bottomSheetHistory(BuildContext context, OrderEntity orderEntity) =>
                     const SizedBox(
                       height: 42,
                     ),
-                    CustomButtomWidget(
+                    CustomButtonWidget(
                       onPressed: () {
                         Navigator.pop(context);
                       },

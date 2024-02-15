@@ -286,8 +286,9 @@ class _SearchScreenState extends State<SearchScreen> {
                                         const SizedBox(
                                           height: 14,
                                         ),
-                                        CustomButtomWidget(
-                                          text: '',
+                                        CustomButtonWidget(
+                                          height: 33,
+                                          text: 'Добавить',
                                           onPressed: () => context
                                               .read<CartScreenCubit>()
                                               .addToCart(

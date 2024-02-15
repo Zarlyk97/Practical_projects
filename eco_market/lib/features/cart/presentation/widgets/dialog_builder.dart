@@ -34,7 +34,7 @@ Future<void> dialogBuilder(BuildContext context) {
               const SizedBox(
                 height: 24,
               ),
-              CustomButtomWidget(
+              CustomButtonWidget(
                 onPressed: () => Navigator.push(
                     context,
                     MaterialPageRoute(

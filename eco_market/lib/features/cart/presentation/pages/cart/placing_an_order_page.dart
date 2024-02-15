@@ -60,7 +60,7 @@ class PlacingAnOrderPage extends StatelessWidget {
               const SizedBox(
                 height: 16,
               ),
-              CustomButtomWidget(
+              CustomButtonWidget(
                 onPressed: () => dialogBuilderplacingAnOrder(context),
                 height: 54,
                 text: 'Заказать доставку',

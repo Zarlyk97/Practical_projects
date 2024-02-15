@@ -1,8 +1,8 @@
 import 'package:eco_market/config/config.dart';
 import 'package:flutter/material.dart';
 
-class CustomButtomWidget extends StatelessWidget {
-  const CustomButtomWidget({
+class CustomButtonWidget extends StatelessWidget {
+  const CustomButtonWidget({
     super.key,
     this.height,
     this.onPressed,

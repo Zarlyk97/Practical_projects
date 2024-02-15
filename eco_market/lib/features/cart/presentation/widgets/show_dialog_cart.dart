@@ -45,7 +45,7 @@ Future<void> dialogBuilderplacingAnOrder(BuildContext context) {
               const SizedBox(
                 height: 24,
               ),
-              CustomButtomWidget(
+              CustomButtonWidget(
                 onPressed: () => Navigator.pushNamedAndRemoveUntil(
                     context, '/', (routePage) => false),
                 text: 'Перейти в магазин',

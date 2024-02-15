@@ -256,7 +256,7 @@ showRuleCart(BuildContext context, List<ProductEntity> data) =>
                           const SizedBox(
                             height: 40,
                           ),
-                          CustomButtomWidget(
+                          CustomButtonWidget(
                             onPressed: () => dialogBuilder(context),
                             text: 'Оформить заказ',
                             height: 54,
