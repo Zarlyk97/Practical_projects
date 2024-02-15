@@ -287,12 +287,14 @@ class _SearchScreenState extends State<SearchScreen> {
                                           height: 14,
                                         ),
                                         CustomButtomWidget(
+                                          text: '',
                                           onPressed: () => context
                                               .read<CartScreenCubit>()
                                               .addToCart(
-                                                  ProductModel.fromEntity(
-                                                      data[index])),
-                                          text: 'Добавить',
+                                                ProductModel.fromEntity(
+                                                  data[index],
+                                                ),
+                                              ),
                                         ),
                                       ],
                                     ),
