@@ -41,7 +41,9 @@ class CartRemoteDataSourseImple implements CartRemoteDataSourse {
 
       if (docSnapshot.exists) {
         int newCount = docSnapshot.get('quantity') + 1;
-        transaction.update(doc, {'quantity': newCount});
+        if (newCount < 50) {
+          transaction.update(doc, {'quantity': newCount});
+        }
       }
     });
   }
@@ -55,7 +57,11 @@ class CartRemoteDataSourseImple implements CartRemoteDataSourse {
 
       if (docSnapshot.exists) {
         int newCount = docSnapshot.get('quantity') - 1;
-        transaction.update(doc, {'quantity': newCount});
+        if (newCount > 0) {
+          transaction.update(doc, {'quantity': newCount});
+        } else {
+          transaction.delete(doc);
+        }
       }
     });
   }

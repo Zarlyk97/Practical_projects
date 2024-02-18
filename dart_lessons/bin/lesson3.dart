@@ -3,7 +3,7 @@ void main() {
       MyFamily(name: 'Zarlyk', age: 26, profession: 'Flutter developer');
   print(zarlyk);
   var amir =
-      MySon(name: 'Amir', age: 8, profession: 'Muftiy', character: ' best');
+      MySon(name: 'Amir', age: 8, profession: 'baby', character: ' best');
   print(amir);
 
   var jumagul = MyWife(
@@ -14,7 +14,7 @@ void main() {
   amir.crying();
   jumagul.toCook();
   amir.grewUp(3);
-  print(amir.age);
+  print("Возраст:  ${amir.age}");
 }
 
 class MyFamily {
@@ -29,12 +29,12 @@ class MyFamily {
   final String profession;
 
   void flutterDeveloper() {
-    print('код жазганды билет');
+    print('Умеет писать код');
   }
 
   @override
   String toString() {
-    return 'Адамдын аты: $name, жашы: $age, кесиби: $profession,';
+    return 'Имя: $name, Возрасть: $age, Профессия: $profession,';
   }
 }
 
@@ -47,7 +47,7 @@ class MySon extends MyFamily {
   });
   final String character;
   void crying() {
-    print('Ыйлаганды билет');
+    print('Хорошо умеет плакат');
   }
 
   void grewUp(int year) {
@@ -56,7 +56,7 @@ class MySon extends MyFamily {
 
   @override
   String toString() {
-    return super.toString() + '' + 'мой сын,  мүнөзү:$character';
+    return super.toString() + '' + 'мой сын,  Характер:$character';
   }
 }
 
@@ -70,11 +70,11 @@ class MyWife extends MyFamily {
   final String national;
 
   void toCook() {
-    print('тамакты жакшы жасайт');
+    print('Хорошо готовит');
   }
 
   @override
   String toString() {
-    return super.toString() + '' + 'менин келинчегим  улуту:$national ';
+    return super.toString() + '' + 'Моя жена  Ноциональность:$national ';
   }
 }
