@@ -23,13 +23,11 @@ class CartScreenLoaded extends CartScreenState {
   List<Object?> get props => [cart];
 }
 
-class CartScreenWithProductInCart extends CartScreenState {
-  final Map<int, bool> productInCart;
-  const CartScreenWithProductInCart({
-    required this.productInCart,
-  });
-  @override
-  List<Object?> get props => [productInCart];
+class ProductRemovedFromCart extends CartScreenState {
+  final int productId;
+  const ProductRemovedFromCart(
+    this.productId,
+  );
 }
 
 class CartScreenFailure extends CartScreenState {

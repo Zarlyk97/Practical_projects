@@ -26,8 +26,6 @@ class _SearchScreenState extends State<SearchScreen> {
   List<Items> items = List.generate(50, (index) => Items());
   List<String> fruits = [];
 
-  List<bool> isAdded = List.generate(50, (index) => false);
-  List<ProductEntity> data = [];
   int _currentIndex = 0;
 
   @override
@@ -287,16 +285,19 @@ class _SearchScreenState extends State<SearchScreen> {
                                           height: 14,
                                         ),
                                         CustomButtonWidget(
-                                          height: 33,
-                                          text: 'Добавить',
-                                          onPressed: () => context
-                                              .read<CartScreenCubit>()
-                                              .addToCart(
-                                                ProductModel.fromEntity(
-                                                  data[index],
-                                                ),
-                                              ),
-                                        ),
+                                            height: 33,
+                                            text: context
+                                                .read<CartScreenCubit>()
+                                                .buttonText,
+                                            onPressed: () {
+                                              context
+                                                  .read<CartScreenCubit>()
+                                                  .addToCart(
+                                                    ProductModel.fromEntity(
+                                                      data[index],
+                                                    ),
+                                                  );
+                                            })
                                       ],
                                     ),
                                   ),

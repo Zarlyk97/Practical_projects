@@ -6,6 +6,8 @@ import 'package:eco_market/features/search/domain/entities/products_entity.dart'
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 class CartScreenCubit extends Cubit<CartScreenState> {
+  bool _isAddedToCart = false;
+  String buttonText = 'Добавить';
   final CartRepository _cartRepository;
   CartScreenCubit(this._cartRepository)
       : super(
@@ -26,13 +28,14 @@ class CartScreenCubit extends Cubit<CartScreenState> {
 
   addToCart(ProductModel product) async {
     try {
+      if (!_isAddedToCart) {
+        _isAddedToCart = false;
+      }
+
       await _cartRepository.addToCart(product);
 
-      if (state is CartScreenWithProductInCart) {
-        final productInCart = Map<int, bool>.from(
-            (state as CartScreenWithProductInCart).productInCart);
-        productInCart[product.id!] = true;
-        emit(CartScreenWithProductInCart(productInCart: productInCart));
+      if (state is CartScreenLoaded) {
+        emit(CartScreenLoaded(cart: cart));
       }
     } catch (e) {
       log("$e");
@@ -57,7 +60,13 @@ class CartScreenCubit extends Cubit<CartScreenState> {
 
   removeFromCart(int productId) async {
     try {
+      if (!_isAddedToCart) {
+        _isAddedToCart = true;
+      }
+      buttonText = 'Добавить';
+
       await _cartRepository.removeFromCart(productId);
+      emit(ProductRemovedFromCart(productId));
     } catch (e) {
       log("$e");
     }
