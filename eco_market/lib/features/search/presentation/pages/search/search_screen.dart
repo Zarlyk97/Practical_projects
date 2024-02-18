@@ -23,7 +23,6 @@ class SearchScreen extends StatefulWidget {
 }
 
 class _SearchScreenState extends State<SearchScreen> {
-  List<Items> items = List.generate(50, (index) => Items());
   List<String> fruits = [];
 
   int _currentIndex = 0;
