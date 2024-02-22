@@ -24,7 +24,7 @@ dependencies:
   auto_route: ^7.8.4
   svg_flutter: ^0.0.1
   connectivity_plus: ^5.0.2
-  url_launcher: ^6.2.4
+  url_launcher: ^6.2.5
   flutter_launcher_icons: ^0.13.1
   firebase_core: ^2.25.4
   shared_preferences: ^2.2.2
