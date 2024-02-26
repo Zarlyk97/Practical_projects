@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
+import 'screens/account_screen.dart';
 import 'screens/home_screen.dart';
+import 'screens/veryfiy_email_screen.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -26,6 +28,12 @@ class MyApp extends StatelessWidget {
       ),
       routes: {
         '/': (context) => const HomeScreen(),
+        '/home': (context) => const HomeScreen(),
+        '/account': (context) => const AccountScreen(),
+        // '/login': (context) => const LoginScreen(),
+        // '/signup': (context) => const SignUpScreen(),
+        // '/reset_password': (context) => const ResetPasswordScreen(),
+        '/verify_email': (context) => const VerifiyEmailScreen(),
       },
       initialRoute: '/',
     );
