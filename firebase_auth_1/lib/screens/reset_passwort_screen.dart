@@ -66,13 +66,18 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       await FirebaseAuth.instance
           .sendPasswordResetEmail(email: emailTextInputController.text.trim());
     } on FirebaseAuthException catch (e) {
+      // ignore: avoid_print
       print(e.code);
       if (e.code == 'user-not-found') {
         SnackbarService.showSnackbar(
-            context, 'Такой email незарегистрирован!', true);
+            // ignore: use_build_context_synchronously
+            context,
+            'Такой email незарегистрирован!',
+            true);
         return;
       } else {
         SnackbarService.showSnackbar(
+            // ignore: use_build_context_synchronously
             context,
             'Неизвестная ошибка! Попробуйте еще раз или обратитесь в поддержку.',
             false);
