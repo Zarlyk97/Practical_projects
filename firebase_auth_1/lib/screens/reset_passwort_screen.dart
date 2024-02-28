@@ -26,6 +26,7 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       appBar: AppBar(
         title: const Text('Сброс пароля'),
         centerTitle: true,
+    //////////////////////
       ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
