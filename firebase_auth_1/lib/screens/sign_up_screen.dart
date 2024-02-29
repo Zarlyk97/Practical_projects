@@ -106,7 +106,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                   child: ElevatedButton(
                       style: ElevatedButton.styleFrom(
                           backgroundColor: Colors.blue),
-                      onPressed: () {},
+                      onPressed: signUp,
                       child: const Text(
                         'Регистрация',
                         style: TextStyle(color: Colors.white),

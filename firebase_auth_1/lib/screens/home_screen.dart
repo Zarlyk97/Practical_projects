@@ -1,3 +1,6 @@
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_1/screens/account_screen.dart';
+import 'package:firebase_auth_1/screens/login_screen.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatelessWidget {
@@ -5,21 +8,44 @@ class HomeScreen extends StatelessWidget {
 
   @override
   Widget build(BuildContext context) {
+    final user = FirebaseAuth.instance.currentUser;
     return Scaffold(
+      resizeToAvoidBottomInset: false,
       appBar: AppBar(
         title: const Text('Главная страница'),
         centerTitle: true,
         actions: [
           IconButton(
-            onPressed: () {},
-            icon: const Icon(
-              Icons.person,
-            ),
+            onPressed: () {
+              if (user == null) {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const AccountScreen()));
+              } else {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const LoginScreen()));
+              }
+            },
+            icon: Icon(Icons.person,
+                color: user == null ? Colors.black : Colors.amber),
           ),
           const SizedBox(
             width: 10,
           ),
         ],
+      ),
+      body: Center(
+        child: Column(
+          mainAxisAlignment: MainAxisAlignment.center,
+          children: [
+            user == null
+                ? const Text('Контент для НЕ зарегистрированных в системе')
+                : const Text('Контент для ЗАРЕГИСТРИРОВАННЫХ в системе')
+          ],
+        ),
       ),
     );
   }
