@@ -3,6 +3,9 @@ import 'package:firebase_core/firebase_core.dart';
 import 'firebase_options.dart';
 import 'screens/account_screen.dart';
 import 'screens/home_screen.dart';
+import 'screens/login_screen.dart';
+import 'screens/reset_passwort_screen.dart';
+import 'screens/sign_up_screen.dart';
 import 'screens/veryfiy_email_screen.dart';
 
 void main() async {
@@ -30,12 +33,12 @@ class MyApp extends StatelessWidget {
         '/': (context) => const HomeScreen(),
         '/home': (context) => const HomeScreen(),
         '/account': (context) => const AccountScreen(),
-        // '/login': (context) => const LoginScreen(),
-        // '/signup': (context) => const SignUpScreen(),
-        // '/reset_password': (context) => const ResetPasswordScreen(),
+        '/login': (context) => const LoginScreen(),
+        '/signup': (context) => const SignUpScreen(),
+        '/reset_password': (context) => const ResetPasswordScreen(),
         '/verify_email': (context) => const VerifiyEmailScreen(),
       },
-      initialRoute: '/',
+      initialRoute: '/login',
     );
   }
 }

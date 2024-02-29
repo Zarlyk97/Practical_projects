@@ -26,7 +26,6 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
       appBar: AppBar(
         title: const Text('Сброс пароля'),
         centerTitle: true,
-    //////////////////////
       ),
       body: Padding(
         padding: const EdgeInsets.all(30.0),
@@ -42,8 +41,11 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                     email != null && !EmailValidator.validate(email)
                         ? 'Введите правельный Email'
                         : null,
-                decoration: const InputDecoration(
-                    border: OutlineInputBorder(), hintText: 'Введите email'),
+                decoration: InputDecoration(
+                    contentPadding: const EdgeInsets.only(left: 20),
+                    border: OutlineInputBorder(
+                        borderRadius: BorderRadius.circular(30)),
+                    hintText: 'Введите email'),
               ),
               const SizedBox(
                 height: 30,
