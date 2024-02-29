@@ -20,6 +20,7 @@ class _AccountScreenState extends State<AccountScreen> {
               },
               icon: const Icon(Icons.arrow_back_ios)),
           title: const Text('Аккаунт'),
+          centerTitle: true,
           actions: [
             IconButton(
                 onPressed: () => signOut(),
@@ -27,11 +28,14 @@ class _AccountScreenState extends State<AccountScreen> {
                 icon: const Icon(Icons.logout))
           ],
         ),
-        body: Column(
-          children: [
-            Text('Ваш Email: ${user!.email}'),
-            TextButton(onPressed: () => signOut(), child: const Text('выйти'))
-          ],
+        body: Center(
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text('Ваш Email: ${user!.email}'),
+              TextButton(onPressed: () => signOut(), child: const Text('выйти'))
+            ],
+          ),
         ));
   }
 

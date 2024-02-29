@@ -51,7 +51,8 @@ class _ResetPasswordScreenState extends State<ResetPasswordScreen> {
                 height: 30,
               ),
               ElevatedButton(
-                  onPressed: () {}, child: const Text('Сбросить пароль')),
+                  onPressed: resetPassword,
+                  child: const Text('Сбросить пароль')),
             ],
           ),
         ),

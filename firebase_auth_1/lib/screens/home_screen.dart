@@ -21,12 +21,12 @@ class HomeScreen extends StatelessWidget {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const AccountScreen()));
+                        builder: (context) => const LoginScreen()));
               } else {
                 Navigator.push(
                     context,
                     MaterialPageRoute(
-                        builder: (context) => const LoginScreen()));
+                        builder: (context) => const AccountScreen()));
               }
             },
             icon: Icon(Icons.person,
