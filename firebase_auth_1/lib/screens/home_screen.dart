@@ -42,8 +42,11 @@ class HomeScreen extends StatelessWidget {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             user == null
-                ? const Text('Контент для НЕ зарегистрированных в системе')
-                : const Text('Контент для ЗАРЕГИСТРИРОВАННЫХ в системе')
+                ? const Text(
+                    'Вам нужно зарегистрироваться!',
+                    style: TextStyle(decoration: TextDecoration.underline),
+                  )
+                : const Text('Вы зарегистрировались')
           ],
         ),
       ),
