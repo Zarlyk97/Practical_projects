@@ -1,4 +1,6 @@
 import 'package:email_validator/email_validator.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_1/services/snack_bar.dart';
 import 'package:flutter/material.dart';
 
 class SignUpScreen extends StatefulWidget {
@@ -15,6 +17,14 @@ class _SignUpScreenState extends State<SignUpScreen> {
   TextEditingController passwordTextRepeatInputController =
       TextEditingController();
   final formkey = GlobalKey<FormState>();
+
+  @override
+  void dispose() {
+    emailTextInputController.dispose();
+    passwordTextInputController.dispose();
+    passwordTextRepeatInputController.dispose();
+    super.dispose();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -123,5 +133,38 @@ class _SignUpScreenState extends State<SignUpScreen> {
     });
   }
 
-  Future<void> signUp() async {}
+  Future<void> signUp() async {
+    final navigator = Navigator.of(context);
+
+    final isValid = formkey.currentState!.validate();
+    if (!isValid) return;
+
+    if (passwordTextInputController.text !=
+        passwordTextRepeatInputController.text) {
+      SnackbarService.showSnackbar(context, 'Пароли должны совпадать', true);
+      return;
+    }
+    try {
+      await FirebaseAuth.instance.createUserWithEmailAndPassword(
+          email: emailTextInputController.text.trim(),
+          password: passwordTextInputController.text.trim());
+    } on FirebaseAuthException catch (e) {
+      print(e.code);
+
+      if (e.code == 'email-already-in-use') {
+        SnackbarService.showSnackbar(
+            context,
+            'Такой Email уже используется, повторите попытку с использованием другого Email',
+            true);
+        return;
+      } else {
+        SnackbarService.showSnackbar(
+            context,
+            'Неизвестная ошибка! Попробуйте еще раз или обратитесь в поддержку.',
+            true);
+      }
+    }
+
+    navigator.pushNamedAndRemoveUntil('/', (Route<dynamic> route) => false);
+  }
 }
