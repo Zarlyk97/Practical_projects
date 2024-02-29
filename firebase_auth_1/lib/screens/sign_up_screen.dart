@@ -103,15 +103,19 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ))),
               const SizedBox(height: 20),
               TextButton(
-                  onPressed: () {},
-                  child: const Text(
-                    'Войти',
-                    style: TextStyle(decoration: TextDecoration.underline),
-                  )),
+                onPressed: () {},
+                child: const Text(
+                  'Войти',
+                  style: TextStyle(
+                      color: Colors.blue, decoration: TextDecoration.underline),
+                ),
+              ),
             ],
           ),
         ),
       ),
     );
   }
+
+  Future<void> togglePasswordView() async {}
 }
