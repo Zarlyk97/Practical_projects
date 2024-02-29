@@ -56,7 +56,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     : null,
                 decoration: InputDecoration(
                     suffixIcon: GestureDetector(
-                        onTap: () {},
+                        onTap: togglePasswordView,
                         child: Icon(isHiddenPassword
                             ? Icons.visibility_off
                             : Icons.visibility)),
@@ -78,7 +78,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     : null,
                 decoration: InputDecoration(
                     suffixIcon: GestureDetector(
-                        onTap: () {},
+                        onTap: togglePasswordView,
                         child: Icon(isHiddenPassword
                             ? Icons.visibility_off
                             : Icons.visibility)),
@@ -103,7 +103,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                       ))),
               const SizedBox(height: 20),
               TextButton(
-                onPressed: () {},
+                onPressed: () => Navigator.pop(context),
                 child: const Text(
                   'Войти',
                   style: TextStyle(
@@ -117,5 +117,11 @@ class _SignUpScreenState extends State<SignUpScreen> {
     );
   }
 
-  Future<void> togglePasswordView() async {}
+  void togglePasswordView() {
+    setState(() {
+      isHiddenPassword = !isHiddenPassword;
+    });
+  }
+
+  Future<void> signUp() async {}
 }
