@@ -44,9 +44,14 @@ class HomeScreen extends StatelessWidget {
             user == null
                 ? const Text(
                     'Вам нужно зарегистрироваться!',
-                    style: TextStyle(decoration: TextDecoration.underline),
+                    style: TextStyle(
+                        fontSize: 20, decoration: TextDecoration.underline),
                   )
-                : const Text('Вы зарегистрировались')
+                : const Text(
+                    'Вы  уже зарегистрировались',
+                    style: TextStyle(
+                        fontSize: 20, decoration: TextDecoration.underline),
+                  )
           ],
         ),
       ),

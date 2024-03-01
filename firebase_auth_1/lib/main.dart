@@ -7,6 +7,7 @@ import 'screens/login_screen.dart';
 import 'screens/reset_passwort_screen.dart';
 import 'screens/sign_up_screen.dart';
 import 'screens/veryfiy_email_screen.dart';
+import 'services/firebase_stream.dart';
 
 void main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -30,7 +31,7 @@ class MyApp extends StatelessWidget {
         useMaterial3: true,
       ),
       routes: {
-        '/': (context) => const HomeScreen(),
+        '/': (context) => const FireBaseStream(),
         '/home': (context) => const HomeScreen(),
         '/account': (context) => const AccountScreen(),
         '/login': (context) => const LoginScreen(),

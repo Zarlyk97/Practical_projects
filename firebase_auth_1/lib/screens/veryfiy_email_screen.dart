@@ -21,7 +21,19 @@ class _VerifiyEmailScreenState extends State<VerifiyEmailScreen> {
   void initState() {
     super.initState();
     isEmailverified = FirebaseAuth.instance.currentUser!.emailVerified;
-    if (isEmailverified) {}
+    if (!isEmailverified) {
+      sendVerificationEmail();
+      timer = Timer.periodic(
+        const Duration(seconds: 3),
+        (_) => checkEmailVerified,
+      );
+    }
+  }
+
+  @override
+  void dispose() {
+    timer!.cancel();
+    super.dispose();
   }
 
   @override
@@ -36,6 +48,7 @@ class _VerifiyEmailScreenState extends State<VerifiyEmailScreen> {
             child: Padding(
               padding: const EdgeInsets.all(20.0),
               child: Column(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   const Text(
                     'Письмо с подтверждением было отправлено на вашу электронную почту.',
@@ -80,16 +93,22 @@ class _VerifiyEmailScreenState extends State<VerifiyEmailScreen> {
 
   Future<void> sendVerificationEmail() async {
     try {
-      final user = FirebaseAuth.instance.currentUser;
-      await user!.sendEmailVerification();
+      final user = FirebaseAuth.instance.currentUser!;
+      await user.sendEmailVerification();
 
       setState(() => canResendEmail = false);
-      await Future.delayed(const Duration(seconds: 5));
+      await Future.delayed(
+        const Duration(seconds: 5),
+      );
       setState(() => canResendEmail = true);
     } catch (e) {
       print(e);
       if (mounted) {
-        SnackbarService.showSnackbar(context, "$e", true);
+        SnackbarService.showSnackbar(
+          context,
+          "$e",
+          true,
+        );
       }
     }
   }
