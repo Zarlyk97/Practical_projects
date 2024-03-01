@@ -90,9 +90,10 @@ class _LoginScreenState extends State<LoginScreen> {
                   onPressed: () => Navigator.of(context).pushNamed('/signup'),
                   child: const Text('Регистрация')),
               TextButton(
-                  onPressed: () =>
-                      Navigator.of(context).pushNamed('/reset_password'),
-                  child: const Text('Сбросить пароль'))
+                onPressed: () =>
+                    Navigator.of(context).pushNamed('/reset_password'),
+                child: const Text('Сбросить пароль'),
+              ),
             ],
           ),
         ),
@@ -119,10 +120,15 @@ class _LoginScreenState extends State<LoginScreen> {
       print(e.code);
       if (e.code == 'user-not-found' || e.code == 'wrong-password') {
         SnackbarService.showSnackbar(
-            context, 'Неправильный email или пароль. Повторите попытку', true);
+
+            // ignore: use_build_context_synchronously
+            context,
+            'Неправильный email или пароль. Повторите попытку',
+            true);
         return;
       } else {
         SnackbarService.showSnackbar(
+            // ignore: use_build_context_synchronously
             context,
             'Неизвестная ошибка! Попробуйте еще раз или обратитесь в поддержку.',
             true);
