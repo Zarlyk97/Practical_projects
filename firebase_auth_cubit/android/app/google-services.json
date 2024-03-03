@@ -1,0 +1,29 @@
+{
+  "project_info": {
+    "project_number": "190747844524",
+    "project_id": "authcubit-d2da5",
+    "storage_bucket": "authcubit-d2da5.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:190747844524:android:37489e54f1168dcf76e409",
+        "android_client_info": {
+          "package_name": "com.example.firebase_auth_cubit"
+        }
+      },
+      "oauth_client": [],
+      "api_key": [
+        {
+          "current_key": "AIzaSyA0mNE-htqXCWIlNbkisEIJqqpSZnPi0k4"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": []
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}
