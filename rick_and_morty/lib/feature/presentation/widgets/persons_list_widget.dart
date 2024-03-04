@@ -18,6 +18,10 @@ class _PersonsListState extends State<PersonsList> {
   final scrollController = ScrollController();
   List<PersonEntity> persons = [];
   bool isloading = false;
+  @override
+  void initState() {
+    super.initState();
+  }
 
   final int page = -1;
 
@@ -27,8 +31,6 @@ class _PersonsListState extends State<PersonsList> {
     return BlocBuilder<PersonListCubit, PersonState>(
       builder: (context, state) {
         if (state is PersonLoading && state.isFirstFetch) {
-          print('error');
-
           return _loadingIndicator();
         } else if (state is PersonLoading) {
           persons = state.oldPersonsList;

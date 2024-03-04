@@ -12,6 +12,7 @@ class PersonListCubit extends Cubit<PersonState> {
   int page = 1;
 
   void loadPerson() async {
+    print('zarlyk error');
     if (state is PersonLoading) return;
 
     final currentState = state;

@@ -63,7 +63,6 @@ class CartScreenCubit extends Cubit<CartScreenState> {
       if (!_isAddedToCart) {
         _isAddedToCart = true;
       }
-      buttonText = 'Добавить';
 
       await _cartRepository.removeFromCart(productId);
       emit(ProductRemovedFromCart(productId));
