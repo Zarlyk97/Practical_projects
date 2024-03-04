@@ -1,9 +1,12 @@
+import 'package:firebase_auth_cubit/features/auth/cubit/auth_cubit.dart';
+import 'package:firebase_auth_cubit/features/auth/screens/login_screen.dart';
+import 'package:firebase_auth_cubit/features/reset_password/cubit/reset_password_cubit.dart';
+import 'package:firebase_auth_cubit/features/user_profile/cubit/upload_user_image_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';
 
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
-import 'features/auth/presentation/pages/screens/login_screen.dart';
 import 'firebase_options.dart';
 
 // final FlutterLocalNotificationsPlugin flutterLocalNotificationsPlugin =
@@ -25,47 +28,47 @@ void main() async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   // Initialize local notifications plugin
-  const AndroidInitializationSettings initializationSettingsAndroid =
-      AndroidInitializationSettings('@mipmap/ic_launcher');
-  final InitializationSettings initializationSettings =
-      InitializationSettings(android: initializationSettingsAndroid);
-  await flutterLocalNotificationsPlugin.initialize(initializationSettings);
+  // const AndroidInitializationSettings initializationSettingsAndroid =
+  //     AndroidInitializationSettings('@mipmap/ic_launcher');
+  // final InitializationSettings initializationSettings =
+  //     InitializationSettings(android: initializationSettingsAndroid);
+  // await flutterLocalNotificationsPlugin.initialize(initializationSettings);
 
-  // Request permission for foreground notifications
-  final NotificationSettings settings =
-      await FirebaseMessaging.instance.requestPermission(
-    alert: true,
-    badge: true,
-    sound: true,
-  );
-  print('User granted permission: ${settings.authorizationStatus}');
+  // // Request permission for foreground notifications
+  // final NotificationSettings settings =
+  //     await FirebaseMessaging.instance.requestPermission(
+  //   alert: true,
+  //   badge: true,
+  //   sound: true,
+  // );
+  // print('User granted permission: ${settings.authorizationStatus}');
 
-  // Configure and show foreground notifications
-  FirebaseMessaging.onMessage.listen((RemoteMessage message) {
-    print("Handling a foreground message: ${message.messageId}");
-    print('Message data: ${message.data}');
-    print('Message notification: ${message.notification?.title}');
-    print('Message notification: ${message.notification?.body}');
+  // // Configure and show foreground notifications
+  // FirebaseMessaging.onMessage.listen((RemoteMessage message) {
+  //   print("Handling a foreground message: ${message.messageId}");
+  //   print('Message data: ${message.data}');
+  //   print('Message notification: ${message.notification?.title}');
+  //   print('Message notification: ${message.notification?.body}');
 
-    AndroidNotificationDetails androidNotificationDetails =
-        const AndroidNotificationDetails(
-      'channel_id',
-      'Channel Name'
-          'Channel Description',
-      importance: Importance.max,
-      priority: Priority.high,
-      playSound: true,
-    );
-    final NotificationDetails notificationDetails =
-        NotificationDetails(android: androidNotificationDetails);
+  //   AndroidNotificationDetails androidNotificationDetails =
+  //       const AndroidNotificationDetails(
+  //     'channel_id',
+  //     'Channel Name'
+  //         'Channel Description',
+  //     importance: Importance.max,
+  //     priority: Priority.high,
+  //     playSound: true,
+  //   );
+  //   final NotificationDetails notificationDetails =
+  //       NotificationDetails(android: androidNotificationDetails);
 
-    flutterLocalNotificationsPlugin.show(
-      0,
-      message.notification?.title ?? '',
-      message.notification?.body ?? '',
-      notificationDetails,
-    );
-  });
+  //   flutterLocalNotificationsPlugin.show(
+  //     0,
+  //     message.notification?.title ?? '',
+  //     message.notification?.body ?? '',
+  //     notificationDetails,
+  //   );
+  // });
 
   runApp(const MyApp());
 }
