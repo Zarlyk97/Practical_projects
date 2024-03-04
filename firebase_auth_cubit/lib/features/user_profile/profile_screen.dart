@@ -61,7 +61,7 @@ class ProfileScreen extends StatelessWidget {
                               ),
                             )
                           : const Text(
-                              "User name",
+                              "Zarlyk Zhanybekov",
                               textAlign: TextAlign.center,
                               style: TextStyle(
                                 color: Colors.white,

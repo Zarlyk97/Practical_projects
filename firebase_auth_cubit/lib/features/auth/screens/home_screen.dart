@@ -41,10 +41,13 @@ class HomeScreen extends StatelessWidget {
                       ),
                       child: CircleAvatar(
                         backgroundColor: Colors.white,
-                        backgroundImage:
-                            NetworkImage(state.user?.photoURL ?? ""),
+                        backgroundImage: NetworkImage(state.user?.photoURL ??
+                            "https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcSnfixxaCz_MIZCUw0QBynCJPGTFVGlO7b7I_JJjsnwXA&s"),
                       ),
-                    )
+                    ),
+                    const SizedBox(
+                      width: 10,
+                    ),
                   ],
                 ),
               ),

@@ -48,8 +48,9 @@ class CustomUserImageProfile extends StatelessWidget {
                         width: 140.0,
                         child: state.user?.photoURL != null
                             ? CircleAvatar(
-                                backgroundImage:
-                                    NetworkImage(state.user?.photoURL ?? ""),
+                                backgroundImage: NetworkImage(state
+                                        .user?.photoURL ??
+                                    "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg"),
                               )
                             : const CircleAvatar(
                                 backgroundColor: Colors.white,
