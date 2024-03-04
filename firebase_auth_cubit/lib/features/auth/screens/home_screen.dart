@@ -25,7 +25,7 @@ class HomeScreen extends StatelessWidget {
                       const SizedBox(height: 5),
                       Text(
                         state.user!.email.toString(),
-                        style: TextStyle(fontSize: 12, color: Colors.grey[300]),
+                        style: TextStyle(fontSize: 12, color: Colors.grey[400]),
                       ),
                     ],
                   ),
@@ -46,7 +46,7 @@ class HomeScreen extends StatelessWidget {
                       ),
                     ),
                     const SizedBox(
-                      width: 10,
+                      width: 15,
                     ),
                   ],
                 ),
@@ -59,6 +59,14 @@ class HomeScreen extends StatelessWidget {
                           image: AssetImage(ImageConstant.backgroundImage),
                           fit: BoxFit.cover),
                     ),
+                    child: const Center(
+                        child: Text(
+                      'Кандайсын Майк тайсон',
+                      style: TextStyle(
+                          fontSize: 30,
+                          fontWeight: FontWeight.w700,
+                          color: Colors.white),
+                    )),
                   ),
                 ],
               ));
