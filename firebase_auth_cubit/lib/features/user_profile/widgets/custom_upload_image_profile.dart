@@ -15,7 +15,7 @@ Future<void> customUploadImageProfile(BuildContext context) async {
     try {
       await cubit.updateProfilePicture(imageFile);
       ScaffoldMessenger.of(context).showSnackBar(
-        const SnackBar(content: Text('อัปโหลดรูปภาพสำเร็จ')),
+        const SnackBar(content: Text('Profile picture updated successfully')),
       );
     } catch (e) {
       ScaffoldMessenger.of(context).showSnackBar(

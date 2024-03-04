@@ -2,7 +2,7 @@ import 'package:firebase_auth_cubit/constant/image_constant.dart';
 import 'package:firebase_auth_cubit/features/auth/cubit/auth_cubit.dart';
 import 'package:firebase_auth_cubit/features/auth/screens/home_screen.dart';
 import 'package:firebase_auth_cubit/features/auth/screens/register_screen.dart';
-import 'package:firebase_auth_cubit/features/auth/widgets/custom_password_textField.dart';
+import 'package:firebase_auth_cubit/features/auth/widgets/custom_password_textfield.dart';
 import 'package:firebase_auth_cubit/features/reset_password/screens/reset_password_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
