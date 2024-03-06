@@ -137,7 +137,7 @@ class ResetPasswordScreen extends StatelessWidget {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                      builder: (context) => LoginScreen(),
+                                      builder: (context) => const LoginScreen(),
                                     ),
                                   );
                                 },
@@ -194,7 +194,7 @@ class ResetPasswordScreen extends StatelessWidget {
                                         context,
                                         MaterialPageRoute(
                                           builder: (context) =>
-                                              RegisterScreen(),
+                                              const RegisterScreen(),
                                         ),
                                       );
                                     },
