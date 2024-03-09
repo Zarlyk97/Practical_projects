@@ -231,7 +231,7 @@ class _RegisterScreenState extends State<RegisterScreen> {
     } else if (value.length < 6) {
       return "Password must be at least 6 characters long.";
     } else if (value != _passwordController.text.trim()) {
-      return "Password doesn't match.";
+      return "Сырсөз дал келбейт.";
     }
     return null;
   }
