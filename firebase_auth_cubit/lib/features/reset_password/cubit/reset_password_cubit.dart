@@ -7,7 +7,7 @@ part 'reset_password_state.dart';
 class ResetPasswordCubit extends Cubit<ResetPasswordState> {
   final FirebaseAuth _firebaseAuth = FirebaseAuth.instance;
   ResetPasswordCubit() : super(ResetPasswordInitial());
-
+/////////////////////////////////////
   Future<void> sendOTP(String email) async {
     try {
       emit(ResetPasswordLoading());
