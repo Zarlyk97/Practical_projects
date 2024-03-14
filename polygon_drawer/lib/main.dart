@@ -20,7 +20,7 @@ class PolygonState {
       lines: lines ?? this.lines,
     );
   }
-}
+
 
 // Класс для управления состоянием точек и линий
 class PolygonNotifier extends StateNotifier<PolygonState> {
@@ -117,4 +117,5 @@ class PolygonPainter extends CustomPainter {
 
   @override
   bool shouldRepaint(PolygonPainter oldDelegate) => true;
+}
 }
