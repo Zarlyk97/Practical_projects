@@ -7,6 +7,6 @@ String weeks(int number) {
     (5) => 'Friday',
     (6) => 'Saturday',
     (7) => 'Sunday',
-    _ => '$number турист',
+    _ => '$number week',
   };
 }
