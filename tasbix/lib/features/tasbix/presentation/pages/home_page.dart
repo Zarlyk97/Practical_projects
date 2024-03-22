@@ -18,8 +18,13 @@ class _HomePageState extends State<HomePage> {
       appBar: AppBar(
         title: Text('Тасбих',
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+<<<<<<< HEAD
                   fontSize: (22),
                   fontWeight: FontWeight.w600,
+=======
+                  fontSize: (25),
+                  fontWeight: FontWeight.bold,
+>>>>>>> 5d4787fb672fb7cb17b4e198d51790c6046cf6c6
                 )),
         centerTitle: true,
         actions: [
