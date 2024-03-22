@@ -64,8 +64,7 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               '${state.count} ',
-                              style:
-                                  themeData.textTheme.headlineLarge!.copyWith(
+                              style: theme.textTheme.headlineLarge!.copyWith(
                                 fontSize: 25,
                               ),
                             ),
