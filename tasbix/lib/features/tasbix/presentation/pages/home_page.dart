@@ -14,12 +14,13 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
+    final theme = Theme.of(context);
+
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
-        backgroundColor: Colors.grey.shade200,
         title: Text('Тасбих',
-            style: themeData.textTheme.headlineSmall!.copyWith(
+            style: theme.textTheme.headlineSmall!.copyWith(
               fontSize: (25),
               fontWeight: FontWeight.bold,
             )),
@@ -63,7 +64,8 @@ class _HomePageState extends State<HomePage> {
                           children: [
                             Text(
                               '${state.count} ',
-                              style: themeData.textTheme.titleMedium!.copyWith(
+                              style:
+                                  themeData.textTheme.headlineLarge!.copyWith(
                                 fontSize: 25,
                               ),
                             ),
@@ -109,7 +111,6 @@ class _HomePageState extends State<HomePage> {
                     ),
                   ),
                 ],
-                ///////////////
               ),
             ],
           );
