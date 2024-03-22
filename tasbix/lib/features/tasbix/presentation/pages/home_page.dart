@@ -14,13 +14,11 @@ class HomePage extends StatefulWidget {
 class _HomePageState extends State<HomePage> {
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
         title: Text('Тасбих',
-            style: theme.textTheme.headlineSmall!.copyWith(
+            style: lightTheme.textTheme.headlineSmall!.copyWith(
               fontSize: (25),
               fontWeight: FontWeight.bold,
             )),
@@ -62,12 +60,11 @@ class _HomePageState extends State<HomePage> {
                           crossAxisAlignment: CrossAxisAlignment.end,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text(
-                              '${state.count} ',
-                              style: theme.textTheme.headlineLarge!.copyWith(
-                                fontSize: 25,
-                              ),
-                            ),
+                            Text('${state.count} ',
+                                style: const TextStyle(
+                                    color: Colors.black,
+                                    fontSize: 25,
+                                    fontWeight: FontWeight.w600)),
                           ],
                         ),
                       ),

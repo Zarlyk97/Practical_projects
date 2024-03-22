@@ -4,7 +4,7 @@ const primaryColor = Color(0xFFF82B10);
 
 final darkTheme = ThemeData(
   primaryColor: primaryColor,
-  scaffoldBackgroundColor: const Color(0xFF1D1D1D),
+  scaffoldBackgroundColor: const Color.fromARGB(255, 32, 30, 30),
   textTheme: textTheme,
   useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(

@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
       create: (context) => TasbixCubit(),
       child: MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: darkTheme,
+        theme: lightTheme,
         home: const HomePage(),
       ),
     );

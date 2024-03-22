@@ -1,7 +1,5 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
-import 'package:tasbix/ui/theme/theme.dart';
-import 'package:tasbix/ui/ui.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -14,8 +12,6 @@ class _SettingPageState extends State<SettingPage> {
   bool _switchValue = false;
   @override
   Widget build(BuildContext context) {
-    final theme = Theme.of(context);
-
     return Scaffold(
       appBar: AppBar(title: const Text('Настройки'), centerTitle: true),
       body: Padding(
@@ -26,7 +22,10 @@ class _SettingPageState extends State<SettingPage> {
               mainAxisAlignment: MainAxisAlignment.spaceBetween,
               children: [
                 Text('Tемная тема',
-                    style: theme.textTheme.titleMedium!.copyWith(fontSize: 20)),
+                    style: Theme.of(context)
+                        .textTheme
+                        .titleMedium!
+                        .copyWith(fontSize: 20)),
                 CupertinoSwitch(
                   value: _switchValue,
                   onChanged: (bool value) {
