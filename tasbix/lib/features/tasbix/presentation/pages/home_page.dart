@@ -2,7 +2,6 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasbix/features/tasbix/presentation/cubit/tasbix_cubit.dart';
 import 'package:tasbix/features/tasbix/presentation/pages/pages.dart';
-import 'package:tasbix/ui/ui.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -18,10 +17,10 @@ class _HomePageState extends State<HomePage> {
       backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
         title: Text('Тасбих',
-            style: lightTheme.textTheme.headlineSmall!.copyWith(
-              fontSize: (25),
-              fontWeight: FontWeight.bold,
-            )),
+            style: Theme.of(context).textTheme.headlineSmall!.copyWith(
+                  fontSize: (25),
+                  fontWeight: FontWeight.bold,
+                )),
         centerTitle: true,
         actions: [
           IconButton(
