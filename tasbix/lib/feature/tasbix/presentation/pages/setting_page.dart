@@ -17,29 +17,29 @@ class _SettingPageState extends State<SettingPage> {
     return Scaffold(
       appBar: AppBar(title: const Text('Настройки'), centerTitle: true),
       body: Padding(
-        padding: const EdgeInsets.all(16.0),
-        child: Column(
-          children: [
-            Row(
-              mainAxisAlignment: MainAxisAlignment.spaceBetween,
-              children: [
-                Text('Tемная тема',
-                    style: Theme.of(context)
-                        .textTheme
-                        .titleMedium!
-                        .copyWith(fontSize: 20)),
-                CupertinoSwitch(
-                  value: isdarkTheme,
-                  onChanged: (value) {
-                    setState(() {
-                      _setThemeBrightness(context, value);
-                    });
-                  },
-                  activeColor: CupertinoColors.activeGreen,
-                ),
-              ],
-            )
-          ],
+        padding: const EdgeInsets.all(8.0),
+        child: ListView.separated(
+          itemCount: 1,
+          itemBuilder: (BuildContext context, int index) {
+            return ListTile(
+              title: const Text(
+                'Tемная тема',
+                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
+              ),
+              trailing: CupertinoSwitch(
+                value: isdarkTheme,
+                onChanged: (value) {
+                  setState(() {
+                    _setThemeBrightness(context, value);
+                  });
+                },
+                activeColor: CupertinoColors.activeGreen,
+              ),
+            );
+          },
+          separatorBuilder: (BuildContext context, int index) {
+            return const Divider(thickness: 1);
+          },
         ),
       ),
     );

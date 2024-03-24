@@ -17,6 +17,7 @@ class TasbixCubit extends Cubit<TasbixState> {
     final updatdState = TasbixState(count: count);
     emit(updatdState);
 
+    countRepository.getCount();
     countRepository.setCount(count);
   }
 

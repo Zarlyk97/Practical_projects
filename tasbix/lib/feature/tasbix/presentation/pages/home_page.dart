@@ -107,6 +107,20 @@ class _HomePageState extends State<HomePage> {
                   ),
                 ],
               ),
+              const SizedBox(height: 30),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Восстановить'),
+                  ),
+                  ElevatedButton(
+                    onPressed: () {},
+                    child: const Text('Сохранить'),
+                  )
+                ],
+              )
             ],
           );
         },
