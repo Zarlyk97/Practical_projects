@@ -23,7 +23,7 @@ if (flutterVersionName == null) {
 }
 
 android {
-    namespace "Тасбих"
+    namespace "com.example.tasbix"
     compileSdk flutter.compileSdkVersion
     ndkVersion flutter.ndkVersion
 
