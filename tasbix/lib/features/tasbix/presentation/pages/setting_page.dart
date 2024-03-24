@@ -13,7 +13,7 @@ class SettingPage extends StatefulWidget {
 class _SettingPageState extends State<SettingPage> {
   @override
   Widget build(BuildContext context) {
-    final brightness = context.watch<ThemeCubit>().state.brightness;
+    final isdarkTheme = context.watch<ThemeCubit>().state.isdark;
     return Scaffold(
       appBar: AppBar(title: const Text('Настройки'), centerTitle: true),
       body: Padding(
@@ -29,11 +29,10 @@ class _SettingPageState extends State<SettingPage> {
                         .titleMedium!
                         .copyWith(fontSize: 20)),
                 CupertinoSwitch(
-                  value: brightness == Brightness.dark,
+                  value: isdarkTheme,
                   onChanged: (value) {
                     setState(() {
-                      context.read<ThemeCubit>().toggleTheme(
-                          value ? Brightness.dark : Brightness.light);
+                      _setThemeBrightness(context, value);
                     });
                   },
                   activeColor: CupertinoColors.activeGreen,
@@ -44,5 +43,11 @@ class _SettingPageState extends State<SettingPage> {
         ),
       ),
     );
+  }
+
+  void _setThemeBrightness(BuildContext context, bool value) {
+    context
+        .read<ThemeCubit>()
+        .toggleTheme(value ? Brightness.dark : Brightness.light);
   }
 }

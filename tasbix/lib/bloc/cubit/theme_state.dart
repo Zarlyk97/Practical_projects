@@ -4,6 +4,7 @@ class ThemeState extends Equatable {
   const ThemeState(this.brightness);
 
   final Brightness brightness;
+  bool get isdark => brightness == Brightness.dark;
 
   @override
   List<Object> get props => [brightness];

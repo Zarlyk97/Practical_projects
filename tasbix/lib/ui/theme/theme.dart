@@ -3,10 +3,10 @@ import 'package:flutter/material.dart';
 const primaryColor = Color(0xFFF82B10);
 
 final darkTheme = ThemeData(
-  appBarTheme: AppBarTheme(color: Colors.black),
+  appBarTheme: const AppBarTheme(color: Colors.black),
   primaryColor: primaryColor,
   scaffoldBackgroundColor: const Color.fromARGB(255, 32, 30, 30),
-  textTheme: textTheme,
+  textTheme: _textTheme,
   useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(
     seedColor: primaryColor,
@@ -19,7 +19,7 @@ final lightTheme = ThemeData(
       color: Colors.white,
     ),
     primaryColor: primaryColor,
-    textTheme: textTheme,
+    textTheme: _textTheme,
     useMaterial3: true,
     scaffoldBackgroundColor: const Color(0xFFEFF1F3),
     colorScheme: ColorScheme.fromSeed(
@@ -27,7 +27,7 @@ final lightTheme = ThemeData(
       brightness: Brightness.light,
     ));
 
-const textTheme = TextTheme(
+const _textTheme = TextTheme(
   titleMedium: TextStyle(
     fontSize: 16,
     fontWeight: FontWeight.w600,
