@@ -1,5 +1,7 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tasbix/bloc/cubit/theme_cubit.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -9,9 +11,9 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  bool _switchValue = false;
   @override
   Widget build(BuildContext context) {
+    final brightness = context.watch<ThemeCubit>().state.brightness;
     return Scaffold(
       appBar: AppBar(title: const Text('Настройки'), centerTitle: true),
       body: Padding(
@@ -27,10 +29,11 @@ class _SettingPageState extends State<SettingPage> {
                         .titleMedium!
                         .copyWith(fontSize: 20)),
                 CupertinoSwitch(
-                  value: _switchValue,
-                  onChanged: (bool value) {
+                  value: brightness == Brightness.dark,
+                  onChanged: (value) {
                     setState(() {
-                      _switchValue = value;
+                      context.read<ThemeCubit>().toggleTheme(
+                          value ? Brightness.dark : Brightness.light);
                     });
                   },
                   activeColor: CupertinoColors.activeGreen,

@@ -1,8 +1,14 @@
-import 'package:bloc/bloc.dart';
+import 'dart:ui';
+
 import 'package:equatable/equatable.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 
 part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {
-  ThemeCubit() : super(ThemeInitial());
+  ThemeCubit() : super(const ThemeState(Brightness.light));
+
+  void toggleTheme(Brightness brightness) {
+    emit(ThemeState(brightness));
+  }
 }
