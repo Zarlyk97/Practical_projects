@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasbix/features/tasbix/presentation/cubit/tasbix_cubit.dart';
-import 'package:tasbix/features/tasbix/presentation/pages/pages.dart';
+import 'package:tasbix/feature/tasbix/presentation/cubit/tasbix_cubit.dart';
+import 'package:tasbix/feature/tasbix/presentation/pages/pages.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});

@@ -4,11 +4,11 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:tasbix/bloc/cubit/theme_cubit.dart';
-import 'package:tasbix/features/tasbix/domain/repositories/repositories.dart';
-import 'package:tasbix/features/tasbix/presentation/cubit/tasbix_cubit.dart';
-import 'package:tasbix/ui/ui.dart';
+import 'package:tasbix/feature/tasbix/domain/repositories/repositories.dart';
+import 'package:tasbix/feature/tasbix/presentation/cubit/tasbix_cubit.dart';
+import 'package:tasbix/core/ui/ui.dart';
 
-import 'features/tasbix/presentation/pages/pages.dart';
+import 'feature/tasbix/presentation/pages/pages.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -36,10 +36,13 @@ class _MyAppState extends State<MyApp> {
     final SettingRepository settingRepository = SettingRepository(
       preferences: widget.preferences,
     );
+    final CountRepository countRepository = CountRepository(
+      preferences: widget.preferences,
+    );
     return MultiBlocProvider(
       providers: [
         BlocProvider(
-          create: (context) => TasbixCubit(),
+          create: (context) => TasbixCubit(countRepository: countRepository),
         ),
         BlocProvider(
           create: (context) => ThemeCubit(settingRepository: settingRepository),
