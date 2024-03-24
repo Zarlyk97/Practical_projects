@@ -1,15 +1,15 @@
 import 'package:flutter/material.dart';
 
-const primaryColor = Color(0xFFF82B10);
+const _primaryColor = Color(0xFFF82B10);
 
 final darkTheme = ThemeData(
   appBarTheme: const AppBarTheme(color: Colors.black),
-  primaryColor: primaryColor,
+  primaryColor: _primaryColor,
   scaffoldBackgroundColor: const Color.fromARGB(255, 32, 30, 30),
   textTheme: _textTheme,
   useMaterial3: true,
   colorScheme: ColorScheme.fromSeed(
-    seedColor: primaryColor,
+    seedColor: _primaryColor,
     brightness: Brightness.dark,
   ),
 );
@@ -18,12 +18,12 @@ final lightTheme = ThemeData(
     appBarTheme: const AppBarTheme(
       color: Colors.white,
     ),
-    primaryColor: primaryColor,
+    primaryColor: _primaryColor,
     textTheme: _textTheme,
     useMaterial3: true,
     scaffoldBackgroundColor: const Color(0xFFEFF1F3),
     colorScheme: ColorScheme.fromSeed(
-      seedColor: primaryColor,
+      seedColor: _primaryColor,
       brightness: Brightness.light,
     ));
 
