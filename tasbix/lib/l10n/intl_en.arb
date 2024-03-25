@@ -1,1 +1,4 @@
-{}
+{
+    "hello": "Hello",
+    "goodbye": "goodbye"
+}
