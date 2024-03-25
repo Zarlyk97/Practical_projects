@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:tasbix/bloc/cubit/theme_cubit.dart';
 import 'package:tasbix/feature/tasbix/presentation/cubit/tasbix_cubit.dart';
 import 'package:tasbix/feature/tasbix/presentation/pages/pages.dart';
 
@@ -11,8 +13,12 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _selectedIndex = 0;
+
   @override
   Widget build(BuildContext context) {
+    final isdarkTheme = context.watch<ThemeCubit>().state.isdark;
+
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
@@ -34,6 +40,7 @@ class _HomePageState extends State<HomePage> {
               },
               icon: const Icon(Icons.settings))
         ],
+        elevation: 1,
       ),
       body: BlocBuilder<TasbixCubit, TasbixState>(
         builder: (context, state) {
@@ -114,12 +121,24 @@ class _HomePageState extends State<HomePage> {
                 mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                 children: [
                   ElevatedButton(
+                    style: ButtonStyle(
+                        backgroundColor: isdarkTheme
+                            ? MaterialStateProperty.all(Colors.black)
+                            : MaterialStateProperty.all(Colors.white)),
                     onPressed: () {},
-                    child: const Text('Восстановить'),
+                    child: Text(
+                      'Восстановить',
+                      style: TextStyle(
+                          color: isdarkTheme ? Colors.white : Colors.black),
+                    ),
                   ),
                   ElevatedButton(
                     onPressed: () {},
-                    child: const Text('Сохранить'),
+                    child: Text(
+                      'Сохранить',
+                      style: TextStyle(
+                          color: isdarkTheme ? Colors.white : Colors.black),
+                    ),
                   )
                 ],
               )
@@ -127,6 +146,77 @@ class _HomePageState extends State<HomePage> {
           );
         },
       ),
+      drawer: Drawer(
+        child: ListView(
+          padding: EdgeInsets.zero,
+          children: [
+            const DrawerHeader(
+              decoration: BoxDecoration(
+                image: DecorationImage(
+                  image: AssetImage('assets/image.png'),
+                ),
+              ),
+              child: Text(
+                '',
+              ),
+            ),
+            ListTile(
+              title: const Text('Общие зикры'),
+              selected: _selectedIndex == 0,
+              onTap: () {
+                _onItemTapped(0);
+              },
+              trailing: const Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              title: const Text('Вечерние зикры'),
+              selected: _selectedIndex == 1,
+              onTap: () {
+                _onItemTapped(1);
+              },
+              trailing: const Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              title: const Text('Утренние зикры'),
+              selected: _selectedIndex == 2,
+              onTap: () {
+                _onItemTapped(2);
+              },
+              trailing: const Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              title: const Text('Избранные зикры'),
+              selected: _selectedIndex == 3,
+              onTap: () {
+                _onItemTapped(3);
+              },
+              trailing: const Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              title: const Text('Салаваты'),
+              selected: _selectedIndex == 4,
+              onTap: () {
+                _onItemTapped(4);
+              },
+              trailing: const Icon(Icons.navigate_next),
+            ),
+            ListTile(
+              title: const Text('Истигфары'),
+              selected: _selectedIndex == 5,
+              onTap: () {
+                _onItemTapped(5);
+              },
+              trailing: const Icon(Icons.navigate_next),
+            ),
+          ],
+        ),
+      ),
     );
+  }
+
+  void _onItemTapped(int index) {
+    setState(() {
+      _selectedIndex = index;
+    });
   }
 }
