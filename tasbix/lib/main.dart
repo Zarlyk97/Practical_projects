@@ -6,8 +6,7 @@ import 'package:tasbix/bloc/cubit/theme_cubit.dart';
 import 'package:tasbix/feature/tasbix/domain/repositories/repositories.dart';
 import 'package:tasbix/feature/tasbix/presentation/cubit/tasbix_cubit.dart';
 import 'package:tasbix/core/ui/ui.dart';
-
-import 'feature/tasbix/presentation/pages/pages.dart';
+import 'package:tasbix/feature/tasbix/presentation/pages/splash_screen.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -52,7 +51,7 @@ class _MyAppState extends State<MyApp> {
           return MaterialApp(
             debugShowCheckedModeBanner: false,
             theme: state.isdark ? darkTheme : lightTheme,
-            home: const HomePage(),
+            home: const SplashScreen(),
           );
         },
       ),

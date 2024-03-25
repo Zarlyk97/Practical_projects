@@ -15,13 +15,24 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     final isdarkTheme = context.watch<ThemeCubit>().state.isdark;
     return Scaffold(
-      appBar: AppBar(title: const Text('Настройки'), centerTitle: true),
+      appBar: AppBar(
+        title: const Text('Настройки',
+            style: TextStyle(fontWeight: FontWeight.w600)),
+        centerTitle: true,
+        elevation: 1,
+      ),
       body: Padding(
         padding: const EdgeInsets.all(8.0),
         child: ListView.separated(
           itemCount: 1,
           itemBuilder: (BuildContext context, int index) {
             return ListTile(
+              tileColor: Colors.black12,
+              shape: RoundedRectangleBorder(
+                  borderRadius: BorderRadius.circular(15),
+                  side: BorderSide(
+                      color:
+                          isdarkTheme ? Colors.grey.shade300 : Colors.black26)),
               title: const Text(
                 'Tемная тема',
                 style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
@@ -38,7 +49,9 @@ class _SettingPageState extends State<SettingPage> {
             );
           },
           separatorBuilder: (BuildContext context, int index) {
-            return const Divider(thickness: 1);
+            return const SizedBox(
+              height: 10,
+            );
           },
         ),
       ),
