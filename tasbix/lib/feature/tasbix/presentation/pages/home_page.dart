@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:flutter/services.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasbix/bloc/cubit/theme_cubit.dart';
 import 'package:tasbix/feature/tasbix/presentation/cubit/tasbix_cubit.dart';
@@ -129,7 +128,8 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       'Восстановить',
                       style: TextStyle(
-                          color: isdarkTheme ? Colors.white : Colors.black),
+                        color: isdarkTheme ? Colors.white : Colors.black,
+                      ),
                     ),
                   ),
                   ElevatedButton(
@@ -137,9 +137,10 @@ class _HomePageState extends State<HomePage> {
                     child: Text(
                       'Сохранить',
                       style: TextStyle(
-                          color: isdarkTheme ? Colors.white : Colors.black),
+                        color: isdarkTheme ? Colors.white : Colors.black,
+                      ),
                     ),
-                  )
+                  ),
                 ],
               )
             ],
@@ -156,9 +157,7 @@ class _HomePageState extends State<HomePage> {
                   image: AssetImage('assets/image.png'),
                 ),
               ),
-              child: Text(
-                '',
-              ),
+              child: Text(''),
             ),
             ListTile(
               title: const Text('Общие зикры'),
