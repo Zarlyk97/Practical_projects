@@ -161,7 +161,7 @@ class _HomePageState extends State<HomePage> {
               child: Text(''),
             ),
             ListTile(
-              title: const Text('Общие зикры'),
+              title: Text(S.of(context).generalDhikrs),
               selected: _selectedIndex == 0,
               onTap: () {
                 _onItemTapped(0);
@@ -169,7 +169,7 @@ class _HomePageState extends State<HomePage> {
               trailing: const Icon(Icons.navigate_next),
             ),
             ListTile(
-              title: const Text('Вечерние зикры'),
+              title: Text(S.of(context).eveningDhikrs),
               selected: _selectedIndex == 1,
               onTap: () {
                 _onItemTapped(1);
@@ -177,7 +177,7 @@ class _HomePageState extends State<HomePage> {
               trailing: const Icon(Icons.navigate_next),
             ),
             ListTile(
-              title: const Text('Утренние зикры'),
+              title: Text(S.of(context).morningDhikrs),
               selected: _selectedIndex == 2,
               onTap: () {
                 _onItemTapped(2);
@@ -185,7 +185,7 @@ class _HomePageState extends State<HomePage> {
               trailing: const Icon(Icons.navigate_next),
             ),
             ListTile(
-              title: const Text('Избранные зикры'),
+              title: Text(S.of(context).selectedDhikrs),
               selected: _selectedIndex == 3,
               onTap: () {
                 _onItemTapped(3);
@@ -193,7 +193,7 @@ class _HomePageState extends State<HomePage> {
               trailing: const Icon(Icons.navigate_next),
             ),
             ListTile(
-              title: const Text('Салаваты'),
+              title: Text(S.of(context).salavat),
               selected: _selectedIndex == 4,
               onTap: () {
                 _onItemTapped(4);
@@ -201,7 +201,7 @@ class _HomePageState extends State<HomePage> {
               trailing: const Icon(Icons.navigate_next),
             ),
             ListTile(
-              title: const Text('Истигфары'),
+              title: Text(S.of(context).istighfar),
               selected: _selectedIndex == 5,
               onTap: () {
                 _onItemTapped(5);

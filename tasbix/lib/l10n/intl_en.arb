@@ -1,7 +1,16 @@
 {
-    "hello": "Hello",
-    "goodbye": "goodbye",
-    "Tasbih": "Tasbih",
-    "save": "Save",
-    "restore": "Restore"
+  "hello": "Hello",
+  "goodbye": "goodbye",
+  "Tasbih": "Tasbih",
+  "save": "Save",
+  "restore": "Restore",
+  "darkTheme": "Dark theme",
+  "settings": "Settings",
+  "generalDhikrs": "General dhikrs",
+  "eveningDhikrs": "Evening dhikrs",
+  "morningDhikrs": "Morning dhikrs",
+  "selectedDhikrs": "Selected dhikrs",
+  "salavat": "Salavat",
+  "istighfar": "Istighfar",
+  "language": "Language"
 }

@@ -23,9 +23,19 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Tasbih": MessageLookupByLibrary.simpleMessage("Tasbih"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("Dark theme"),
+        "eveningDhikrs": MessageLookupByLibrary.simpleMessage("Evening dhikrs"),
+        "generalDhikrs": MessageLookupByLibrary.simpleMessage("General dhikrs"),
         "goodbye": MessageLookupByLibrary.simpleMessage("goodbye"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),
+        "istighfar": MessageLookupByLibrary.simpleMessage("Istighfar"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
+        "morningDhikrs": MessageLookupByLibrary.simpleMessage("Morning dhikrs"),
         "restore": MessageLookupByLibrary.simpleMessage("Restore"),
-        "save": MessageLookupByLibrary.simpleMessage("Save")
+        "salavat": MessageLookupByLibrary.simpleMessage("Salavat"),
+        "save": MessageLookupByLibrary.simpleMessage("Save"),
+        "selectedDhikrs":
+            MessageLookupByLibrary.simpleMessage("Selected dhikrs"),
+        "settings": MessageLookupByLibrary.simpleMessage("Settings")
       };
 }

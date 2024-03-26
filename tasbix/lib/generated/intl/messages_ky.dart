@@ -1,5 +1,5 @@
 // DO NOT EDIT. This is code generated via package:intl/generate_localized.dart
-// This is a library that provides messages for a kg locale. All the
+// This is a library that provides messages for a ky locale. All the
 // messages from the main program should be duplicated here with the same
 // function name.
 
@@ -18,14 +18,25 @@ final messages = new MessageLookup();
 typedef String MessageIfAbsent(String messageStr, List<dynamic> args);
 
 class MessageLookup extends MessageLookupByLibrary {
-  String get localeName => 'kg';
+  String get localeName => 'ky';
 
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Tasbih": MessageLookupByLibrary.simpleMessage("Тасбих"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("Кара тема"),
+        "eveningDhikrs": MessageLookupByLibrary.simpleMessage("Кечки зикрлер"),
+        "generalDhikrs":
+            MessageLookupByLibrary.simpleMessage("Баардык зикрлер"),
         "goodbye": MessageLookupByLibrary.simpleMessage("Жакшы кал"),
         "hello": MessageLookupByLibrary.simpleMessage("Салам"),
-        "restore": MessageLookupByLibrary.simpleMessage("Калыбына келтирүү"),
-        "save": MessageLookupByLibrary.simpleMessage("Сактоо")
+        "istighfar": MessageLookupByLibrary.simpleMessage("Истигфар"),
+        "language": MessageLookupByLibrary.simpleMessage("Тил"),
+        "morningDhikrs": MessageLookupByLibrary.simpleMessage("Таңкы зикрлер"),
+        "restore": MessageLookupByLibrary.simpleMessage("Калыбына "),
+        "salavat": MessageLookupByLibrary.simpleMessage("Салават"),
+        "save": MessageLookupByLibrary.simpleMessage("Сактоо"),
+        "selectedDhikrs":
+            MessageLookupByLibrary.simpleMessage("Тандалган зикрлер"),
+        "settings": MessageLookupByLibrary.simpleMessage("Ырастоо")
       };
 }

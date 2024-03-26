@@ -99,6 +99,96 @@ class S {
       args: [],
     );
   }
+
+  /// `Dark theme`
+  String get darkTheme {
+    return Intl.message(
+      'Dark theme',
+      name: 'darkTheme',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Settings`
+  String get settings {
+    return Intl.message(
+      'Settings',
+      name: 'settings',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `General dhikrs`
+  String get generalDhikrs {
+    return Intl.message(
+      'General dhikrs',
+      name: 'generalDhikrs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Evening dhikrs`
+  String get eveningDhikrs {
+    return Intl.message(
+      'Evening dhikrs',
+      name: 'eveningDhikrs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Morning dhikrs`
+  String get morningDhikrs {
+    return Intl.message(
+      'Morning dhikrs',
+      name: 'morningDhikrs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Selected dhikrs`
+  String get selectedDhikrs {
+    return Intl.message(
+      'Selected dhikrs',
+      name: 'selectedDhikrs',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Salavat`
+  String get salavat {
+    return Intl.message(
+      'Salavat',
+      name: 'salavat',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Istighfar`
+  String get istighfar {
+    return Intl.message(
+      'Istighfar',
+      name: 'istighfar',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Language`
+  String get language {
+    return Intl.message(
+      'Language',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {
@@ -107,7 +197,7 @@ class AppLocalizationDelegate extends LocalizationsDelegate<S> {
   List<Locale> get supportedLocales {
     return const <Locale>[
       Locale.fromSubtags(languageCode: 'en'),
-      Locale.fromSubtags(languageCode: 'kg'),
+      Locale.fromSubtags(languageCode: 'ky'),
       Locale.fromSubtags(languageCode: 'ru'),
     ];
   }

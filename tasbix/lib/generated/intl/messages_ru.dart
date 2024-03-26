@@ -23,9 +23,19 @@ class MessageLookup extends MessageLookupByLibrary {
   final messages = _notInlinedMessages(_notInlinedMessages);
   static Map<String, Function> _notInlinedMessages(_) => <String, Function>{
         "Tasbih": MessageLookupByLibrary.simpleMessage("Тасбих"),
+        "darkTheme": MessageLookupByLibrary.simpleMessage("Темная тема"),
+        "eveningDhikrs": MessageLookupByLibrary.simpleMessage("Вечерние зикры"),
+        "generalDhikrs": MessageLookupByLibrary.simpleMessage("Общие зикры"),
         "goodbye": MessageLookupByLibrary.simpleMessage("пока"),
         "hello": MessageLookupByLibrary.simpleMessage("Привет"),
+        "istighfar": MessageLookupByLibrary.simpleMessage("Истихфар"),
+        "language": MessageLookupByLibrary.simpleMessage("Язык"),
+        "morningDhikrs": MessageLookupByLibrary.simpleMessage("Утренние зикры"),
         "restore": MessageLookupByLibrary.simpleMessage("Восстановить"),
-        "save": MessageLookupByLibrary.simpleMessage("Сохранить")
+        "salavat": MessageLookupByLibrary.simpleMessage("Салават"),
+        "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
+        "selectedDhikrs":
+            MessageLookupByLibrary.simpleMessage("Избранные зикры"),
+        "settings": MessageLookupByLibrary.simpleMessage("Настройки")
       };
 }

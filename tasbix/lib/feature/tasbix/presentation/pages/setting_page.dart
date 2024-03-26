@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasbix/bloc/cubit/theme_cubit.dart';
+import 'package:tasbix/feature/tasbix/presentation/widgets/widgets.dart';
+import 'package:tasbix/generated/l10n.dart';
 
 class SettingPage extends StatefulWidget {
   const SettingPage({super.key});
@@ -15,45 +17,34 @@ class _SettingPageState extends State<SettingPage> {
   Widget build(BuildContext context) {
     final isdarkTheme = context.watch<ThemeCubit>().state.isdark;
     return Scaffold(
-      appBar: AppBar(
-        title: const Text('Настройки',
-            style: TextStyle(fontWeight: FontWeight.w600)),
-        centerTitle: true,
-        elevation: 1,
-      ),
-      body: Padding(
-        padding: const EdgeInsets.all(8.0),
-        child: ListView.separated(
-          itemCount: 1,
-          itemBuilder: (BuildContext context, int index) {
-            return ListTile(
-              tileColor: Colors.black12,
-              shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(15),
-                  side: BorderSide(
-                      color:
-                          isdarkTheme ? Colors.grey.shade300 : Colors.black26)),
-              title: const Text(
-                'Tемная тема',
-                style: TextStyle(fontSize: 20, fontWeight: FontWeight.w500),
-              ),
-              trailing: CupertinoSwitch(
-                value: isdarkTheme,
+      body: CustomScrollView(
+        slivers: [
+          SliverAppBar(
+            title: Text(S.of(context).settings,
+                style: const TextStyle(fontWeight: FontWeight.w600)),
+            centerTitle: true,
+            elevation: 1,
+          ),
+          const SliverToBoxAdapter(child: SizedBox(height: 16)),
+          SliverToBoxAdapter(
+            child: SettingsToggleCard(
+              title: S.of(context).darkTheme,
+              child: CupertinoSwitch(
                 onChanged: (value) {
                   setState(() {
                     _setThemeBrightness(context, value);
                   });
                 },
-                activeColor: CupertinoColors.activeGreen,
+                value: isdarkTheme,
               ),
-            );
-          },
-          separatorBuilder: (BuildContext context, int index) {
-            return const SizedBox(
-              height: 10,
-            );
-          },
-        ),
+            ),
+          ),
+          SliverToBoxAdapter(
+            child: SettingsToggleCard(
+              title: S.of(context).language,
+            ),
+          ),
+        ],
       ),
     );
   }

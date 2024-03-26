@@ -3,5 +3,14 @@
   "goodbye": "пока",
   "Tasbih": "Тасбих",
   "save": "Сохранить",
-  "restore": "Восстановить"
+  "restore": "Восстановить",
+  "darkTheme": "Темная тема",
+  "settings": "Настройки",
+  "generalDhikrs": "Общие зикры",
+  "eveningDhikrs": "Вечерние зикры",
+  "morningDhikrs": "Утренние зикры",
+  "selectedDhikrs": "Избранные зикры",
+  "salavat": "Салават",
+  "istighfar": "Истихфар",
+  "language": "Язык"
 }
