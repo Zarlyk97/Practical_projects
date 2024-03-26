@@ -57,7 +57,7 @@ class _MyAppState extends State<MyApp> {
               GlobalWidgetsLocalizations.delegate,
               GlobalCupertinoLocalizations.delegate,
             ],
-            locale: const Locale('ky'),
+            locale: const Locale('ru'),
             supportedLocales: S.delegate.supportedLocales,
             debugShowCheckedModeBanner: false,
             theme: state.isdark ? darkTheme : lightTheme,
