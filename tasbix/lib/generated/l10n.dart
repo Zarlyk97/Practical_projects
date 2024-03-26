@@ -69,6 +69,36 @@ class S {
       args: [],
     );
   }
+
+  /// `Tasbih`
+  String get Tasbih {
+    return Intl.message(
+      'Tasbih',
+      name: 'Tasbih',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Save`
+  String get save {
+    return Intl.message(
+      'Save',
+      name: 'save',
+      desc: '',
+      args: [],
+    );
+  }
+
+  /// `Restore`
+  String get restore {
+    return Intl.message(
+      'Restore',
+      name: 'restore',
+      desc: '',
+      args: [],
+    );
+  }
 }
 
 class AppLocalizationDelegate extends LocalizationsDelegate<S> {

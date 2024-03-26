@@ -1,4 +1,7 @@
 {
     "hello": "Hello",
-    "goodbye": "goodbye"
+    "goodbye": "goodbye",
+    "Tasbih": "Tasbih",
+    "save": "Save",
+    "restore": "Restore"
 }

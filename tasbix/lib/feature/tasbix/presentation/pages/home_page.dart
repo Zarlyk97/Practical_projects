@@ -3,6 +3,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasbix/bloc/cubit/theme_cubit.dart';
 import 'package:tasbix/feature/tasbix/presentation/cubit/tasbix_cubit.dart';
 import 'package:tasbix/feature/tasbix/presentation/pages/pages.dart';
+import 'package:tasbix/generated/l10n.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({super.key});
@@ -21,7 +22,7 @@ class _HomePageState extends State<HomePage> {
     return Scaffold(
       backgroundColor: const Color(0xFFFFFFFF),
       appBar: AppBar(
-        title: Text('Тасбих',
+        title: Text(S.of(context).Tasbih,
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
                   fontSize: (22),
                   fontWeight: FontWeight.w600,
@@ -126,7 +127,7 @@ class _HomePageState extends State<HomePage> {
                             : MaterialStateProperty.all(Colors.white)),
                     onPressed: () {},
                     child: Text(
-                      'Восстановить',
+                      S.of(context).restore,
                       style: TextStyle(
                         color: isdarkTheme ? Colors.white : Colors.black,
                       ),
@@ -135,7 +136,7 @@ class _HomePageState extends State<HomePage> {
                   ElevatedButton(
                     onPressed: () {},
                     child: Text(
-                      'Сохранить',
+                      S.of(context).save,
                       style: TextStyle(
                         color: isdarkTheme ? Colors.white : Colors.black,
                       ),
