@@ -3,12 +3,14 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
-import 'package:tasbix/bloc/cubit/theme_cubit.dart';
+import 'package:tasbix/bloc/theme_cubit/theme_cubit.dart';
 import 'package:tasbix/feature/tasbix/domain/repositories/repositories.dart';
 import 'package:tasbix/feature/tasbix/presentation/cubit/tasbix_cubit.dart';
 import 'package:tasbix/core/ui/ui.dart';
 import 'package:tasbix/feature/tasbix/presentation/pages/splash_screen.dart';
 import 'package:tasbix/generated/l10n.dart';
+
+import 'bloc/language_cubit/language_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -47,21 +49,48 @@ class _MyAppState extends State<MyApp> {
         BlocProvider(
           create: (context) => ThemeCubit(settingRepository: settingRepository),
         ),
+        BlocProvider(
+          create: (context) => LanguageCubit()..getsavedLanguageCode(),
+        )
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
-        builder: (context, state) {
-          return MaterialApp(
-            localizationsDelegates: const [
-              S.delegate,
-              GlobalMaterialLocalizations.delegate,
-              GlobalWidgetsLocalizations.delegate,
-              GlobalCupertinoLocalizations.delegate,
-            ],
-            locale: const Locale('en'),
-            supportedLocales: S.delegate.supportedLocales,
-            debugShowCheckedModeBanner: false,
-            theme: state.isdark ? darkTheme : lightTheme,
-            home: const SplashScreen(),
+        builder: (context, themeState) {
+          return BlocBuilder<LanguageCubit, LanguageState>(
+            builder: (context, state) {
+              if (state is ChangeLanguageState) {
+                return MaterialApp(
+                  localizationsDelegates: const [
+                    S.delegate,
+                    GlobalMaterialLocalizations.delegate,
+                    GlobalWidgetsLocalizations.delegate,
+                    GlobalCupertinoLocalizations.delegate,
+                  ],
+                  localeResolutionCallback: (deviceLocale, supportedLocales) {
+                    for (var locale in supportedLocales) {
+                      if (locale.languageCode == deviceLocale!.languageCode) {
+                        return deviceLocale;
+                      }
+                    }
+                    return supportedLocales.first;
+                  },
+                  locale: state.locale,
+                  supportedLocales: const [
+                    Locale('en'),
+                    Locale('ky'),
+                    Locale('ru'),
+                  ],
+                  debugShowCheckedModeBanner: false,
+                  theme: themeState.isdark ? darkTheme : lightTheme,
+                  title: 'Tasbix',
+                  home: BlocBuilder<LanguageCubit, LanguageState>(
+                    builder: (context, state) {
+                      return const SplashScreen();
+                    },
+                  ),
+                );
+              }
+              return const SizedBox();
+            },
           );
         },
       ),

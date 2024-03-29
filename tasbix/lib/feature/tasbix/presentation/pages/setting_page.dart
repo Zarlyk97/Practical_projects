@@ -1,7 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasbix/bloc/cubit/theme_cubit.dart';
+import 'package:tasbix/bloc/language_cubit/language_cubit.dart';
+import 'package:tasbix/bloc/theme_cubit/theme_cubit.dart';
 import 'package:tasbix/feature/tasbix/presentation/widgets/widgets.dart';
 import 'package:tasbix/generated/l10n.dart';
 
@@ -13,11 +14,9 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  // final localizationService = LocalizationService();
-
   @override
   Widget build(BuildContext context) {
-    final isdarkTheme = context.watch<ThemeCubit>().state.isdark;
+    final isdark = context.watch<ThemeCubit>().state.isdark;
     return Scaffold(
       body: CustomScrollView(
         slivers: [
@@ -37,30 +36,36 @@ class _SettingPageState extends State<SettingPage> {
                     _setThemeBrightness(context, value);
                   });
                 },
-                value: isdarkTheme,
+                value: isdark,
               ),
             ),
           ),
           SliverToBoxAdapter(
             child: SettingsToggleCard(
               title: S.of(context).language,
-              child: DropdownButton<Locale>(
-                value: const Locale('en'), //localizationService.locale,
-                onChanged: (Locale? newLocale) {},
-                items: const [
-                  DropdownMenuItem(
-                    value: Locale('en'),
-                    child: Text('English'),
-                  ),
-                  DropdownMenuItem(
-                    value: Locale('ky'),
-                    child: Text('Кыргызча'),
-                  ),
-                  DropdownMenuItem(
-                    value: Locale('ky'),
-                    child: Text('Русский'),
-                  ),
-                ],
+              child: BlocBuilder<LanguageCubit, LanguageState>(
+                builder: (context, state) {
+                  if (state is ChangeLanguageState) {
+                    return DropdownButton<String>(
+                      value: state.locale.languageCode,
+                      onChanged: (String? value) {
+                        context.read<LanguageCubit>().changeLanguage(value!);
+                      },
+                      items: [
+                        'en',
+                        'ru',
+                        'ky',
+                      ]
+                          .map((String items) => DropdownMenuItem<String>(
+                                value: items,
+                                child: Text(items),
+                              ))
+                          .toList(),
+                    );
+                  } else {
+                    return const SizedBox.shrink(); // же башка виджет
+                  }
+                },
               ),
             ),
           ),
@@ -75,14 +80,3 @@ class _SettingPageState extends State<SettingPage> {
         .toggleTheme(value ? Brightness.dark : Brightness.light);
   }
 }
-
-// class LocalizationService {
-//   Locale? _locale;
-
-//   Locale get locale => _locale!;
-
-//   void setLocale(Locale locale) {
-//     _locale = locale;
-//     // Тилди өзгөрткөндөн кийин колдонмону кайрадан жүктөңүз
-//   }
-// }

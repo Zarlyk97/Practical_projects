@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasbix/bloc/cubit/theme_cubit.dart';
+import 'package:tasbix/bloc/theme_cubit/theme_cubit.dart';
 
 class BaseConatiner extends StatelessWidget {
   const BaseConatiner({
