@@ -19,4 +19,12 @@ class LanguageCubit extends Cubit<LanguageState> {
     await LanguageCacheHelper().cacheLanguageCode(languageCode);
     emit(ChangeLanguageState(locale: Locale(languageCode)));
   }
+
+  String getCurrentLanguageCode() {
+    final currentState = state;
+    if (currentState is ChangeLanguageState) {
+      return currentState.locale.languageCode;
+    }
+    return 'en'; // баштапкы тил кодун коюңуз
+  }
 }
