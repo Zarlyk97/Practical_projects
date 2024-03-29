@@ -13,6 +13,8 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
+  final localizationService = LocalizationService();
+
   @override
   Widget build(BuildContext context) {
     final isdarkTheme = context.watch<ThemeCubit>().state.isdark;
@@ -42,6 +44,22 @@ class _SettingPageState extends State<SettingPage> {
           SliverToBoxAdapter(
             child: SettingsToggleCard(
               title: S.of(context).language,
+              child: DropdownButton<Locale>(
+                value: localizationService.locale,
+                onChanged: (Locale? newLocale) {
+                  localizationService.setLocale(newLocale!);
+                },
+                items: [
+                  DropdownMenuItem(
+                    value: Locale('en'),
+                    child: Text('English'),
+                  ),
+                  DropdownMenuItem(
+                    value: Locale('ky'),
+                    child: Text('Кыргызча'),
+                  ),
+                ],
+              ),
             ),
           ),
         ],
@@ -53,5 +71,16 @@ class _SettingPageState extends State<SettingPage> {
     context
         .read<ThemeCubit>()
         .toggleTheme(value ? Brightness.dark : Brightness.light);
+  }
+}
+
+class LocalizationService {
+  Locale? _locale;
+
+  Locale get locale => _locale!;
+
+  void setLocale(Locale locale) {
+    _locale = locale;
+    // Тилди өзгөрткөндөн кийин колдонмону кайрадан жүктөңүз
   }
 }
