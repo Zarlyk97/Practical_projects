@@ -13,7 +13,7 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  final localizationService = LocalizationService();
+  // final localizationService = LocalizationService();
 
   @override
   Widget build(BuildContext context) {
@@ -45,11 +45,9 @@ class _SettingPageState extends State<SettingPage> {
             child: SettingsToggleCard(
               title: S.of(context).language,
               child: DropdownButton<Locale>(
-                value: localizationService.locale,
-                onChanged: (Locale? newLocale) {
-                  localizationService.setLocale(newLocale!);
-                },
-                items: [
+                value: const Locale('en'), //localizationService.locale,
+                onChanged: (Locale? newLocale) {},
+                items: const [
                   DropdownMenuItem(
                     value: Locale('en'),
                     child: Text('English'),
@@ -57,6 +55,10 @@ class _SettingPageState extends State<SettingPage> {
                   DropdownMenuItem(
                     value: Locale('ky'),
                     child: Text('Кыргызча'),
+                  ),
+                  DropdownMenuItem(
+                    value: Locale('ky'),
+                    child: Text('Русский'),
                   ),
                 ],
               ),
@@ -74,13 +76,13 @@ class _SettingPageState extends State<SettingPage> {
   }
 }
 
-class LocalizationService {
-  Locale? _locale;
+// class LocalizationService {
+//   Locale? _locale;
 
-  Locale get locale => _locale!;
+//   Locale get locale => _locale!;
 
-  void setLocale(Locale locale) {
-    _locale = locale;
-    // Тилди өзгөрткөндөн кийин колдонмону кайрадан жүктөңүз
-  }
-}
+//   void setLocale(Locale locale) {
+//     _locale = locale;
+//     // Тилди өзгөрткөндөн кийин колдонмону кайрадан жүктөңүз
+//   }
+// }
