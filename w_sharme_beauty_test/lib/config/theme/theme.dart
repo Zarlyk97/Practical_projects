@@ -30,7 +30,7 @@ var theme = ThemeData(
   ),
   colorScheme: ColorScheme.fromSeed(
     seedColor: const Color(0xffF3F3F3),
-    primary: Color.fromARGB(255, 160, 64, 156),
+    primary: const Color(0xffBA75FE),
     onPrimary: const Color(0xffF3F3F3),
     secondary: const Color(0xffF3F3F3),
   ),

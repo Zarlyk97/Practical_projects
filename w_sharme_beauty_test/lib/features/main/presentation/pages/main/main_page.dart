@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:w_sharme_beauty_test/config/config.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -59,7 +60,7 @@ class _MainPageState extends State<MainPage> {
             fontSize: 13,
             height: 1.6,
           ),
-          selectedItemColor: Colors.green,
+          selectedItemColor: theme.primaryColor,
           items: [
             BottomNavigationBarItem(
               label: "Главная",
@@ -68,7 +69,7 @@ class _MainPageState extends State<MainPage> {
                 width: 28,
                 height: 28,
                 // ignore: deprecated_member_use
-                color: _currentIndex == 0 ? Colors.green : Colors.grey,
+                color: _currentIndex == 0 ? theme.primaryColor : Colors.grey,
               ),
             ),
             BottomNavigationBarItem(
@@ -77,7 +78,7 @@ class _MainPageState extends State<MainPage> {
                 width: 28,
                 height: 28,
                 // ignore: deprecated_member_use
-                color: _currentIndex == 1 ? Colors.green : Colors.grey,
+                color: _currentIndex == 1 ? theme.primaryColor : Colors.grey,
               ),
               label: "Объявления",
             ),
@@ -88,7 +89,7 @@ class _MainPageState extends State<MainPage> {
                 height: 28,
 
                 // ignore: deprecated_member_use
-                color: _currentIndex == 2 ? Colors.green : Colors.grey,
+                color: _currentIndex == 2 ? theme.primaryColor : Colors.grey,
               ),
               label: "Вопрос",
             ),
@@ -98,7 +99,7 @@ class _MainPageState extends State<MainPage> {
                 width: 28,
                 height: 28,
                 // ignore: deprecated_member_use
-                color: _currentIndex == 3 ? Colors.green : Colors.grey,
+                color: _currentIndex == 3 ? theme.primaryColor : Colors.grey,
               ),
               label: "Сообщество",
             ),
@@ -109,7 +110,7 @@ class _MainPageState extends State<MainPage> {
                 height: 28,
 
                 // ignore: deprecated_member_use
-                color: _currentIndex == 2 ? Colors.green : Colors.grey,
+                color: _currentIndex == 4 ? theme.primaryColor : Colors.grey,
               ),
               label: "Профиль",
             ),
