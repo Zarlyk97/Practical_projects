@@ -1,4 +1,5 @@
 {
+  "language": "en",
   "hello": "Hello",
   "goodbye": "goodbye",
   "Tasbih": "Tasbih",
@@ -11,6 +12,5 @@
   "morningDhikrs": "Morning dhikrs",
   "selectedDhikrs": "Selected dhikrs",
   "salavat": "Salavat",
-  "istighfar": "Istighfar",
-  "language": "Language"
+  "istighfar": "Istighfar"
 }

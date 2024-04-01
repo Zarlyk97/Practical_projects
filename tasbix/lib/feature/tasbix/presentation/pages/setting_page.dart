@@ -47,16 +47,16 @@ class _SettingPageState extends State<SettingPage> {
                 builder: (context, state) {
                   if (state is ChangeLanguageState) {
                     return DropdownButton<String>(
-                      //  value: state.locale.languageCode,
+                      value: S.of(context).language,
                       onChanged: (String? value) {
                         if (value == null) {
                           context.read<LanguageCubit>().changeLanguage(value!);
                         }
                       },
                       items: [
-                        'English',
-                        'Русский',
-                        'Кыргыз',
+                        const Locale('en').languageCode,
+                        const Locale('ru').languageCode,
+                        const Locale('ky').languageCode,
                       ]
                           .map((String items) => DropdownMenuItem<String>(
                                 value: items,

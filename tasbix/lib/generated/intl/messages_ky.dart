@@ -30,7 +30,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "goodbye": MessageLookupByLibrary.simpleMessage("Жакшы кал"),
         "hello": MessageLookupByLibrary.simpleMessage("Салам"),
         "istighfar": MessageLookupByLibrary.simpleMessage("Истигфар"),
-        "language": MessageLookupByLibrary.simpleMessage("Тил"),
+        "language": MessageLookupByLibrary.simpleMessage("ky"),
         "morningDhikrs": MessageLookupByLibrary.simpleMessage("Таңкы зикрлер"),
         "restore": MessageLookupByLibrary.simpleMessage("Калыбына "),
         "salavat": MessageLookupByLibrary.simpleMessage("Салават"),

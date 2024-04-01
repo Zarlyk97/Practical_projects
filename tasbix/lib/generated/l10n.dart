@@ -50,6 +50,16 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `en`
+  String get language {
+    return Intl.message(
+      'en',
+      name: 'language',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Hello`
   String get hello {
     return Intl.message(
@@ -175,16 +185,6 @@ class S {
     return Intl.message(
       'Istighfar',
       name: 'istighfar',
-      desc: '',
-      args: [],
-    );
-  }
-
-  /// `Language`
-  String get language {
-    return Intl.message(
-      'Language',
-      name: 'language',
       desc: '',
       args: [],
     );

@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:w_sharme_beauty_test/features/main/presentation/pages/comment/comment_page.dart';
 import 'package:w_sharme_beauty_test/features/main/presentation/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -9,6 +10,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  bool _currentIndex = false;
   @override
   Widget build(BuildContext context) {
     var theme = Theme.of(context);
@@ -46,37 +48,22 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                            children: [
-                              Row(
-                                children: [
-                                  const CircleAvatar(
-                                    child: Text("A"),
-                                  ),
-                                  const SizedBox(width: 10),
-                                  Column(
-                                    crossAxisAlignment:
-                                        CrossAxisAlignment.start,
-                                    children: [
-                                      Text(
-                                        "Elena Ivanovna",
-                                        style: theme.textTheme.bodyMedium!
-                                            .copyWith(
-                                                fontWeight: FontWeight.w700),
-                                      ),
-                                      Text(
-                                        "22-март в 10:00",
-                                        style: theme.textTheme.bodySmall!
-                                            .copyWith(
-                                                color: theme.disabledColor),
-                                      )
-                                    ],
-                                  ),
-                                ],
-                              ),
-                              CustomButton(theme: theme)
-                            ],
+                          ListTile(
+                            contentPadding: EdgeInsets.zero,
+                            leading: const CircleAvatar(
+                              child: Text("A"),
+                            ),
+                            title: Text(
+                              "Elena Ivanovna",
+                              style: theme.textTheme.bodyMedium!
+                                  .copyWith(fontWeight: FontWeight.w700),
+                            ),
+                            subtitle: Text(
+                              "22-март в 10:00",
+                              style: theme.textTheme.bodySmall!
+                                  .copyWith(color: theme.disabledColor),
+                            ),
+                            trailing: CustomButton(theme: theme),
                           ),
                           const SizedBox(height: 10),
                           index % 2 == 0
@@ -102,17 +89,35 @@ class _HomePageState extends State<HomePage> {
                           const SizedBox(height: 10),
                           Row(
                             children: [
-                              const ContainerWidget(
+                              ContainerWidget(
                                 text: '221',
-                                widget: Icon(
-                                  Icons.favorite_outline,
-                                  color: Colors.grey,
+                                widget: GestureDetector(
+                                  onTap: () {
+                                    _onTabTapped();
+                                  },
+                                  child: _currentIndex
+                                      ? const Icon(
+                                          Icons.favorite,
+                                          color: Colors.red,
+                                        )
+                                      : const Icon(
+                                          Icons.favorite_outline,
+                                          color: Colors.grey,
+                                        ),
                                 ),
                               ),
                               const SizedBox(
                                 width: 10,
                               ),
                               ContainerWidget(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const CommentPage(),
+                                      ));
+                                },
                                 widget: Image.asset(
                                   'assets/png/comments.png',
                                   // ignore: deprecated_member_use
@@ -142,5 +147,11 @@ class _HomePageState extends State<HomePage> {
             itemCount: 10),
       ),
     );
+  }
+
+  void _onTabTapped() {
+    setState(() {
+      _currentIndex = !_currentIndex;
+    });
   }
 }
