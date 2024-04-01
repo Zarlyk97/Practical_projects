@@ -1,5 +1,4 @@
 import 'package:flutter/material.dart';
-import 'package:svg_flutter/svg_flutter.dart';
 import 'package:w_sharme_beauty_test/features/main/presentation/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -28,7 +27,7 @@ class _HomePageState extends State<HomePage> {
         actions: [
           Image.asset('assets/png/notification.png'),
           const SizedBox(width: 10),
-          Image.asset('assets/png/comment.png'),
+          Image.asset('assets/png/chat.png'),
           const SizedBox(width: 10),
         ],
         shape: const RoundedRectangleBorder(
@@ -80,24 +79,45 @@ class _HomePageState extends State<HomePage> {
                             ],
                           ),
                           const SizedBox(height: 10),
-                          const Text(
-                            'Нет ничего более удивительного, чем мастерство маникюриста, который обладает умением превратить обычные ногти в истинные произведения искусства. Моя цель - не просто ухаживать за ногтями, но и придавать им индивидуальность, отражающую ваш стиль и характер.',
-                            style: TextStyle(fontWeight: FontWeight.w500),
-                          ),
+                          index % 2 == 0
+                              ? const Text(
+                                  'Нет ничего более удивительного, чем мастерство маникюриста, который обладает умением превратить обычные ногти в истинные произведения искусства. Моя цель - не просто ухаживать за ногтями, но и придавать им индивидуальность, отражающую ваш стиль и характер.',
+                                  style: TextStyle(fontWeight: FontWeight.w500),
+                                )
+                              : Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Text(
+                                      'Мастер Маникюр',
+                                      style: TextStyle(
+                                          fontWeight: FontWeight.w500),
+                                    ),
+                                    const SizedBox(
+                                      height: 5,
+                                    ),
+                                    Image.network(
+                                        'https://images.rawpixel.com/image_png_800/cHJpdmF0ZS9sci9pbWFnZXMvd2Vic2l0ZS8yMDI0LTAxL3Jhd3BpeGVsb2ZmaWNlMTJfcGhvdG9fb2ZfeW91bmdfaW5kaWFuX2dpcmxfaG9sZGluZ19zdHVkZW50X2JhY19hNDdmMzk1OS0zZDAyLTRiZWEtYTEzOS1lYzI0ZjdhNjEwZGEucG5n.png'),
+                                  ],
+                                ),
                           const SizedBox(height: 10),
                           Row(
                             children: [
-                              ContainerWidget(
+                              const ContainerWidget(
                                 text: '221',
-                                widget:
-                                    SvgPicture.asset('assets/svg/share.svg'),
+                                widget: Icon(
+                                  Icons.favorite_outline,
+                                  color: Colors.grey,
+                                ),
                               ),
                               const SizedBox(
                                 width: 10,
                               ),
                               ContainerWidget(
-                                widget:
-                                    SvgPicture.asset('assets/svg/comment.svg'),
+                                widget: Image.asset(
+                                  'assets/png/comments.png',
+                                  // ignore: deprecated_member_use
+                                  color: Colors.grey,
+                                ),
                                 text: '45',
                               ),
                               const SizedBox(
@@ -105,9 +125,10 @@ class _HomePageState extends State<HomePage> {
                               ),
                               ContainerWidget(
                                 text: '6',
-                                widget: SvgPicture.asset(
-                                  'assets/svg/comment.svg',
-                                  color: theme.primaryColor,
+                                widget: Image.asset(
+                                  'assets/png/share.png',
+                                  // ignore: deprecated_member_use
+                                  color: Colors.grey,
                                 ),
                               ),
                             ],

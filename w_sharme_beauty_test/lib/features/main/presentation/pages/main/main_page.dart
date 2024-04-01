@@ -35,7 +35,7 @@ class _MainPageState extends State<MainPage> {
           },
           children: const [
             HomePage(),
-            Scaffold(body: Center(child: Text("ОбЪявления"))),
+            Scaffold(body: Center(child: Text("Объявления"))),
             Scaffold(body: Center(child: Text("Вопрос"))),
             Scaffold(body: Center(child: Text("Сообщество"))),
             Scaffold(body: Center(child: Text("Профиль"))),
