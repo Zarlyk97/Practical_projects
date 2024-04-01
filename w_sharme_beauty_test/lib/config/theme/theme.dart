@@ -32,6 +32,6 @@ var theme = ThemeData(
     seedColor: const Color(0xffF3F3F3),
     primary: const Color(0xffBA75FE),
     onPrimary: const Color(0xffF3F3F3),
-    secondary: const Color(0xffF3F3F3),
+    onSecondary: const Color(0xffA2A8B0),
   ),
 );

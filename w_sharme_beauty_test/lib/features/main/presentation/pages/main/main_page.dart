@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:w_sharme_beauty_test/config/config.dart';
+import 'package:w_sharme_beauty_test/features/main/presentation/pages/home/home_page.dart';
 
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
@@ -33,7 +34,7 @@ class _MainPageState extends State<MainPage> {
             setState(() {});
           },
           children: const [
-            Scaffold(body: Center(child: Text("Главная"))),
+            HomePage(),
             Scaffold(body: Center(child: Text("ОбЪявления"))),
             Scaffold(body: Center(child: Text("Вопрос"))),
             Scaffold(body: Center(child: Text("Сообщество"))),
