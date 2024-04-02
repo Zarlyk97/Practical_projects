@@ -1,43 +1,73 @@
 import 'package:flutter/material.dart';
-import 'package:w_sharme_beauty_test/features/auth/presentation/widgets/text_form_input_widget.dart';
 
-class ChatScreen extends StatefulWidget {
+class ChatScreen extends StatelessWidget {
   const ChatScreen({super.key});
 
   @override
-  State<ChatScreen> createState() => _ChatScreenState();
-}
-
-class _ChatScreenState extends State<ChatScreen> {
-  @override
   Widget build(BuildContext context) {
-    var theme = Theme.of(context);
-
-    return Scaffold(
+    return DefaultTabController(
+      initialIndex: 1,
+      length: 3,
+      child: Scaffold(
         appBar: AppBar(
-          title: Text(
-            "Чат",
-            style: theme.textTheme.titleLarge!
-                .copyWith(fontWeight: FontWeight.w700),
-          ),
-          centerTitle: true,
-        ),
-        body: const Padding(
-          padding: EdgeInsets.all(12.0),
-          child: Column(
-            children: [
-              TextFormInputWidget(
-                  prefixIcon: Icon(Icons.search, color: Colors.grey),
-                  labelText: "Поиск",
-                  obscureText: false),
-              Expanded(
-                child: TabBar(tabs: [
-                  Text("Входящие"),
-                  Text("Исходящие"),
-                ]),
-              )
+          backgroundColor: Colors.blueGrey.shade500,
+          title: const Text('TabBar Widget'),
+          bottom: const TabBar(
+            indicatorColor: Colors.lime,
+            indicatorWeight: 5.0,
+            labelColor: Colors.white,
+            labelPadding: EdgeInsets.only(top: 10.0),
+            unselectedLabelColor: Colors.grey,
+            tabs: [
+              Tab(
+                text: 'Cake',
+                icon: Icon(
+                  Icons.cake,
+                  color: Colors.white,
+                ),
+                iconMargin: EdgeInsets.only(bottom: 10.0),
+              ),
+              //child: Image.asset('images/android.png'),
+
+              Tab(
+                text: 'Radio',
+                icon: Icon(
+                  Icons.radio,
+                  color: Colors.white,
+                ),
+                iconMargin: EdgeInsets.only(bottom: 10.0),
+              ),
+              Tab(
+                text: 'Gift',
+                icon: Icon(
+                  Icons.card_giftcard,
+                  color: Colors.white,
+                ),
+                iconMargin: EdgeInsets.only(bottom: 10.0),
+              ),
             ],
           ),
-        ));
+        ),
+        body: const TabBarView(
+          children: [
+            Center(
+                child: Text(
+              'This is Cake Tab',
+              style: TextStyle(fontSize: 32),
+            )),
+            Center(
+                child: Text(
+              'This is Radio Tab',
+              style: TextStyle(fontSize: 32),
+            )),
+            Center(
+                child: Text(
+              'This is Gift Tab',
+              style: TextStyle(fontSize: 32),
+            )),
+          ],
+        ),
+      ),
+    );
   }
 }
