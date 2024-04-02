@@ -17,16 +17,19 @@ class TextFormInputWidget extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return TextFormField(
+      cursorColor: theme.colorScheme.primary,
       obscureText: obscureText,
       decoration: InputDecoration(
+        contentPadding: const EdgeInsets.symmetric(horizontal: 20),
         suffixIcon: suffixIcon,
         suffixIconColor: theme.colorScheme.primary,
-        labelText: labelText,
+        hintText: labelText,
+        hintStyle: const TextStyle(color: Color(0xff9CA3AF)),
         filled: true,
         fillColor: const Color(0xffF3F3F3),
         border: OutlineInputBorder(
           borderSide: BorderSide.none,
-          borderRadius: BorderRadius.circular(10),
+          borderRadius: BorderRadius.circular(20),
         ),
       ),
     );

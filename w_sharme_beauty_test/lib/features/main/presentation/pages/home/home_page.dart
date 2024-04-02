@@ -48,23 +48,7 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          ListTile(
-                            contentPadding: EdgeInsets.zero,
-                            leading: const CircleAvatar(
-                              child: Text("A"),
-                            ),
-                            title: Text(
-                              "Elena Ivanovna",
-                              style: theme.textTheme.bodyMedium!
-                                  .copyWith(fontWeight: FontWeight.w700),
-                            ),
-                            subtitle: Text(
-                              "22-март в 10:00",
-                              style: theme.textTheme.bodySmall!
-                                  .copyWith(color: theme.disabledColor),
-                            ),
-                            trailing: CustomButton(theme: theme),
-                          ),
+                          ListStileWidget(theme: theme),
                           const SizedBox(height: 10),
                           index % 2 == 0
                               ? const Text(
@@ -129,6 +113,14 @@ class _HomePageState extends State<HomePage> {
                                 width: 10,
                               ),
                               ContainerWidget(
+                                onTap: () {
+                                  Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                        builder: (context) =>
+                                            const CommentPage(),
+                                      ));
+                                },
                                 text: '6',
                                 widget: Image.asset(
                                   'assets/png/share.png',
