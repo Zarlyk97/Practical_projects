@@ -1,5 +1,7 @@
 import 'package:flutter/material.dart';
-import 'package:w_sharme_beauty_test/features/main/presentation/pages/comment/comment_page.dart';
+import 'package:flutter/widgets.dart';
+import 'package:w_sharme_beauty_test/features/main/presentation/pages/home/comment/comment_example.dart';
+import 'package:w_sharme_beauty_test/features/main/presentation/pages/home/home.dart';
 import 'package:w_sharme_beauty_test/features/main/presentation/widgets/widgets.dart';
 
 class HomePage extends StatefulWidget {
@@ -27,9 +29,23 @@ class _HomePageState extends State<HomePage> {
               theme.textTheme.titleLarge!.copyWith(fontWeight: FontWeight.w700),
         ),
         actions: [
-          Image.asset('assets/png/notification.png'),
+          GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const NotificationScreen()));
+              },
+              child: Image.asset('assets/png/notification.png')),
           const SizedBox(width: 10),
-          Image.asset('assets/png/chat.png'),
+          GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const ChatScreen()));
+              },
+              child: Image.asset('assets/png/chat.png')),
           const SizedBox(width: 10),
         ],
         shape: const RoundedRectangleBorder(
@@ -117,8 +133,7 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                        builder: (context) =>
-                                            const CommentPage(),
+                                        builder: (context) => const TestMe(),
                                       ));
                                 },
                                 text: '6',

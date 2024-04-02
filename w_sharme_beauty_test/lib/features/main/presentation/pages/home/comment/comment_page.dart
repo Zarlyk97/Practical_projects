@@ -119,7 +119,7 @@ class _CommentPageState extends State<CommentPage> {
                             color: const Color(0xff6D6D6D),
                           )),
                       ListView.builder(
-                        itemCount: 1,
+                        itemCount: 8,
                         shrinkWrap: true,
                         physics: const NeverScrollableScrollPhysics(),
                         itemBuilder: (BuildContext context, int index) {
@@ -129,8 +129,25 @@ class _CommentPageState extends State<CommentPage> {
                               backgroundImage:
                                   NetworkImage('https://picsum.photos/200'),
                             ),
-                            title: Text('Nastya'),
-                            subtitle: Text('22 April at 18:32'),
+                            title: Text(
+                              'Elena',
+                              style: TextStyle(fontWeight: FontWeight.w600),
+                            ),
+                            subtitle: Column(
+                              crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Text(
+                                  'Нет ничего более удивительного',
+                                  style: TextStyle(
+                                      fontWeight: FontWeight.w500,
+                                      color: Colors.black),
+                                ),
+                                Text(
+                                  'сегодня в 15:53   нравится 5   ответить',
+                                  style: TextStyle(color: Colors.grey),
+                                ),
+                              ],
+                            ),
                             trailing: Icon(Icons.favorite_outline),
                           );
                         },
@@ -195,90 +212,4 @@ class _CommentPageState extends State<CommentPage> {
       _currentIndex = !_currentIndex;
     });
   }
-}
-
-class PostScreen extends StatefulWidget {
-  @override
-  _PostScreenState createState() => _PostScreenState();
-}
-
-class _PostScreenState extends State<PostScreen> {
-  final List<Comments> _comments = [
-    Comments(
-      username: 'Elena',
-      text:
-          'Вы супер! Хочу записаться. Можете сказать, сколько стоит этот маникюр?',
-      replies: [],
-    ),
-    Comments(
-      username: 'Nastya',
-      text: 'Спасибо, 5000 рублей',
-      replies: [],
-    ),
-    Comments(
-      username: 'Nastii',
-      text:
-          'Все супер! Хочу записаться. Можете сказать, сколько стоит этот маникюр?',
-      replies: [],
-    ),
-  ];
-
-  @override
-  Widget build(BuildContext context) {
-    return Scaffold(
-      body: Column(
-        children: [
-          const ListTile(
-            leading: CircleAvatar(
-              backgroundImage: NetworkImage('https://picsum.photos/200'),
-            ),
-            title: Text('Nastya'),
-            subtitle: Text('22 April at 18:32'),
-          ),
-          const Padding(
-            padding: EdgeInsets.all(8.0),
-            child: Text(
-              'Нет ничего более удивительного',
-              style: TextStyle(fontSize: 16),
-            ),
-          ),
-          Image.network('https://picsum.photos/300/200'),
-          Expanded(
-            child: ListView.builder(
-              itemCount: _comments.length,
-              itemBuilder: (context, index) {
-                return ListTile(
-                  leading: CircleAvatar(
-                    child: Text(_comments[index].username[0]),
-                  ),
-                  title: Text(_comments[index].text),
-                );
-              },
-            ),
-          ),
-          TextField(
-            decoration: InputDecoration(
-              hintText: 'Ваш комментарий',
-              suffixIcon: IconButton(
-                onPressed: () {},
-                icon: const Icon(Icons.send),
-              ),
-            ),
-          ),
-        ],
-      ),
-    );
-  }
-}
-
-class Comments {
-  final String username;
-  final String text;
-  final List<String> replies;
-
-  Comments({
-    required this.username,
-    required this.text,
-    required this.replies,
-  });
 }
