@@ -64,7 +64,16 @@ class _HomePageState extends State<HomePage> {
                       padding: const EdgeInsets.all(10.0),
                       child: Column(
                         children: [
-                          ListStileWidget(theme: theme),
+                          ListStileWidget(
+                            onTap: () {},
+                            leading: const CircleAvatar(child: Text("A")),
+                            theme: theme,
+                            title: 'Elena Ivanovna',
+                            subtitle: '22-март в 15:00',
+                            trailing: CustomButtonWidget(
+                              theme: theme,
+                            ),
+                          ),
                           const SizedBox(height: 10),
                           index % 2 == 0
                               ? const Text(

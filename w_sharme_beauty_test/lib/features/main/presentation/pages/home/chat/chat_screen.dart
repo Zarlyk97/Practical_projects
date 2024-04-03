@@ -68,7 +68,24 @@ class _ChatScreenState extends State<ChatScreen> {
                     child: ListView.separated(
                       itemCount: 3,
                       itemBuilder: (BuildContext context, int index) {
-                        return ListStileWidget(theme: theme);
+                        return ListStileWidget(
+                          onTap: () {},
+                          leading: const CircleAvatar(child: Text("A")),
+                          theme: theme,
+                          title: 'Nastye Robert',
+                          subtitle: 'Привет как дела?',
+                          trailing: const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.check, size: 23, color: Colors.grey),
+                              SizedBox(width: 5),
+                              Text(
+                                '2:00',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ],
+                          ),
+                        );
                       },
                       separatorBuilder: (BuildContext context, int index) =>
                           const Divider(),
@@ -76,9 +93,26 @@ class _ChatScreenState extends State<ChatScreen> {
                   )
                 : Expanded(
                     child: ListView.separated(
-                      itemCount: 4,
+                      itemCount: 10,
                       itemBuilder: (BuildContext context, int index) {
-                        return ListStileWidget(theme: theme);
+                        return ListStileWidget(
+                          onTap: () {},
+                          leading: const CircleAvatar(child: Text("A")),
+                          theme: theme,
+                          title: 'Elena Ivanovna',
+                          subtitle: 'Привет как дела?',
+                          trailing: const Row(
+                            mainAxisSize: MainAxisSize.min,
+                            children: [
+                              Icon(Icons.check, size: 23, color: Colors.grey),
+                              SizedBox(width: 5),
+                              Text(
+                                '2:54',
+                                style: TextStyle(fontSize: 12),
+                              ),
+                            ],
+                          ),
+                        );
                       },
                       separatorBuilder: (BuildContext context, int index) =>
                           const Divider(),

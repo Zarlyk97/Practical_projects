@@ -63,7 +63,18 @@ class _CommentPageState extends State<CommentPage> {
                   child: Column(
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
-                      ListStileWidget(theme: theme),
+                      ListStileWidget(
+                        onTap: () {},
+                        leading: const CircleAvatar(
+                            radius: 25,
+                            child: Text(
+                              "A",
+                            )),
+                        theme: theme,
+                        title: 'Elena Ivanovna',
+                        subtitle: '22-март в 15:00',
+                        trailing: CustomButtonWidget(theme: theme),
+                      ),
                       const SizedBox(height: 10),
                       const Text(
                         'Нет ничего более удивительного',

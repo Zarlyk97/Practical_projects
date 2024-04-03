@@ -1,7 +1,7 @@
 import 'package:flutter/material.dart';
 
-class CustomButton extends StatelessWidget {
-  const CustomButton({
+class CustomButtonWidget extends StatelessWidget {
+  const CustomButtonWidget({
     super.key,
     required this.theme,
   });
