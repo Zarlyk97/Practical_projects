@@ -29,7 +29,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "goodbye": MessageLookupByLibrary.simpleMessage("goodbye"),
         "hello": MessageLookupByLibrary.simpleMessage("Hello"),
         "istighfar": MessageLookupByLibrary.simpleMessage("Istighfar"),
-        "language": MessageLookupByLibrary.simpleMessage("en"),
+        "language": MessageLookupByLibrary.simpleMessage("Language"),
         "morningDhikrs": MessageLookupByLibrary.simpleMessage("Morning dhikrs"),
         "restore": MessageLookupByLibrary.simpleMessage("Restore"),
         "salavat": MessageLookupByLibrary.simpleMessage("Salavat"),

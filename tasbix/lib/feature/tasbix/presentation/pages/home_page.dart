@@ -84,7 +84,6 @@ class _HomePageState extends State<HomePage> {
                       width: 30,
                       child: FloatingActionButton(
                         heroTag: 'reset_button', // уникалдуу белги
-                        ///////////////////////////
 
                         backgroundColor: Colors.white,
                         shape: const CircleBorder(),
