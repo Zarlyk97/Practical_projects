@@ -47,6 +47,27 @@ class _HomePageState extends State<HomePage> {
           return Column(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
+              SizedBox(
+                height: 50,
+                width: 250,
+                child: DecoratedBox(
+                  decoration: BoxDecoration(
+                    borderRadius: const BorderRadius.all(Radius.circular(15)),
+                    color: isdarkTheme ? Colors.black87 : Colors.grey.shade200,
+                  ),
+                  child: Center(
+                      child: Text(
+                    S.of(context).subhanAllah,
+                    style: TextStyle(
+                        color: isdarkTheme ? Colors.white : Colors.black,
+                        fontSize: 20,
+                        fontWeight: FontWeight.w600),
+                  )),
+                ),
+              ),
+              const SizedBox(
+                height: 40,
+              ),
               Stack(
                 children: [
                   Center(

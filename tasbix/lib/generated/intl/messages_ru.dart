@@ -36,6 +36,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "save": MessageLookupByLibrary.simpleMessage("Сохранить"),
         "selectedDhikrs":
             MessageLookupByLibrary.simpleMessage("Избранные зикры"),
-        "settings": MessageLookupByLibrary.simpleMessage("Настройки")
+        "settings": MessageLookupByLibrary.simpleMessage("Настройки"),
+        "subhanAllah": MessageLookupByLibrary.simpleMessage("Субханаллах")
       };
 }
