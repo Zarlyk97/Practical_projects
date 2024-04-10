@@ -1,5 +1,8 @@
+// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:shared_preferences/shared_preferences.dart';
+
 import 'package:tasbix/bloc/theme_cubit/theme_cubit.dart';
 import 'package:tasbix/feature/tasbix/presentation/cubit/tasbix_cubit.dart';
 import 'package:tasbix/feature/tasbix/presentation/pages/pages.dart';
@@ -13,6 +16,65 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  int _counter = 0;
+  int _currentIndex = 0;
+
+  final List<TasbihModel> _tasbihList = [
+    TasbihModel(arabic: "سبحان الله", cyrillic: "Субханаллах", count: 0),
+    TasbihModel(arabic: "الحمد لله", cyrillic: "Альхамдулиллях", count: 0),
+    TasbihModel(arabic: "الله أكبر", cyrillic: "Аллаху Акбар", count: 0),
+    TasbihModel(arabic: "أستغفر الله", cyrillic: "Астагфируллах", count: 0),
+  ];
+
+  @override
+  void initState() {
+    super.initState();
+    loadCountersFromCache();
+  }
+
+  _incrementCounter() {
+    setState(() {
+      _counter++;
+      _tasbihList[_currentIndex].count = _counter;
+    });
+  }
+
+  _changeTasbihCard(int index) {
+    setState(() {
+      _currentIndex = index;
+      _counter = _tasbihList[index].count;
+    });
+  }
+
+  _resetTasbihCounters() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      for (var tasbih in _tasbihList) {
+        tasbih.count = 0;
+        prefs.remove(tasbih.arabic);
+      }
+    });
+    await saveCountersToCache();
+  }
+
+  Future<void> loadCountersFromCache() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    for (var tasbih in _tasbihList) {
+      setState(() {
+        tasbih.count = prefs.getInt(tasbih.arabic) ?? 0;
+      });
+    }
+  }
+
+  Future<void> saveCountersToCache() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    for (var tasbih in _tasbihList) {
+      prefs.setInt(tasbih.arabic, tasbih.count);
+    }
+  }
+
   int _selectedIndex = 0;
 
   @override
@@ -20,7 +82,7 @@ class _HomePageState extends State<HomePage> {
     final isdarkTheme = context.watch<ThemeCubit>().state.isdark;
 
     return Scaffold(
-      backgroundColor: const Color(0xFFFFFFFF),
+      backgroundColor: isdarkTheme ? const Color(0xFFFFFFFF) : Colors.white,
       appBar: AppBar(
         title: Text(S.of(context).Tasbih,
             style: Theme.of(context).textTheme.headlineSmall!.copyWith(
@@ -44,128 +106,184 @@ class _HomePageState extends State<HomePage> {
       ),
       body: BlocBuilder<TasbixCubit, TasbixState>(
         builder: (context, state) {
-          return Column(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-              SizedBox(
-                height: 50,
-                width: 250,
-                child: DecoratedBox(
-                  decoration: BoxDecoration(
-                    borderRadius: const BorderRadius.all(Radius.circular(15)),
-                    color: isdarkTheme ? Colors.black87 : Colors.grey.shade200,
-                  ),
-                  child: Center(
-                      child: Text(
-                    S.of(context).subhanAllah,
-                    style: TextStyle(
-                        color: isdarkTheme ? Colors.white : Colors.black,
-                        fontSize: 20,
-                        fontWeight: FontWeight.w600),
-                  )),
-                ),
-              ),
-              const SizedBox(
-                height: 40,
-              ),
-              Stack(
-                children: [
-                  Center(
-                    child: Image.asset(
-                      'assets/Tasbix.png',
-                    ),
-                  ),
-                  Positioned(
-                    top: 47,
-                    left: 126,
-                    child: SizedBox(
-                      height: 68,
-                      width: 143,
+          return Padding(
+            padding: const EdgeInsets.all(8.0),
+            child: Column(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Column(
+                  children: [
+                    SizedBox(
+                      height: 90,
+                      width: double.infinity,
                       child: DecoratedBox(
-                        decoration: const BoxDecoration(color: Colors.white),
+                        decoration: BoxDecoration(
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(20)),
+                          color: isdarkTheme
+                              ? Colors.black87
+                              : Colors.grey.shade200,
+                        ),
                         child: Column(
-                          crossAxisAlignment: CrossAxisAlignment.end,
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
-                            Text('${state.count} ',
-                                style: const TextStyle(
-                                    color: Colors.black,
-                                    fontSize: 25,
-                                    fontWeight: FontWeight.w600)),
+                            Text(
+                              _tasbihList[_currentIndex].arabic,
+                              style: TextStyle(
+                                  color:
+                                      isdarkTheme ? Colors.white : Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600),
+                            ),
+                            Text(
+                              _tasbihList[_currentIndex].cyrillic,
+                              style: TextStyle(
+                                  color:
+                                      isdarkTheme ? Colors.white : Colors.black,
+                                  fontSize: 20,
+                                  fontWeight: FontWeight.w600),
+                            )
                           ],
                         ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    left: 245,
-                    top: 130,
-                    child: SizedBox(
-                      height: 30,
-                      width: 30,
-                      child: FloatingActionButton(
-                        heroTag: 'reset_button', // уникалдуу белги
+                    const SizedBox(
+                      height: 10,
+                    ),
+                    SizedBox(
+                      height: 60,
+                      child: ListView.builder(
+                          scrollDirection: Axis.horizontal,
+                          itemBuilder: (context, index) {
+                            return GestureDetector(
+                              onTap: () {
+                                _changeTasbihCard(index);
+                              },
+                              child: Container(
+                                  height: 70,
+                                  width: 100,
+                                  margin:
+                                      const EdgeInsets.symmetric(horizontal: 8),
+                                  decoration: BoxDecoration(
+                                    borderRadius: const BorderRadius.all(
+                                        Radius.circular(20)),
+                                    color: isdarkTheme
+                                        ? Colors.black87
+                                        : Colors.grey.shade200,
+                                  ),
+                                  child: Column(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Text(
+                                        _tasbihList[index].arabic,
+                                      ),
+                                      Text(_tasbihList[index].count.toString()),
+                                    ],
+                                  )),
+                            );
+                          },
+                          itemCount: _tasbihList.length),
+                    ),
+                  ],
+                ),
+                Stack(
+                  children: [
+                    Center(
+                      child: Image.asset(
+                        'assets/Tasbix.png',
+                      ),
+                    ),
+                    Positioned(
+                      top: 47,
+                      left: 126,
+                      child: SizedBox(
+                        height: 68,
+                        width: 143,
+                        child: DecoratedBox(
+                          decoration: const BoxDecoration(color: Colors.white),
+                          child: Column(
+                            crossAxisAlignment: CrossAxisAlignment.end,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text('${state.count} ',
+                                  style: const TextStyle(
+                                      color: Colors.black,
+                                      fontSize: 25,
+                                      fontWeight: FontWeight.w600)),
+                            ],
+                          ),
+                        ),
+                      ),
+                    ),
+                    Positioned(
+                      left: 240,
+                      top: 130,
+                      child: SizedBox(
+                        height: 30,
+                        width: 30,
+                        child: FloatingActionButton(
+                          heroTag: 'reset_button', // уникалдуу белги
 
-                        backgroundColor: Colors.white,
-                        shape: const CircleBorder(),
-                        onPressed: () {
-                          final cubit = context.read<TasbixCubit>();
-                          cubit.reset();
-                        },
+                          backgroundColor: Colors.white,
+                          shape: const CircleBorder(),
+                          onPressed: () {
+                            final cubit = context.read<TasbixCubit>();
+                            cubit.reset();
+                          },
+                        ),
                       ),
                     ),
-                  ),
-                  Positioned(
-                    left: 151,
-                    top: 159,
-                    child: SizedBox(
-                      height: 95,
-                      width: 95,
-                      child: FloatingActionButton(
-                        heroTag: 'increment_button', // уникалдуу белги
+                    Positioned(
+                      left: 142,
+                      top: 159,
+                      child: SizedBox(
+                        height: 95,
+                        width: 95,
+                        child: FloatingActionButton(
+                            heroTag: 'increment_button', // уникалдуу белги
 
-                        backgroundColor: Colors.white,
-                        shape: const CircleBorder(),
-                        onPressed: () {
-                          final cubit = context.read<TasbixCubit>();
-                          cubit.increment();
-                        },
+                            backgroundColor: Colors.white,
+                            shape: const CircleBorder(),
+                            onPressed: () {
+                              final cubit = context.read<TasbixCubit>();
+                              cubit.increment();
+                            }),
                       ),
                     ),
-                  ),
-                ],
-              ),
-              const SizedBox(
-                height: 30,
-              ),
-              Row(
-                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
-                children: [
-                  ElevatedButton(
-                    style: ButtonStyle(
-                        backgroundColor: isdarkTheme
-                            ? MaterialStateProperty.all(Colors.black)
-                            : MaterialStateProperty.all(Colors.white)),
-                    onPressed: () {},
-                    child: Text(
-                      S.of(context).restore,
-                      style: TextStyle(
-                        color: isdarkTheme ? Colors.white : Colors.black,
+                  ],
+                ),
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    ElevatedButton(
+                      style: ButtonStyle(
+                          backgroundColor: isdarkTheme
+                              ? MaterialStateProperty.all(Colors.black)
+                              : MaterialStateProperty.all(Colors.white)),
+                      onPressed: () {},
+                      child: Text(
+                        S.of(context).restore,
+                        style: TextStyle(
+                          color: isdarkTheme ? Colors.white : Colors.black,
+                        ),
                       ),
                     ),
-                  ),
-                  ElevatedButton(
-                    onPressed: () {},
-                    child: Text(
-                      S.of(context).save,
-                      style: TextStyle(
-                        color: isdarkTheme ? Colors.white : Colors.black,
+                    ElevatedButton(
+                      onPressed: () {},
+                      child: Text(
+                        S.of(context).save,
+                        style: TextStyle(
+                          color: isdarkTheme ? Colors.white : Colors.black,
+                        ),
                       ),
                     ),
-                  ),
-                ],
-              )
-            ],
+                  ],
+                ),
+                const SizedBox(
+                  height: 20,
+                ),
+              ],
+            ),
           );
         },
       ),
@@ -240,4 +358,15 @@ class _HomePageState extends State<HomePage> {
       _selectedIndex = index;
     });
   }
+}
+
+class TasbihModel {
+  final String arabic;
+  final String cyrillic;
+  int count;
+  TasbihModel({
+    required this.arabic,
+    required this.cyrillic,
+    required this.count,
+  });
 }
