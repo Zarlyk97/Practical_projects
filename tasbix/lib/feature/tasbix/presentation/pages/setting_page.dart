@@ -47,7 +47,7 @@ class _SettingPageState extends State<SettingPage> {
                 builder: (context, state) {
                   if (state is ChangeLanguageState) {
                     return DropdownButton<String>(
-                      // value: state.locale.languageCode,
+                      //value: state.locale.languageCode,
                       onChanged: (String? value) {
                         if (value != null) {}
                       },
@@ -59,7 +59,7 @@ class _SettingPageState extends State<SettingPage> {
                           .toList(),
                     );
                   } else {
-                    return const SizedBox.shrink(); // же башка виджет
+                    return const SizedBox.shrink();
                   }
                 },
               ),

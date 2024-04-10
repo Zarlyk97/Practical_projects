@@ -28,7 +28,7 @@ class MessageLookup extends MessageLookupByLibrary {
         "generalDhikrs": MessageLookupByLibrary.simpleMessage("Общие зикры"),
         "goodbye": MessageLookupByLibrary.simpleMessage("пока"),
         "hello": MessageLookupByLibrary.simpleMessage("Привет"),
-        "istighfar": MessageLookupByLibrary.simpleMessage("Истихфар"),
+        "istighfar": MessageLookupByLibrary.simpleMessage("Истигфар"),
         "language": MessageLookupByLibrary.simpleMessage("Язык"),
         "morningDhikrs": MessageLookupByLibrary.simpleMessage("Утренние зикры"),
         "restore": MessageLookupByLibrary.simpleMessage("Восстановить"),
