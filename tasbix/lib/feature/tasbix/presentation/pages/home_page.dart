@@ -165,19 +165,22 @@ class _HomePageState extends State<HomePage> {
                                   margin:
                                       const EdgeInsets.symmetric(horizontal: 8),
                                   decoration: BoxDecoration(
-                                    borderRadius: const BorderRadius.all(
-                                        Radius.circular(20)),
-                                    color: isdarkTheme
-                                        ? Colors.black87
-                                        : Colors.grey.shade200,
-                                  ),
+                                      borderRadius: const BorderRadius.all(
+                                          Radius.circular(20)),
+                                      color: isdarkTheme
+                                          ? Colors.black87
+                                          : _currentIndex == index
+                                              ? Colors.blue
+                                              : Colors.grey.shade200),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
                                         _tasbihList[index].arabic,
                                       ),
-                                      Text(_tasbihList[index].count.toString()),
+                                      Text(
+                                        _tasbihList[index].count.toString(),
+                                      ),
                                     ],
                                   )),
                             );
@@ -205,7 +208,7 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text('${state.count} ',
+                              Text('${_tasbihList[_currentIndex].count} ',
                                   style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 25,
@@ -227,8 +230,9 @@ class _HomePageState extends State<HomePage> {
                           backgroundColor: Colors.white,
                           shape: const CircleBorder(),
                           onPressed: () {
-                            final cubit = context.read<TasbixCubit>();
-                            cubit.reset();
+                            _resetTasbihCounters();
+                            // final cubit = context.read<TasbixCubit>();
+                            // cubit.reset();
                           },
                         ),
                       ),
@@ -245,8 +249,9 @@ class _HomePageState extends State<HomePage> {
                             backgroundColor: Colors.white,
                             shape: const CircleBorder(),
                             onPressed: () {
-                              final cubit = context.read<TasbixCubit>();
-                              cubit.increment();
+                              _incrementCounter();
+                              // final cubit = context.read<TasbixCubit>();
+                              // cubit.increment();
                             }),
                       ),
                     ),
@@ -269,7 +274,9 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     ElevatedButton(
-                      onPressed: () {},
+                      onPressed: () {
+                        saveCountersToCache();
+                      },
                       child: Text(
                         S.of(context).save,
                         style: TextStyle(
