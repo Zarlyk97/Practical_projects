@@ -57,39 +57,37 @@ class _MyAppState extends State<MyApp> {
         builder: (context, themeState) {
           return BlocBuilder<LanguageCubit, LanguageState>(
             builder: (context, state) {
-              if (state is ChangeLanguageState) {
-                return MaterialApp(
-                  localizationsDelegates: const [
-                    S.delegate,
-                    GlobalMaterialLocalizations.delegate,
-                    GlobalWidgetsLocalizations.delegate,
-                    GlobalCupertinoLocalizations.delegate,
-                  ],
-                  localeResolutionCallback: (deviceLocale, supportedLocales) {
-                    for (var locale in supportedLocales) {
-                      if (locale.languageCode == deviceLocale!.languageCode) {
-                        return deviceLocale;
-                      }
+              return MaterialApp(
+                localizationsDelegates: const [
+                  S.delegate,
+                  GlobalMaterialLocalizations.delegate,
+                  GlobalWidgetsLocalizations.delegate,
+                  GlobalCupertinoLocalizations.delegate,
+                ],
+                localeResolutionCallback: (deviceLocale, supportedLocales) {
+                  for (var locale in supportedLocales) {
+                    if (locale.languageCode == deviceLocale!.languageCode) {
+                      return deviceLocale;
                     }
-                    return supportedLocales.first;
+                  }
+                  return supportedLocales.first;
+                },
+                locale:
+                    state is ChangeLanguageState ? state.locale : Locale('ru'),
+                supportedLocales: const [
+                  Locale('en'),
+                  Locale('ru'),
+                  Locale('ky'),
+                ],
+                debugShowCheckedModeBanner: false,
+                theme: themeState.isdark ? darkTheme : lightTheme,
+                title: 'Tasbix',
+                home: BlocBuilder<LanguageCubit, LanguageState>(
+                  builder: (context, state) {
+                    return const SplashScreen();
                   },
-                  locale: const Locale('ru'), // state.locale,
-                  supportedLocales: const [
-                    Locale('en'),
-                    Locale('ru'),
-                    Locale('ky'),
-                  ],
-                  debugShowCheckedModeBanner: false,
-                  theme: themeState.isdark ? darkTheme : lightTheme,
-                  title: 'Tasbix',
-                  home: BlocBuilder<LanguageCubit, LanguageState>(
-                    builder: (context, state) {
-                      return const SplashScreen();
-                    },
-                  ),
-                );
-              }
-              return const SizedBox();
+                ),
+              );
             },
           );
         },

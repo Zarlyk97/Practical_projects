@@ -43,25 +43,26 @@ class _SettingPageState extends State<SettingPage> {
           SliverToBoxAdapter(
             child: SettingsToggleCard(
               title: S.of(context).language,
-              child: BlocBuilder<LanguageCubit, LanguageState>(
-                builder: (context, state) {
-                  if (state is ChangeLanguageState) {
-                    return DropdownButton<String>(
-                      //value: state.locale.languageCode,
-                      onChanged: (String? value) {
-                        if (value != null) {}
-                      },
-                      items: ['English', 'Русский', 'Кыргызча']
-                          .map((String items) => DropdownMenuItem<String>(
-                                value: items,
-                                child: Text(items),
-                              ))
-                          .toList(),
-                    );
-                  } else {
-                    return const SizedBox.shrink();
+              child: DropdownButton(
+                onChanged: (String? value) {
+                  if (value != null) {
+                    context.read<LanguageCubit>().changeLanguage(value);
                   }
                 },
+                items: const [
+                  DropdownMenuItem<String>(
+                    value: 'en',
+                    child: Text("English"),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: 'ru',
+                    child: Text("Русский"),
+                  ),
+                  DropdownMenuItem<String>(
+                    value: 'ky',
+                    child: Text("Кыргызча"),
+                  )
+                ],
               ),
             ),
           ),

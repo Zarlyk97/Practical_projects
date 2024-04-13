@@ -9,6 +9,8 @@ abstract class LanguageState extends Equatable {
 
 class LanguageInitial extends LanguageState {}
 
+class ChangeLanguageLoading extends LanguageState {}
+
 class ChangeLanguageState extends LanguageState {
   final Locale locale;
 

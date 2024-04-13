@@ -32,7 +32,9 @@ class _HomePageState extends State<HomePage> {
     loadCountersFromCache();
   }
 
-  _incrementCounter() {
+  _incrementCounter() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('count', _counter);
     setState(() {
       _counter++;
       _tasbihList[_currentIndex].count = _counter;
@@ -59,7 +61,7 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> loadCountersFromCache() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
-
+    _counter = prefs.getInt('count') ?? 0;
     for (var tasbih in _tasbihList) {
       setState(() {
         tasbih.count = prefs.getInt(tasbih.arabic) ?? 0;
@@ -208,7 +210,7 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text('${_tasbihList[_currentIndex].count} ',
+                              Text('$_counter ',
                                   style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 25,
