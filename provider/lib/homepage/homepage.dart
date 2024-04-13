@@ -1,3 +1,4 @@
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 
 class HomePage extends StatefulWidget {
@@ -10,10 +11,7 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
-  Duration duration = const Duration(seconds: 10);
-
   bool light = true;
-  bool obsecureText = true;
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -30,7 +28,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AnimatedContainer(
-              duration: duration,
+              duration: const Duration(seconds: 10),
               child: Container(
                   height: 200,
                   width: 200,
@@ -39,23 +37,15 @@ class _HomePageState extends State<HomePage> {
             const SizedBox(
               height: 20,
             ),
-            Switch(
+            CupertinoSwitch(
               value: light,
               activeColor: Colors.blue,
               onChanged: (bool value) {
                 setState(() {
+                  const Duration(seconds: 10);
                   light = value;
                 });
               },
-            ),
-            IconButton(
-              onPressed: () {
-                obsecureText = !obsecureText;
-                setState(() {});
-              },
-              icon: Icon(obsecureText
-                  ? Icons.visibility_outlined
-                  : Icons.visibility_off_outlined),
             ),
           ],
         ),
