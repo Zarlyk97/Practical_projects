@@ -72,8 +72,9 @@ class _MyAppState extends State<MyApp> {
                   }
                   return supportedLocales.first;
                 },
-                locale:
-                    state is ChangeLanguageState ? state.locale : Locale('ru'),
+                locale: state is ChangeLanguageState
+                    ? state.locale
+                    : const Locale('ru'),
                 supportedLocales: const [
                   Locale('en'),
                   Locale('ru'),
