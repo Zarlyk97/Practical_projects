@@ -4,6 +4,7 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:tasbix/bloc/theme_cubit/theme_cubit.dart';
+import 'package:tasbix/feature/tasbix/domain/model/model.dart';
 import 'package:tasbix/feature/tasbix/presentation/cubit/tasbix_cubit.dart';
 import 'package:tasbix/feature/tasbix/presentation/pages/pages.dart';
 import 'package:tasbix/generated/l10n.dart';
@@ -233,8 +234,6 @@ class _HomePageState extends State<HomePage> {
                           shape: const CircleBorder(),
                           onPressed: () {
                             _resetTasbihCounters();
-                            // final cubit = context.read<TasbixCubit>();
-                            // cubit.reset();
                           },
                         ),
                       ),
@@ -252,8 +251,6 @@ class _HomePageState extends State<HomePage> {
                             shape: const CircleBorder(),
                             onPressed: () {
                               _incrementCounter();
-                              // final cubit = context.read<TasbixCubit>();
-                              // cubit.increment();
                             }),
                       ),
                     ),
@@ -367,15 +364,4 @@ class _HomePageState extends State<HomePage> {
       _selectedIndex = index;
     });
   }
-}
-
-class TasbihModel {
-  final String arabic;
-  final String cyrillic;
-  int count;
-  TasbihModel({
-    required this.arabic,
-    required this.cyrillic,
-    required this.count,
-  });
 }

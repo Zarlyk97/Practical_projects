@@ -41,6 +41,9 @@ class _MyAppState extends State<MyApp> {
     final CountRepository countRepository = CountRepository(
       preferences: widget.preferences,
     );
+    final LanguageCacheHelper languageCacheHelper = LanguageCacheHelper(
+      preferences: widget.preferences,
+    );
     return MultiBlocProvider(
       providers: [
         BlocProvider(
@@ -50,7 +53,8 @@ class _MyAppState extends State<MyApp> {
           create: (context) => ThemeCubit(settingRepository: settingRepository),
         ),
         BlocProvider(
-          create: (context) => LanguageCubit()..getsavedLanguageCode(),
+          create: (context) => LanguageCubit(languageCacheHelper.preferences)
+            ..getsavedLanguageCode(),
         )
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(

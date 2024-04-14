@@ -1,6 +1,9 @@
 import 'package:shared_preferences/shared_preferences.dart';
 
 class LanguageCacheHelper {
+  final SharedPreferences preferences;
+
+  LanguageCacheHelper({required this.preferences});
   Future<void> cacheLanguageCode(String languagecode) async {
     final sharedPreferences = await SharedPreferences.getInstance();
     sharedPreferences.setString('LOCAL_LANGUAGE', languagecode);
