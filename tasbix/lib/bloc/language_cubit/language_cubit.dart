@@ -31,6 +31,6 @@ class LanguageCubit extends Cubit<LanguageState> {
     if (currentState is ChangeLanguageState) {
       return currentState.locale.languageCode;
     }
-    return 'en'; // баштапкы тил кодун коюңуз
+    return 'ru'; // баштапкы тил кодун коюңуз
   }
 }
