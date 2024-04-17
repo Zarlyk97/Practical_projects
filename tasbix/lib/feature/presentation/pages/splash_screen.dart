@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter/services.dart';
-import 'package:tasbix/feature/tasbix/presentation/pages/pages.dart';
+import 'package:tasbix/feature/presentation/pages/pages.dart';
 
 class SplashScreen extends StatefulWidget {
   const SplashScreen({super.key});

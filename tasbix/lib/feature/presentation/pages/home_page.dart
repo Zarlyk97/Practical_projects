@@ -5,9 +5,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:tasbix/bloc/theme_cubit/theme_cubit.dart';
-import 'package:tasbix/feature/tasbix/domain/model/model.dart';
-import 'package:tasbix/feature/tasbix/presentation/cubit/tasbix_cubit.dart';
-import 'package:tasbix/feature/tasbix/presentation/pages/pages.dart';
+import 'package:tasbix/feature/domain/model/model.dart';
+import 'package:tasbix/feature/presentation/cubit/tasbix_cubit.dart';
+import 'package:tasbix/feature/presentation/pages/pages.dart';
 import 'package:tasbix/generated/l10n.dart';
 
 class HomePage extends StatefulWidget {

@@ -3,7 +3,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasbix/bloc/language_cubit/language_cubit.dart';
 import 'package:tasbix/bloc/theme_cubit/theme_cubit.dart';
-import 'package:tasbix/feature/tasbix/presentation/widgets/widgets.dart';
+import 'package:tasbix/feature/presentation/widgets/widgets.dart';
 import 'package:tasbix/generated/l10n.dart';
 
 class SettingPage extends StatefulWidget {

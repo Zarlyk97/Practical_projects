@@ -1,6 +1,6 @@
 import 'package:flutter/material.dart';
 
-import 'package:tasbix/feature/tasbix/presentation/widgets/widgets.dart';
+import 'package:tasbix/feature/presentation/widgets/widgets.dart';
 
 class SettingsToggleCard extends StatelessWidget {
   const SettingsToggleCard({
