@@ -1,5 +1,6 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
+import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
@@ -17,6 +18,8 @@ class HomePage extends StatefulWidget {
 }
 
 class _HomePageState extends State<HomePage> {
+  final List<String> zikri = [];
+
   int _counter = 0;
   int _currentIndex = 0;
 
@@ -228,8 +231,7 @@ class _HomePageState extends State<HomePage> {
                         height: 30,
                         width: 30,
                         child: FloatingActionButton(
-                          heroTag: 'reset_button', // уникалдуу белги
-
+                          heroTag: 'reset_button',
                           backgroundColor: Colors.white,
                           shape: const CircleBorder(),
                           onPressed: () {
@@ -245,8 +247,7 @@ class _HomePageState extends State<HomePage> {
                         height: 95,
                         width: 95,
                         child: FloatingActionButton(
-                            heroTag: 'increment_button', // уникалдуу белги
-
+                            heroTag: 'increment_button',
                             backgroundColor: Colors.white,
                             shape: const CircleBorder(),
                             onPressed: () {
@@ -295,68 +296,54 @@ class _HomePageState extends State<HomePage> {
       ),
       drawer: Drawer(
         child: ListView(
-          padding: EdgeInsets.zero,
           children: [
             const DrawerHeader(
-              decoration: BoxDecoration(
-                image: DecorationImage(
-                  image: AssetImage('assets/image.png'),
+                decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('assets/image.png'),
+                      fit: BoxFit.fitHeight),
                 ),
-              ),
-              child: Text(''),
-            ),
-            ListTile(
-              title: Text(S.of(context).generalDhikrs),
-              selected: _selectedIndex == 0,
-              onTap: () {
-                _onItemTapped(0);
+                child: SizedBox()),
+            ListView.separated(
+              scrollDirection: Axis.vertical,
+              itemBuilder: (BuildContext context, int index) {
+                return ListTile(
+                  title: Text(getDhikrsList()[index]),
+                  selected: _selectedIndex == index,
+                  onTap: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const AboutZikrPage(
+                                  name: 'zarlyk',
+                                  description: ' description zarlyk',
+                                )));
+                    _onItemTapped(index);
+                  },
+                  trailing: const Icon(Icons.navigate_next),
+                );
               },
-              trailing: const Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              title: Text(S.of(context).eveningDhikrs),
-              selected: _selectedIndex == 1,
-              onTap: () {
-                _onItemTapped(1);
+              separatorBuilder: (BuildContext context, int index) {
+                return const SizedBox(height: 5);
               },
-              trailing: const Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              title: Text(S.of(context).morningDhikrs),
-              selected: _selectedIndex == 2,
-              onTap: () {
-                _onItemTapped(2);
-              },
-              trailing: const Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              title: Text(S.of(context).selectedDhikrs),
-              selected: _selectedIndex == 3,
-              onTap: () {
-                _onItemTapped(3);
-              },
-              trailing: const Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              title: Text(S.of(context).salavat),
-              selected: _selectedIndex == 4,
-              onTap: () {
-                _onItemTapped(4);
-              },
-              trailing: const Icon(Icons.navigate_next),
-            ),
-            ListTile(
-              title: Text(S.of(context).istighfar),
-              selected: _selectedIndex == 5,
-              onTap: () {
-                _onItemTapped(5);
-              },
-              trailing: const Icon(Icons.navigate_next),
+              itemCount: 6,
+              shrinkWrap: true,
             ),
           ],
         ),
       ),
     );
+  }
+
+  List<String> getDhikrsList() {
+    return [
+      S.of(context).generalDhikrs,
+      S.of(context).eveningDhikrs,
+      S.of(context).morningDhikrs,
+      S.of(context).selectedDhikrs,
+      S.of(context).salavat,
+      S.of(context).istighfar
+    ];
   }
 
   void _onItemTapped(int index) {

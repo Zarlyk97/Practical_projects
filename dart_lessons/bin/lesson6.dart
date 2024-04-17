@@ -5,4 +5,11 @@ void main() {
   print(map);
   map.remove(4);
   print(map);
+  for (var key in map.keys) {
+    print(key);
+  }
+  for (final entry in map.entries) {
+    print('${entry.key}: ${entry.value}');
+  }
+  print(map.values);
 }
