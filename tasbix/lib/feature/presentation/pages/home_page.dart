@@ -1,7 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:shared_preferences/shared_preferences.dart';
-
 import 'package:tasbix/bloc/theme_cubit/theme_cubit.dart';
 import 'package:tasbix/feature/domain/model/model.dart';
 import 'package:tasbix/feature/presentation/cubit/tasbix_cubit.dart';
@@ -21,62 +20,10 @@ class _HomePageState extends State<HomePage> {
   int _counter = 0;
   int _currentIndex = 0;
 
-  final List<TasbihModel> _tasbihList = [
-    TasbihModel(arabic: "سبحان الله", cyrillic: "Субханаллах", count: 0),
-    TasbihModel(arabic: "الحمد لله", cyrillic: "Альхамдулиллях", count: 0),
-    TasbihModel(arabic: "الله أكبر", cyrillic: "Аллаху Акбар", count: 0),
-    TasbihModel(arabic: "أستغفر الله", cyrillic: "Астагфируллах", count: 0),
-  ];
-
   @override
   void initState() {
     super.initState();
     loadCountersFromCache();
-  }
-
-  _incrementCounter() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    prefs.setInt('count', _counter);
-    setState(() {
-      _counter++;
-      _tasbihList[_currentIndex].count = _counter;
-    });
-  }
-
-  _changeTasbihCard(int index) {
-    setState(() {
-      _currentIndex = index;
-      _counter = _tasbihList[index].count;
-    });
-  }
-
-  _resetTasbihCounters() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    setState(() {
-      for (var tasbih in _tasbihList) {
-        tasbih.count = 0;
-        prefs.remove(tasbih.arabic);
-      }
-    });
-    await saveCountersToCache();
-  }
-
-  Future<void> loadCountersFromCache() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-    _counter = prefs.getInt('count') ?? 0;
-    for (var tasbih in _tasbihList) {
-      setState(() {
-        tasbih.count = prefs.getInt(tasbih.arabic) ?? 0;
-      });
-    }
-  }
-
-  Future<void> saveCountersToCache() async {
-    SharedPreferences prefs = await SharedPreferences.getInstance();
-
-    for (var tasbih in _tasbihList) {
-      prefs.setInt(tasbih.arabic, tasbih.count);
-    }
   }
 
   int _selectedIndex = 0;
@@ -132,7 +79,7 @@ class _HomePageState extends State<HomePage> {
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text(
-                              _tasbihList[_currentIndex].arabic,
+                              tasbihList[_currentIndex].arabic,
                               style: TextStyle(
                                   color:
                                       isdarkTheme ? Colors.white : Colors.black,
@@ -140,7 +87,7 @@ class _HomePageState extends State<HomePage> {
                                   fontWeight: FontWeight.w600),
                             ),
                             Text(
-                              _tasbihList[_currentIndex].cyrillic,
+                              tasbihList[_currentIndex].cyrillic,
                               style: TextStyle(
                                   color:
                                       isdarkTheme ? Colors.white : Colors.black,
@@ -180,16 +127,16 @@ class _HomePageState extends State<HomePage> {
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
                                       Text(
-                                        _tasbihList[index].arabic,
+                                        tasbihList[index].arabic,
                                       ),
                                       Text(
-                                        _tasbihList[index].count.toString(),
+                                        tasbihList[index].count.toString(),
                                       ),
                                     ],
                                   )),
                             );
                           },
-                          itemCount: _tasbihList.length),
+                          itemCount: tasbihList.length),
                     ),
                   ],
                 ),
@@ -305,6 +252,7 @@ class _HomePageState extends State<HomePage> {
             ListView.separated(
               scrollDirection: Axis.vertical,
               itemBuilder: (BuildContext context, int index) {
+                final AboutZikrModel model = aboutZikr[index];
                 return ListTile(
                   title: Text(getDhikrsList()[index]),
                   selected: _selectedIndex == index,
@@ -312,9 +260,9 @@ class _HomePageState extends State<HomePage> {
                     Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => const AboutZikrPage(
-                                  name: 'zarlyk',
-                                  description: ' description zarlyk',
+                            builder: (context) => AboutZikrPage(
+                                  name: model.name,
+                                  description: model.description,
                                 )));
                     _onItemTapped(index);
                   },
@@ -331,6 +279,51 @@ class _HomePageState extends State<HomePage> {
         ),
       ),
     );
+  }
+
+  _incrementCounter() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    prefs.setInt('count', _counter);
+    setState(() {
+      _counter++;
+      tasbihList[_currentIndex].count = _counter;
+    });
+  }
+
+  _changeTasbihCard(int index) {
+    setState(() {
+      _currentIndex = index;
+      _counter = tasbihList[index].count;
+    });
+  }
+
+  _resetTasbihCounters() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    setState(() {
+      for (var tasbih in tasbihList) {
+        tasbih.count = 0;
+        prefs.remove(tasbih.arabic);
+      }
+    });
+    await saveCountersToCache();
+  }
+
+  Future<void> loadCountersFromCache() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+    _counter = prefs.getInt('count') ?? 0;
+    for (var tasbih in tasbihList) {
+      setState(() {
+        tasbih.count = prefs.getInt(tasbih.arabic) ?? 0;
+      });
+    }
+  }
+
+  Future<void> saveCountersToCache() async {
+    SharedPreferences prefs = await SharedPreferences.getInstance();
+
+    for (var tasbih in tasbihList) {
+      prefs.setInt(tasbih.arabic, tasbih.count);
+    }
   }
 
   List<String> getDhikrsList() {
