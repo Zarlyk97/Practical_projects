@@ -1,7 +1,7 @@
 import 'dart:ui';
 import 'package:equatable/equatable.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:tasbix/feature/tasbix/domain/repositories/repositories.dart';
+import 'package:tasbix/feature/domain/repositories/repositories.dart';
 part 'theme_state.dart';
 
 class ThemeCubit extends Cubit<ThemeState> {

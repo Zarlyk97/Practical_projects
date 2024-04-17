@@ -4,10 +4,10 @@ import 'package:flutter_localizations/flutter_localizations.dart';
 import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:tasbix/bloc/theme_cubit/theme_cubit.dart';
-import 'package:tasbix/feature/tasbix/domain/repositories/repositories.dart';
-import 'package:tasbix/feature/tasbix/presentation/cubit/tasbix_cubit.dart';
+import 'package:tasbix/feature/domain/repositories/repositories.dart';
+import 'package:tasbix/feature/presentation/cubit/tasbix_cubit.dart';
 import 'package:tasbix/core/ui/ui.dart';
-import 'package:tasbix/feature/tasbix/presentation/pages/splash_screen.dart';
+import 'package:tasbix/feature/presentation/pages/splash_screen.dart';
 import 'package:tasbix/generated/l10n.dart';
 
 import 'bloc/language_cubit/language_cubit.dart';
