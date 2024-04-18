@@ -290,7 +290,7 @@ class _HomePageState extends State<HomePage> {
     });
   }
 
-  _changeTasbihCard(int index) {
+  _changeTasbihCard(int index) async {
     setState(() {
       _currentIndex = index;
       _counter = tasbihList[index].count;
