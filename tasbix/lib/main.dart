@@ -5,12 +5,12 @@ import 'package:shared_preferences/shared_preferences.dart';
 
 import 'package:tasbix/bloc/theme_cubit/theme_cubit.dart';
 import 'package:tasbix/feature/domain/repositories/repositories.dart';
-import 'package:tasbix/feature/presentation/cubit/tasbix_cubit.dart';
 import 'package:tasbix/core/ui/ui.dart';
 import 'package:tasbix/feature/presentation/pages/splash_screen.dart';
 import 'package:tasbix/generated/l10n.dart';
 
 import 'bloc/language_cubit/language_cubit.dart';
+import 'feature/presentation/cubit/tasbix_cubit.dart';
 
 Future<void> main() async {
   WidgetsFlutterBinding.ensureInitialized();
@@ -53,9 +53,9 @@ class _MyAppState extends State<MyApp> {
           create: (context) => ThemeCubit(settingRepository: settingRepository),
         ),
         BlocProvider(
-          create: (context) => LanguageCubit(languageCacheHelper.preferences)
-            ..getsavedLanguageCode(),
-        )
+          create: (context) =>
+              LanguageCubit(languageCacheHelper)..getsavedLanguageCode(),
+        ),
       ],
       child: BlocBuilder<ThemeCubit, ThemeState>(
         builder: (context, themeState) {
