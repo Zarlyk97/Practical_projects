@@ -28,7 +28,7 @@ class _HomePageState extends State<HomePage> {
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
             AnimatedContainer(
-              duration: const Duration(seconds: 10),
+              duration: const Duration(seconds: 300),
               child: Container(
                   height: 200,
                   width: 200,
