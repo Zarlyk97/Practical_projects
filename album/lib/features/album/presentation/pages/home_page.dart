@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:flutter/widgets.dart';
 
 class HomePage extends StatefulWidget {
   const HomePage({
@@ -17,24 +18,33 @@ class _HomePageState extends State<HomePage> {
         backgroundColor: Theme.of(context).colorScheme.inversePrimary,
         title: const Text('Flutter Demo Home Page'),
       ),
-      body: Center(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: <Widget>[
-            const Text(
-              'You have pushed the button this many times:',
+      body: ListView.builder(
+        itemCount: 10,
+        itemBuilder: (context, index) {
+          return Container(
+            margin: const EdgeInsets.symmetric(horizontal: 16, vertical: 10),
+            height: 200,
+            width: double.infinity,
+            decoration: BoxDecoration(
+              color: Colors.blue,
+              borderRadius: BorderRadius.circular(10),
             ),
-            Text(
-              '0',
-              style: Theme.of(context).textTheme.headlineMedium,
+            child: Stack(
+              children: [
+                Image.network(
+                  'https://picsum.photos/360/200',
+                  fit: BoxFit.fill,
+                ),
+                Positioned(
+                  left: 150,
+                  child: Text('data $index',
+                      style:
+                          const TextStyle(color: Colors.white, fontSize: 20)),
+                ),
+              ],
             ),
-          ],
-        ),
-      ),
-      floatingActionButton: FloatingActionButton(
-        onPressed: () {},
-        tooltip: 'Increment',
-        child: const Icon(Icons.add),
+          );
+        },
       ),
     );
   }
