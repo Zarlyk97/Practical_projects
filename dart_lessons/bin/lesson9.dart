@@ -1,10 +1,10 @@
 void main() {
-  Person myAnimals =
+  Person persons =
       Person(name: 'Zarlyk', age: 26, profession: 'Flutter developer');
-  print(myAnimals.name);
-  print(myAnimals.age);
-  print(myAnimals.profession);
-  myAnimals.changed();
+  print(persons.name);
+  print(persons.age);
+  print(persons.profession);
+  persons.changed();
 }
 
 class Person {
