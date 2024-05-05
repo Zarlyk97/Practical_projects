@@ -1,3 +1,4 @@
+import 'package:album/project/details_page.dart';
 import 'package:flutter/material.dart';
 
 class HomeScreen extends StatefulWidget {
@@ -24,22 +25,37 @@ class _HomeScreenState extends State<HomeScreen> {
           ),
           itemCount: 10,
           itemBuilder: (BuildContext context, int index) {
-            return SizedBox(
+            return GestureDetector(
+              onTap: () {
+                Navigator.push(
+                    context,
+                    MaterialPageRoute(
+                        builder: (context) => const DetailsPage()));
+              },
+              child: SizedBox(
                 height: 100,
                 width: 100,
                 child: DecoratedBox(
                   decoration: BoxDecoration(
-                      color: Colors.blue,
+                      image: const DecorationImage(
+                          image: NetworkImage(
+                              'https://media.admagazine.ru/photos/6140a6f2d0129c8818c94819/master/w_1600%2Cc_limit/800x887_Quality97_016.jpg'),
+                          fit: BoxFit.cover),
+                      color: Colors.deepPurple,
                       borderRadius: BorderRadius.circular(10)),
                   child: Column(
                     children: [
                       const SizedBox(
                         height: 10,
                       ),
-                      Text("Название $index")
+                      Text("Название $index",
+                          style: const TextStyle(
+                              fontSize: 20, color: Colors.white)),
                     ],
                   ),
-                ));
+                ),
+              ),
+            );
           },
         ),
       ),
