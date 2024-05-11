@@ -186,7 +186,7 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Positioned(
-                      left: 142,
+                      left: 140,
                       top: 159,
                       child: SizedBox(
                         height: 95,
@@ -261,7 +261,7 @@ class _HomePageState extends State<HomePage> {
                         context,
                         MaterialPageRoute(
                             builder: (context) => AboutZikrPage(
-                                  name: model.name,
+                                  name: getDhikrsList()[index],
                                   description: model.description,
                                 )));
                     _onItemTapped(index);
