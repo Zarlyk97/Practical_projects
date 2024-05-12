@@ -10,6 +10,8 @@ class TasbihModel {
 }
 
 final List<TasbihModel> tasbihList = [
+  TasbihModel(
+      arabic: "لا اله الا الله", cyrillic: "Лаа илааха илла Аллах", count: 0),
   TasbihModel(arabic: "سبحان الله", cyrillic: "СубханАллах", count: 0),
   TasbihModel(arabic: "الحمد لله", cyrillic: "Альхамдулиллях", count: 0),
   TasbihModel(arabic: "الله أكبر", cyrillic: "Аллаху Акбар", count: 0),

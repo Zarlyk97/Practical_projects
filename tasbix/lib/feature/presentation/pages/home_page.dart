@@ -121,7 +121,7 @@ class _HomePageState extends State<HomePage> {
                                       color: isdarkTheme
                                           ? Colors.black87
                                           : _currentIndex == index
-                                              ? Colors.blue
+                                              ? Colors.green
                                               : Colors.grey.shade200),
                                   child: Column(
                                     mainAxisAlignment: MainAxisAlignment.center,
@@ -159,7 +159,7 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text('$_counter ',
+                              Text('${tasbihList[_currentIndex].count} ',
                                   style: const TextStyle(
                                       color: Colors.black,
                                       fontSize: 25,
@@ -286,6 +286,8 @@ class _HomePageState extends State<HomePage> {
   _incrementCounter() async {
     SharedPreferences prefs = await SharedPreferences.getInstance();
     prefs.setInt('count', _counter);
+    prefs.setInt(tasbihList[_currentIndex].arabic, _counter);
+    await saveCountersToCache();
     setState(() {
       _counter++;
       tasbihList[_currentIndex].count = _counter;
