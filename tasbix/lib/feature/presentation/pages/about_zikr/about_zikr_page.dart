@@ -1,4 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
 import 'package:flutter/material.dart';
 
 class AboutZikrPage extends StatelessWidget {
@@ -13,15 +12,16 @@ class AboutZikrPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
-          title: Text(name),
-          centerTitle: true,
+      appBar: AppBar(
+        title: Text(name),
+        centerTitle: true,
+      ),
+      body: Padding(
+        padding: const EdgeInsets.all(16.0),
+        child: Column(
+          children: [Center(child: Text(description))],
         ),
-        body: Padding(
-          padding: const EdgeInsets.all(16.0),
-          child: Column(
-            children: [Center(child: Text(description))],
-          ),
-        ));
+      ),
+    );
   }
 }

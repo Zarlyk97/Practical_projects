@@ -258,12 +258,14 @@ class _HomePageState extends State<HomePage> {
                   selected: _selectedIndex == index,
                   onTap: () {
                     Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => AboutZikrPage(
-                                  name: getDhikrsList()[index],
-                                  description: model.description,
-                                )));
+                      context,
+                      MaterialPageRoute(
+                        builder: (context) => AboutZikrPage(
+                          name: getDhikrsList()[index],
+                          description: model.description,
+                        ),
+                      ),
+                    );
                     _onItemTapped(index);
                   },
                   trailing: const Icon(Icons.navigate_next),
