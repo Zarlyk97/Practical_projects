@@ -177,8 +177,7 @@ class _HomePageState extends State<HomePage> {
                         width: 30,
                         child: FloatingActionButton(
                           heroTag: 'reset_button',
-                          backgroundColor:
-                              isdarkTheme ? Colors.green : Colors.white,
+                          backgroundColor: Colors.white,
                           shape: const CircleBorder(),
                           onPressed: () {
                             _resetTasbihCounters();
@@ -194,8 +193,7 @@ class _HomePageState extends State<HomePage> {
                         width: 95,
                         child: FloatingActionButton(
                             heroTag: 'increment_button',
-                            backgroundColor:
-                                isdarkTheme ? Colors.green : Colors.white,
+                            backgroundColor: Colors.white,
                             shape: const CircleBorder(),
                             onPressed: () {
                               _incrementCounter();
