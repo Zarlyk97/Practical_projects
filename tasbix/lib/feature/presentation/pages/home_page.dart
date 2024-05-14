@@ -102,7 +102,7 @@ class _HomePageState extends State<HomePage> {
                       height: 10,
                     ),
                     SizedBox(
-                      height: 60,
+                      height: 65,
                       child: ListView.builder(
                           scrollDirection: Axis.horizontal,
                           itemBuilder: (context, index) {
@@ -111,8 +111,8 @@ class _HomePageState extends State<HomePage> {
                                 _changeTasbihCard(index);
                               },
                               child: Container(
-                                  height: 70,
-                                  width: 100,
+                                  padding: const EdgeInsets.symmetric(
+                                      horizontal: 16),
                                   margin:
                                       const EdgeInsets.symmetric(horizontal: 8),
                                   decoration: BoxDecoration(
@@ -149,7 +149,7 @@ class _HomePageState extends State<HomePage> {
                     ),
                     Positioned(
                       top: 47,
-                      left: 126,
+                      left: (MediaQuery.of(context).size.width / 3.2),
                       child: SizedBox(
                         height: 68,
                         width: 143,
@@ -159,11 +159,14 @@ class _HomePageState extends State<HomePage> {
                             crossAxisAlignment: CrossAxisAlignment.end,
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text('${tasbihList[_currentIndex].count} ',
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontSize: 25,
-                                      fontWeight: FontWeight.w600)),
+                              Text(
+                                '${tasbihList[_currentIndex].count} ',
+                                style: const TextStyle(
+                                  color: Colors.black,
+                                  fontSize: 25,
+                                  fontWeight: FontWeight.w600,
+                                ),
+                              ),
                             ],
                           ),
                         ),
@@ -186,11 +189,11 @@ class _HomePageState extends State<HomePage> {
                       ),
                     ),
                     Positioned(
-                      left: 142,
+                      left: (MediaQuery.of(context).size.width / 2) - (50 + 8),
                       top: 157,
                       child: SizedBox(
                         height: 95,
-                        width: 95,
+                        width: 100,
                         child: FloatingActionButton(
                             heroTag: 'increment_button',
                             backgroundColor: Colors.white,
