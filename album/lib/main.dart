@@ -1,4 +1,4 @@
-import 'package:album/project/main_page.dart';
+import 'package:album/features/album/presentation/pages/home_page.dart';
 import 'package:flutter/material.dart';
 
 void main() {
@@ -19,7 +19,7 @@ class MyApp extends StatelessWidget {
         colorScheme: ColorScheme.fromSeed(seedColor: Colors.deepPurple),
         useMaterial3: true,
       ),
-      home: const MainPage(),
+      home: const HomePage(),
     );
   }
 }
