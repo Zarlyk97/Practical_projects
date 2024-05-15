@@ -55,7 +55,8 @@ class _HomePageState extends State<HomePage> {
                 child: Stack(
                   children: [
                     Image.network(
-                      album[index].thumbnailUrl.toString(),
+                      album[index].url.toString() ??
+                          'https://toppng.com/uploads/preview/beautiful-seawith-mountain-115477143496boixswjop.jpg',
                       fit: BoxFit.fill,
                     ),
                     Center(
