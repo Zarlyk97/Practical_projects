@@ -60,6 +60,10 @@ class _CategoriesPageState extends State<CategoriesPage> {
                       width: 100,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
+                            image: const DecorationImage(
+                                image: NetworkImage(
+                                    'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'),
+                                fit: BoxFit.cover),
                             color: Colors.deepPurple,
                             borderRadius: BorderRadius.circular(10)),
                         child: Center(

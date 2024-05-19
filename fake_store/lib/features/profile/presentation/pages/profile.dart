@@ -51,6 +51,16 @@ class _ProfilePageState extends State<ProfilePage> {
                 )
               ],
             ),
+            const Spacer(),
+            ElevatedButton(
+                style: ElevatedButton.styleFrom(
+                  backgroundColor: Colors.blue,
+                ),
+                onPressed: () {},
+                child: const Text(
+                  'Редактировать профиль',
+                  style: TextStyle(color: Colors.white),
+                )),
           ],
         ),
       ),
