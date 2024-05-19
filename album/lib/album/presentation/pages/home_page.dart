@@ -35,7 +35,7 @@ class _HomePageState extends State<HomePage> {
             );
           } else if (state is AlbumError) {
             return Center(
-              child: Text(state.message),
+              child: Text("Ката чыкты ${state.message}"),
             );
           } else if (state is AlbumLoaded) {
             album = state.album;

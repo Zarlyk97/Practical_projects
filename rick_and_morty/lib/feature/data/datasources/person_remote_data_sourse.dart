@@ -22,21 +22,25 @@ class PersonRemoteDataSourceImpl implements PersonRemoteDataSource {
   PersonRemoteDataSourceImpl({required this.client});
 
   @override
-  Future<List<PersonModel>> getAllPersons(int page) => _getPersonFromUrl(
-      'https://rickandmortyapi.com/api/character/?page=$page');
+  Future<List<PersonModel>> getAllPersons(int page) =>
+      _getPersonFromUrl('/character/?page=$page');
 
   @override
-  Future<List<PersonModel>> searchPerson(String query) => _getPersonFromUrl(
-      'https://rickandmortyapi.com/api/character/?name=$query');
+  Future<List<PersonModel>> searchPerson(String query) =>
+      _getPersonFromUrl('/character/?name=$query');
 
   Future<List<PersonModel>> _getPersonFromUrl(String url) async {
-    final response = await client.get(url);
-    if (response.statusCode == 200) {
-      final persons = json.decode(response.data);
-      return (persons['results'] as List)
-          .map((person) => PersonModel.fromJson(person))
-          .toList();
-    } else {
+    try {
+      final response = await client.get(url);
+      if (response.statusCode == 200 || response.statusCode == 201) {
+        final persons = json.decode(response.data) as Map<String, dynamic>;
+        return (persons['results'] as List)
+            .map((e) => PersonModel.fromJson(e))
+            .toList();
+      } else {
+        throw ServerException();
+      }
+    } catch (e) {
       throw ServerException();
     }
   }

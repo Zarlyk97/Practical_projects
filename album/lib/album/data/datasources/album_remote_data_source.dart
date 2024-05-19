@@ -14,7 +14,7 @@ class AlbumRemoteDataSourceImpl implements AlbumRemoteDataSource {
   Future<List<AlbumModel>> getAlbum() async {
     try {
       final response =
-          await _dio.get('https://jsonplaceholder.typicode.com/todos/');
+          await _dio.get('https://jsonplaceholder.typicode.com/posts');
       List<AlbumModel> album = [];
       for (var item in response.data) {
         album.add(AlbumModel.fromJson(item));

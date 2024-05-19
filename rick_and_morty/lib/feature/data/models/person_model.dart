@@ -4,18 +4,18 @@ import 'location_model.dart';
 
 class PersonModel extends PersonEntity {
   PersonModel({
-    required super.id,
-    required super.name,
-    required super.status,
-    required super.species,
-    required super.type,
-    required super.gender,
-    required super.origin,
-    required super.location,
-    required super.image,
-    required super.episode,
-    required super.url,
-    required super.created,
+    super.id,
+    super.name,
+    super.status,
+    super.species,
+    super.type,
+    super.gender,
+    super.origin,
+    super.location,
+    super.image,
+    super.episode,
+    super.url,
+    super.created,
   });
 
   PersonEntity copyWith({
@@ -57,8 +57,8 @@ class PersonModel extends PersonEntity {
         origin: Location.fromJson(json["origin"]),
         location: Location.fromJson(json["location"]),
         image: json["image"],
-        episode: List<String>.from(json["episode"].map((x) => x)),
         url: json["url"],
+        episode: List<String>.from(json["episode"].map((x) => x)).toList(),
         created: DateTime.parse(json["created"]),
       );
 
@@ -69,11 +69,11 @@ class PersonModel extends PersonEntity {
         "species": species,
         "type": type,
         "gender": gender,
-        "origin": origin!.toJson(),
-        "location": location!.toJson(),
+        "origin": origin?.toJson(),
+        "location": location?.toJson(),
         "image": image,
         "episode": List<dynamic>.from(episode!.map((x) => x)),
         "url": url,
-        "created": created!.toIso8601String(),
+        "created": created?.toIso8601String(),
       };
 }
