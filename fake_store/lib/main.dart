@@ -1,6 +1,6 @@
 import 'package:fakestore/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:fakestore/features/auth/presentation/pages/sign_in_screen.dart';
 import 'package:fakestore/features/category/presentation/cubit/category_cubit.dart';
-import 'package:fakestore/features/category/presentation/pages/main_page.dart';
 import 'package:fakestore/service_locator.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
@@ -18,7 +18,7 @@ class MyApp extends StatelessWidget {
   Widget build(BuildContext context) {
     return MultiBlocProvider(
       providers: [
-        BlocProvider(create: (context) => sl<AuthCubit>()),
+        BlocProvider(create: (context) => sl<AuthCubit>()..loginRepository),
         BlocProvider(create: (context) => sl<CategoryCubit>()),
       ],
       child: MaterialApp(
@@ -28,7 +28,7 @@ class MyApp extends StatelessWidget {
           primarySwatch: Colors.blue,
         ),
         title: 'FakeStore',
-        home: const MainPage(),
+        home: const SignInScreen(),
       ),
     );
   }

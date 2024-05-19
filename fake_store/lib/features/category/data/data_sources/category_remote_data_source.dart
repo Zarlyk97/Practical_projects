@@ -12,11 +12,12 @@ class CatergoryRemoteDataSourceImpl implements CatergoryRemoteDataSource {
   CatergoryRemoteDataSourceImpl(
     this.dio,
   );
+
   //get categories
   @override
   Future<List<String>> getCategories() async {
     try {
-      var res = await dio.get('https://fakestoreapi.com/products/categories');
+      var res = await dio.get('products/categories');
       List<String> categories = [];
       for (var category in res.data) {
         categories.add(category.toString());
@@ -33,8 +34,7 @@ class CatergoryRemoteDataSourceImpl implements CatergoryRemoteDataSource {
   @override
   Future<List<ProductModel>> getProductsByCategory(String category) async {
     try {
-      var res =
-          await dio.get('https://fakestoreapi.com/products/category/$category');
+      var res = await dio.get('products/category/$category');
       List data = res.data;
       return data
           .map<ProductModel>((product) => ProductModel.fromJson(product))
@@ -48,7 +48,7 @@ class CatergoryRemoteDataSourceImpl implements CatergoryRemoteDataSource {
   @override
   Future<ProductModel> getProductById(int id) async {
     try {
-      var res = await dio.get('https://fakestoreapi.com/products/$id');
+      var res = await dio.get('products/$id');
       return ProductModel.fromJson(res.data);
     } catch (e) {
       throw Exception(e.toString());
