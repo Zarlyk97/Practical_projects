@@ -1,5 +1,5 @@
+import 'package:fakestore/core/routes/routes.dart';
 import 'package:fakestore/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:fakestore/features/auth/presentation/pages/sign_in_screen.dart';
 import 'package:fakestore/features/category/presentation/cubit/category_cubit.dart';
 import 'package:fakestore/service_locator.dart';
 import 'package:flutter/material.dart';
@@ -11,6 +11,8 @@ void main() async {
   runApp(const MyApp());
 }
 
+AppRouter _router = AppRouter();
+
 class MyApp extends StatelessWidget {
   const MyApp({super.key});
 
@@ -21,14 +23,14 @@ class MyApp extends StatelessWidget {
         BlocProvider(create: (context) => sl<AuthCubit>()..loginRepository),
         BlocProvider(create: (context) => sl<CategoryCubit>()),
       ],
-      child: MaterialApp(
+      child: MaterialApp.router(
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
           appBarTheme: const AppBarTheme(elevation: 0, centerTitle: true),
           primarySwatch: Colors.blue,
         ),
         title: 'FakeStore',
-        home: const SignInScreen(),
+        routerConfig: _router.config(),
       ),
     );
   }

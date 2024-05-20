@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fakestore/features/cart/presentation/pages/cart_screen.dart';
 import 'package:fakestore/features/category/presentation/pages/categories_page.dart';
 import 'package:fakestore/features/profile/presentation/pages/profile.dart';
 import 'package:flutter/material.dart';
 
+@RoutePage()
 class MainPage extends StatefulWidget {
   const MainPage({super.key});
 

@@ -5,6 +5,13 @@ import 'package:fakestore/core/routes/routes.gr.dart';
 class AppRouter extends $AppRouter {
   @override
   List<AutoRoute> get routes => [
-        /// routes go here
+        AutoRoute(page: SignInRoute.page, initial: true),
+        AutoRoute(page: SignUpRoute.page),
+        AutoRoute(page: CategoriesRoute.page),
+        AutoRoute(page: CategoryRoute.page),
+        AutoRoute(page: DetailRoute.page),
+        AutoRoute(page: CartRoute.page),
+        AutoRoute(page: ProfileRoute.page),
+        AutoRoute(page: MainRoute.page),
       ];
 }
