@@ -1,8 +1,10 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fakestore/features/category/domain/models/product_model.dart';
 import 'package:fakestore/features/category/presentation/cubit/category_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+@RoutePage()
 class DetailScreen extends StatefulWidget {
   final int id;
   const DetailScreen({super.key, required this.id});

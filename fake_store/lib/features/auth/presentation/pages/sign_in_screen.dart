@@ -1,9 +1,11 @@
+import 'package:auto_route/auto_route.dart';
 import 'package:fakestore/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:fakestore/features/auth/presentation/pages/sign_up_screen.dart';
 import 'package:fakestore/features/category/presentation/pages/main_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
+@RoutePage()
 class SignInScreen extends StatefulWidget {
   const SignInScreen({super.key});
 
