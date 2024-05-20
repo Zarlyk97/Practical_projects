@@ -17,8 +17,9 @@ Future<void> initLocator() async {
   sl.registerFactory(() => CategoryCubit(sl()));
 
   sl.registerLazySingleton<AuthRepository>(() => AuthRepositoryImpl(sl()));
+
   sl.registerLazySingleton<AuthRemoteDataSource>(
-      () => AuthRemoteDataSourceImpl(sl()));
+      () => AuthRemoteDataSourceImpl(sl(), sl()));
 
   sl.registerLazySingleton<CategoryRepository>(
       () => CategoryRepositoryImple(sl()));

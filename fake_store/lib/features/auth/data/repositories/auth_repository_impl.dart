@@ -3,40 +3,17 @@ import 'package:fakestore/features/auth/domain/models/user_model.dart';
 import 'package:fakestore/features/auth/domain/repositories/auth_repository.dart';
 
 class AuthRepositoryImpl implements AuthRepository {
-  final AuthRemoteDataSource authRemoteDataSource;
-  AuthRepositoryImpl(this.authRemoteDataSource);
+  final AuthRemoteDataSource remote;
+
+  AuthRepositoryImpl(this.remote);
+
   @override
-  Future<UserModel> login(String email, String password) async {
-    return await authRemoteDataSource.login(email, password);
+  Future<void> login(String email, String password) {
+    return remote.login(email, password);
   }
 
   @override
-  Future<UserModel> getUser() {
-    // TODO: implement getUser
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<bool> logout() {
-    // TODO: implement logout
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<UserModel> register(String email, String password) {
-    // TODO: implement register
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<bool> removeUser() {
-    // TODO: implement removeUser
-    throw UnimplementedError();
-  }
-
-  @override
-  Future<bool> saveUser(UserModel user) {
-    // TODO: implement saveUser
-    throw UnimplementedError();
+  Future<void> register(UserModel user) {
+    return remote.register(user);
   }
 }
