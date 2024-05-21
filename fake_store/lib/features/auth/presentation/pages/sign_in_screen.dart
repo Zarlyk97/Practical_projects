@@ -1,7 +1,7 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fakestore/core/routes/routes.gr.dart';
 import 'package:fakestore/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:fakestore/features/auth/presentation/pages/sign_up_screen.dart';
-import 'package:fakestore/features/category/presentation/pages/main_page.dart';
+
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -79,41 +79,57 @@ class _SignInScreenState extends State<SignInScreen> {
               const SizedBox(
                 height: 30,
               ),
-              BlocBuilder<AuthCubit, AuthState>(
-                builder: (context, state) {
-                  if (state is LoginLoading) {
-                    return const Center(child: CircularProgressIndicator());
+              BlocConsumer<AuthCubit, AuthState>(
+                listener: (BuildContext context, AuthState state) {
+                  if (state is LoginSuccess) {
+                    context.router.pushAndPopUntil(const MainRoute(),
+                        predicate: (route) => false);
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Войти успешно'),
+                        backgroundColor: Colors.green,
+                      ),
+                    );
+                  } else if (state is LoginError) {
+                    ScaffoldMessenger.of(context).showSnackBar(
+                      const SnackBar(
+                        content: Text('Войти не удалось'),
+                        backgroundColor: Colors.red,
+                      ),
+                    );
                   }
+                },
+                builder: (context, state) {
                   return SizedBox(
-                      height: 40,
-                      width: double.infinity,
-                      child: ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              backgroundColor: Colors.blue),
-                          onPressed: () {
-                            if (formkey.currentState!.validate()) {
-                              context.read<AuthCubit>().login(
-                                  emailTextInputController.text,
-                                  passwordTextInputController.text);
-                            }
-
-                            Navigator.push(
-                                context,
-                                MaterialPageRoute(
-                                    builder: (context) => const MainPage()));
-                          },
-                          child: const Text(
-                            'Войти',
-                            style: TextStyle(color: Colors.white),
-                          )));
+                    height: 40,
+                    width: double.infinity,
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          backgroundColor: Colors.blue),
+                      onPressed: () {
+                        if (formkey.currentState!.validate()) {
+                          context.read<AuthCubit>().login(
+                              emailTextInputController.text,
+                              passwordTextInputController.text);
+                        }
+                      },
+                      child: state is LoginLoading
+                          ? const CircularProgressIndicator(
+                              color: Colors.white,
+                            )
+                          : const Text(
+                              'Войти',
+                              style: TextStyle(color: Colors.white),
+                            ),
+                    ),
+                  );
                 },
               ),
               const SizedBox(height: 20),
               TextButton(
-                  onPressed: () => Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const SignUpScreen())),
+                  onPressed: () {
+                    context.pushRoute(const SignUpRoute());
+                  },
                   child: const Text('Регистрация')),
               TextButton(
                 onPressed: () {},

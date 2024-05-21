@@ -16,7 +16,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   @override
   Future<void> login(String email, String password) async {
     final response = await dio
-        .post('/auth/login', data: {'email': email, 'password': password});
+        .post("/auth/login", data: {'email': email, 'password': password});
     if (response.statusCode == 200) {
       await sharedPreferences.setString(
           ApiConsts.token, response.data['token']);
