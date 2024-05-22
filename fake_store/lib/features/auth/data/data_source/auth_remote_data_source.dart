@@ -27,8 +27,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
 
   @override
   Future<void> register(UserModel user) async {
-    final response =
-        await dio.post('https://fakestoreapi.com/auth/register', data: {
+    final response = await dio.post('https://fakestoreapi.com/users', data: {
       'name': user.name?.firstname ?? 'No name',
       'email': user.email,
       'password': user.password
