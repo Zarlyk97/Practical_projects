@@ -15,7 +15,7 @@ class AuthRemoteDataSourceImpl implements AuthRemoteDataSource {
   AuthRemoteDataSourceImpl(this.dio, this.sharedPreferences);
   @override
   Future<void> login(String email, String password) async {
-    final response = await dio.post("'https://fakestoreapi.com/auth/login",
+    final response = await dio.post("https://fakestoreapi.com/auth/login",
         data: {'email': email, 'password': password});
     if (response.statusCode == 200) {
       await sharedPreferences.setString(
