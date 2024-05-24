@@ -109,8 +109,9 @@ class _SignInScreenState extends State<SignInScreen> {
                       onPressed: () {
                         if (formkey.currentState!.validate()) {
                           context.read<AuthCubit>().login(
-                              emailTextInputController.text,
-                              passwordTextInputController.text);
+                                emailTextInputController.text,
+                                passwordTextInputController.text,
+                              );
                         }
                       },
                       child: state is LoginLoading

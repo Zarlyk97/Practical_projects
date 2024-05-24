@@ -142,7 +142,7 @@ class _SignUpScreenState extends State<SignUpScreen> {
                     child: BlocConsumer<AuthCubit, AuthState>(
                       listener: (context, state) {
                         if (state is RegisterSuccess) {
-                          context.maybePop();
+                          context.router.maybePop();
                         } else if (state is RegisterError) {
                           ScaffoldMessenger.of(context).showSnackBar(
                             const SnackBar(
