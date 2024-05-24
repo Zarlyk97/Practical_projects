@@ -86,7 +86,7 @@ class _SignInScreenState extends State<SignInScreen> {
                         predicate: (route) => false);
                     ScaffoldMessenger.of(context).showSnackBar(
                       const SnackBar(
-                        content: Text('Войти успешно'),
+                        content: Text(' Войти успешно'),
                         backgroundColor: Colors.green,
                       ),
                     );
