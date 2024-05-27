@@ -1,9 +1,8 @@
-import 'dart:io';
-
 void main() {
-  print(downloadfile());
+  String? name = _getInput();
+  print(name ?? 'Hello, World!');
 }
 
-Future<String> downloadfile() async {
-  return await File('file.txt').readAsString();
+String? _getInput() {
+  return null;
 }
