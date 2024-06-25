@@ -34,19 +34,19 @@ dependencies:
     sdk: flutter
 
 
-  cupertino_icons: ^1.0.6
-  flutter_bloc: ^8.1.4
+  cupertino_icons: ^1.0.8
+  flutter_bloc: ^8.1.6
   equatable: ^2.0.5
   svg_flutter: ^0.0.1
-  shared_preferences: ^2.2.2
+  shared_preferences: ^2.2.3
   flutter_launcher_icons: ^0.13.1
-  intl: ^0.18.1
+  intl: ^0.19.0
 
 dev_dependencies:
   flutter_test:
     sdk: flutter
 
-  flutter_lints: ^3.0.0
+  flutter_lints: ^4.0.0
 
 flutter_launcher_icons:
   android: "launcher_icon"

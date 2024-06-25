@@ -1,4 +1,4 @@
-import 'package:flutter/cupertino.dart';
+﻿import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:tasbix/bloc/language_cubit/language_cubit.dart';
@@ -15,7 +15,7 @@ class SettingPage extends StatefulWidget {
 }
 
 class _SettingPageState extends State<SettingPage> {
-  @override
+  
   @override
   Widget build(BuildContext context) {
     final isdark = context.watch<ThemeCubit>().state.isdark;

@@ -52,9 +52,10 @@ class _CategoriesPageState extends State<CategoriesPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                            builder: (context) => CategoryPage(
-                                  category: categories[index],
-                                )),
+                          builder: (context) => CategoryPage(
+                            category: categories[index],
+                          ),
+                        ),
                       );
                     },
                     child: SizedBox(
