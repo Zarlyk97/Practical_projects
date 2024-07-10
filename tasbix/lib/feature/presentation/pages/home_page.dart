@@ -211,8 +211,8 @@ class _HomePageState extends State<HomePage> {
                     ElevatedButton(
                       style: ButtonStyle(
                           backgroundColor: isdarkTheme
-                              ? MaterialStateProperty.all(Colors.black)
-                              : MaterialStateProperty.all(Colors.white)),
+                              ? WidgetStateProperty.all(Colors.black)
+                              : WidgetStateProperty.all(Colors.white)),
                       onPressed: () {},
                       child: Text(
                         S.of(context).restore,
