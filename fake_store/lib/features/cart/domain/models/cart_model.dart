@@ -1,6 +1,3 @@
-// ignore_for_file: public_member_api_docs, sort_constructors_first
-import 'dart:convert';
-
 class CartModel {
   int? id;
   int? userId;
@@ -31,38 +28,26 @@ class CartModel {
         v: v ?? this.v,
       );
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'id': id,
-      'userId': userId,
-      'date': date?.millisecondsSinceEpoch,
-      'products': products!.map((x) => x.toMap()).toList(),
-      'v': v,
-    };
-  }
+  factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
+        id: json["id"],
+        userId: json["userId"],
+        date: json["date"] == null ? null : DateTime.parse(json["date"]),
+        products: json["products"] == null
+            ? []
+            : List<Product>.from(
+                json["products"]!.map((x) => Product.fromJson(x))),
+        v: json["__v"],
+      );
 
-  factory CartModel.fromMap(Map<String, dynamic> map) {
-    return CartModel(
-      id: map['id'] != null ? map['id'] as int : null,
-      userId: map['userId'] != null ? map['userId'] as int : null,
-      date: map['date'] != null
-          ? DateTime.fromMillisecondsSinceEpoch(map['date'] as int)
-          : null,
-      products: map['products'] != null
-          ? List<Product>.from(
-              (map['products'] as List<int>).map<Product?>(
-                (x) => Product.fromMap(x as Map<String, dynamic>),
-              ),
-            )
-          : null,
-      v: map['v'] != null ? map['v'] as int : null,
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory CartModel.fromJson(String source) =>
-      CartModel.fromMap(json.decode(source) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => {
+        "id": id,
+        "userId": userId,
+        "date": date?.toIso8601String(),
+        "products": products == null
+            ? []
+            : List<dynamic>.from(products!.map((x) => x.toJson())),
+        "__v": v,
+      };
 }
 
 class Product {
@@ -83,22 +68,13 @@ class Product {
         quantity: quantity ?? this.quantity,
       );
 
-  Map<String, dynamic> toMap() {
-    return <String, dynamic>{
-      'productId': productId,
-      'quantity': quantity,
-    };
-  }
+  factory Product.fromJson(Map<String, dynamic> json) => Product(
+        productId: json["productId"],
+        quantity: json["quantity"],
+      );
 
-  factory Product.fromMap(Map<String, dynamic> map) {
-    return Product(
-      productId: map['productId'] != null ? map['productId'] as int : null,
-      quantity: map['quantity'] != null ? map['quantity'] as int : null,
-    );
-  }
-
-  String toJson() => json.encode(toMap());
-
-  factory Product.fromJson(String source) =>
-      Product.fromMap(json.decode(source) as Map<String, dynamic>);
+  Map<String, dynamic> toJson() => {
+        "productId": productId,
+        "quantity": quantity,
+      };
 }

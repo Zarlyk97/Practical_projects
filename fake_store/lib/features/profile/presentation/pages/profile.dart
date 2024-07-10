@@ -56,7 +56,7 @@ class _ProfilePageState extends State<ProfilePage> {
             const Spacer(),
             ElevatedButton(
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.green,
               ),
               onPressed: () {},
               child: const Text(

@@ -186,14 +186,17 @@ class _CartPageState extends State<CartPage> {
             ElevatedButton(
               onPressed: () {},
               style: ElevatedButton.styleFrom(
-                backgroundColor: Colors.blue,
+                backgroundColor: Colors.green,
                 shape: RoundedRectangleBorder(
-                  borderRadius: BorderRadius.circular(8),
+                  borderRadius: BorderRadius.circular(20),
                 ),
                 padding:
                     const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
               ),
-              child: const Text('Оформить заказ'),
+              child: const Text(
+                'Оформить заказ',
+                style: TextStyle(color: Colors.white),
+              ),
             ),
           ]),
         ),
