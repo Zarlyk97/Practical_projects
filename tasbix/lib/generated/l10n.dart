@@ -50,6 +50,16 @@ class S {
     return Localizations.of<S>(context, S);
   }
 
+  /// `Tasbix benefit`
+  String get Benefit {
+    return Intl.message(
+      'Tasbix benefit',
+      name: 'Benefit',
+      desc: '',
+      args: [],
+    );
+  }
+
   /// `Language`
   String get language {
     return Intl.message(

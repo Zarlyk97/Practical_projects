@@ -335,6 +335,7 @@ class _HomePageState extends State<HomePage> {
 
   List<String> getDhikrsList() {
     return [
+      S.of(context).Benefit,
       S.of(context).generalDhikrs,
       S.of(context).eveningDhikrs,
       S.of(context).morningDhikrs,
