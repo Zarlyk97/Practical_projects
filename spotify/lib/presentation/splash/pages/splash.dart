@@ -8,7 +8,7 @@ class SplashPage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: SvgPicture.asset(AppVectors.logo),
+      body: Center(child: SvgPicture.asset(AppVectors.logo)),
     );
   }
 }
