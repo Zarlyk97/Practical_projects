@@ -1,7 +1,9 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_images.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
+import 'package:spotify/core/configs/theme/app_colors.dart';
 
 class GetStartedPage extends StatefulWidget {
   const GetStartedPage({super.key});
@@ -17,6 +19,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
       body: Stack(
         children: [
           Container(
+            padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 40),
             decoration: const BoxDecoration(
               image: DecorationImage(
                 image: AssetImage(AppImages.introBG),
@@ -36,15 +39,17 @@ class _GetStartedPageState extends State<GetStartedPage> {
                       fontSize: 18,
                       color: Colors.white),
                 ),
+                const SizedBox(height: 21),
                 const Text(
                   'Lorem ipsum dolor sit amet, consectetur adipiscing elit, sed do eiusmod tempor incididunt ut labore et dolore magna aliqua. ',
                   style: TextStyle(
-                      fontWeight: FontWeight.bold,
-                      fontSize: 15,
-                      color: Colors.white),
+                      fontWeight: FontWeight.w500,
+                      fontSize: 13,
+                      color: AppColors.grey),
+                  textAlign: TextAlign.center,
                 ),
-                ElevatedButton(
-                    onPressed: () {}, child: const Text('Get Started')),
+                const SizedBox(height: 21),
+                const BasicAppButton(),
               ],
             ),
           ),
