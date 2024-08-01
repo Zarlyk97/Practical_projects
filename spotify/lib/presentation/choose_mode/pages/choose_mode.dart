@@ -59,7 +59,7 @@ class _ChooseModePageState extends State<ChooseModePage> {
                           onTap: () {
                             context
                                 .read<ThemeCubit>()
-                                .upDateTheme(ThemeMode.light);
+                                .upDateTheme(ThemeMode.dark);
                           },
                           child: ClipOval(
                             child: BackdropFilter(
@@ -100,7 +100,7 @@ class _ChooseModePageState extends State<ChooseModePage> {
                           onTap: () {
                             context
                                 .read<ThemeCubit>()
-                                .upDateTheme(ThemeMode.dark);
+                                .upDateTheme(ThemeMode.light);
                           },
                           child: ClipOval(
                             child: BackdropFilter(
