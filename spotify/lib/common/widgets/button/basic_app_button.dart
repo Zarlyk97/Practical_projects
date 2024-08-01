@@ -19,7 +19,7 @@ class BasicAppButton extends StatelessWidget {
         shape: const StadiumBorder(side: BorderSide.none),
         backgroundColor: AppColors.primary,
         foregroundColor: Colors.black,
-        minimumSize: Size.fromHeight(height ?? 80),
+        minimumSize: Size.fromHeight(height ?? 70),
       ),
       onPressed: onPressed,
       child: Text(
