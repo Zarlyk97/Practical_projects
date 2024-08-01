@@ -16,7 +16,9 @@ class BasicAppButton extends StatelessWidget {
   Widget build(BuildContext context) {
     return ElevatedButton(
       style: ElevatedButton.styleFrom(
-        shape: const StadiumBorder(side: BorderSide.none),
+        shape: const StadiumBorder(
+          side: BorderSide.none,
+        ),
         backgroundColor: AppColors.primary,
         foregroundColor: Colors.black,
         minimumSize: Size.fromHeight(height ?? 70),
