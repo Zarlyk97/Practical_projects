@@ -1,5 +1,6 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
+import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_images.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
 import 'package:spotify/core/configs/theme/app_colors.dart';
@@ -54,7 +55,31 @@ class _SignupOrSigninPageState extends State<SignupOrSigninPage> {
                         fontWeight: FontWeight.w500,
                         color: AppColors.grey),
                     textAlign: TextAlign.center,
-                  )
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    children: [
+                      SizedBox(
+                        width: 150,
+                        height: 80,
+                        child: BasicAppButton(
+                          text: 'Register',
+                          onPressed: () {},
+                        ),
+                      ),
+                      SizedBox(
+                        width: 150,
+                        height: 80,
+                        child: BasicAppButton(
+                          text: 'Sign in',
+                          onPressed: () {},
+                        ),
+                      ),
+                    ],
+                  ),
                 ],
               ),
             ),
