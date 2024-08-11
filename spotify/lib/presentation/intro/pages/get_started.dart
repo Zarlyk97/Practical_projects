@@ -62,7 +62,7 @@ class _GetStartedPageState extends State<GetStartedPage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                        builder: (context) => const SigniupOrSigninPage(),
+                        builder: (context) => const SignupOrSigninPage(),
                       ),
                     );
                   },

@@ -4,14 +4,14 @@ import 'package:spotify/core/configs/assets/app_images.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
 import 'package:spotify/core/configs/theme/app_colors.dart';
 
-class SigniupOrSigninPage extends StatefulWidget {
-  const SigniupOrSigninPage({super.key});
+class SignupOrSigninPage extends StatefulWidget {
+  const SignupOrSigninPage({super.key});
 
   @override
-  State<SigniupOrSigninPage> createState() => _SigniupOrSigninPageState();
+  State<SignupOrSigninPage> createState() => _SignupOrSigninPageState();
 }
 
-class _SigniupOrSigninPageState extends State<SigniupOrSigninPage> {
+class _SignupOrSigninPageState extends State<SignupOrSigninPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
