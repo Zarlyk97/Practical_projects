@@ -1,6 +1,5 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
-import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_images.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
 import 'package:spotify/core/configs/theme/app_colors.dart';
@@ -34,9 +33,10 @@ class _SignupOrSigninPageState extends State<SignupOrSigninPage> {
             Align(
               alignment: Alignment.center,
               child: Column(
-                mainAxisAlignment: MainAxisAlignment.center,
-                crossAxisAlignment: CrossAxisAlignment.center,
                 children: [
+                  const SizedBox(
+                    height: 50,
+                  ),
                   SvgPicture.asset(AppVectors.logo),
                   const SizedBox(
                     height: 55,
@@ -44,6 +44,7 @@ class _SignupOrSigninPageState extends State<SignupOrSigninPage> {
                   const Text(
                     'Enjoy Listening To music ',
                     style: TextStyle(fontSize: 26, fontWeight: FontWeight.bold),
+                    textAlign: TextAlign.center,
                   ),
                   const SizedBox(
                     height: 21,
@@ -57,29 +58,50 @@ class _SignupOrSigninPageState extends State<SignupOrSigninPage> {
                     textAlign: TextAlign.center,
                   ),
                   const SizedBox(
-                    height: 20,
+                    height: 40,
                   ),
                   Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                     children: [
-                      SizedBox(
-                        width: 150,
-                        height: 80,
-                        child: BasicAppButton(
-                          text: 'Register',
-                          onPressed: () {},
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: const StadiumBorder(
+                            side: BorderSide.none,
+                          ),
+                          backgroundColor: AppColors.primary,
+                          foregroundColor: Colors.black,
+                          minimumSize: const Size(150, 80),
+                        ),
+                        onPressed: () {},
+                        child: const Text(
+                          'Register',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: AppColors.lightBackground,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
-                      SizedBox(
-                        width: 150,
-                        height: 80,
-                        child: BasicAppButton(
-                          text: 'Sign in',
-                          onPressed: () {},
+                      ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                          shape: const StadiumBorder(
+                            side: BorderSide.none,
+                          ),
+                          backgroundColor: AppColors.darkBackground,
+                          foregroundColor: Colors.black,
+                          minimumSize: const Size(150, 80),
+                        ),
+                        onPressed: () {},
+                        child: const Text(
+                          'Sign in',
+                          style: TextStyle(
+                              fontSize: 20,
+                              color: AppColors.lightBackground,
+                              fontWeight: FontWeight.w500),
                         ),
                       ),
                     ],
                   ),
+                  const Spacer(),
                 ],
               ),
             ),
