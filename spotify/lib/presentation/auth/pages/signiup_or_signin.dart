@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify/core/configs/assets/app_images.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
 import 'package:spotify/core/configs/theme/app_colors.dart';
+import 'package:spotify/presentation/auth/pages/sign_up_page.dart';
 
 class SignupOrSigninPage extends StatefulWidget {
   const SignupOrSigninPage({super.key});
@@ -72,7 +73,12 @@ class _SignupOrSigninPageState extends State<SignupOrSigninPage> {
                           foregroundColor: Colors.black,
                           minimumSize: const Size(150, 80),
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const SignUpPage()));
+                        },
                         child: const Text(
                           'Register',
                           style: TextStyle(
