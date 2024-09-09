@@ -7,6 +7,7 @@ import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_images.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
 import 'package:spotify/core/configs/theme/app_colors.dart';
+import 'package:spotify/presentation/auth/pages/signiup_or_signin.dart';
 import 'package:spotify/presentation/choose_mode/bloc/theme_cubit.dart';
 
 class ChooseModePage extends StatefulWidget {
@@ -59,7 +60,7 @@ class _ChooseModePageState extends State<ChooseModePage> {
                           onTap: () {
                             context
                                 .read<ThemeCubit>()
-                                .upDateTheme(ThemeMode.dark);
+                                .updateTheme(ThemeMode.dark);
                           },
                           child: ClipOval(
                             child: BackdropFilter(
@@ -100,7 +101,7 @@ class _ChooseModePageState extends State<ChooseModePage> {
                           onTap: () {
                             context
                                 .read<ThemeCubit>()
-                                .upDateTheme(ThemeMode.light);
+                                .updateTheme(ThemeMode.light);
                           },
                           child: ClipOval(
                             child: BackdropFilter(
@@ -134,7 +135,12 @@ class _ChooseModePageState extends State<ChooseModePage> {
                 const SizedBox(height: 50),
                 BasicAppButton(
                   text: 'Continue',
-                  onPressed: () {},
+                  onPressed: () {
+                    Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const SignupOrSigninPage()));
+                  },
                 ),
               ],
             ),
