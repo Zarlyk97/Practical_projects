@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify/common/widgets/appbar/app_bar.dart';
 import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
+import 'package:spotify/presentation/auth/pages/sign_in_page.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -92,18 +93,24 @@ class _SignUpPageState extends State<SignUpPage> {
   }
 
   Widget _signInText() {
-    return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-      const Text(
-        "Do you have an account?",
-        style: TextStyle(
-          fontWeight: FontWeight.bold,
-          fontSize: 15,
+    return Row(
+      mainAxisAlignment: MainAxisAlignment.center,
+      children: [
+        const Text(
+          "Do you have an account?",
+          style: TextStyle(
+            fontWeight: FontWeight.bold,
+            fontSize: 15,
+          ),
+          textAlign: TextAlign.center,
         ),
-        textAlign: TextAlign.center,
-      ),
-      TextButton(
-          onPressed: () {},
-          child: Text('Sign In', style: TextStyle(color: Colors.blue)))
-    ]);
+        TextButton(
+            onPressed: () {
+              Navigator.pushReplacement(context,
+                  MaterialPageRoute(builder: (context) => const SignInPage()));
+            },
+            child: const Text('Sign In', style: TextStyle(color: Colors.blue)))
+      ],
+    );
   }
 }

@@ -3,6 +3,7 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify/common/widgets/appbar/app_bar.dart';
 import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
+import 'package:spotify/presentation/auth/pages/sign_up_page.dart';
 
 class SignInPage extends StatefulWidget {
   const SignInPage({super.key});
@@ -90,8 +91,12 @@ class _SignInPageState extends State<SignInPage> {
         textAlign: TextAlign.center,
       ),
       TextButton(
-          onPressed: () {},
-          child: Text('Register Now', style: TextStyle(color: Colors.blue)))
+          onPressed: () {
+            Navigator.pushReplacement(context,
+                MaterialPageRoute(builder: (context) => const SignUpPage()));
+          },
+          child:
+              const Text('Register Now', style: TextStyle(color: Colors.blue)))
     ]);
   }
 }
