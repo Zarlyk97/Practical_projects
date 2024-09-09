@@ -4,7 +4,6 @@ import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_images.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
 import 'package:spotify/core/configs/theme/app_colors.dart';
-import 'package:spotify/presentation/auth/pages/signiup_or_signin.dart';
 import 'package:spotify/presentation/choose_mode/pages/choose_mode.dart';
 
 class GetStartedPage extends StatefulWidget {
