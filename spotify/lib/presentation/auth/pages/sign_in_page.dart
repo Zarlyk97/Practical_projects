@@ -33,10 +33,6 @@ class _SignInPageState extends State<SignInPage> {
               const SizedBox(
                 height: 50,
               ),
-              _fullNameField(),
-              const SizedBox(
-                height: 20,
-              ),
               _enterEmailField(),
               const SizedBox(
                 height: 20,
@@ -47,7 +43,7 @@ class _SignInPageState extends State<SignInPage> {
               ),
               BasicAppButton(
                 onPressed: () {},
-                text: 'Create Account',
+                text: 'Sign In',
               ),
             ],
           ),
@@ -58,7 +54,7 @@ class _SignInPageState extends State<SignInPage> {
 
   Widget _registerText() {
     return const Text(
-      "Register",
+      "Sign In",
       style: TextStyle(
         fontWeight: FontWeight.bold,
         fontSize: 25,
@@ -67,18 +63,10 @@ class _SignInPageState extends State<SignInPage> {
     );
   }
 
-  Widget _fullNameField() {
-    return TextField(
-      decoration: const InputDecoration(
-        hintText: 'Full Name',
-      ).applyDefaults(Theme.of(context).inputDecorationTheme),
-    );
-  }
-
   Widget _enterEmailField() {
     return TextField(
       decoration: const InputDecoration(
-        hintText: 'Enter Email',
+        hintText: 'Enter Username or Email',
       ).applyDefaults(Theme.of(context).inputDecorationTheme),
     );
   }
@@ -94,7 +82,7 @@ class _SignInPageState extends State<SignInPage> {
   Widget _signUpText() {
     return Row(mainAxisAlignment: MainAxisAlignment.center, children: [
       const Text(
-        "Do you have an account?",
+        "Not A Member?",
         style: TextStyle(
           fontWeight: FontWeight.bold,
           fontSize: 15,
@@ -103,7 +91,7 @@ class _SignInPageState extends State<SignInPage> {
       ),
       TextButton(
           onPressed: () {},
-          child: Text('Sign In', style: TextStyle(color: Colors.blue)))
+          child: Text('Register Now', style: TextStyle(color: Colors.blue)))
     ]);
   }
 }
