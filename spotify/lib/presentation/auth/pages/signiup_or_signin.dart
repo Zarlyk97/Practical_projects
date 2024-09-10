@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify/common/helpers/is_dark_mode.dart';
+import 'package:spotify/common/widgets/appbar/app_bar.dart';
 import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_images.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
@@ -22,6 +23,7 @@ class _SignupOrSigninPageState extends State<SignupOrSigninPage> {
       body: SafeArea(
         child: Stack(
           children: [
+            const BasicAppbar(),
             Align(
               alignment: Alignment.topRight,
               child: SvgPicture.asset(AppVectors.topPattern),
@@ -39,12 +41,9 @@ class _SignupOrSigninPageState extends State<SignupOrSigninPage> {
               child: Padding(
                 padding: const EdgeInsets.symmetric(horizontal: 40),
                 child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.center,
                   mainAxisAlignment: MainAxisAlignment.center,
+                  crossAxisAlignment: CrossAxisAlignment.center,
                   children: [
-                    const SizedBox(
-                      height: 50,
-                    ),
                     SvgPicture.asset(AppVectors.logo),
                     const SizedBox(
                       height: 55,
