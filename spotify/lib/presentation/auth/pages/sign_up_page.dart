@@ -3,7 +3,11 @@ import 'package:flutter_svg/flutter_svg.dart';
 import 'package:spotify/common/widgets/appbar/app_bar.dart';
 import 'package:spotify/common/widgets/button/basic_app_button.dart';
 import 'package:spotify/core/configs/assets/app_vectors.dart';
+import 'package:spotify/data/models/auth/create_user_req.dart';
+import 'package:spotify/domain/usecases/auth/signup.dart';
 import 'package:spotify/presentation/auth/pages/sign_in_page.dart';
+import 'package:spotify/presentation/root/pages/root.dart';
+import 'package:spotify/service_locator.dart';
 
 class SignUpPage extends StatefulWidget {
   const SignUpPage({super.key});
@@ -13,6 +17,17 @@ class SignUpPage extends StatefulWidget {
 }
 
 class _SignUpPageState extends State<SignUpPage> {
+  final TextEditingController _fullName = TextEditingController();
+  final TextEditingController _email = TextEditingController();
+  final TextEditingController _password = TextEditingController();
+  @override
+  void dispose() {
+    _fullName.dispose();
+    _email.dispose();
+    _password.dispose();
+    super.dispose();
+  }
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -27,30 +42,59 @@ class _SignUpPageState extends State<SignUpPage> {
       body: SingleChildScrollView(
         child: Padding(
           padding: const EdgeInsets.symmetric(vertical: 50, horizontal: 40),
-          child: Column(
-            crossAxisAlignment: CrossAxisAlignment.center,
-            children: [
-              _registerText(),
-              const SizedBox(
-                height: 50,
-              ),
-              _fullNameField(),
-              const SizedBox(
-                height: 20,
-              ),
-              _enterEmailField(),
-              const SizedBox(
-                height: 20,
-              ),
-              _passwordField(),
-              const SizedBox(
-                height: 20,
-              ),
-              BasicAppButton(
-                onPressed: () {},
-                text: 'Create Account',
-              ),
-            ],
+          child: Form(
+            child: Column(
+              crossAxisAlignment: CrossAxisAlignment.center,
+              children: [
+                _registerText(),
+                const SizedBox(
+                  height: 50,
+                ),
+                _fullNameField(),
+                const SizedBox(
+                  height: 20,
+                ),
+                _enterEmailField(),
+                const SizedBox(
+                  height: 20,
+                ),
+                _passwordField(),
+                const SizedBox(
+                  height: 20,
+                ),
+                BasicAppButton(
+                  onPressed: () async {
+                    var resault = await sl<SignUpUseCase>().call(
+                      params: CreateUserReq(
+                          fullName: _fullName.text.toString(),
+                          email: _email.text.toString(),
+                          password: _password.text.toString()),
+                    );
+                    resault.fold(
+                      (l) {
+                        var snackbar = SnackBar(
+                          content: Text(
+                            l,
+                          ),
+                          behavior: SnackBarBehavior.floating,
+                        );
+                        ScaffoldMessenger.of(context).showSnackBar(snackbar);
+                      },
+                      (r) {
+                        Navigator.pushAndRemoveUntil(
+                          context,
+                          MaterialPageRoute(
+                            builder: (BuildContext context) => const RootPage(),
+                          ),
+                          (rout) => false,
+                        );
+                      },
+                    );
+                  },
+                  text: 'Create Account',
+                ),
+              ],
+            ),
           ),
         ),
       ),
@@ -70,6 +114,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Widget _fullNameField() {
     return TextField(
+      controller: _fullName,
       decoration: const InputDecoration(
         hintText: 'Full Name',
       ).applyDefaults(Theme.of(context).inputDecorationTheme),
@@ -78,6 +123,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Widget _enterEmailField() {
     return TextField(
+      controller: _email,
       decoration: const InputDecoration(
         hintText: 'Enter Email',
       ).applyDefaults(Theme.of(context).inputDecorationTheme),
@@ -86,6 +132,7 @@ class _SignUpPageState extends State<SignUpPage> {
 
   Widget _passwordField() {
     return TextField(
+      controller: _password,
       decoration: const InputDecoration(
         hintText: 'Password',
       ).applyDefaults(Theme.of(context).inputDecorationTheme),
