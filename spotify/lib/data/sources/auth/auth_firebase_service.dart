@@ -1,17 +1,32 @@
 import 'package:dartz/dartz.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:spotify/data/models/auth/create_user_req.dart';
+import 'package:spotify/data/models/auth/signin_user_req.dart';
 
 abstract class AuthFirebaseService {
   Future<Either> signUp(CreateUserReq createUserReq);
-  Future<void> signIn();
+  Future<Either> signIn(SignInUserReq signInUserReq);
 }
 
 class AuthFirebaseServiceImple implements AuthFirebaseService {
   @override
-  Future<void> signIn() {
-    // TODO: implement signIn
-    throw UnimplementedError();
+  Future<Either> signIn(SignInUserReq signInUserReq) async {
+    try {
+      await FirebaseAuth.instance.signInWithEmailAndPassword(
+        email: signInUserReq.email,
+        password: signInUserReq.password,
+      );
+
+      return const Right('Signin was successful');
+    } on FirebaseAuthException catch (e) {
+      String message = '';
+      if (e.code == 'invalid-email') {
+        message = 'Not user found for that email.';
+      } else if (e.code == 'invalid-credential') {
+        message = 'Wrong password provided for that user.';
+      }
+      return Left(message);
+    }
   }
 
   @override
@@ -22,7 +37,7 @@ class AuthFirebaseServiceImple implements AuthFirebaseService {
         password: createUserReq.password,
       );
 
-      return const Right('Success');
+      return const Right('create was successful');
     } on FirebaseAuthException catch (e) {
       String message = '';
       if (e.code == 'weak-password') {
