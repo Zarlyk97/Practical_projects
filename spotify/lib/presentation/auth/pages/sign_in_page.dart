@@ -107,7 +107,7 @@ class _SignInPageState extends State<SignInPage> {
     return TextField(
       controller: _email,
       decoration: const InputDecoration(
-        hintText: 'Enterzar Email',
+        hintText: 'Enter Email',
       ).applyDefaults(Theme.of(context).inputDecorationTheme),
     );
   }
