@@ -13,7 +13,8 @@ class HomePage extends StatefulWidget {
   State<HomePage> createState() => _HomePageState();
 }
 
-class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
+class _HomePageState extends State<HomePage>
+    with SingleTickerProviderStateMixin {
   late TabController _tabController;
 
   @override
@@ -72,10 +73,10 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
   Widget _tabs() {
     return TabBar(
       controller: _tabController,
-      indicatorColor: AppColors.primary,
-      labelColor: context.isDarkMode ? Colors.white : Colors.black,
       isScrollable: true,
-      padding: const EdgeInsets.symmetric(horizontal: 40, vertical: 16),
+      labelColor: context.isDarkMode ? Colors.white : Colors.black,
+      indicatorColor: AppColors.primary,
+      padding: const EdgeInsets.symmetric(vertical: 40, horizontal: 16),
       tabs: const [
         Text(
           'News',
@@ -92,7 +93,7 @@ class _HomePageState extends State<HomePage> with TickerProviderStateMixin {
         Text(
           'Podcasts',
           style: TextStyle(fontWeight: FontWeight.w500, fontSize: 16),
-        ),
+        )
       ],
     );
   }
