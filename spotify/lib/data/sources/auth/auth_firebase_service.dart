@@ -38,7 +38,7 @@ class AuthFirebaseServiceImple implements AuthFirebaseService {
         password: createUserReq.password,
       );
       FirebaseFirestore.instance.collection('users').add({
-        'name': date.user?.displayName,
+        'name': createUserReq.fullName,
         'email': date.user?.email,
       });
 
