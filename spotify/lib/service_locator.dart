@@ -14,6 +14,7 @@ final sl = GetIt.instance;
 
 Future<void> initializeDependencies() async {
   sl.registerSingleton<AuthFirebaseService>(AuthFirebaseServiceImple());
+
   sl.registerSingleton<AuthRepository>(AuthRepositoryImpl());
 
   sl.registerSingleton<SongFirebaseService>(SongFirebaseServiceImple());
@@ -21,6 +22,8 @@ Future<void> initializeDependencies() async {
   sl.registerSingleton<SongsRepository>(SongRepositoryImple());
 
   sl.registerSingleton<SignUpUseCase>(SignUpUseCase());
+
   sl.registerSingleton<SignInUseCase>(SignInUseCase());
+
   sl.registerSingleton<GetNewSongsUseCase>(GetNewSongsUseCase());
 }
