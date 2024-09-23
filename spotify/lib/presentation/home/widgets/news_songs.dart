@@ -42,10 +42,11 @@ class NewsSongs extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(
-                            '${AppUrls.fireStorageUrl}${songs[index].artist} - ${songs[index].title}.jpg?${AppUrls.mediaAlt}'),
+                            'https://img.freepik.com/photos-gratuite/portrait-jeune-famille_1328-3806.jpg'),
+                        // '${AppUrls.fireStorageUrl}${songs[index].artist} - ${songs[index].title}.jpg?${AppUrls.mediaAlt}'),
                       ),
                     ),
                   ),
@@ -55,6 +56,6 @@ class NewsSongs extends StatelessWidget {
           );
         },
         separatorBuilder: (context, index) => const SizedBox(width: 14),
-        itemCount: songs.length);
+        itemCount: 5);
   }
 }
