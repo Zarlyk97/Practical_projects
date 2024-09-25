@@ -42,10 +42,10 @@ class NewsSongs extends StatelessWidget {
               children: [
                 Expanded(
                   child: Container(
-                    decoration: const BoxDecoration(
+                    decoration: BoxDecoration(
                       image: DecorationImage(
                         image: NetworkImage(
-                            'https://img.freepik.com/photos-gratuite/portrait-jeune-famille_1328-3806.jpg'),
+                            '${AppUrls.fireStorageUrl}${songs[index].artist} - ${songs[index].title}.jpg?${AppUrls.mediaAlt}'),
                         // '${AppUrls.fireStorageUrl}${songs[index].artist} - ${songs[index].title}.jpg?${AppUrls.mediaAlt}'),
                       ),
                     ),
