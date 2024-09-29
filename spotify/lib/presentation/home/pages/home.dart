@@ -36,21 +36,24 @@ class _HomePageState extends State<HomePage>
         ),
       ),
       body: SingleChildScrollView(
-        child: Column(
-          mainAxisAlignment: MainAxisAlignment.center,
-          children: [
-            _homeTopToCard(),
-            _tabs(),
-            SizedBox(
-              height: 260,
-              child: TabBarView(controller: _tabController, children: [
-                const NewsSongs(),
-                Container(),
-                Container(),
-                Container(),
-              ]),
-            )
-          ],
+        child: Padding(
+          padding: const EdgeInsets.only(right: 16, left: 16),
+          child: Column(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              _homeTopToCard(),
+              _tabs(),
+              SizedBox(
+                height: 260,
+                child: TabBarView(controller: _tabController, children: [
+                  const NewsSongs(),
+                  Container(),
+                  Container(),
+                  Container(),
+                ]),
+              )
+            ],
+          ),
         ),
       ),
     );
