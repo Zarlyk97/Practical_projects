@@ -16,7 +16,7 @@ class SongFirebaseServiceImple implements SongFirebaseService {
       var data = await FirebaseFirestore.instance
           .collection('songs')
           .orderBy('releaseDate', descending: true)
-          .limit(4)
+          .limit(10)
           .get();
       for (var element in data.docs) {
         var songModel = SongModel.fromjson(element.data());
