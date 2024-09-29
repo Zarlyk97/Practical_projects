@@ -112,7 +112,7 @@ class PlayList extends StatelessWidget {
                     icon: const Icon(Icons.favorite_rounded,
                         color: AppColors.darkGrey))
               ],
-            )
+            ),
           ],
         );
       },
