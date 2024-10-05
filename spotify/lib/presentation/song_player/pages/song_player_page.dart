@@ -139,8 +139,8 @@ class SongPlayerPage extends StatelessWidget {
             height: 20,
           ),
           Container(
-            height: 45,
-            width: 45,
+            height: 60,
+            width: 60,
             decoration: const BoxDecoration(
                 shape: BoxShape.circle, color: AppColors.primary),
             child: Icon(context.read<SongPlayerCubit>().audioPlayer.playing
