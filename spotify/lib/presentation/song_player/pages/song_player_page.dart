@@ -11,9 +11,9 @@ import 'package:spotify/presentation/song_player/bloc/song_player_cubit.dart';
 class SongPlayerPage extends StatelessWidget {
   final SongEntity songEntity;
   const SongPlayerPage({
-    Key? key,
+    super.key,
     required this.songEntity,
-  }) : super(key: key);
+  });
 
   @override
   Widget build(BuildContext context) {
