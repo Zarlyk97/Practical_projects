@@ -13,4 +13,10 @@ class SongsRepositoryImple extends SongsRepository {
   Future<Either> getPlayList() async {
     return await sl<SongFirebaseService>().getPlayList();
   }
+
+  @override
+  Future<Either> addOrRemoveFavoriteSongs() {
+    // TODO: implement addOrRemoveFavoriteSongs
+    throw UnimplementedError();
+  }
 }

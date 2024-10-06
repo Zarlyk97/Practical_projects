@@ -1,6 +1,7 @@
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:spotify/common/helpers/is_dark_mode.dart';
+import 'package:spotify/core/configs/constants/app_urls.dart';
 import 'package:spotify/core/configs/theme/app_colors.dart';
 import 'package:spotify/domain/entities/song/song.dart';
 import 'package:spotify/presentation/home/cubit/news_songs_cubit.dart';
@@ -37,6 +38,11 @@ class NewsSongs extends StatelessWidget {
     return ListView.separated(
         scrollDirection: Axis.horizontal,
         itemBuilder: (context, index) {
+          final artist = Uri.encodeComponent(songs[index].artist.trim());
+          final title = Uri.encodeComponent(songs[index].title.trim());
+          final url =
+              '${AppUrls.coverfireStorageUrl}$artist - $title.jpg?${AppUrls.mediaAlt}';
+
           return GestureDetector(
             onTap: () {
               Navigator.push(
@@ -57,12 +63,11 @@ class NewsSongs extends StatelessWidget {
                     child: Container(
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(30),
-                        image: const DecorationImage(
+                        image: DecorationImage(
                           fit: BoxFit.cover,
                           image: NetworkImage(
-                            //'${AppUrls.fireStorageUrl}${songs[index].artist} - ${songs[index].title}.jpg?${AppUrls.mediaAlt}',
-
-                            'https://firebasestorage.googleapis.com/v0/b/spotify-4b02b.appspot.com/o/covers%2FMirbek%20Atabekov%20-%20%20Kechki%20Bishkek.jpg?alt=media',
+                            url,
+                            // '${AppUrls.coverfireStorageUrl}${songs[index].artist} - ${songs[index].title}.jpg?${AppUrls.mediaAlt}',
                           ),
                         ),
                       ),

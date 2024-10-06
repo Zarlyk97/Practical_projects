@@ -31,7 +31,7 @@ class SongPlayerPage extends StatelessWidget {
       body: BlocProvider(
         create: (context) => SongPlayerCubit()
           ..loadSong(
-              '${AppUrls.songFireStorageUrl}${songEntity.artist} - ${songEntity.title}.mp3?${AppUrls.mediaAlt}'),
+              '${AppUrls.songFireStorageUrl}${Uri.encodeComponent(songEntity.artist.trim())} - ${Uri.encodeComponent(songEntity.title.trim())}.mp3?${AppUrls.mediaAlt}'),
         child: SingleChildScrollView(
           padding: const EdgeInsets.symmetric(vertical: 16, horizontal: 16),
           child: Column(
@@ -57,11 +57,9 @@ class SongPlayerPage extends StatelessWidget {
       height: MediaQuery.of(context).size.height / 2,
       decoration: BoxDecoration(
         borderRadius: BorderRadius.circular(30),
-        image: const DecorationImage(
+        image: DecorationImage(
           image: NetworkImage(
-              // '${AppUrls.fireStorageUrl}${songEntity.artist} - ${songEntity.title}.jpg?${AppUrls.mediaAlt}'),
-
-              'https://firebasestorage.googleapis.com/v0/b/spotify-4b02b.appspot.com/o/covers%2FMirbek%20Atabekov%20-%20%20Kechki%20Bishkek.jpg?alt=media'),
+              '${AppUrls.coverfireStorageUrl}${Uri.encodeComponent(songEntity.artist.trim())} - ${Uri.encodeComponent(songEntity.title.trim())}.jpg?${AppUrls.mediaAlt}'),
           fit: BoxFit.cover,
         ),
       ),
@@ -111,18 +109,19 @@ class SongPlayerPage extends StatelessWidget {
       if (state is SongPlayerLoaded) {
         return Column(children: [
           Slider(
-              value: context
-                  .read<SongPlayerCubit>()
-                  .songPosition
-                  .inSeconds
-                  .toDouble(),
-              min: 0.0,
-              max: context
-                  .read<SongPlayerCubit>()
-                  .songDuration
-                  .inSeconds
-                  .toDouble(),
-              onChanged: (value) {}),
+            value: context
+                .read<SongPlayerCubit>()
+                .songPosition
+                .inSeconds
+                .toDouble(),
+            min: 0.0,
+            max: context
+                .read<SongPlayerCubit>()
+                .songDuration
+                .inSeconds
+                .toDouble(),
+            onChanged: (value) {},
+          ),
           const SizedBox(
             height: 20,
           ),
