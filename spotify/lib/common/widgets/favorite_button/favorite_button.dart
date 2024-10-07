@@ -13,9 +13,9 @@ class FavoriteButton extends StatelessWidget {
     return BlocProvider(
       create: (context) => FavoriteButtonCubit(),
       child: BlocBuilder<FavoriteButtonCubit, FavoriteButtonState>(
-          builder: (context, state) {
-        if (state is FavoriteButtonInitial) {
-          return IconButton(
+        builder: (context, state) {
+          if (state is FavoriteButtonInitial) {
+            return IconButton(
               onPressed: () {
                 context
                     .read<FavoriteButtonCubit>()
@@ -27,10 +27,11 @@ class FavoriteButton extends StatelessWidget {
                     ? Icons.favorite
                     : Icons.favorite_outline_outlined,
                 color: AppColors.darkGrey,
-              ));
-        }
-        if (state is FavoriteButtonUpdated) {
-          IconButton(
+              ),
+            );
+          }
+          if (state is FavoriteButtonUpdated) {
+            return IconButton(
               onPressed: () {
                 context
                     .read<FavoriteButtonCubit>()
@@ -42,10 +43,12 @@ class FavoriteButton extends StatelessWidget {
                     ? Icons.favorite
                     : Icons.favorite_outline_outlined,
                 color: AppColors.darkGrey,
-              ));
-        }
-        return Container();
-      }),
+              ),
+            );
+          }
+          return Container();
+        },
+      ),
     );
   }
 }
