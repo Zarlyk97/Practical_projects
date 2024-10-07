@@ -30,6 +30,7 @@ class SongFirebaseServiceImple implements SongFirebaseService {
         bool isFavorite = await sl<IsFavoriteSongUseCase>()
             .call(params: element.reference.id);
         songModel.isFavorite = isFavorite;
+        songModel.songId = element.reference.id;
         songs.add(songModel.toEntity());
       }
       return Right(songs);
@@ -48,6 +49,10 @@ class SongFirebaseServiceImple implements SongFirebaseService {
           .get();
       for (var element in data.docs) {
         var songModel = SongModel.fromjson(element.data());
+        bool isFavorite = await sl<IsFavoriteSongUseCase>()
+            .call(params: element.reference.id);
+        songModel.isFavorite = isFavorite;
+        songModel.songId = element.reference.id;
         songs.add(songModel.toEntity());
       }
       return Right(songs);
