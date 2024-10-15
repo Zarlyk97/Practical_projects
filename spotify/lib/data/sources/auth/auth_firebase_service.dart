@@ -69,8 +69,8 @@ class AuthFirebaseServiceImple implements AuthFirebaseService {
           .doc(firebaseAuth.currentUser?.uid)
           .get();
 
-      UserModel userModel = UserModel.fromjson(user.data()!);
-      userModel.imageUrl =
+      UserModel userModel = UserModel.fromJson(user.data()!);
+      userModel.imageURL =
           firebaseAuth.currentUser?.photoURL ?? AppUrls.defaultImage;
       UserEntity userEntity = userModel.toEntity();
       return Right(userEntity);

@@ -48,7 +48,8 @@ class ProfilePage extends StatelessWidget {
               return Column(
                 children: [
                   Container(
-                    height: 60,
+                    width: 90,
+                    height: 90,
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
@@ -56,14 +57,14 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                   ),
-                  // SizedBox(
-                  //   height: 20,
-                  // ),
-                  // Text(state.userEntity.fullName!),
-                  // SizedBox(
-                  //   height: 10,
-                  // ),
-                  // Text(state.userEntity.email!),
+                  SizedBox(
+                    height: 20,
+                  ),
+                  Text(state.userEntity.fullName!),
+                  SizedBox(
+                    height: 10,
+                  ),
+                  Text(state.userEntity.email!),
                 ],
               );
             }

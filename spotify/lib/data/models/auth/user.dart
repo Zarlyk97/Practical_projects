@@ -3,14 +3,15 @@ import 'package:spotify/domain/entities/auth/user.dart';
 class UserModel {
   String? fullName;
   String? email;
-  String? imageUrl;
+  String? imageURL;
+
   UserModel({
     this.fullName,
     this.email,
-    this.imageUrl,
+    this.imageURL,
   });
 
-  UserModel.fromjson(Map<String, dynamic> data) {
+  UserModel.fromJson(Map<String, dynamic> data) {
     fullName = data['name'];
     email = data['email'];
   }
@@ -19,9 +20,9 @@ class UserModel {
 extension UserModelX on UserModel {
   UserEntity toEntity() {
     return UserEntity(
-      fullName: fullName,
       email: email,
-      imageUrl: imageUrl,
+      fullName: fullName,
+      imageUrl: imageURL,
     );
   }
 }
