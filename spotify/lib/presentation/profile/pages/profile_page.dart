@@ -33,8 +33,8 @@ class ProfilePage extends StatelessWidget {
               ? AppColors.darkGrey
               : AppColors.lightBackground,
           borderRadius: BorderRadius.only(
-            bottomRight: Radius.circular(40),
-            bottomLeft: Radius.circular(40),
+            bottomRight: Radius.circular(50),
+            bottomLeft: Radius.circular(50),
           ),
         ),
         child: BlocBuilder<ProfileInfoCubit, ProfileInfoState>(
@@ -66,7 +66,10 @@ class ProfilePage extends StatelessWidget {
                   SizedBox(
                     height: 10,
                   ),
-                  Text(state.userEntity.fullName!),
+                  Text(
+                    state.userEntity.fullName!,
+                    style: TextStyle(fontSize: 22, fontWeight: FontWeight.bold),
+                  ),
                 ],
               );
             }

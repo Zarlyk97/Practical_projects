@@ -59,47 +59,23 @@ class AuthFirebaseServiceImple implements AuthFirebaseService {
   }
 
   @override
-  Future<Either<String, UserEntity>> getUser() async {
+  Future<Either> getUser() async {
     try {
-      // Firebase'ге байланышыңыз
       FirebaseAuth firebaseAuth = FirebaseAuth.instance;
       FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
-      // Колдонуучуну текшериңиз, колдонуучу кирбесе, катаны кайтарыңыз
-      var currentUser = firebaseAuth.currentUser;
-      if (currentUser == null) {
-        return const Left('User not signed in');
-      }
-
-      // Firestore'дон колдонуучунун документин алыңыз
-      var userDocument = await firebaseFirestore
-          .collection('users')
-          .doc(currentUser.uid)
+      var user = await firebaseFirestore
+          .collection('Users')
+          .doc(firebaseAuth.currentUser?.uid)
           .get();
 
-      // Колдонуучунун документин текшериңиз, эгер документ жок болсо, катаны кайтарыңыз
-      if (userDocument.data() == null) {
-        return const Left('User document does not exist');
-      }
-
-      // Firestore'дон алынган документтин негизинде колдонуучунун моделин түзүңүз
-      UserModel userModel = UserModel.fromJson(userDocument.data()!);
-
-      // Эгер колдонуучунун сүрөтү жок болсо, демейки сүрөттү колдонуңуз
-      userModel.imageURL = currentUser.photoURL ?? AppUrls.defaultImage;
-
-      // Моделден колдонуучунун объектин түзүңүз
+      UserModel userModel = UserModel.fromJson(user.data()!);
+      userModel.imageURL =
+          firebaseAuth.currentUser?.photoURL ?? AppUrls.defaultImage;
       UserEntity userEntity = userModel.toEntity();
-
-      // Колдонуучу ийгиликтүү жүктөлсө, оң жактагы маанини кайтарыңыз
       return Right(userEntity);
-    } catch (e, stackTrace) {
-      // Ката тууралуу маалыматты логгингге кошуңуз
-      print('Error: $e');
-      print('Stack trace: $stackTrace');
-
-      // Ката болсо, сол жактагы катаны кайтарыңыз
-      return const Left('An error occurred while fetching user');
+    } catch (e) {
+      return const Left('An error occurred');
     }
   }
 }
