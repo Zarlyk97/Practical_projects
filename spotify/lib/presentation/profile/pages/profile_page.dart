@@ -53,18 +53,20 @@ class ProfilePage extends StatelessWidget {
                     decoration: BoxDecoration(
                       shape: BoxShape.circle,
                       image: DecorationImage(
-                        image: NetworkImage(state.userEntity.imageUrl!),
+                        image: NetworkImage(
+                          state.userEntity.imageUrl!,
+                        ),
                       ),
                     ),
                   ),
                   SizedBox(
                     height: 20,
                   ),
-                  Text(state.userEntity.fullName!),
+                  Text(state.userEntity.email!),
                   SizedBox(
                     height: 10,
                   ),
-                  Text(state.userEntity.email!),
+                  Text(state.userEntity.fullName!),
                 ],
               );
             }
