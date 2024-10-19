@@ -142,7 +142,8 @@ class ProfilePage extends StatelessWidget {
                                     decoration: BoxDecoration(
                                         image: DecorationImage(
                                             image: NetworkImage(
-                                                '${AppUrls.coverfireStorageUrl}${state.favoriteSongs[index].artist.trim()} - ${state.favoriteSongs[index].title.trim()}.jpg?${AppUrls.mediaAlt}')),
+                                                '${AppUrls.coverfireStorageUrl}${state.favoriteSongs[index].artist.trim()} - ${state.favoriteSongs[index].title.trim()}.jpg?${AppUrls.mediaAlt}'),
+                                            fit: BoxFit.cover),
                                         borderRadius: BorderRadius.circular(20),
                                         color: Colors.white),
                                   ),
