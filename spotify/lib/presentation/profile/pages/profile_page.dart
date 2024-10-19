@@ -22,11 +22,13 @@ class ProfilePage extends StatelessWidget {
           style: TextStyle(fontSize: 18),
         ),
       ),
-      body: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
-        _profileInfo(context),
-        SizedBox(height: 30),
-        _favoriteSongs()
-      ]),
+      body: SingleChildScrollView(
+        child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          _profileInfo(context),
+          SizedBox(height: 30),
+          _favoriteSongs()
+        ]),
+      ),
     );
   }
 
