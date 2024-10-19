@@ -135,6 +135,8 @@ class SongFirebaseServiceImple implements SongFirebaseService {
         var song =
             await firebaseFirestore.collection('songs').doc(songId).get();
         SongModel songModel = SongModel.fromjson(song.data()!);
+        songModel.isFavorite = true;
+        songModel.songId = songId;
         favoriteSongs.add(songModel.toEntity());
       }
 
