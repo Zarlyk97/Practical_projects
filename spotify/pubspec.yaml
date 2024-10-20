@@ -35,12 +35,12 @@ dev_dependencies:
 flutter_launcher_icons:
   android: true
   ios: true
-  windows: true
-  macos: true
-  web: true
-
   image_path: "assets/icon/icon.png"
- 
+  remove_alpha_ios: true  # iOS'то alpha каналын өчүрүү сунушталат
+  web:
+    background_color: "#ffffff"
+    theme_color: "#000000"
+
 
 
 flutter:
