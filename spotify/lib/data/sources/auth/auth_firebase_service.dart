@@ -65,7 +65,7 @@ class AuthFirebaseServiceImple implements AuthFirebaseService {
       FirebaseFirestore firebaseFirestore = FirebaseFirestore.instance;
 
       var user = await firebaseFirestore
-          .collection('Users')
+          .collection('users')
           .doc(firebaseAuth.currentUser?.uid)
           .get();
 

@@ -71,7 +71,7 @@ class SongFirebaseServiceImple implements SongFirebaseService {
       var user = firebaseAuth.currentUser;
       String uid = user!.uid;
       QuerySnapshot favoriteSongs = await firebaseFirestore
-          .collection('Users')
+          .collection('users')
           .doc(uid)
           .collection('Favorites')
           .where('songId', isEqualTo: songId)
@@ -81,7 +81,7 @@ class SongFirebaseServiceImple implements SongFirebaseService {
         isFavorite = false;
       } else {
         await firebaseFirestore
-            .collection('Users')
+            .collection('users')
             .doc(uid)
             .collection('Favorites')
             .add({'songId': songId, 'addedDate': Timestamp.now()});
@@ -101,7 +101,7 @@ class SongFirebaseServiceImple implements SongFirebaseService {
       var user = firebaseAuth.currentUser;
       String uid = user!.uid;
       QuerySnapshot favoriteSongs = await firebaseFirestore
-          .collection('Users')
+          .collection('users')
           .doc(uid)
           .collection('Favorites')
           .where('songId', isEqualTo: songId)
@@ -126,7 +126,7 @@ class SongFirebaseServiceImple implements SongFirebaseService {
       String uid = user!.uid;
 
       QuerySnapshot favoritesSnapshot = await firebaseFirestore
-          .collection('Users')
+          .collection('users')
           .doc(uid)
           .collection('Favorites')
           .get();
