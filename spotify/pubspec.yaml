@@ -20,7 +20,7 @@ dependencies:
   path_provider: ^2.1.4
   firebase_core: ^3.6.0
   firebase_auth: ^5.3.1
-  get_it: ^8.0.0
+  get_it: ^8.0.1
   dartz: ^0.10.1
   cloud_firestore: ^5.4.4
   just_audio: ^0.9.41
@@ -33,15 +33,25 @@ dev_dependencies:
   flutter_lints: ^5.0.0
 
 flutter_launcher_icons:
-  android: "launcher_icon"
-  ios: true
-  image_path: "assets/icon/icon.png"
-  remove_alpha_ios: true
+  android: true          # Android үчүн иконкаларды түзүү
+  ios: true              # iOS үчүн иконкаларды түзүү
+  image_path: "assets/icon/icon.png"  # Иконка файлыңыздын туура жолу
+
   web:
+    generate: true        # Веб иконкаларды түзүү
+    image_path: "assets/icon/icon.png"
+    background_color: "#ffffff"  # Веб иконка үчүн фон түсү
+    theme_color: "#000000"       # Веб иконка үчүн теманын түсү
+
+  windows:
     generate: true
     image_path: "assets/icon/icon.png"
-    background_color: "#ffffff"
-    theme_color: "#000000"
+    
+  macos:
+    generate: true
+    image_path: "assets/icon/icon.png"
+
+
 
 
 flutter:
@@ -49,6 +59,7 @@ flutter:
   uses-material-design: true
 
   assets:
+    - assets/icon/
     - assets/fonts/
     - assets/images/
     - assets/vectors/
