@@ -24,6 +24,7 @@ class ProfilePage extends StatelessWidget {
       ),
       body: SingleChildScrollView(
         child: Column(crossAxisAlignment: CrossAxisAlignment.start, children: [
+          SizedBox(height: 10),
           _profileInfo(context),
           SizedBox(height: 30),
           _favoriteSongs()
