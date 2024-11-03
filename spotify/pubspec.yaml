@@ -24,7 +24,6 @@ dependencies:
   dartz: ^0.10.1
   cloud_firestore: ^5.4.4
   just_audio: ^0.9.41
-  flutter_launcher_icons: ^0.14.1
 
 dev_dependencies:
   flutter_test:
@@ -32,12 +31,7 @@ dev_dependencies:
 
   flutter_lints: ^5.0.0
 
-flutter_launcher_icons:
-  android: true         # Android үчүн иконкаларды түзүү
-  ios: true              # iOS үчүн иконкаларды түзүү
-  image_path: "assets/icon/icon.png"  # Иконка файлыңыздын туура жолу
-  remove_alpha_ios: true
-  
+
 
 
 
