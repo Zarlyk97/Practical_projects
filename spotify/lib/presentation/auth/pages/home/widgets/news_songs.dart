@@ -67,7 +67,6 @@ class NewsSongs extends StatelessWidget {
                           fit: BoxFit.cover,
                           image: NetworkImage(
                             url,
-                            // '${AppUrls.coverfireStorageUrl}${songs[index].artist} - ${songs[index].title}.jpg?${AppUrls.mediaAlt}',
                           ),
                         ),
                       ),
