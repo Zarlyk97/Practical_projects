@@ -23,6 +23,20 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
     emit(SongPlayerLoaded());
   }
 
+  Future<void> loadPlaylistFromFirebase(List<String> songUrls) async {
+    try {
+      List<AudioSource> audioSources = songUrls.map((url) {
+        return AudioSource.uri(Uri.parse(url));
+      }).toList();
+
+      AudioSource playlist = ConcatenatingAudioSource(children: audioSources);
+      await audioPlayer.setAudioSource(playlist);
+      emit(SongPlayerLoaded());
+    } catch (e) {
+      emit(SongPlayerFailure());
+    }
+  }
+
   Future<void> loadSong(String url) async {
     try {
       await audioPlayer.setUrl(url);
@@ -45,5 +59,27 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
   Future<void> close() {
     audioPlayer.dispose();
     return super.close();
+  }
+
+  void previousSong() {
+    if (audioPlayer.hasPrevious) {
+      audioPlayer.seekToPrevious();
+      emit(SongPlayerLoaded());
+    } else {
+      audioPlayer.seek(
+          Duration.zero); // Мурунку ыр жок болсо, учурдагыны башынан ойнотот.
+      emit(SongPlayerLoaded());
+    }
+  }
+
+  void nextSong() {
+    if (audioPlayer.hasNext) {
+      audioPlayer.seekToNext();
+      emit(SongPlayerLoaded());
+    } else {
+      audioPlayer.seek(
+          Duration.zero); // Кийинки ыр жок болсо, учурдагыны башынан ойнотот.
+      emit(SongPlayerLoaded());
+    }
   }
 }
