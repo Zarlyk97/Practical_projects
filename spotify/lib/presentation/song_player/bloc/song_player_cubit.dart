@@ -1,5 +1,5 @@
-import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
 import 'package:just_audio/just_audio.dart';
 import 'package:spotify/domain/entities/song/song.dart';
 
@@ -67,8 +67,7 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
       audioPlayer.seekToPrevious();
       emit(SongPlayerLoaded());
     } else {
-      audioPlayer.seek(
-          Duration.zero); // Мурунку ыр жок болсо, учурдагыны башынан ойнотот.
+      audioPlayer.seek(Duration.zero);
       emit(SongPlayerLoaded());
     }
   }
@@ -78,8 +77,7 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
       audioPlayer.seekToNext();
       emit(SongPlayerLoaded());
     } else {
-      audioPlayer.seek(
-          Duration.zero); // Кийинки ыр жок болсо, учурдагыны башынан ойнотот.
+      audioPlayer.seek(Duration.zero);
       emit(SongPlayerLoaded());
     }
   }
