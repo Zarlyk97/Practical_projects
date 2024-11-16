@@ -1,6 +1,7 @@
 import 'package:bloc/bloc.dart';
 import 'package:flutter/material.dart';
 import 'package:just_audio/just_audio.dart';
+import 'package:spotify/domain/entities/song/song.dart';
 
 part 'song_player_state.dart';
 
@@ -23,10 +24,10 @@ class SongPlayerCubit extends Cubit<SongPlayerState> {
     emit(SongPlayerLoaded());
   }
 
-  Future<void> loadPlaylistFromFirebase(List<String> songUrls) async {
+  Future<void> loadPlaylistFromFirebase(List<SongEntity> songUrls) async {
     try {
       List<AudioSource> audioSources = songUrls.map((url) {
-        return AudioSource.uri(Uri.parse(url));
+        return AudioSource.uri(Uri.parse(url.songId));
       }).toList();
 
       AudioSource playlist = ConcatenatingAudioSource(children: audioSources);
