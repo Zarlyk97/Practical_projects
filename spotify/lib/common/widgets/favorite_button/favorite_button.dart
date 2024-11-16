@@ -30,7 +30,7 @@ class FavoriteButton extends StatelessWidget {
                 songEntity.isFavorite
                     ? Icons.favorite
                     : Icons.favorite_outline_outlined,
-                color: AppColors.darkGrey,
+                color: songEntity.isFavorite ? Colors.red : AppColors.darkGrey,
               ),
             );
           }
@@ -46,7 +46,7 @@ class FavoriteButton extends StatelessWidget {
                 state.isFavorite
                     ? Icons.favorite
                     : Icons.favorite_outline_outlined,
-                color: AppColors.darkGrey,
+                color: state.isFavorite ? Colors.red : AppColors.darkGrey,
               ),
             );
           }

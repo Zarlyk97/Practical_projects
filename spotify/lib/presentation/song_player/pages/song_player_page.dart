@@ -102,6 +102,7 @@ class SongPlayerPage extends StatelessWidget {
       if (state is SongPlayerLoaded) {
         return Column(children: [
           Slider(
+            activeColor: AppColors.primary,
             value: context
                 .read<SongPlayerCubit>()
                 .songPosition
