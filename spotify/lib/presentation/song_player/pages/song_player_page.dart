@@ -113,7 +113,12 @@ class SongPlayerPage extends StatelessWidget {
                 .songDuration
                 .inSeconds
                 .toDouble(),
-            onChanged: (value) {},
+            onChanged: (value) {
+              context
+                  .read<SongPlayerCubit>()
+                  .audioPlayer
+                  .seek(Duration(seconds: value.toInt()));
+            },
           ),
           const SizedBox(
             height: 20,
@@ -149,9 +154,10 @@ class SongPlayerPage extends StatelessWidget {
                   decoration: const BoxDecoration(
                       shape: BoxShape.circle, color: AppColors.primary),
                   child: Icon(
-                      context.read<SongPlayerCubit>().audioPlayer.playing
-                          ? Icons.pause
-                          : Icons.play_arrow),
+                    context.read<SongPlayerCubit>().audioPlayer.playing
+                        ? Icons.pause
+                        : Icons.play_arrow,
+                  ),
                 ),
               ),
               IconButton(
