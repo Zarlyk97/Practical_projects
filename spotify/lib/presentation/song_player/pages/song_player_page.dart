@@ -141,7 +141,7 @@ class SongPlayerPage extends StatelessWidget {
             children: [
               IconButton(
                 onPressed: () {
-                  context.read<SongPlayerCubit>().previousSong();
+                  context.read<SongPlayerCubit>().audioPlayer.seekToPrevious();
                 },
                 icon: const Icon(Icons.skip_previous),
               ),
@@ -163,7 +163,7 @@ class SongPlayerPage extends StatelessWidget {
               ),
               IconButton(
                 onPressed: () {
-                  context.read<SongPlayerCubit>().nextSong();
+                  context.read<SongPlayerCubit>().audioPlayer.seekToNext();
                 },
                 icon: const Icon(Icons.skip_next),
               ),
