@@ -7,7 +7,7 @@ class UserAccountScreen extends StatelessWidget {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
-        title: const Text('UserAccountScreen'),
+        title: const Text('User Account'),
         centerTitle: true,
       ),
     );

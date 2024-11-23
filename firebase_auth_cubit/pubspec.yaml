@@ -42,6 +42,7 @@ dependencies:
   firebase_storage: ^11.6.7
   image_picker: ^1.0.7
   google_sign_in: ^6.2.1
+  get_it: ^8.0.2
 
 dev_dependencies:
   flutter_test:
@@ -68,8 +69,7 @@ flutter:
   # To add assets to your application, add an assets section, like this:
   assets:
     - assets/image/background.jpg
-    - assets/icons/instagram.png
-    - assets/icons/facebook.png
+  
     - assets/icons/google.png
   #   - images/a_dot_ham.jpeg
 

@@ -1,17 +1,17 @@
-import 'package:firebase_auth_cubit/features/auth/cubit/auth_cubit.dart';
-import 'package:firebase_auth_cubit/features/auth/screens/login_screen.dart';
+import 'package:firebase_auth_cubit/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:firebase_auth_cubit/features/auth/presentation/pages/login_screen.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 Future<void> customConfirmDialog(BuildContext context) async {
   Widget cancelButton = TextButton(
-    child: const Text("Cancel"),
+    child: const Text("Оменить"),
     onPressed: () {
       Navigator.of(context).pop();
     },
   );
   Widget continueButton = TextButton(
-    child: const Text("Continue"),
+    child: const Text("Продолжить"),
     onPressed: () {
       BlocProvider.of<AuthCubit>(context).signOut();
       Navigator.push(
@@ -23,9 +23,9 @@ Future<void> customConfirmDialog(BuildContext context) async {
     },
   );
   AlertDialog alert = AlertDialog(
-    title: const Text("Warning"),
+    title: const Text("Предупреждение"),
     content: const Text(
-      "Would you like to log out from this account?",
+      "Вы действительно хотите выйти?",
     ),
     actions: [
       cancelButton,

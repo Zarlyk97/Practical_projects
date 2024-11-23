@@ -1,4 +1,4 @@
-import 'package:firebase_auth_cubit/features/reset_password/screens/new_password_screen.dart';
+import 'package:firebase_auth_cubit/features/reset_password/pages/new_password_screen.dart';
 import 'package:firebase_auth_cubit/features/reset_password/widgets/custom_otp_textFirld.dart';
 import 'package:flutter/material.dart';
 

@@ -1,5 +1,5 @@
-import 'package:firebase_auth_cubit/features/auth/cubit/auth_cubit.dart';
-import 'package:firebase_auth_cubit/features/auth/screens/login_screen.dart';
+import 'package:firebase_auth_cubit/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:firebase_auth_cubit/features/auth/presentation/pages/login_screen.dart';
 import 'package:firebase_auth_cubit/features/reset_password/cubit/reset_password_cubit.dart';
 import 'package:firebase_auth_cubit/features/user_profile/cubit/upload_user_image_cubit.dart';
 import 'package:firebase_core/firebase_core.dart';

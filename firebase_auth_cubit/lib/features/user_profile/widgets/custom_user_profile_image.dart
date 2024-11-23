@@ -1,5 +1,5 @@
 import 'package:firebase_auth_cubit/constant/image_constant.dart';
-import 'package:firebase_auth_cubit/features/auth/cubit/auth_cubit.dart';
+import 'package:firebase_auth_cubit/features/auth/presentation/cubit/auth_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -24,7 +24,8 @@ class CustomUserImageProfile extends StatelessWidget {
                         const AssetImage(ImageConstant.backgroundImage),
                     child: GestureDetector(
                       onTap: () {
-                        if (state.user?.photoURL != null) {
+                        if (state.user?.photoURL !=
+                            'https://png.pngtree.com/png-vector/20190501/ourmid/pngtree-vector-business-men-icon-png-image_1011286.jpg') {
                           showDialog(
                             context: context,
                             builder: (context) {
@@ -60,16 +61,6 @@ class CustomUserImageProfile extends StatelessWidget {
                   ),
                 ),
               ),
-              // Positioned(
-              //   top: 210,
-              //   right: 140,
-              //   child: CircleAvatar(
-              //     child: IconButton(
-              //       onPressed: () => customUploadImageProfile(context),
-              //       icon: const Icon(Icons.camera_alt),
-              //     ),
-              //   ),
-              // ),
             ],
           );
         } else {

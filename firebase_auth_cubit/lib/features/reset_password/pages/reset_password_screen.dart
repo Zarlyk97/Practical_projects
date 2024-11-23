@@ -1,8 +1,8 @@
 import 'package:firebase_auth_cubit/features/reset_password/widgets/custom_otp_textFirld.dart';
 
 import '../../../constant/image_constant.dart';
-import '../../auth/screens/login_screen.dart';
-import '../../auth/screens/register_screen.dart';
+import '../../auth/presentation/pages/login_screen.dart';
+import '../../auth/presentation/pages/register_screen.dart';
 import '../cubit/reset_password_cubit.dart';
 
 import 'package:flutter/material.dart';
@@ -31,14 +31,14 @@ class ResetPasswordScreen extends StatelessWidget {
             context: context,
             builder: (context) {
               return AlertDialog(
-                title: const Text("Warning"),
+                title: const Text("Предупреждение"),
                 content: Text(state.errorMessage),
                 actions: [
                   TextButton(
                     onPressed: () {
                       Navigator.of(context).pop();
                     },
-                    child: const Text("Try again"),
+                    child: const Text("Повторить"),
                   ),
                 ],
               );
@@ -77,7 +77,7 @@ class ResetPasswordScreen extends StatelessWidget {
                           child: Column(
                             children: [
                               const Text(
-                                "Reset Password",
+                                "Сбросить пароль",
                                 style: TextStyle(
                                   color: Colors.white,
                                   fontSize: 20,
@@ -85,7 +85,7 @@ class ResetPasswordScreen extends StatelessWidget {
                               ),
                               const SizedBox(height: 30),
                               const Text(
-                                "Enter your email address",
+                                "Введите свой email",
                                 style: TextStyle(color: Colors.white),
                               ),
                               Padding(
@@ -102,17 +102,17 @@ class ResetPasswordScreen extends StatelessWidget {
                                     errorBorder: const OutlineInputBorder(
                                       borderSide: BorderSide(color: Colors.red),
                                     ),
-                                    hintText: 'Enter your email',
+                                    hintText: 'Введите email',
                                   ),
                                   validator: (value) {
                                     // ToDo: Add your own validation logic here
-                                    return 'Please enter your email';
+                                    return 'Пожалуйста, введите email';
                                   },
                                 ),
                               ),
                               const SizedBox(height: 30),
                               const Text(
-                                "Enter Verification Code",
+                                "Введите код из письма",
                                 style: TextStyle(color: Colors.white),
                               ),
                               const SizedBox(height: 20),
@@ -129,7 +129,7 @@ class ResetPasswordScreen extends StatelessWidget {
                               const SizedBox(height: 30),
                               TextButton(
                                 child: Text(
-                                  "Back to sign in",
+                                  "Вернуться к входу",
                                   style: TextStyle(color: Colors.grey[400]),
                                 ),
                                 onPressed: () {
@@ -166,7 +166,7 @@ class ResetPasswordScreen extends StatelessWidget {
                                       }
                                       return;
                                     },
-                                    child: const Text("Send"),
+                                    child: const Text("Сбросить пароль"),
                                   ),
                                 ),
                               ),
@@ -180,12 +180,12 @@ class ResetPasswordScreen extends StatelessWidget {
                                 mainAxisAlignment: MainAxisAlignment.center,
                                 children: [
                                   Text(
-                                    "Don't have an account?",
+                                    "У вас нет аккаунта?",
                                     style: TextStyle(color: Colors.grey[400]),
                                   ),
                                   TextButton(
                                     child: const Text(
-                                      "Sign Up",
+                                      "Зарегистрироваться",
                                       style: TextStyle(color: Colors.white),
                                     ),
                                     onPressed: () {

@@ -2,7 +2,7 @@ import 'package:firebase_auth_cubit/features/user_profile/user_account/user_acco
 import 'package:firebase_auth_cubit/features/user_profile/widgets/custom_menu_button.dart';
 
 import '../../constant/image_constant.dart';
-import '../auth/cubit/auth_cubit.dart';
+import '../auth/presentation/cubit/auth_cubit.dart';
 import 'widgets/custom_confirm_dialog.dart';
 import 'widgets/custom_user_profile_image.dart';
 import 'package:flutter/material.dart';
