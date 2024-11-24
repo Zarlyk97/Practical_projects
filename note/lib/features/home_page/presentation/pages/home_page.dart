@@ -34,14 +34,42 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: ListView.separated(
-          itemBuilder: (context, index) => ListTile(
-                onTap: () {},
-                title: const Text("Hello World"),
-                subtitle: const Text("Hello World"),
-              ),
-          separatorBuilder: (context, index) => const Divider(),
-          itemCount: 5),
+      body: Padding(
+        padding: const EdgeInsets.all(10.0),
+        child: ListView.separated(
+            itemBuilder: (context, index) => ListTile(
+                  onTap: () {},
+                  leading: CircleAvatar(
+                    radius: 25,
+                    backgroundColor: Colors.blue[700],
+                    child: const Icon(Icons.access_alarms, color: Colors.white),
+                  ),
+                  title: const Text(
+                    "Прием у врача",
+                    style: TextStyle(fontWeight: FontWeight.bold),
+                  ),
+                  subtitle: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      const Text("Не забудьте посещать врача"),
+                      Text(
+                          "${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}  ${DateTime.now().hour}:${DateTime.now().minute}"),
+                    ],
+                  ),
+                  trailing: IconButton(
+                    icon: const Icon(
+                      Icons.delete,
+                      color: Colors.red,
+                    ),
+                    onPressed: () {},
+                  ),
+                ),
+            separatorBuilder: (context, index) => const Divider(
+                  indent: 20,
+                  endIndent: 20,
+                ),
+            itemCount: 30),
+      ),
     );
   }
 }
