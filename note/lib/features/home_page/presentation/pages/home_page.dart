@@ -14,11 +14,11 @@ class HomePage extends StatelessWidget {
     return Scaffold(
       drawer: BlocBuilder<AuthCubit, AuthState>(
         builder: (context, state) {
-          if (state is AuthLoading) {
+          if (state.isLoading) {
             const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is AuthSuccess) {
+          } else if (state.user != null) {
             return Drawer(
               backgroundColor: Colors.blue[700],
               child: ListView(children: [
@@ -49,7 +49,7 @@ class HomePage extends StatelessWidget {
                             height: 10,
                           ),
                           Text(
-                            '${state.user!.displayName}',
+                            '${state.user}',
                             style: const TextStyle(color: Colors.white),
                           ),
                           const SizedBox(
@@ -98,7 +98,7 @@ class HomePage extends StatelessWidget {
                 )
               ]),
             );
-          } else if (state is AuthFailure) {
+          } else if (state.error != null) {
             return const Center(
               child: Text('Error'),
             );

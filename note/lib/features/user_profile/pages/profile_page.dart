@@ -17,7 +17,7 @@ class ProfilePage extends StatelessWidget {
     final Size size = MediaQuery.of(context).size;
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        if (state is AuthSuccess) {
+        if (state.error != null) {
           return Scaffold(
             body: SingleChildScrollView(
               child: Container(
@@ -47,28 +47,6 @@ class ProfilePage extends StatelessWidget {
                       ),
                     ),
                     const CustomUserImageProfile(),
-                    Positioned(
-                      top: 270,
-                      child: state.user?.displayName == ""
-                          ? Text(
-                              state.user?.displayName ?? "",
-                              textAlign: TextAlign.center,
-                              style: const TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            )
-                          : const Text(
-                              "User",
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                color: Colors.white,
-                                fontWeight: FontWeight.bold,
-                                fontSize: 20,
-                              ),
-                            ),
-                    ),
                     Positioned(
                       top: 300,
                       child: Text(

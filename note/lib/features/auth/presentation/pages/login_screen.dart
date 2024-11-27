@@ -1,6 +1,5 @@
 import 'package:firebase_auth_cubit/constant/image_constant.dart';
 import 'package:firebase_auth_cubit/features/auth/presentation/cubit/auth_cubit.dart';
-import 'package:firebase_auth_cubit/features/home_page/presentation/pages/home_page.dart';
 import 'package:firebase_auth_cubit/features/auth/presentation/pages/register_screen.dart';
 import 'package:firebase_auth_cubit/features/auth/presentation/widgets/custom_password_textfield.dart';
 import 'package:firebase_auth_cubit/features/reset_password/pages/reset_password_screen.dart';
@@ -32,36 +31,23 @@ class _LoginScreenState extends State<LoginScreen> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      body: BlocConsumer<AuthCubit, AuthState>(
-        listener: (context, state) {
-          if (state is AuthLoading) {
-            const Center(
+      body: BlocListener<AuthCubit, AuthState>(listener: (context, state) {
+        if (state.error != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text(state.error!)),
+          );
+        } else if (state.user != null) {
+          ScaffoldMessenger.of(context).showSnackBar(
+            SnackBar(content: Text('Welcome ${state.user!.email}!')),
+          );
+        }
+      }, child: BlocBuilder<AuthCubit, AuthState>(
+        builder: (context, state) {
+          if (state.isLoading) {
+            return const Center(
               child: CircularProgressIndicator(),
             );
-          } else if (state is AuthSuccess) {
-            Navigator.push(context,
-                MaterialPageRoute(builder: (context) => const HomePage()));
-          } else if (state is AuthFailure) {
-            showDialog(
-              context: context,
-              builder: (context) {
-                return AlertDialog(
-                  title: const Text("Предупреждение"),
-                  content: const Text("Неправильный логин или пароль"),
-                  actions: [
-                    TextButton(
-                      onPressed: () {
-                        Navigator.of(context).pop();
-                      },
-                      child: const Text("Повторить"),
-                    ),
-                  ],
-                );
-              },
-            );
           }
-        },
-        builder: (context, state) {
           return Stack(
             children: [
               Container(
@@ -174,7 +160,7 @@ class _LoginScreenState extends State<LoginScreen> {
                               onPressed: () {
                                 // ToDo: Login with facebook future.
                                 BlocProvider.of<AuthCubit>(context)
-                                    .signInWithGoogle();
+                                    .googlSignIn();
                               },
                               child: const Row(
                                 mainAxisAlignment: MainAxisAlignment.center,
@@ -232,23 +218,23 @@ class _LoginScreenState extends State<LoginScreen> {
             ],
           );
         },
-      ),
+      )),
     );
   }
+}
 
-  String? _validateEmail(String? value) {
-    if (value == null || value.isEmpty) {
-      return "Пожалуйста введите вашу почту или пароль.";
-    }
-    return null;
+String? _validateEmail(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Пожалуйста введите вашу почту или пароль.";
   }
+  return null;
+}
 
-  String? _validatePassword(String? value) {
-    if (value == null || value.isEmpty) {
-      return "Пожалуйста введите вашу почту или пароль.";
-    } else if (value.length < 6) {
-      return "Пароль должен быть не менее 6 символов.";
-    }
-    return null;
+String? _validatePassword(String? value) {
+  if (value == null || value.isEmpty) {
+    return "Пожалуйста введите вашу почту или пароль.";
+  } else if (value.length < 6) {
+    return "Пароль должен быть не менее 6 символов.";
   }
+  return null;
 }

@@ -1,81 +1,63 @@
-import 'package:equatable/equatable.dart';
-import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_auth_cubit/features/auth/domain/usecases/sign_up_usecase.dart';
+import 'package:firebase_auth_cubit/features/auth/domain/usecases/signout_usecase.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
-import 'package:google_sign_in/google_sign_in.dart';
+import '../../domain/usecases/login_usecase.dart';
+import '../../domain/entities/user_entity.dart';
 
-part 'auth_state.dart';
+class AuthState {
+  final UserEntity? user;
+  final bool isLoading;
+  final String? error;
+
+  AuthState({this.user, this.isLoading = false, this.error});
+}
 
 class AuthCubit extends Cubit<AuthState> {
-  final FirebaseAuth _auth = FirebaseAuth.instance;
-  final GoogleSignIn _googleSignIn = GoogleSignIn();
+  final LoginUsecase loginUseCase;
+  final SignUpUsecase registerUseCase;
+  final SignOutUsecase signOutUseCase; // Add Register Usecase
 
-  AuthCubit() : super(AuthInitial());
-
-  Future<void> register(String email, String password) async {
-    try {
-      emit(AuthLoading());
-
-      final userRegister = await _auth.createUserWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-      emit(AuthSuccess(userRegister.user));
-    } catch (e) {
-      emit(AuthFailure(e.toString()));
-    }
-  }
+  AuthCubit(this.loginUseCase, this.signOutUseCase, this.registerUseCase)
+      : super(AuthState());
 
   Future<void> login(String email, String password) async {
-    try {
-      emit(AuthLoading());
-
-      final userLogin = await _auth.signInWithEmailAndPassword(
-        email: email,
-        password: password,
-      );
-
-      emit(AuthSuccess(userLogin.user));
-    } catch (e) {
-      emit(AuthFailure(e.toString()));
-    }
+    emit(AuthState(isLoading: true));
+    final result = await loginUseCase(email, password);
+    result.fold(
+      (failure) => emit(AuthState(error: failure.message)), // Failure
+      (user) => emit(AuthState(user: user)), // Success
+    );
   }
 
-  Future<void> signInWithGoogle() async {
-    try {
-      emit(AuthLoading());
-      final GoogleSignInAccount? googleUser = await _googleSignIn.signIn();
-      final GoogleSignInAuthentication googleAuth =
-          await googleUser!.authentication;
-
-      final AuthCredential credential = GoogleAuthProvider.credential(
-        accessToken: googleAuth.accessToken,
-        idToken: googleAuth.idToken,
-      );
-
-      final UserCredential userCredential =
-          await _auth.signInWithCredential(credential);
-      emit(AuthSuccess(userCredential.user));
-    } catch (e) {
-      emit(AuthFailure(e.toString()));
-    }
+  Future<void> register(String email, String password) async {
+    emit(AuthState(isLoading: true));
+    final result =
+        await registerUseCase(email, password); // Call Register Usecase
+    result.fold(
+      (failure) => emit(AuthState(error: failure.message)), // Handle Failure
+      (user) => emit(AuthState(user: user)), // Handle Success
+    );
   }
 
   Future<void> signOut() async {
+    emit(AuthState(isLoading: true)); // Loading абалын баштоо
     try {
-      emit(AuthLoading());
-      await _auth.signOut();
-      await _googleSignIn.signOut();
-      emit(AuthInitial());
+      await signOutUseCase(); // UseCase аркылуу чыгуу
+      emit(AuthState(user: null)); // Колдонуучу жок абалды жөнөтүү
     } catch (e) {
-      emit(AuthFailure(e.toString()));
+      emit(AuthState(error: e.toString())); // Ката болсо иштетүү
     }
   }
 
-  Future<void> checkAuthStatus() async {
-    if (_auth.currentUser != null) {
-      emit(AuthSuccess(_auth.currentUser));
-    } else {
-      emit(const AuthFailure('User is not logged in'));
+  Future<void> googlSignIn() async {
+    try {
+      emit(AuthState(isLoading: true)); // Loading абалын баштоо
+
+      await signOutUseCase(); // Бул void болгондуктан, кайтаруу маанисин колдонбойбуз
+
+      emit(AuthState(user: null)); // Колдонуучу жок абалды жөнөтүү
+    } catch (e) {
+      emit(AuthState(error: e.toString())); // Ката болсо иштетүү
     }
   }
 }

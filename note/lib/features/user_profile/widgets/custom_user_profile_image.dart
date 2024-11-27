@@ -10,7 +10,7 @@ class CustomUserImageProfile extends StatelessWidget {
   Widget build(BuildContext context) {
     return BlocBuilder<AuthCubit, AuthState>(
       builder: (context, state) {
-        if (state is AuthSuccess) {
+        if (state.error == null) {
           return Stack(
             alignment: Alignment.center,
             children: [
@@ -24,7 +24,7 @@ class CustomUserImageProfile extends StatelessWidget {
                         const AssetImage(ImageConstant.backgroundImage),
                     child: GestureDetector(
                       onTap: () {
-                        if (state.user?.photoURL !=
+                        if (state.user !=
                             'https://png.pngtree.com/png-vector/20190501/ourmid/pngtree-vector-business-men-icon-png-image_1011286.jpg') {
                           showDialog(
                             context: context,
@@ -33,7 +33,7 @@ class CustomUserImageProfile extends StatelessWidget {
                                 child: Container(
                                   decoration: const BoxDecoration(),
                                   child: Image.network(
-                                    state.user?.photoURL ?? "",
+                                    ' https://png.pngtree.com/png-vector/20190501/ourmid/pngtree-vector-business-men-icon-png-image_1011286.jpg ',
                                     fit: BoxFit.contain,
                                   ),
                                 ),
@@ -47,10 +47,9 @@ class CustomUserImageProfile extends StatelessWidget {
                       child: SizedBox(
                         height: 140.0,
                         width: 140.0,
-                        child: state.user?.photoURL != null
-                            ? CircleAvatar(
-                                backgroundImage: NetworkImage(state
-                                        .user?.photoURL ??
+                        child: state.user != null
+                            ? const CircleAvatar(
+                                backgroundImage: NetworkImage(
                                     "https://png.pngtree.com/png-vector/20191101/ourmid/pngtree-cartoon-color-simple-male-avatar-png-image_1934459.jpg"),
                               )
                             : const CircleAvatar(
