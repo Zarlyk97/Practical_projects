@@ -1,6 +1,7 @@
-import 'package:firebase_auth_cubit/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:firebase_auth_cubit/features/home_page/presentation/cubit/note_cubit.dart';
 import 'package:firebase_auth_cubit/features/home_page/presentation/pages/notebook_page.dart';
 import 'package:firebase_auth_cubit/features/home_page/presentation/widgets/notes_search_delegate.dart';
+import 'package:firebase_auth_cubit/features/user_profile/cubit/upload_user_image_cubit.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -12,14 +13,12 @@ class HomePage extends StatelessWidget {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-      drawer: BlocBuilder<AuthCubit, AuthState>(
+      drawer: BlocBuilder<UploadUserImageCubit, UploadUserImageState>(
         builder: (context, state) {
-          if (state.isLoading) {
-            const Center(
-              child: CircularProgressIndicator(),
-            );
-          } else if (state.user != null) {
-            return Drawer(
+          if (state is UpdateNoteLoading) {
+            const Center(child: CircularProgressIndicator());
+          } else if (state is UploadUserImageSuccess) {
+            Drawer(
               backgroundColor: Colors.blue[700],
               child: ListView(children: [
                 DrawerHeader(
@@ -49,7 +48,7 @@ class HomePage extends StatelessWidget {
                             height: 10,
                           ),
                           Text(
-                            '${state.user}',
+                            '${state.user!.displayName}',
                             style: const TextStyle(color: Colors.white),
                           ),
                           const SizedBox(
@@ -98,7 +97,7 @@ class HomePage extends StatelessWidget {
                 )
               ]),
             );
-          } else if (state.error != null) {
+          } else if (state is UploadUserImageFailure) {
             return const Center(
               child: Text('Error'),
             );
@@ -130,53 +129,65 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Column(
-        children: [
-          TextFormField(),
-          const SizedBox(height: 10),
-          Expanded(
-            child: ListView.separated(
-              padding: const EdgeInsets.all(10.0),
-              itemBuilder: (context, index) => ListTile(
-                onTap: () {
-                  Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) => const NoteBookPage()));
-                },
-                leading: CircleAvatar(
-                  radius: 25,
-                  backgroundColor: Colors.blue[700],
-                  child: const Icon(Icons.create_outlined, color: Colors.white),
-                ),
-                title: const Text(
-                  "Прием у врача",
-                  style: TextStyle(fontWeight: FontWeight.bold),
-                ),
-                subtitle: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text("Не забудьте посещать врача"),
-                    Text(
-                        "${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}  ${DateTime.now().hour}:${DateTime.now().minute}"),
-                  ],
-                ),
-                trailing: IconButton(
-                  icon: const Icon(
-                    Icons.delete,
-                    color: Colors.red,
+      body: BlocBuilder<NoteCubit, NoteState>(
+        builder: (context, state) {
+          if (state is GetNotesLoading) {
+            return const Center(child: CircularProgressIndicator());
+          } else if (state is GetNotesLoaded) {
+            return Column(
+              children: [
+                TextFormField(),
+                const SizedBox(height: 10),
+                Expanded(
+                  child: ListView.separated(
+                    padding: const EdgeInsets.all(10.0),
+                    itemBuilder: (context, index) => ListTile(
+                      onTap: () {
+                        Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const NoteBookPage()));
+                      },
+                      leading: CircleAvatar(
+                        radius: 25,
+                        backgroundColor: Colors.blue[700],
+                        child: const Icon(Icons.create_outlined,
+                            color: Colors.white),
+                      ),
+                      title: Text(
+                        state.notes[index].title.toString(),
+                        style: const TextStyle(fontWeight: FontWeight.bold),
+                      ),
+                      subtitle: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Text(state.notes[index].content.toString()),
+                          Text(
+                              "${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}  ${DateTime.now().hour}:${DateTime.now().minute}"),
+                        ],
+                      ),
+                      trailing: IconButton(
+                        icon: const Icon(
+                          Icons.delete,
+                          color: Colors.red,
+                        ),
+                        onPressed: () {},
+                      ),
+                    ),
+                    separatorBuilder: (context, index) => const Divider(
+                      indent: 20,
+                      endIndent: 20,
+                    ),
+                    itemCount: state.notes.length,
                   ),
-                  onPressed: () {},
                 ),
-              ),
-              separatorBuilder: (context, index) => const Divider(
-                indent: 20,
-                endIndent: 20,
-              ),
-              itemCount: 30,
-            ),
-          ),
-        ],
+              ],
+            );
+          } else if (state is GetNotesError) {
+            return const Center(child: Text('Error'));
+          }
+          return const Center(child: CircularProgressIndicator());
+        },
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue[700],

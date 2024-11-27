@@ -9,6 +9,7 @@ import 'package:firebase_auth_cubit/features/auth/presentation/cubit/auth_cubit.
 import 'package:firebase_auth_cubit/features/home_page/data/data_source/home_remote_data_source.dart';
 import 'package:firebase_auth_cubit/features/home_page/data/repository/home_repository.dart';
 import 'package:firebase_auth_cubit/features/home_page/domain/repository/home_repo.dart';
+import 'package:firebase_auth_cubit/features/home_page/presentation/cubit/note_cubit.dart';
 import 'package:get_it/get_it.dart';
 
 final sl = GetIt.instance;
@@ -38,6 +39,9 @@ Future<void> initializeDependencies() async {
     sl.registerFactory(() => AuthCubit(
         sl<LoginUsecase>(), sl<SignOutUsecase>(), sl<SignUpUsecase>()));
   }
+  sl.registerFactory(() => NoteCubit(
+        sl<HomeRepository>(),
+      ));
 
   // Home Page Dependencies
   sl.registerFactory<HomeRemoteDataSource>(() => HomeRemoteDataSourceImpl());

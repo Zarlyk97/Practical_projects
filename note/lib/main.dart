@@ -1,4 +1,5 @@
 import 'package:firebase_auth_cubit/features/auth/presentation/cubit/auth_cubit.dart';
+import 'package:firebase_auth_cubit/features/home_page/presentation/cubit/note_cubit.dart';
 import 'package:firebase_auth_cubit/features/home_page/presentation/pages/splash_screen.dart';
 import 'package:firebase_auth_cubit/features/reset_password/cubit/reset_password_cubit.dart';
 import 'package:firebase_auth_cubit/features/user_profile/cubit/upload_user_image_cubit.dart';
@@ -35,7 +36,8 @@ class MyApp extends StatelessWidget {
         ),
         BlocProvider<UploadUserImageCubit>(
           create: (context) => UploadUserImageCubit(),
-        )
+        ),
+        BlocProvider<NoteCubit>(create: (context) => sl<NoteCubit>())
       ],
       child: const MaterialApp(
         debugShowCheckedModeBanner: false,
