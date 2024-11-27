@@ -1,4 +1,8 @@
+import 'package:firebase_auth_cubit/features/home_page/domain/models/note_model.dart';
+import 'package:firebase_auth_cubit/features/home_page/presentation/cubit/note_cubit.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_bloc/flutter_bloc.dart';
+import 'package:uuid/uuid.dart';
 
 class NoteBookPage extends StatefulWidget {
   const NoteBookPage({super.key});
@@ -105,6 +109,12 @@ class _NoteBookPageState extends State<NoteBookPage> {
             // Clear fields after saving
             _titleController.clear();
             _descriptionController.clear();
+
+            context.read<NoteCubit>().addNote(NoteModel(
+                  id: const Uuid().v4(),
+                  title: _titleController.text,
+                  content: _descriptionController.text,
+                ));
           }
         },
       ),

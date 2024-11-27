@@ -130,47 +130,53 @@ class HomePage extends StatelessWidget {
           ),
         ],
       ),
-      body: Padding(
-        padding: const EdgeInsets.all(10.0),
-        child: ListView.separated(
-          itemBuilder: (context, index) => ListTile(
-            onTap: () {
-              Navigator.push(
-                  context,
-                  MaterialPageRoute(
-                      builder: (context) => const NoteBookPage()));
-            },
-            leading: CircleAvatar(
-              radius: 25,
-              backgroundColor: Colors.blue[700],
-              child: const Icon(Icons.create_outlined, color: Colors.white),
-            ),
-            title: const Text(
-              "Прием у врача",
-              style: TextStyle(fontWeight: FontWeight.bold),
-            ),
-            subtitle: Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                const Text("Не забудьте посещать врача"),
-                Text(
-                    "${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}  ${DateTime.now().hour}:${DateTime.now().minute}"),
-              ],
-            ),
-            trailing: IconButton(
-              icon: const Icon(
-                Icons.delete,
-                color: Colors.red,
+      body: Column(
+        children: [
+          TextFormField(),
+          const SizedBox(height: 10),
+          Expanded(
+            child: ListView.separated(
+              padding: const EdgeInsets.all(10.0),
+              itemBuilder: (context, index) => ListTile(
+                onTap: () {
+                  Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) => const NoteBookPage()));
+                },
+                leading: CircleAvatar(
+                  radius: 25,
+                  backgroundColor: Colors.blue[700],
+                  child: const Icon(Icons.create_outlined, color: Colors.white),
+                ),
+                title: const Text(
+                  "Прием у врача",
+                  style: TextStyle(fontWeight: FontWeight.bold),
+                ),
+                subtitle: Column(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    const Text("Не забудьте посещать врача"),
+                    Text(
+                        "${DateTime.now().day}.${DateTime.now().month}.${DateTime.now().year}  ${DateTime.now().hour}:${DateTime.now().minute}"),
+                  ],
+                ),
+                trailing: IconButton(
+                  icon: const Icon(
+                    Icons.delete,
+                    color: Colors.red,
+                  ),
+                  onPressed: () {},
+                ),
               ),
-              onPressed: () {},
+              separatorBuilder: (context, index) => const Divider(
+                indent: 20,
+                endIndent: 20,
+              ),
+              itemCount: 30,
             ),
           ),
-          separatorBuilder: (context, index) => const Divider(
-            indent: 20,
-            endIndent: 20,
-          ),
-          itemCount: 30,
-        ),
+        ],
       ),
       floatingActionButton: FloatingActionButton(
         backgroundColor: Colors.blue[700],
