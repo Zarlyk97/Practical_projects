@@ -92,32 +92,33 @@ class _NoteBookPageState extends State<NoteBookPage> {
         ),
       ),
       floatingActionButton: FloatingActionButton(
-        backgroundColor: Colors.blue[700],
-        child: const Icon(Icons.save, color: Colors.white),
-        onPressed: () {
-          if (_formKey.currentState!.validate()) {
-            // Save data or perform desired action
-            String title = _titleController.text;
+          backgroundColor: Colors.blue[700],
+          child: const Icon(Icons.save, color: Colors.white),
+          onPressed: () {
+            if (_formKey.currentState!.validate()) {
+              // Формадагы тексттерди сактап алуу
+              final title = _titleController.text;
+              final description = _descriptionController.text;
 
-            // For example, show a snackbar for success
-            ScaffoldMessenger.of(context).showSnackBar(
-              SnackBar(
-                content: Text("Сохранено: $title"),
-              ),
-            );
+              // Firestore'го маалымат кошуу
+              context.read<NoteCubit>().addNote(NoteModel(
+                    id: const Uuid().v4(),
+                    title: title,
+                    content: description,
+                  ));
 
-            // Clear fields after saving
-            _titleController.clear();
-            _descriptionController.clear();
+              // Маалымат сакталгандан кийин билдирүү көрсөтүү
+              ScaffoldMessenger.of(context).showSnackBar(
+                SnackBar(
+                  content: Text("Сохранено: $title"),
+                ),
+              );
 
-            context.read<NoteCubit>().addNote(NoteModel(
-                  id: const Uuid().v4(),
-                  title: _titleController.text,
-                  content: _descriptionController.text,
-                ));
-          }
-        },
-      ),
+              // Полелерди тазалоо
+              _titleController.clear();
+              _descriptionController.clear();
+            }
+          }),
     );
   }
 }

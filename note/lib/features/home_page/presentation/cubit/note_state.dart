@@ -17,7 +17,7 @@ final class GetNotesError extends NoteState {}
 final class GetNotesLoaded extends NoteState {
   final List<NoteModel> notes;
 
-  const GetNotesLoaded({required this.notes});
+  const GetNotesLoaded(List<dynamic> list, {required this.notes});
 }
 
 // Add note

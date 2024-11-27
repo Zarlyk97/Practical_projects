@@ -9,11 +9,12 @@ class NoteCubit extends Cubit<NoteState> {
   final HomeRepository _home;
   NoteCubit(this._home) : super(NoteInitial());
 
+  // get notes
   Future<void> getNotes() async {
     emit(GetNotesLoading());
     try {
       final notes = await _home.getNotes();
-      emit(GetNotesLoaded(notes: notes));
+      emit(GetNotesLoaded(notes, notes: notes));
     } catch (e) {
       emit(GetNotesError());
     }
@@ -31,13 +32,13 @@ class NoteCubit extends Cubit<NoteState> {
   }
 
   // delete note
-  Future<void> deleteNote(NoteModel note) async {
-    emit(DeleteNoteLoading());
+  void deleteNote(NoteModel note) async {
+    emit(DeleteNoteLoading()); // Жүктөө абалын көрсөтүү
     try {
-      await _home.deleteNote(note);
-      emit(DeleteNoteLoaded());
+      await _home.deleteNote(note); // Базадан өчүрүү
+      emit(DeleteNoteLoaded()); // Жаңы абал берүү
     } catch (e) {
-      emit(DeleteNoteError());
+      emit(DeleteNoteError()); // Ката абалын көрсөтүү
     }
   }
 

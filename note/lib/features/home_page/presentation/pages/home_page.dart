@@ -7,8 +7,19 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 import '../../../user_profile/pages/profile_page.dart';
 
-class HomePage extends StatelessWidget {
+class HomePage extends StatefulWidget {
   const HomePage({super.key});
+
+  @override
+  State<HomePage> createState() => _HomePageState();
+}
+
+class _HomePageState extends State<HomePage> {
+  @override
+  void initState() {
+    super.initState();
+    context.read<NoteCubit>().getNotes();
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -16,9 +27,9 @@ class HomePage extends StatelessWidget {
       drawer: BlocBuilder<UploadUserImageCubit, UploadUserImageState>(
         builder: (context, state) {
           if (state is UpdateNoteLoading) {
-            const Center(child: CircularProgressIndicator());
+            return const Center(child: CircularProgressIndicator());
           } else if (state is UploadUserImageSuccess) {
-            Drawer(
+            return Drawer(
               backgroundColor: Colors.blue[700],
               child: ListView(children: [
                 DrawerHeader(
@@ -103,9 +114,7 @@ class HomePage extends StatelessWidget {
             );
           }
 
-          return const Center(
-            child: CircularProgressIndicator(),
-          );
+          return Container();
         },
       ),
       appBar: AppBar(
@@ -131,7 +140,7 @@ class HomePage extends StatelessWidget {
       ),
       body: BlocBuilder<NoteCubit, NoteState>(
         builder: (context, state) {
-          if (state is GetNotesLoading) {
+          if (state is GetNotesLoading || state is DeleteNoteLoading) {
             return const Center(child: CircularProgressIndicator());
           } else if (state is GetNotesLoaded) {
             return Column(
@@ -171,7 +180,11 @@ class HomePage extends StatelessWidget {
                           Icons.delete,
                           color: Colors.red,
                         ),
-                        onPressed: () {},
+                        onPressed: () {
+                          context
+                              .read<NoteCubit>()
+                              .deleteNote(state.notes[index]);
+                        },
                       ),
                     ),
                     separatorBuilder: (context, index) => const Divider(
