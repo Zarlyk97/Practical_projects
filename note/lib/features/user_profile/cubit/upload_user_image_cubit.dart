@@ -14,18 +14,36 @@ class UploadUserImageCubit extends Cubit<UploadUserImageState> {
   Future<void> updateProfilePicture(File imageFile) async {
     try {
       emit(UploadUserImageLoading());
+
+      // Check if user is logged in
       final user = _firebaseAuth.currentUser;
+      if (user == null) {
+        emit(const UploadUserImageFailure("User not logged in."));
+        return;
+      }
+
+      // Check if file exists
+      if (!imageFile.existsSync()) {
+        emit(const UploadUserImageFailure("File does not exist."));
+        return;
+      }
+
+      // Upload image to Firebase Storage
       final storageRef =
-          FirebaseStorage.instance.ref().child('user_profile/${user?.uid}');
+          FirebaseStorage.instance.ref().child('user_profile/${user.uid}');
       final uploadTask = storageRef.putFile(imageFile);
 
       final taskSnapshot = await uploadTask.whenComplete(() => {});
       final imageUrl = await taskSnapshot.ref.getDownloadURL();
 
-      user?.updatePhotoURL(imageUrl);
+      // Update user profile picture in FirebaseAuth
+      await user.updatePhotoURL(imageUrl);
+
+      // Emit success state
       emit(UploadUserImageSuccess(user));
     } catch (e) {
-      emit(UploadUserImageFailure(e.toString()));
+      // Emit failure state with error message
+      emit(UploadUserImageFailure("Error uploading image: $e"));
     }
   }
 }

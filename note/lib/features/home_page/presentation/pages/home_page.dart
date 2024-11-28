@@ -114,7 +114,9 @@ class _HomePageState extends State<HomePage> {
             );
           }
 
-          return Container();
+          return const Center(
+            child: Text('Error'),
+          );
         },
       ),
       appBar: AppBar(
