@@ -8,9 +8,8 @@ class ConnectionCubit extends Cubit<ConnectionStatus> {
 
   ConnectionCubit() : super(ConnectionStatus.disconnected) {
     _checkConnectionStatus();
-    _connectivity.onConnectivityChanged.listen((ConnectivityResult result) {
+    _connectivity.onConnectivityChanged.listen((result) {
       _checkConnectionStatus();
-      ///////////////////////////////////////////
     });
   }
 

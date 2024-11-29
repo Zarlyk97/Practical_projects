@@ -34,23 +34,17 @@ class _NetworkWrapperState extends State<NetworkWrapper> {
   }
 
   Future<void> checkInternetConnection() async {
-    subscription = Connectivity().onConnectivityChanged.listen(
-      (ConnectivityResult result) {
-        if (result == ConnectivityResult.none) {
-          setState(
-            () {
-              hasInternetConnection = false;
-            },
-          );
-        } else {
-          setState(
-            () {
-              hasInternetConnection = true;
-            },
-          );
-        }
-      },
-    );
+    List<ConnectivityResult> result = await Connectivity().checkConnectivity();
+
+    if (result == ConnectivityResult.none) {
+      setState(() {
+        hasInternetConnection = false;
+      });
+    } else {
+      setState(() {
+        hasInternetConnection = true;
+      });
+    }
   }
 
   @override

@@ -9,71 +9,6 @@
 
 part of 'router.dart';
 
-abstract class _$AppRouter extends RootStackRouter {
-  // ignore: unused_element
-  _$AppRouter({super.navigatorKey});
-
-  @override
-  final Map<String, PageFactory> pagesMap = {
-    AboutRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const AboutPage(),
-      );
-    },
-    CartRoute.name: (routeData) {
-      final args = routeData.argsAs<CartRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: CartPage(
-          key: args.key,
-        ),
-      );
-    },
-    HistoryRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const HistoryPage(),
-      );
-    },
-    HomeRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const HomePage(),
-      );
-    },
-    MainRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const MainPage(),
-      );
-    },
-    OrderRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const OrderPage(),
-      );
-    },
-    PlacingAnOrderRoute.name: (routeData) {
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: const PlacingAnOrderPage(),
-      );
-    },
-    SearchRoute.name: (routeData) {
-      final args = routeData.argsAs<SearchRouteArgs>();
-      return AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: SearchScreen(
-          key: args.key,
-          id: args.id,
-          fruits: args.fruits,
-        ),
-      );
-    },
-  };
-}
-
 /// generated route for
 /// [AboutPage]
 class AboutRoute extends PageRouteInfo<void> {
@@ -85,31 +20,31 @@ class AboutRoute extends PageRouteInfo<void> {
 
   static const String name = 'AboutRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const AboutPage();
+    },
+  );
 }
 
 /// generated route for
 /// [CartPage]
-class CartRoute extends PageRouteInfo<CartRouteArgs> {
-  CartRoute({
-    Key? key,
-    List<PageRouteInfo>? children,
-  }) : super(
+class CartRoute extends PageRouteInfo<void> {
+  const CartRoute({List<PageRouteInfo>? children})
+      : super(
           CartRoute.name,
           initialChildren: children,
         );
 
   static const String name = 'CartRoute';
 
-  static const PageInfo<CartRouteArgs> page = PageInfo<CartRouteArgs>(name);
-}
-
-class CartRouteArgs {
-  const CartRouteArgs({
-    this.key,
-  });
-
-  final Key? key;
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const CartPage();
+    },
+  );
 }
 
 /// generated route for
@@ -123,7 +58,12 @@ class HistoryRoute extends PageRouteInfo<void> {
 
   static const String name = 'HistoryRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HistoryPage();
+    },
+  );
 }
 
 /// generated route for
@@ -137,7 +77,12 @@ class HomeRoute extends PageRouteInfo<void> {
 
   static const String name = 'HomeRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const HomePage();
+    },
+  );
 }
 
 /// generated route for
@@ -151,7 +96,12 @@ class MainRoute extends PageRouteInfo<void> {
 
   static const String name = 'MainRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const MainPage();
+    },
+  );
 }
 
 /// generated route for
@@ -165,7 +115,12 @@ class OrderRoute extends PageRouteInfo<void> {
 
   static const String name = 'OrderRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const OrderPage();
+    },
+  );
 }
 
 /// generated route for
@@ -179,7 +134,12 @@ class PlacingAnOrderRoute extends PageRouteInfo<void> {
 
   static const String name = 'PlacingAnOrderRoute';
 
-  static const PageInfo<void> page = PageInfo<void>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      return const PlacingAnOrderPage();
+    },
+  );
 }
 
 /// generated route for
@@ -202,7 +162,17 @@ class SearchRoute extends PageRouteInfo<SearchRouteArgs> {
 
   static const String name = 'SearchRoute';
 
-  static const PageInfo<SearchRouteArgs> page = PageInfo<SearchRouteArgs>(name);
+  static PageInfo page = PageInfo(
+    name,
+    builder: (data) {
+      final args = data.argsAs<SearchRouteArgs>();
+      return SearchScreen(
+        key: args.key,
+        id: args.id,
+        fruits: args.fruits,
+      );
+    },
+  );
 }
 
 class SearchRouteArgs {

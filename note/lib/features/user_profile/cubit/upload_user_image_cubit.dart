@@ -14,6 +14,7 @@ class UploadUserImageCubit extends Cubit<UploadUserImageState> {
   Future<void> updateProfilePicture(File imageFile) async {
     try {
       emit(UploadUserImageLoading());
+      print(imageFile.path);
 
       // Check if user is logged in
       final user = _firebaseAuth.currentUser;

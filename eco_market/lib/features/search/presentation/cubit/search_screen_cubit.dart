@@ -1,4 +1,4 @@
-import 'package:eco_market/features/cart/data/models/cart_model.dart';
+import 'package:eco_market/features/cart/domain/models/cart_model.dart';
 import 'package:eco_market/features/search/domain/entities/products_entity.dart';
 import 'package:eco_market/features/search/domain/repositories/search_repository.dart';
 import 'package:equatable/equatable.dart';

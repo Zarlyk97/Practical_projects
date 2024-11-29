@@ -1,4 +1,4 @@
-import 'package:eco_market/features/cart/data/models/models.dart';
+import 'package:eco_market/features/cart/domain/models/models.dart';
 import 'package:eco_market/features/cart/domain/entities/order_entity.dart';
 
 class OrderModel extends OrderEntity {

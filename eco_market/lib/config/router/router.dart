@@ -8,8 +8,7 @@ import 'package:flutter/material.dart';
 part 'router.gr.dart';
 
 @AutoRouterConfig()
-class AppRouter extends _$AppRouter {
-  @override
+class AppRouter {
   List<AutoRoute> get routes => [
         AutoRoute(page: MainRoute.page, initial: true),
         AutoRoute(page: HomeRoute.page),
@@ -18,5 +17,6 @@ class AppRouter extends _$AppRouter {
         AutoRoute(page: PlacingAnOrderRoute.page),
         AutoRoute(page: HistoryRoute.page),
         AutoRoute(page: OrderRoute.page),
+        AutoRoute(page: SearchRoute.page),
       ];
 }
