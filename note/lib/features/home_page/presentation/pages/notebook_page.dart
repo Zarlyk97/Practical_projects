@@ -109,8 +109,8 @@ class _NoteBookPageState extends State<NoteBookPage> {
 
               // Маалымат сакталгандан кийин билдирүү көрсөтүү
               ScaffoldMessenger.of(context).showSnackBar(
-                SnackBar(
-                  content: Text("Сохранено: $title"),
+                const SnackBar(
+                  content: Text("Успешно отправлено!"),
                 ),
               );
 

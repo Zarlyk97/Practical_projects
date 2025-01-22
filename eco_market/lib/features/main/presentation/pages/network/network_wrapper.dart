@@ -36,7 +36,7 @@ class _NetworkWrapperState extends State<NetworkWrapper> {
   Future<void> checkInternetConnection() async {
     List<ConnectivityResult> result = await Connectivity().checkConnectivity();
 
-    if (result == ConnectivityResult.none) {
+    if (result != ConnectivityResult.none) {
       setState(() {
         hasInternetConnection = false;
       });
