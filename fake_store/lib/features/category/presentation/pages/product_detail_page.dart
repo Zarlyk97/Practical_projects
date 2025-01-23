@@ -38,72 +38,76 @@ class _DetailScreenState extends State<DetailScreen> {
             } else if (state is GetProductByIdLoaded) {
               products = state.product;
             }
-            return Column(
-              crossAxisAlignment: CrossAxisAlignment.start,
-              children: [
-                ClipRRect(
-                  borderRadius: BorderRadius.circular(10),
-                  child: Image.network(
-                    products!.image.toString(),
-                    height: 208,
-                    width: double.infinity,
-                    fit: BoxFit.cover,
-                  ),
-                ),
-                const SizedBox(
-                  height: 12,
-                ),
-                Text(
-                  products!.title.toString(),
-                  style: const TextStyle(
-                    color: Colors.black,
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  '\$ ${products!.price}',
-                  style: const TextStyle(
-                    color: Color(0xFF75DB1B),
-                    fontSize: 24,
-                    fontWeight: FontWeight.w700,
-                  ),
-                ),
-                const SizedBox(
-                  height: 8,
-                ),
-                Text(
-                  products!.description.toString(),
-                  style: const TextStyle(
-                    color: Color(0xFFABABAD),
-                    fontSize: 16,
-                  ),
-                ),
-                const Spacer(),
-                Center(
-                  child: ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                      backgroundColor: Colors.green,
-                      minimumSize: const Size(double.infinity, 50),
-                    ),
-                    onPressed: () {
-                      setState(
-                        () {},
-                      );
-                    },
-                    child: const Text(
-                      'Добавить в корзину',
-                      style: TextStyle(color: Colors.white),
+            return SingleChildScrollView(
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  ClipRRect(
+                    borderRadius: BorderRadius.circular(10),
+                    child: Image.network(
+                      products!.image.toString(),
+                      height: 208,
+                      width: double.infinity,
+                      fit: BoxFit.cover,
                     ),
                   ),
-                ),
-                const SizedBox(
-                  height: 24,
-                ),
-              ],
+                  const SizedBox(
+                    height: 12,
+                  ),
+                  Text(
+                    products!.title.toString(),
+                    style: const TextStyle(
+                      color: Colors.black,
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    '\$ ${products!.price}',
+                    style: const TextStyle(
+                      color: Color(0xFF75DB1B),
+                      fontSize: 24,
+                      fontWeight: FontWeight.w700,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 8,
+                  ),
+                  Text(
+                    products!.description.toString(),
+                    style: const TextStyle(
+                      color: Color(0xFFABABAD),
+                      fontSize: 16,
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 20,
+                  ),
+                  Center(
+                    child: ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                        backgroundColor: Colors.green,
+                        minimumSize: const Size(double.infinity, 50),
+                      ),
+                      onPressed: () {
+                        setState(
+                          () {},
+                        );
+                      },
+                      child: const Text(
+                        'Добавить в корзину',
+                        style: TextStyle(color: Colors.white),
+                      ),
+                    ),
+                  ),
+                  const SizedBox(
+                    height: 24,
+                  ),
+                ],
+              ),
             );
           },
         ),

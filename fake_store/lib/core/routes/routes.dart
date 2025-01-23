@@ -11,7 +11,6 @@ class AppRouter extends $AppRouter {
         AutoRoute(page: SignInRoute.page),
         AutoRoute(page: SignUpRoute.page),
         AutoRoute(page: CategoriesRoute.page, guards: [AuthGuard()]),
-        AutoRoute(page: CategoryRoute.page, guards: [AuthGuard()]),
         AutoRoute(page: DetailRoute.page, guards: [AuthGuard()]),
         AutoRoute(page: CartRoute.page, guards: [AuthGuard()]),
         AutoRoute(page: ProfileRoute.page, guards: [AuthGuard()]),

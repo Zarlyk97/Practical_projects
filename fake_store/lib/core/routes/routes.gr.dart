@@ -17,12 +17,12 @@ import 'package:fakestore/features/cart/presentation/pages/cart_screen.dart'
     as _i1;
 import 'package:fakestore/features/category/presentation/pages/categories_page.dart'
     as _i2;
-import 'package:fakestore/features/category/presentation/pages/category_page.dart'
-    as _i3;
 import 'package:fakestore/features/category/presentation/pages/main_page.dart'
-    as _i5;
-import 'package:fakestore/features/category/presentation/pages/product_detail_page.dart'
     as _i4;
+import 'package:fakestore/features/category/presentation/pages/product_detail_page.dart'
+    as _i3;
+import 'package:fakestore/features/category/presentation/pages/product_page.dart'
+    as _i5;
 import 'package:fakestore/features/profile/presentation/pages/profile.dart'
     as _i6;
 import 'package:flutter/material.dart' as _i10;
@@ -44,21 +44,11 @@ abstract class $AppRouter extends _i9.RootStackRouter {
         child: const _i2.CategoriesPage(),
       );
     },
-    CategoryRoute.name: (routeData) {
-      final args = routeData.argsAs<CategoryRouteArgs>();
-      return _i9.AutoRoutePage<dynamic>(
-        routeData: routeData,
-        child: _i3.CategoryPage(
-          key: args.key,
-          category: args.category,
-        ),
-      );
-    },
     DetailRoute.name: (routeData) {
       final args = routeData.argsAs<DetailRouteArgs>();
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: _i4.DetailScreen(
+        child: _i3.DetailScreen(
           key: args.key,
           id: args.id,
         ),
@@ -67,7 +57,18 @@ abstract class $AppRouter extends _i9.RootStackRouter {
     MainRoute.name: (routeData) {
       return _i9.AutoRoutePage<dynamic>(
         routeData: routeData,
-        child: const _i5.MainPage(),
+        child: const _i4.MainPage(),
+      );
+    },
+    ProductRoute.name: (routeData) {
+      final args = routeData.argsAs<ProductRouteArgs>();
+      return _i9.AutoRoutePage<dynamic>(
+        routeData: routeData,
+        child: _i5.ProductPage(
+          key: args.key,
+          title: args.title,
+          category: args.category,
+        ),
       );
     },
     ProfileRoute.name: (routeData) {
@@ -120,45 +121,7 @@ class CategoriesRoute extends _i9.PageRouteInfo<void> {
 }
 
 /// generated route for
-/// [_i3.CategoryPage]
-class CategoryRoute extends _i9.PageRouteInfo<CategoryRouteArgs> {
-  CategoryRoute({
-    _i10.Key? key,
-    required String category,
-    List<_i9.PageRouteInfo>? children,
-  }) : super(
-          CategoryRoute.name,
-          args: CategoryRouteArgs(
-            key: key,
-            category: category,
-          ),
-          initialChildren: children,
-        );
-
-  static const String name = 'CategoryRoute';
-
-  static const _i9.PageInfo<CategoryRouteArgs> page =
-      _i9.PageInfo<CategoryRouteArgs>(name);
-}
-
-class CategoryRouteArgs {
-  const CategoryRouteArgs({
-    this.key,
-    required this.category,
-  });
-
-  final _i10.Key? key;
-
-  final String category;
-
-  @override
-  String toString() {
-    return 'CategoryRouteArgs{key: $key, category: $category}';
-  }
-}
-
-/// generated route for
-/// [_i4.DetailScreen]
+/// [_i3.DetailScreen]
 class DetailRoute extends _i9.PageRouteInfo<DetailRouteArgs> {
   DetailRoute({
     _i10.Key? key,
@@ -196,7 +159,7 @@ class DetailRouteArgs {
 }
 
 /// generated route for
-/// [_i5.MainPage]
+/// [_i4.MainPage]
 class MainRoute extends _i9.PageRouteInfo<void> {
   const MainRoute({List<_i9.PageRouteInfo>? children})
       : super(
@@ -207,6 +170,49 @@ class MainRoute extends _i9.PageRouteInfo<void> {
   static const String name = 'MainRoute';
 
   static const _i9.PageInfo<void> page = _i9.PageInfo<void>(name);
+}
+
+/// generated route for
+/// [_i5.ProductPage]
+class ProductRoute extends _i9.PageRouteInfo<ProductRouteArgs> {
+  ProductRoute({
+    _i10.Key? key,
+    required String title,
+    required String category,
+    List<_i9.PageRouteInfo>? children,
+  }) : super(
+          ProductRoute.name,
+          args: ProductRouteArgs(
+            key: key,
+            title: title,
+            category: category,
+          ),
+          initialChildren: children,
+        );
+
+  static const String name = 'ProductRoute';
+
+  static const _i9.PageInfo<ProductRouteArgs> page =
+      _i9.PageInfo<ProductRouteArgs>(name);
+}
+
+class ProductRouteArgs {
+  const ProductRouteArgs({
+    this.key,
+    required this.title,
+    required this.category,
+  });
+
+  final _i10.Key? key;
+
+  final String title;
+
+  final String category;
+
+  @override
+  String toString() {
+    return 'ProductRouteArgs{key: $key, title: $title, category: $category}';
+  }
 }
 
 /// generated route for

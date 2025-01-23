@@ -61,7 +61,7 @@ class _MainPageState extends State<MainPage> {
             fontSize: 13,
             height: 1.6,
           ),
-          selectedItemColor: Colors.blue,
+          selectedItemColor: Colors.green,
           items: [
             BottomNavigationBarItem(
               label: "Главная",
@@ -69,13 +69,13 @@ class _MainPageState extends State<MainPage> {
                 Icons.home,
 
                 // ignore: deprecated_member_use
-                color: _currentIndex == 0 ? Colors.blue : Colors.grey,
+                color: _currentIndex == 0 ? Colors.green : Colors.grey,
               ),
             ),
             BottomNavigationBarItem(
               icon: Icon(
                 Icons.shopping_cart,
-                color: _currentIndex == 1 ? Colors.blue : Colors.grey,
+                color: _currentIndex == 1 ? Colors.green : Colors.grey,
               ),
               label: "Корзина",
             ),
@@ -84,7 +84,7 @@ class _MainPageState extends State<MainPage> {
                 Icons.person,
 
                 // ignore: deprecated_member_use
-                color: _currentIndex == 2 ? Colors.blue : Colors.grey,
+                color: _currentIndex == 2 ? Colors.green : Colors.grey,
               ),
               label: "Профиль",
             ),

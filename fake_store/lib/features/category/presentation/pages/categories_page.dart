@@ -1,6 +1,7 @@
 import 'package:auto_route/annotations.dart';
+import 'package:fakestore/core/constants/assets.dart';
 import 'package:fakestore/features/category/presentation/cubit/category_cubit.dart';
-import 'package:fakestore/features/category/presentation/pages/category_page.dart';
+import 'package:fakestore/features/category/presentation/pages/product_page.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
@@ -23,6 +24,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      backgroundColor: Colors.grey[250],
       appBar: AppBar(title: const Text('Категория')),
       body: BlocBuilder<CategoryCubit, CategoryState>(
         builder: (context, state) {
@@ -52,7 +54,8 @@ class _CategoriesPageState extends State<CategoriesPage> {
                       Navigator.push(
                         context,
                         MaterialPageRoute(
-                          builder: (context) => CategoryPage(
+                          builder: (context) => ProductPage(
+                            title: categories[index],
                             category: categories[index],
                           ),
                         ),
@@ -63,18 +66,27 @@ class _CategoriesPageState extends State<CategoriesPage> {
                       width: 100,
                       child: DecoratedBox(
                         decoration: BoxDecoration(
-                            image: const DecorationImage(
-                                image: NetworkImage(
-                                    'https://fakestoreapi.com/img/81fPKd-2AYL._AC_SL1500_.jpg'),
+                            image: DecorationImage(
+                                image:
+                                    AssetImage(AssetImages.values[index].jpg),
                                 fit: BoxFit.cover),
                             color: Colors.deepPurple,
                             borderRadius: BorderRadius.circular(10)),
-                        child: Center(
-                          child: Text(
-                            categories[index],
-                            style: const TextStyle(
-                                fontSize: 20, color: Colors.white),
-                          ),
+                        child: Column(
+                          crossAxisAlignment: CrossAxisAlignment.start,
+                          mainAxisAlignment: MainAxisAlignment.end,
+                          children: [
+                            Text(
+                              categories[index],
+                              style: const TextStyle(
+                                  fontSize: 20,
+                                  color: Colors.white,
+                                  fontWeight: FontWeight.w500),
+                            ),
+                            const SizedBox(
+                              height: 10,
+                            )
+                          ],
                         ),
                       ),
                     ),

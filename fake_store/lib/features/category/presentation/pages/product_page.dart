@@ -7,18 +7,20 @@ import 'package:flutter/material.dart';
 import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
-class CategoryPage extends StatefulWidget {
+class ProductPage extends StatefulWidget {
+  final String title;
   final String category;
-  const CategoryPage({
+  const ProductPage({
     super.key,
+    required this.title,
     required this.category,
   });
 
   @override
-  State<CategoryPage> createState() => _CategoryPageState();
+  State<ProductPage> createState() => _ProductPageState();
 }
 
-class _CategoryPageState extends State<CategoryPage> {
+class _ProductPageState extends State<ProductPage> {
   List<ProductModel> products = [];
   @override
   void initState() {
@@ -31,9 +33,9 @@ class _CategoryPageState extends State<CategoryPage> {
     return Scaffold(
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
-        title: const Text(
-          'Товар',
-          style: TextStyle(
+        title: Text(
+          widget.title,
+          style: const TextStyle(
               fontWeight: FontWeight.w500, fontSize: 18, color: Colors.black),
         ),
         actions: [
@@ -65,7 +67,7 @@ class _CategoryPageState extends State<CategoryPage> {
 
             return GridView.builder(
               gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
-                mainAxisExtent: 330,
+                mainAxisExtent: 325,
                 crossAxisCount: 2,
                 mainAxisSpacing: 11.0,
                 crossAxisSpacing: 11.0,
@@ -82,7 +84,7 @@ class _CategoryPageState extends State<CategoryPage> {
                   },
                   child: DecoratedBox(
                     decoration: BoxDecoration(
-                      color: const Color(0xffF8F8F8),
+                      color: Colors.grey[300],
                       borderRadius: BorderRadius.circular(16),
                     ),
                     child: Padding(
@@ -100,7 +102,7 @@ class _CategoryPageState extends State<CategoryPage> {
                             ),
                           ),
                           const SizedBox(
-                            height: 4,
+                            height: 10,
                           ),
                           Text(
                             products[index].title.toString(),
@@ -110,9 +112,7 @@ class _CategoryPageState extends State<CategoryPage> {
                               fontWeight: FontWeight.w500,
                             ),
                           ),
-                          const SizedBox(
-                            height: 20,
-                          ),
+                          const Spacer(),
                           Text(
                             "\$ ${products[index].price}",
                             style: const TextStyle(
@@ -121,9 +121,12 @@ class _CategoryPageState extends State<CategoryPage> {
                               fontWeight: FontWeight.w700,
                             ),
                           ),
-                          const Spacer(),
+                          const SizedBox(
+                            height: 10,
+                          ),
                           ElevatedButton(
                               style: ElevatedButton.styleFrom(
+                                fixedSize: const Size(300, 40),
                                 backgroundColor: Colors.green,
                                 shape: RoundedRectangleBorder(
                                   borderRadius: BorderRadius.circular(8.0),

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fakestore/core/constants/assets.dart';
 import 'package:flutter/material.dart';
 
 @RoutePage()
@@ -62,8 +63,8 @@ class _CartPageState extends State<CartPage> {
                           children: [
                             ClipRRect(
                               borderRadius: BorderRadius.circular(10),
-                              child: Image.network(
-                                'https://img.freepik.com/free-photo/fun-backpacker-german-shepherd-dog-cartoon-character_183364-80975.jpg',
+                              child: Image.asset(
+                                AssetImages.values[index].jpg,
                                 height: 86,
                                 width: 86,
                                 fit: BoxFit.cover,
@@ -157,7 +158,7 @@ class _CartPageState extends State<CartPage> {
                 ),
               );
             },
-            itemCount: 7,
+            itemCount: AssetImages.values.length,
             separatorBuilder: (context, index) => const SizedBox(
               height: 10,
             ),
