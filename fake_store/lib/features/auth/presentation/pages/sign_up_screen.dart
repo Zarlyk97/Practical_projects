@@ -160,13 +160,16 @@ class _SignUpScreenState extends State<SignUpScreen> {
                               if (formkey.currentState!.validate()) {
                                 context.read<AuthCubit>().register(
                                       UserModel(
-                                          email: emailTextInputController.text,
-                                          password:
-                                              passwordTextInputController.text,
-                                          name: UserNameModel(
-                                              firstname:
-                                                  userNameTextInputController
-                                                      .text)),
+                                        email: emailTextInputController.text
+                                            .trim(),
+                                        password: passwordTextInputController
+                                            .text
+                                            .trim(),
+                                        name: UserNameModel(
+                                            firstname:
+                                                userNameTextInputController.text
+                                                    .trim()),
+                                      ),
                                     );
                               }
                             },

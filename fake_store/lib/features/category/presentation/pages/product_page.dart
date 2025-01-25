@@ -8,11 +8,9 @@ import 'package:flutter_bloc/flutter_bloc.dart';
 
 @RoutePage()
 class ProductPage extends StatefulWidget {
-  final String title;
   final String category;
   const ProductPage({
     super.key,
-    required this.title,
     required this.category,
   });
 
@@ -34,16 +32,20 @@ class _ProductPageState extends State<ProductPage> {
       appBar: AppBar(
         iconTheme: const IconThemeData(color: Colors.black),
         title: Text(
-          widget.title,
+          widget.category,
           style: const TextStyle(
               fontWeight: FontWeight.w500, fontSize: 18, color: Colors.black),
         ),
         actions: [
           IconButton(
             onPressed: () {
-              Navigator.of(context).push(MaterialPageRoute(builder: (context) {
-                return const CartPage();
-              }));
+              Navigator.of(context).push(
+                MaterialPageRoute(
+                  builder: (context) {
+                    return const CartPage();
+                  },
+                ),
+              );
             },
             icon: const Icon(
               Icons.shopping_cart,

@@ -66,7 +66,6 @@ abstract class $AppRouter extends _i9.RootStackRouter {
         routeData: routeData,
         child: _i5.ProductPage(
           key: args.key,
-          title: args.title,
           category: args.category,
         ),
       );
@@ -177,14 +176,12 @@ class MainRoute extends _i9.PageRouteInfo<void> {
 class ProductRoute extends _i9.PageRouteInfo<ProductRouteArgs> {
   ProductRoute({
     _i10.Key? key,
-    required String title,
     required String category,
     List<_i9.PageRouteInfo>? children,
   }) : super(
           ProductRoute.name,
           args: ProductRouteArgs(
             key: key,
-            title: title,
             category: category,
           ),
           initialChildren: children,
@@ -199,19 +196,16 @@ class ProductRoute extends _i9.PageRouteInfo<ProductRouteArgs> {
 class ProductRouteArgs {
   const ProductRouteArgs({
     this.key,
-    required this.title,
     required this.category,
   });
 
   final _i10.Key? key;
 
-  final String title;
-
   final String category;
 
   @override
   String toString() {
-    return 'ProductRouteArgs{key: $key, title: $title, category: $category}';
+    return 'ProductRouteArgs{key: $key, category: $category}';
   }
 }
 
