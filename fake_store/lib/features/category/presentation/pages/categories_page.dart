@@ -45,7 +45,7 @@ class _CategoriesPageState extends State<CategoriesPage> {
                 gridDelegate: const SliverGridDelegateWithFixedCrossAxisCount(
                   mainAxisSpacing: 10,
                   crossAxisSpacing: 10,
-                  crossAxisCount: 2,
+                  crossAxisCount: 1,
                 ),
                 itemCount: categories.length,
                 itemBuilder: (BuildContext context, int index) {
@@ -75,12 +75,15 @@ class _CategoriesPageState extends State<CategoriesPage> {
                           crossAxisAlignment: CrossAxisAlignment.start,
                           mainAxisAlignment: MainAxisAlignment.end,
                           children: [
-                            Text(
-                              categories[index],
-                              style: const TextStyle(
-                                  fontSize: 20,
-                                  color: Colors.white,
-                                  fontWeight: FontWeight.w500),
+                            Padding(
+                              padding: const EdgeInsets.only(left: 10),
+                              child: Text(
+                                categories[index],
+                                style: const TextStyle(
+                                    fontSize: 30,
+                                    color: Colors.white,
+                                    fontWeight: FontWeight.w500),
+                              ),
                             ),
                             const SizedBox(
                               height: 10,

@@ -1,4 +1,5 @@
 import 'package:auto_route/auto_route.dart';
+import 'package:fakestore/features/cart/presentation/cubit/cart_cubit.dart';
 import 'package:fakestore/features/cart/presentation/pages/cart_screen.dart';
 import 'package:fakestore/features/category/domain/models/product_model.dart';
 import 'package:fakestore/features/category/presentation/cubit/category_cubit.dart';
@@ -19,6 +20,7 @@ class ProductPage extends StatefulWidget {
 }
 
 class _ProductPageState extends State<ProductPage> {
+  bool isAdded = false;
   List<ProductModel> products = [];
   @override
   void initState() {
@@ -126,7 +128,31 @@ class _ProductPageState extends State<ProductPage> {
                           const SizedBox(
                             height: 10,
                           ),
-                          ElevatedButton(
+                          BlocListener<CartCubit, CartState>(
+                            listener: (context, state) {
+                              if (state is CartLoaded) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  const SnackBar(
+                                    content: Text("Продукт корзинага кошулду!"),
+                                    backgroundColor: Colors.green,
+                                    duration: Duration(seconds: 2),
+                                  ),
+                                );
+                                setState(() {
+                                  isAdded = true;
+                                });
+                              } else if (state is CartError) {
+                                ScaffoldMessenger.of(context).showSnackBar(
+                                  SnackBar(
+                                    content:
+                                        Text("Ката чыкты: ${state.message}"),
+                                    backgroundColor: Colors.red,
+                                    duration: const Duration(seconds: 2),
+                                  ),
+                                );
+                              }
+                            },
+                            child: ElevatedButton(
                               style: ElevatedButton.styleFrom(
                                 fixedSize: const Size(300, 40),
                                 backgroundColor: Colors.green,
@@ -134,11 +160,19 @@ class _ProductPageState extends State<ProductPage> {
                                   borderRadius: BorderRadius.circular(8.0),
                                 ),
                               ),
-                              child: const Text(
-                                'В корзину',
-                                style: TextStyle(color: Colors.white),
-                              ),
-                              onPressed: () {})
+                              child: isAdded == false
+                                  ? const Text(
+                                      'В корзину',
+                                      style: TextStyle(color: Colors.white),
+                                    )
+                                  : const Text(' В  Корзине'),
+                              onPressed: () {
+                                context
+                                    .read<CartCubit>()
+                                    .addToCart(index, products[index]);
+                              },
+                            ),
+                          )
                         ],
                       ),
                     ),

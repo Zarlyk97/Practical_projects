@@ -1,80 +1,58 @@
+import 'package:fakestore/features/category/domain/models/product_model.dart';
+
 class CartModel {
-  int? id;
-  int? userId;
-  DateTime? date;
-  List<Product>? products;
-  int? v;
+  final int id;
+  final int userId;
+  final DateTime date;
+  final List<CartItem> products;
 
   CartModel({
-    this.id,
-    this.userId,
-    this.date,
-    this.products,
-    this.v,
+    required this.id,
+    required this.userId,
+    required this.date,
+    required this.products,
   });
 
-  CartModel copyWith({
-    int? id,
-    int? userId,
-    DateTime? date,
-    List<Product>? products,
-    int? v,
-  }) =>
-      CartModel(
-        id: id ?? this.id,
-        userId: userId ?? this.userId,
-        date: date ?? this.date,
-        products: products ?? this.products,
-        v: v ?? this.v,
-      );
-
-  factory CartModel.fromJson(Map<String, dynamic> json) => CartModel(
-        id: json["id"],
-        userId: json["userId"],
-        date: json["date"] == null ? null : DateTime.parse(json["date"]),
-        products: json["products"] == null
-            ? []
-            : List<Product>.from(
-                json["products"]!.map((x) => Product.fromJson(x))),
-        v: json["__v"],
-      );
+  factory CartModel.fromJson(Map<String, dynamic> json) {
+    return CartModel(
+      id: json["id"],
+      userId: json["userId"],
+      date: DateTime.parse(json["date"]),
+      products: (json["products"] as List)
+          .map((item) => CartItem.fromJson(item))
+          .toList(),
+    );
+  }
 
   Map<String, dynamic> toJson() => {
         "id": id,
         "userId": userId,
-        "date": date?.toIso8601String(),
-        "products": products == null
-            ? []
-            : List<dynamic>.from(products!.map((x) => x.toJson())),
-        "__v": v,
+        "date": date.toIso8601String(),
+        "products": products.map((item) => item.toJson()).toList(),
       };
 }
 
-class Product {
-  int? productId;
-  int? quantity;
+class CartItem {
+  int productId;
+  ProductModel product;
+  int quantity;
 
-  Product({
-    this.productId,
-    this.quantity,
-  });
+  CartItem(
+      {required this.productId, required this.product, required this.quantity});
 
-  Product copyWith({
-    int? productId,
-    int? quantity,
-  }) =>
-      Product(
-        productId: productId ?? this.productId,
-        quantity: quantity ?? this.quantity,
-      );
+  factory CartItem.fromJson(Map<String, dynamic> json) {
+    return CartItem(
+      productId: json['productId'],
+      product: ProductModel.fromJson(json['product']),
+      quantity: json['quantity'],
+    );
+  }
 
-  factory Product.fromJson(Map<String, dynamic> json) => Product(
-        productId: json["productId"],
-        quantity: json["quantity"],
-      );
-
-  Map<String, dynamic> toJson() => {
-        "productId": productId,
-        "quantity": quantity,
-      };
+  Map<String, dynamic> toJson() {
+    return {
+      'productId': productId,
+      'product': product.toJson(),
+      'quantity': quantity,
+    };
+  }
 }

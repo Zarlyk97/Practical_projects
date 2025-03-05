@@ -1,6 +1,6 @@
 void main() {
   Person persons =
-      Person(name: 'Zarlyk', age: 26, profession: 'Flutter developer');
+      Person(name: 'Zarlyk', age: 28, profession: 'Flutter developer');
   print(persons.name);
   print(persons.age);
   print(persons.profession);

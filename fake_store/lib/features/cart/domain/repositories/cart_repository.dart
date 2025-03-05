@@ -1,16 +1,10 @@
 import 'package:fakestore/features/cart/domain/models/cart_model.dart';
+import 'package:fakestore/features/category/domain/models/product_model.dart';
 
 abstract class CartRepository {
-  Future<void> addProductToCart(
-      {required int productId, required int quantity});
+  Future<CartModel> getCart(int userId);
 
-  Future<void> increment();
+  Future<void> deleteProductFromCart(int userId, int productId);
 
-  Future<void> decrement();
-
-  Future<void> deleteProductFromCart({required int productId});
-
-  Future<void> deleteAllCart();
-
-  Future<List<Product>> gytAllCartItems();
+  Future<void> addProductTocart(int userId, ProductModel product);
 }
